@@ -1,0 +1,17 @@
+{
+	"name": "DS_SRC_ASQL_Fact_DD_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "factOrderInvoiceSales_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,274 @@
+{
+	"name": "PL_One_touch_Account_User_Account_Blended_AccountProduct",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute_PL_AccountMonthlySales",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_SF__AccountMonthlySales_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute_PL_UserRevenue",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_AccountMonthlySales",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_sf_UserRevenue_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute_PL_Account_Blended",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_UserRevenue",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_SF_Account_FY20_Blended",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_Mi9_Practitioners_Patients_Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_One_touch_Account_User_Account_Blended_AccountProduct) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			},
+			{
+				"name": "Execute_PL_Mi9_Practitioners_Patients_Data",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_Account_Product",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Mi9_Prac_Code_WholesaleOrders_To_SF_Account_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute_PL_Account_Product",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_Account_Blended",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_SF_PROD_AccountProduct",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_UserRevenue",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_PL_AccountMonthlySales",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_sf_UserRevenue_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_AccountMonthlySales1",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_UserRevenue",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_SF__AccountMonthlySales_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_AccountFYBlended",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_AccountMonthlySales1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_SF_Account_FY20_Blended",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_AccountProduct",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_AccountFYBlended",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_SF_PROD_AccountProduct",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_Mi9_Data",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_AccountProduct",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Mi9_Prac_Code_WholesaleOrders_To_SF_Account_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Send_Email_copy1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_Mi9_Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_One_touch_Account_User_Account_Blended_AccountProduct) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-12T05:20:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "SF_Sales_Rep_Code__c",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "Sales_YTD__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_MTD__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_MTD_Canada__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_YTD_Canada__c",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "Sales_Rep_Code__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

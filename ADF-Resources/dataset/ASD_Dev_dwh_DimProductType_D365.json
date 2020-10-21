@@ -1,0 +1,87 @@
+{
+	"name": "ASD_Dev_dwh_DimProductType_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductTypeId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SalesRepCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EffectiveDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LatestIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalogNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalogDescription",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimProductType_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

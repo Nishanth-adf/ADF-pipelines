@@ -1,0 +1,183 @@
+{
+	"name": "PL_CPD_MI9_2_ASQL_Orders_Incr_Load",
+	"properties": {
+		"description": "This Pipeline copies Incremental Data from 'orders' table resides in MiRODB(metagenics-read.chs1gq6fhsa8.us-west-2.rds.amazonaws.com) to Azure SQL Dev Environment.",
+		"activities": [
+			{
+				"name": "LKP_orders",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SRC_LKP_Mi9_Orders_MaxTS",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "CPD_MI9_2_ASQL_Orders_Incr",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "LKP_orders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": {
+							"value": "select * from `orders`  where created >='@{activity('LKP_orders').output.firstRow.Max_Created_TS}' or updated >= '@{activity('LKP_orders').output.firstRow.Max_Updated_TS}';",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.Mi9_Orders_incr;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_MySQL_Mi9_Orders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_Mi9_Orders_incr",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SP_Incr_Logic",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_MI9_2_ASQL_Orders_Incr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_Orders_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CPD_Update_MaxTS_Vales_Mi9_Orders_MaxTS",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SP_Incr_Logic",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select max(created) as [Max_Created_TS],max(updated) as [Max_Updated_TS] from dbo.Mi9_Orders",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.Mi9_Orders_MaxTS;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Max_Created_TS",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Max_Created_TS",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Max_Updated_TS",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Max_Updated_TS",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Mi9Orders_TS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SRC_LKP_Mi9_Orders_MaxTS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AAAAMi9_Tables_Extraction"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-19T12:06:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

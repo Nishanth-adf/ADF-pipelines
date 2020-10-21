@@ -1,0 +1,86 @@
+{
+	"name": "pl_shipitProd_one_touch_prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "epl_pl_shipitProd_shipments_prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_shipments_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_packages_prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_shipments_Incr_Load_prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_packages_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_shipments_Incr_Load_prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_shipments_prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_shipments_Incr_Load_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_packages_Incr_Load_prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_packages_prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_packages_Incr_Load_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "ShipItProd Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-31T01:02:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,65 @@
+{
+	"name": "BA_All_Dim_Load_Pipelines",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_DIM_SalesRep_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimSalesRep",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false
+				}
+			},
+			{
+				"name": "EPL_DIM_Order_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimOrder",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false
+				}
+			},
+			{
+				"name": "EPL_Dim_CustomerMaster_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimCustomerMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false
+				}
+			},
+			{
+				"name": "EPL_DimMonth",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimMonth",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-28T11:19:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

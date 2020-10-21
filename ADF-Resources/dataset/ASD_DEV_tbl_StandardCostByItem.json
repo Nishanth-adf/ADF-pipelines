@@ -1,0 +1,108 @@
+{
+	"name": "ASD_DEV_tbl_StandardCostByItem",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ItemNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PriceSiteId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ActivationDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CreatedDateAndTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ProductUnitSymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CostingVersionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PriceQuantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "PriceChargesQuantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "Price",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "FixedPriceCharges",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "PriceWACQ",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "StdCost",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 6
+			},
+			{
+				"name": "LastUpDated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_StandardCostByItem"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,86 @@
+{
+	"name": "pl_shipitProd_one_touch_dev",
+	"properties": {
+		"activities": [
+			{
+				"name": "epl_pl_shipitProd_shipments_dev",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_shipments_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_packages_dev",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_shipments_Incr_Load_dev",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_packages_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_shipments_Incr_Load_dev",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_shipments_dev",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_shipments_Incr_Load_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_pl_shipitProd_packages_Incr_Load_dev",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_pl_shipitProd_packages_dev",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_shipitProd_packages_Incr_Load_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "ShipItProd Dev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-17T23:08:23Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

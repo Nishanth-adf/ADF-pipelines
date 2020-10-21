@@ -1,0 +1,64 @@
+{
+	"name": "ASD_PROD_stgMetaimport_info",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "import_info_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "source_id",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "year",
+				"type": "varchar"
+			},
+			{
+				"name": "period",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "filename",
+				"type": "varchar"
+			},
+			{
+				"name": "import_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "imported_by",
+				"type": "varchar"
+			},
+			{
+				"name": "sys_filename",
+				"type": "varchar"
+			},
+			{
+				"name": "sheet_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetaimport_info"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

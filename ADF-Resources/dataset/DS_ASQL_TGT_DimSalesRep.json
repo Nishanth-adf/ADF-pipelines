@@ -1,0 +1,124 @@
+{
+	"name": "DS_ASQL_TGT_DimSalesRep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "salesmanCode",
+				"type": "String"
+			},
+			{
+				"name": "businessDivision",
+				"type": "String"
+			},
+			{
+				"name": "distManager",
+				"type": "String"
+			},
+			{
+				"name": "distManagerCode",
+				"type": "String"
+			},
+			{
+				"name": "distName",
+				"type": "String"
+			},
+			{
+				"name": "regionManager",
+				"type": "String"
+			},
+			{
+				"name": "regionManagerCode",
+				"type": "String"
+			},
+			{
+				"name": "regionName",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "addressLine1",
+				"type": "String"
+			},
+			{
+				"name": "addressLine2",
+				"type": "String"
+			},
+			{
+				"name": "addressLine3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "fax",
+				"type": "String"
+			},
+			{
+				"name": "startDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "endDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "accountYear",
+				"type": "Int32"
+			},
+			{
+				"name": "accountMonth",
+				"type": "Int32"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimSalesRep]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

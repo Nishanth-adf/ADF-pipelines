@@ -1,0 +1,118 @@
+{
+	"name": "PL_SF_SBFEB2020_factSales_orderLine",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_sf_sbfeb2020_factSales_orderLine",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_src_factSales_Order_Line_c]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "OrderlineKey__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Code_c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Description__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderlineKey__c",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "OrderlineKey__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Price__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Price__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Qty__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_fact_order_sales_OrdeLines",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_SF_SBFEB2020_OrderLines",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce_SBFEB2020"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-11T12:37:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

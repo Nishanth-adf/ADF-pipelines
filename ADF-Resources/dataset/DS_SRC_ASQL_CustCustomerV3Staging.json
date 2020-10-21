@@ -1,0 +1,17 @@
+{
+	"name": "DS_SRC_ASQL_CustCustomerV3Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CustCustomerV3Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

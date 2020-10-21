@@ -1,0 +1,24 @@
+{
+	"name": "DS_SINK_ABLB_Json_Extract_2_CSVFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TestJSOn_2_CSV1.csv",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,254 @@
+{
+	"name": "ZPL_CPD_DimProductMaster_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimProductMaster_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select * from dbo.dimproductmaster where ProductId <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "productID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "productID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "productLaunchDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "productLaunchDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "applicableRegion",
+									"type": "String"
+								},
+								"sink": {
+									"name": "applicableRegion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "group1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "group1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "catalogNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalogNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productGroupType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productGroupType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productFamily",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productFamily",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productFamilyVariety",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productFamilyVariety",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "subgroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subgroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TPM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Category_Manager",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Category_Manager",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Active_Ind",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Active_Ind",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Serving",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Serving",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productLine",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productLine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimProductMaster_Dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DimProductMaster_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T12:40:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SINK_MetausedpProd_Packages",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "shipitProd_Packages"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

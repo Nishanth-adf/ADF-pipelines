@@ -1,0 +1,99 @@
+{
+	"name": "ASD_PROD_stgmetacustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_name",
+				"type": "varchar"
+			},
+			{
+				"name": "address1",
+				"type": "varchar"
+			},
+			{
+				"name": "address2",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "zip",
+				"type": "varchar"
+			},
+			{
+				"name": "phone_number",
+				"type": "varchar"
+			},
+			{
+				"name": "address_name",
+				"type": "varchar"
+			},
+			{
+				"name": "sales_rep_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_name_strip",
+				"type": "varchar"
+			},
+			{
+				"name": "address1_strip",
+				"type": "varchar"
+			},
+			{
+				"name": "address2_strip",
+				"type": "varchar"
+			},
+			{
+				"name": "city_strip",
+				"type": "varchar"
+			},
+			{
+				"name": "address_name_strip",
+				"type": "varchar"
+			},
+			{
+				"name": "ref4",
+				"type": "varchar"
+			},
+			{
+				"name": "active_fl",
+				"type": "varchar"
+			},
+			{
+				"name": "certification_date",
+				"type": "varchar"
+			},
+			{
+				"name": "implementation_date",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetacustomer"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

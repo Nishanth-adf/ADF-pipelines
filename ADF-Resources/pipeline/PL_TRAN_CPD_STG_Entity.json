@@ -1,0 +1,158 @@
+{
+	"name": "PL_TRAN_CPD_STG_Entity",
+	"properties": {
+		"activities": [
+			{
+				"name": "SC58_NetSuite_Entity_Dataset-2-BLB_BA_Entity_Dataset",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/BariatricAdvantage/@concat('NetSuite_Entity_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT  [Deleted]\n      ,[Entity_Id]\n      ,[Entity_type]\n      ,[First_Name]\n      ,[First_Name_0]\n      ,[Full_Name]\n      ,[Name]\n      ,[Parent_Id]\n      ,[State]\n      ,[Country]\n      ,[City]\n      ,[Zipcode]\n      ,[Create_date]\n      ,[Date_Last_Modified]\n      ,'NS' as [DBSource]\n      ,Getdate() as [Load Date time]\n  FROM [dbo].[Entity]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Deleted": "Deleted",
+							"Entity_Id": "Entity_Id",
+							"Entity_type": "Entity_type",
+							"First_Name": "First_Name",
+							"First_Name_0": "First_Name_0",
+							"Full_Name": "Full_Name",
+							"Name": "Name",
+							"Parent_Id": "Parent_Id",
+							"State": "State",
+							"Country": "Country",
+							"City": "City",
+							"Zipcode": "Zipcode",
+							"Create_date": "Create_date",
+							"Date_Last_Modified": "Date_Last_Modified",
+							"DBSource": "DBSource",
+							"Load Date time": "Load Date time"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_NetSuite_Entity",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_Entity_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_BA_Entity_Dataset-2-AZDB_Entity_Dataset",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SC58_NetSuite_Entity_Dataset-2-BLB_BA_Entity_Dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/BariatricAdvantage/@concat('NetSuite_Entity_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[stgEntity]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "metaedpAzureBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "metausedpblobdev/Finesse/IncompatiableRows"
+					},
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Deleted": "Deleted",
+							"Entity_Id": "Entity_Id",
+							"Entity_type": "Entity_type",
+							"First_Name": "First_Name",
+							"First_Name_0": "First_Name_0",
+							"Full_Name": "Full_Name",
+							"Name": "Name",
+							"Parent_Id": "Parent_Id",
+							"State": "State",
+							"Country": "Country",
+							"City": "City",
+							"Zipcode": "Zipcode",
+							"Create_date": "Create_date",
+							"Date_Last_Modified": "Date_Last_Modified",
+							"DBSource": "DBSource",
+							"Load Date time": "Load Date time"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_Entity_Dataset",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_Entity_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:56:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

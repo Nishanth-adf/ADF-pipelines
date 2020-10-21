@@ -1,0 +1,90 @@
+{
+	"name": "PL_DATA_CPD_BA_DimMonth",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_NetSuite_dbo_SalesQuota-2-DimMonth",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "USP_Truncate_DimMonth",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT DISTINCT MONTH = CAST(RIGHT(period,2) AS INT), year = CAST(LEFT(period,4) AS INT) FROM dbo.STGSalesQuota\nUNION\nSELECT DISTINCT MONTH = CAST(SUBSTRING(CAST(transdatekey AS VARCHAR(10)),5,2) AS INT),year = CAST(LEFT(CAST(transdatekey AS VARCHAR(10)),4) AS INT) FROM dbo.stgFactDistSales\nUNION\nSELECT DISTINCT MONTH = acctper,YEAR = acctyr FROM dbo.stgArinvdet\nORDER BY 2,1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"month": "month",
+							"year": "year"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metausedp_SalesQuota_DimMonth",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_DimMonth",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "USP_Truncate_DimMonth",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_TruncateTables]",
+					"storedProcedureParameters": {
+						"Table_Name": {
+							"value": "[dbo].[DimMonth]",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-18T06:50:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

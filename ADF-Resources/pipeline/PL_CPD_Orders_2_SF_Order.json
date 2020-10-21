@@ -1,0 +1,301 @@
+{
+	"name": "PL_CPD_Orders_2_SF_Order",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Orders_2_SF_Order_Practice",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT --26328\nInvoice_Number__c\t\t=\t\tfois.invoiceNumber\n,Order_Date__c\t\t\t=\t\tfois.invoicedate\n,orderNumber\t\t\t=\t\tdo.orderNumber\n,Patient__c\t\t\t\t=\t\t''\n,Practice__c\t\t\t\t=\t\tsfba.id\nFROM dbo.factOrderInvoiceSales_D365 fois\nINNER JOIN dbo.dimOrder_D365 do ON do.orderID = fois.orderID\nINNER JOIN dbo.dimCustomerMaster_D365 dcm ON fois.customerID=dcm.customerID\nINNER JOIN dbo.sf_BA_Sandbox_Accounts sfba on dcm.customerNumber+'-'+dcm.dataAreaId=sfba.AccountNumber AND dcm.customergroupid='PRAC'\nwhere do.OrderId <>'-1' AND fois.acctyr>='2018' AND fois.amountType in ('Product Sales','Other')\nGroup by fois.invoiceNumber,fois.invoicedate,do.orderNumber,sfba.id\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Invoice_Number__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Practice__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Practice__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Patient__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order_Number__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Orders_2_SF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_SF_Order",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_Order_2_ASQL_sf_ba_Order",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Orders_2_SF_Order_Patient",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id,Order_Date__c, Order_Number__c,Invoice_Number__c  from Order__c ",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.sf_ba_Order;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "orderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Number__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "invoicenumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_SF_BA_Orders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_SF_BA_Order",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Orders_2_SF_Order_Patient",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Orders_2_SF_Order_Practice",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT --212981\nInvoice_Number__c\t\t=\t\tfois.invoiceNumber\n,Order_Date__c\t\t\t=\t\tfois.invoicedate\n,orderNumber\t\t\t=\t\tdo.orderNumber\n,Patient__c\t\t\t\t=\t\tsfba.id\n,Practice__c\t\t\t\t=\t''\nFROM dbo.factOrderInvoiceSales_D365 fois\nINNER JOIN dbo.dimOrder_D365 do ON do.orderID = fois.orderID\nINNER JOIN dbo.dimCustomerMaster_D365 dcm ON fois.customerID=dcm.customerID\nINNER JOIN dbo.sf_BA_Sandbox_Accounts sfba on dcm.customerNumber+'-'+dcm.dataAreaId=sfba.AccountNumber AND dcm.customergroupid='CONS'\nwhere do.OrderId <>'-1' AND fois.acctyr>='2018' AND fois.amountType in ('Product Sales','Other')\nGroup by fois.invoiceNumber,fois.invoicedate,do.orderNumber,sfba.id\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Invoice_Number__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Patient__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Practice__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Practice__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order_Number__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_Orders_Patient",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_BA_SINK_Orders_Patient",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Sandbox"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-12T14:21:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,55 @@
+{
+	"name": "PL_CPD_CustomerEntity_2_ABLB",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_CustomerEntity_2_ABLB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_D365AX_CustomerV2Entity",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ABLB_DWHCustCustomers",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ADF_ISSUES"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-11-04T13:16:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

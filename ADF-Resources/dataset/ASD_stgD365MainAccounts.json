@@ -1,0 +1,175 @@
+{
+	"name": "ASD_stgD365MainAccounts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ChartOfAccounts",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "ActiveTo",
+				"type": "varchar"
+			},
+			{
+				"name": "PostingType",
+				"type": "varchar"
+			},
+			{
+				"name": "ForeignCurrencyRevaluation",
+				"type": "varchar"
+			},
+			{
+				"name": "ChartOfAccountsRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ActiveFrom",
+				"type": "varchar"
+			},
+			{
+				"name": "MandatoryPaymentReference",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountCategoryDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "IsSuspended",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountCategory",
+				"type": "varchar"
+			},
+			{
+				"name": "BalanceControl",
+				"type": "varchar"
+			},
+			{
+				"name": "ParentMainAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "DoNotAllowManualEntry",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "ExchangeAdjustmentRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "FinancialReportingCurrencyTranslationType",
+				"type": "varchar"
+			},
+			{
+				"name": "FinancialReportingExchangeRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "Monetary",
+				"type": "varchar"
+			},
+			{
+				"name": "SRUCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultCurrency",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetAccountDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "DebitCreditRequirement",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "User",
+				"type": "varchar"
+			},
+			{
+				"name": "OpeningAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "ValidateUser",
+				"type": "varchar"
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Closing",
+				"type": "varchar"
+			},
+			{
+				"name": "DebitCreditDefault",
+				"type": "varchar"
+			},
+			{
+				"name": "RepomoType",
+				"type": "varchar"
+			},
+			{
+				"name": "InflationAdjustment",
+				"type": "varchar"
+			},
+			{
+				"name": "ValidateCurrency",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultConsolidationAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "ReportingAccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "ValidatePostingType",
+				"type": "varchar"
+			},
+			{
+				"name": "AdjustmentMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "ReportingExchangeAdjustmentRateType",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365MainAccounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

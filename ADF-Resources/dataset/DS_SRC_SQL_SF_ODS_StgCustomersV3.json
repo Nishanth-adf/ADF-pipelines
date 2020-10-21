@@ -1,0 +1,13 @@
+{
+	"name": "DS_SRC_SQL_SF_ODS_StgCustomersV3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

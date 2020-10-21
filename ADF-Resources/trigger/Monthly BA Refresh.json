@@ -1,0 +1,25 @@
+{
+	"name": "Monthly BA Refresh",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Master_Single_Complete_BA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2019-04-19T18:00:00Z",
+				"endTime": "2019-04-19T23:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

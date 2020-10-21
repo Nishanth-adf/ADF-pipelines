@@ -1,0 +1,31 @@
+{
+	"name": "Trigger Daily at 5AM PST",
+	"properties": {
+		"description": "UTC time is 7 hours ahead of PST time",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "EPL PL Migrate ItemActivatedPrices",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL Migrate PROD Finance Tables",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-10-22T12:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

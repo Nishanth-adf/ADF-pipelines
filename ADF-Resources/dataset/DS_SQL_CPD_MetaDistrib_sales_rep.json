@@ -1,0 +1,43 @@
+{
+	"name": "DS_SQL_CPD_MetaDistrib_sales_rep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "sales_rep_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sales_rep_cd",
+				"type": "varchar"
+			},
+			{
+				"name": "sales_rep_name",
+				"type": "varchar"
+			},
+			{
+				"name": "territory",
+				"type": "varchar"
+			},
+			{
+				"name": "district",
+				"type": "varchar"
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_rep"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

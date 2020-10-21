@@ -1,0 +1,87 @@
+{
+	"name": "PL Migrate_DWH_tbl_AlticorMainAccts",
+	"properties": {
+		"description": "Migrate FROM ODS.dbo.tbl_AlticorMainAccts TO Prod.dwh.tbl_AlticorMainAccts\n\nAuthor: GBuenaventura\nDate: 07/27/2020",
+		"activities": [
+			{
+				"name": "Copy dwh_tbl_AlticorMainAccts",
+				"description": "Migrate FROM ODS.dbo.tbl_AlticorMainAccts TO Prod.dwh.tbl_AlticorMainAccts\n\nAuthor: GBuenaventura\nDate: 07/27/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dwh.tbl_AlticorMainAccts",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "AlticorMainAcct",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "AlticorMainAcct",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AlticorMainAcctDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "AlticorMainAcctDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_dbo_tbl_AlticorMainAccts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_dwh_tbl_AlticorMainAccts",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-27T23:01:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

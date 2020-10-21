@@ -1,0 +1,65 @@
+{
+	"name": "TESTPL_SFOrder_Line__c",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_TESTSALESREP_SFTESTSALESREP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select  'UnKnown Code' as \nCode__c,'Dummy Record' as Description__c,cast(1000.00 as money) as Discount__c,1.1 as ExternalID__c, cast(1000.50 as money) as List_Price__c,12345 as OrderInvoiceKey__c,45 as OrderlineKey__c\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "OrderInvoiceKey__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Code__c": "Code__c",
+							"Description__c": "Description__c",
+							"List_Price__c": "List_Price__c",
+							"Discount__c": "Discount__c",
+							"ExternalID__c": "ExternalID__c",
+							"OrderInvoiceKey__c": "OrderInvoiceKey__c",
+							"OrderlineKey__c": "OrderlineKey__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQLOrder_Line__c",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SFOrderLine_C",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Test PL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T13:17:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

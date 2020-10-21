@@ -1,0 +1,28 @@
+{
+	"name": "DS_SRC_LKP_Mi9_Orders_MaxTS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Max_Created_TS",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "Max_Updated_TS",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_Orders_MaxTS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable14",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "SampleXMLFile"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,128 @@
+{
+	"name": "PL_TEST_JSON_Extract",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate table  dbo.Test_JSON_Extract2",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['Details']['Contracts'][0]['IsPublishedToCompassOne']"
+								},
+								"sink": {
+									"name": "IsPublishedToCompassOne",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Details']['Contracts'][0]['PublishedToCompassOneComments']"
+								},
+								"sink": {
+									"name": "YearWiseComments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['FinalQuantity']"
+								},
+								"sink": {
+									"name": "TotalQuantity",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "['Comments']"
+								},
+								"sink": {
+									"name": "ServiceLineComments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "['IsSystemDefined']"
+								},
+								"sink": {
+									"name": "IsSystemDefined",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Details']['Contracts'][0]['Id']"
+								},
+								"sink": {
+									"name": "YearNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Details']['Contracts'][0]['StartDate']"
+								},
+								"sink": {
+									"name": "YearStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['Details']['Contracts'][0]['EndDate']"
+								},
+								"sink": {
+									"name": "YearEndDate",
+									"type": "DateTime"
+								}
+							}
+						],
+						"collectionReference": "$['Details']['Contracts'][0]['ServiceLineItems']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ABLB_SampleJSON",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_JSON_Extract",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2019-12-31T07:31:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

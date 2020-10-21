@@ -1,0 +1,78 @@
+{
+	"name": "DS_ASQL_metausedp_tbl_STG_NSCustomers_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "CustomerNumber",
+				"type": "Double"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "ActiveInd",
+				"type": "Int32"
+			},
+			{
+				"name": "SalesmanCd",
+				"type": "Double"
+			},
+			{
+				"name": "ReferredBy",
+				"type": "Int32"
+			},
+			{
+				"name": "IndustryType",
+				"type": "Int32"
+			},
+			{
+				"name": "PrimarySubCustomerInd",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryCustomerNbr",
+				"type": "Int32"
+			},
+			{
+				"name": "Ref1",
+				"type": "Double"
+			},
+			{
+				"name": "Ref2",
+				"type": "Int32"
+			},
+			{
+				"name": "EfffectiveDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "ExpiryDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "latestIndicator",
+				"type": "Int32"
+			},
+			{
+				"name": "InsertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "InsertBy",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

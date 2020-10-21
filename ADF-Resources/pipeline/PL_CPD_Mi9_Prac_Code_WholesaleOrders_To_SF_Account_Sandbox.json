@@ -1,0 +1,179 @@
+{
+	"name": "PL_CPD_Mi9_Prac_Code_WholesaleOrders_To_SF_Account_Sandbox",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Prac_Code_2_SF_Account",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Practitioner_Code]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Mi9_Prac_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Mi9_Prac_Code__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Prac_Code",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Mi9_Prac_Codes",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Prac_WholesaleOrders_2_SF_Account",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Prac_Code_2_SF_Account",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Practitioner_WholesaleOrders]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WholesaleYTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "WholesaleYTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WholesaleMTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "WholesaleMTD__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Mi9_Prac_WholesaleOrders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Mi9_Prac_WholesaleOrders",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-04-24T05:49:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

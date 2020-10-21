@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "MI9_Orders_Staging_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

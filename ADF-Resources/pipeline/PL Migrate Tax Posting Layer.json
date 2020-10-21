@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate Tax Posting Layer",
+	"properties": {
+		"description": "Purge and Migrate Tax Posting Layer from ODS to Produciton\n\nAuthor: GBuenaventura\nDate: 12/3/2019\n\nNote:\n4/29/2020 - Not needed in 'PL One Touch Migrate Trail Balance' Pipeline anymore.",
+		"activities": [
+			{
+				"name": "PROD tbl_PostingLayerTax",
+				"description": "Purge and Reload PROD.tbl_PostingLayerTax",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_PostingLayerTax",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_PostingLayerTax",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_PostingLayerTax",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T17:17:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

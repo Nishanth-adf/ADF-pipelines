@@ -1,0 +1,85 @@
+{
+	"name": "PL_CPD_MetaDistrib_customer_class_map",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_customer_class_map",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetacustomer_class_map;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dist_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dist_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "meta_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "meta_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "source_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_customer_class_map",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetacustomer_class_map",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-14T13:07:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

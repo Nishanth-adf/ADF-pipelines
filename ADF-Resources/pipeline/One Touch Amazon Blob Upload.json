@@ -1,0 +1,159 @@
+{
+	"name": "One Touch Amazon Blob Upload",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/16/2020",
+		"activities": [
+			{
+				"name": "USA Amazon BLOB to Prod_staging",
+				"description": "Author: GBuenaventura\nDate: 09/16/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon Staging US",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Canada Amazon BLOB to Prod_staging",
+				"description": "Author: GBuenaventura\nDate: 09/16/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon Staging Canada",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "BA Amazon BLOB to Prod_staging",
+				"description": "Author: GBuenaventura\nDate: 09/16/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon Staging BA",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "SP Prod_dwh_UpdateAmazonFBA",
+				"description": "Author: GBuenaventura\nDate: 09/16/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Canada Amazon BLOB Comma",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "USA Amazon BLOB Comma",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "BA Amazon BLOB Comma",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[UpdateAmazon_Consol]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Canada Amazon BLOB Comma",
+				"description": "Migrate Canada csv comma delimited from Blob to PROD\n\nAuthor: GBuenaventura\nDate: 10/01/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Canada Amazon BLOB to Prod_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon Staging Canada",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "USA Amazon BLOB Comma",
+				"description": "Migrate USA csv comma delimited from Blob to PROD\n\nAuthor: GBuenaventura\nDate: 10/01/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "USA Amazon BLOB to Prod_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon USA Comma",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "BA Amazon BLOB Comma",
+				"description": "Migrate BA csv comma delimited from Blob to PROD\n\nAuthor: GBuenaventura\nDate: 10/01/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "BA Amazon BLOB to Prod_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL PROD Amazon BA Comma",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Amazon Blob Load/PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-01T20:52:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

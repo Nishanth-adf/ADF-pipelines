@@ -1,0 +1,38 @@
+{
+	"name": "ASD_PROD_tbl_AlticorGLStringWEntityIDMap",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "GLString",
+				"type": "varchar"
+			},
+			{
+				"name": "Alticor_GL_Mapping",
+				"type": "varchar"
+			},
+			{
+				"name": "ICP_Codes",
+				"type": "varchar"
+			},
+			{
+				"name": "Division",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_AlticorGLStringWEntityIDMap"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

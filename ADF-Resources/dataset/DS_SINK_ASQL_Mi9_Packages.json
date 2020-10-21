@@ -1,0 +1,17 @@
+{
+	"name": "DS_SINK_ASQL_Mi9_Packages",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_packages"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

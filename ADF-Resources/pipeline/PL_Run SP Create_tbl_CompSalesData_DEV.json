@@ -1,0 +1,34 @@
+{
+	"name": "PL_Run SP Create_tbl_CompSalesData_DEV",
+	"properties": {
+		"description": "Pipeline - Execute stored procedure, 'Create_tbl_CompSalesData'. Used for Power BI Meta Commissionable Sales.\n\nAuthor: GBuenaventura\nDate: 10/19/2019",
+		"activities": [
+			{
+				"name": "StoredProc Create_tbl_CompSalesData",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dwh.Create_tbl_CompSalesData"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-26T21:57:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

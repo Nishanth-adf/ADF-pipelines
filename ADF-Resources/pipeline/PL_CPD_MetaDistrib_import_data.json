@@ -1,0 +1,465 @@
+{
+	"name": "PL_CPD_MetaDistrib_import_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_import_data",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetaimport_data;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "import_data_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "import_data_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "import_info_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "import_info_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "post_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "post_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_address_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_address_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_address1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_address1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_address2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_address2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_address1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_address1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_address2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_address2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone_number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone_number",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "transaction_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "transaction_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "item",
+									"type": "String"
+								},
+								"sink": {
+									"name": "item",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "met_item_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "met_item_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "net_sales_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "sales_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "count",
+									"type": "String"
+								},
+								"sink": {
+									"name": "count",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cost_of_sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "cost_of_sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "net_sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "profit_before_discount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "profit_before_discount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "discount_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "discount_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "profit",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "profit",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "price",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "price",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "return_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "return_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "return_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "return_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "match_weight",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "match_weight",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "status_fl",
+									"type": "String"
+								},
+								"sink": {
+									"name": "status_fl",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_key",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_key",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "inception_dt",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "inception_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_class_distrib",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_class_distrib",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_import_data",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetaimport_data",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:32:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

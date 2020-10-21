@@ -1,0 +1,51 @@
+{
+	"name": "PL_Migrate_stgD365GeneralLedgerActivities",
+	"properties": {
+		"description": "Load table stgD365GeneralLedgerActivities FROM D365.GeneralLedgerActivities TO PROD.stgD365GeneralLedgerActivities",
+		"activities": [
+			{
+				"name": "Copy_stgD365GeneralLedgerActivities",
+				"description": "Load table stgD365GeneralLedgerActivities FROM D365.GeneralLedgerActivities TO PROD.stgD365GeneralLedgerActivities\n\nAuthor: GBuenaventura\nDate: 2/21/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365GeneralLedgerActivities",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_stgD365GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-04-04T18:22:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

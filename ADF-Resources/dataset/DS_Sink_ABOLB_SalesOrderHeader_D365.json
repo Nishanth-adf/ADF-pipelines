@@ -1,0 +1,28 @@
+{
+	"name": "DS_Sink_ABOLB_SalesOrderHeader_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('STGSalesOrderHeaders_1000_D365-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "Finesse/D365_JSON_Files",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,60 @@
+{
+	"name": "ASD_tbl_FinesseCustomerMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Custno",
+				"type": "varchar"
+			},
+			{
+				"name": "CustnoName",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustno",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoName",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoState",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoCity",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoCountry",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustomerClass",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoBillEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryCustnoEnterdate",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_FinesseCustomerMaster"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

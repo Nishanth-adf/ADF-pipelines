@@ -1,0 +1,16 @@
+{
+	"name": "DS_SRC_SF_BA_Products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Product2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

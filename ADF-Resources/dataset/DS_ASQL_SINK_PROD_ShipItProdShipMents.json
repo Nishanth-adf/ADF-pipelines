@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SINK_PROD_ShipItProdShipMents",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "shipitProd_Shipments"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

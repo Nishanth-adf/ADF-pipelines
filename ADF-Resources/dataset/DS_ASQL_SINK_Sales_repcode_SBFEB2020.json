@@ -1,0 +1,30 @@
+{
+	"name": "DS_ASQL_SINK_Sales_repcode_SBFEB2020",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "User_Name__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "User__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "User_Sales_Rep_Code__c",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sf_sbfeb2020_Sales_Rep_Code__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

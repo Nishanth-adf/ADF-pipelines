@@ -1,0 +1,13 @@
+{
+	"name": "DS_SQL_Netsuite_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

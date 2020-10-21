@@ -1,0 +1,2847 @@
+{
+	"name": "PL_CPD_STG_D365Customers_PROD",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_D365Customers_PROD_080_N_090",
+				"description": "Purge and Migrate metausedpdev.dbo.CustCustomerV3Staging to metausedpprod.dbo.stgCustomer_D365\n",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT\n    PARTYTYPE\n   ,ADDRESSBOOKS\n   ,ADDRESSLOCATIONROLES\n   ,PRIMARYCONTACTEMAILPURPOSE\n   ,PRIMARYCONTACTFAXPURPOSE\n   ,PRIMARYCONTACTPHONEPURPOSE\n   ,PRIMARYCONTACTTELEXPURPOSE\n   ,PRIMARYCONTACTURLPURPOSE\n   ,PRIMARYCONTACTFACEBOOKPURPOSE\n   ,PRIMARYCONTACTLINKEDINPURPOSE\n   ,PRIMARYCONTACTTWITTERPURPOSE\n   ,EMPLOYEERESPONSIBLENUMBER\n   ,DEFAULTDIMENSIONDISPLAYVALUE\n   ,ELECTRONICLOCATIONID\n   ,ADDRESSCOUNTRYREGIONISOCODE\n   ,DELIVERYADDRESSCOUNTRYREGIONISOCODE\n   ,INVOICEADDRESSCOUNTRYREGIONISOCODE\n   ,ADDRESSCOUNTRYREGIONID\n   ,DEFINITIONGROUP\n   ,EXECUTIONID\n   ,ISSELECTED\n   ,TRANSFERSTATUS\n   ,CUSTOMERACCOUNT\n   ,ORGANIZATIONNAME\n   ,NAMEALIAS\n   ,KNOWNAS\n   ,CUSTOMERGROUPID\n   ,ORGANIZATIONNUMBER\n   ,ORGANIZATIONNUMBEROFEMPLOYEES\n   ,ORGANIZATIONABCCODE\n   ,ORGANIZATIONPHONETICNAME\n   ,PERSONINITIALS\n   ,PERSONFIRSTNAME\n   ,PERSONMIDDLENAME\n   ,PERSONLASTNAMEPREFIX\n   ,PERSONLASTNAME\n   ,PERSONPROFESSIONALTITLE\n   ,PERSONPROFESSIONALSUFFIX\n   ,PERSONPHONETICFIRSTNAME\n   ,PERSONPHONETICLASTNAME\n   ,PERSONPHONETICMIDDLENAME\n   ,PERSONGENDER\n   ,PERSONMARITALSTATUS\n   ,PERSONANNIVERSARYDAY\n   ,PERSONANNIVERSARYMONTH\n   ,PERSONANNIVERSARYYEAR\n   ,PERSONCHILDRENNAMES\n   ,PERSONHOBBIES\n   ,PARTYNUMBER\n   ,LANGUAGEID\n   ,FULLPRIMARYADDRESS\n   ,ADDRESSDESCRIPTION\n   ,ADDRESSZIPCODE\n   ,ADDRESSCITY\n   ,ADDRESSCOUNTY\n   ,ADDRESSDISTRICTNAME\n   ,ADDRESSLATITUDE\n   ,ADDRESSLOCATIONID\n   ,ADDRESSLONGITUDE\n   ,ADDRESSSTATE\n   ,ADDRESSSTREET\n   ,ADDRESSSTREETNUMBER\n   ,ADDRESSTIMEZONE\n   ,ADDRESSBUILDINGCOMPLEMENT\n   ,ADDRESSVALIDFROM\n   ,ADDRESSVALIDTO\n   ,ADDRESSBRAZILIANCNPJORCPF\n   ,ADDRESSBRAZILIANIE\n   ,PRIMARYCONTACTEMAIL\n   ,PRIMARYCONTACTEMAILDESCRIPTION\n   ,PRIMARYCONTACTEMAILISIM\n   ,PRIMARYCONTACTFAX\n   ,PRIMARYCONTACTFAXDESCRIPTION\n   ,PRIMARYCONTACTFAXEXTENSION\n   ,PRIMARYCONTACTPHONE\n   ,PRIMARYCONTACTPHONEDESCRIPTION\n   ,PRIMARYCONTACTPHONEEXTENSION\n   ,PRIMARYCONTACTPHONEISMOBILE\n   ,PRIMARYCONTACTTELEX\n   ,PRIMARYCONTACTTELEXDESCRIPTION\n   ,PRIMARYCONTACTURL\n   ,PRIMARYCONTACTURLDESCRIPTION\n   ,PRIMARYCONTACTFACEBOOK\n   ,PRIMARYCONTACTFACEBOOKDESCRIPTION\n   ,PRIMARYCONTACTLINKEDIN\n   ,PRIMARYCONTACTLINKEDINDESCRIPTION\n   ,PRIMARYCONTACTTWITTERDESCRIPTION\n   ,PRIMARYCONTACTTWITTER\n   ,ISONETIMECUSTOMER\n   ,STATISTICSGROUPID\n   ,ACCOUNTSTATEMENT\n   ,IDENTIFICATIONNUMBER\n   ,PARTYCOUNTRY\n   ,PARTYSTATE\n   ,VENDORACCOUNT\n   ,FEDERALINDICATOR\n   ,FEDERALAGENCYLOCATIONCODE\n   ,FEDERALCOMMENTS\n   ,IRS1099CINDICATOR\n   ,CONTACTPERSONID\n   ,LINEOFBUSINESSID\n   ,SALESSEGMENTID\n   ,SALESSUBSEGMENTID\n   ,SALESDISTRICT\n   ,COMPANYCHAIN\n   ,SALESCURRENCYCODE\n   ,ONHOLDSTATUS\n   ,CREDITLIMITISMANDATORY\n   ,CREDITRATING\n   ,CREDITLIMIT\n   ,COLLECTIONSCONTACTPERSONID\n   ,ISEXCLUDEDFROMINTERESTCHARGECALCULATION\n   ,ISEXCLUDEDFROMCOLLECTIONFEECALCULATION\n   ,CHARGESGROUPID\n   ,SITEID\n   ,WAREHOUSEID\n   ,ITEMCUSTOMERGROUPID\n   ,COMMISSIONCUSTOMERGROUPID\n   ,COMMISSIONSALESGROUPID\n   ,SALESORDERPOOLID\n   ,SALESACCOUNTNUMBER\n   ,ORDERENTRYDEADLINE\n   ,MULTILINEDISCOUNTCODE\n   ,TOTALDISCOUNTCODE\n   ,DISCOUNTPRICEGROUPID\n   ,LINEDISCOUNTCODE\n   ,CUSTOMERREBATEGROUPID\n   ,CUSTOMERTMAGROUPID\n   ,SUPPLEMENTARYITEMGROUPID\n   ,PAYMENTTERMS\n   ,PAYMENTMETHOD\n   ,PAYMENTSPECIFICATION\n   ,PAYMENTSCHEDULE\n   ,PAYMENTDAY\n   ,PAYMENTCASHDISCOUNT\n   ,PAYMENTTERMSBASEDAYS\n   ,PAYMENTBANKACCOUNT\n   ,PAYMENTFACTORINGACCOUNT\n   ,PAYMENTIDTYPE\n   ,PAYMENTUSECASHDISCOUNT\n   ,CENTRALBANKPURPOSECODE\n   ,CENTRALBANKPURPOSENOTES\n   ,CREDITCARDADDRESSVERIFICATION\n   ,CREDITCARDADDRESSVERIFICATIONISAUTHORIZATIONVOIDEDONFAILURE\n   ,CREDITCARDADDRESSVERIFICATIONLEVEL\n   ,CREDITCARDCVC\n   ,WAREHOUSEISASNGENERATED\n   ,WAREHOUSEISENTIRESHIPMENTFILLED\n   ,DEFAULTINVENTORYSTATUSID\n   ,INVOICEACCOUNT\n   ,INVOICEADDRESS\n   ,NUMBERSEQUENCEGROUP\n   ,GIROTYPE\n   ,GIROTYPEFREETEXTINVOICE\n   ,GIROTYPEINTERESTNOTE\n   ,GIROTYPECOLLECTIONLETTER\n   ,GIROTYPEPROJINVOICE\n   ,GIROTYPEACCOUNTSTATEMENT\n   ,DELIVERYFREIGHTZONE\n   ,DELIVERYTERMS\n   ,DELIVERYMODE\n   ,DELIVERYREASON\n   ,DESTINATIONCODE\n   ,RECEIPTCALENDAR\n   ,ISFUELSURCHARGEAPPLIED\n   ,SALESTAXGROUP\n   ,TAXEXEMPTNUMBER\n   ,ISSALESTAXINCLUDEDINPRICES\n   ,PACKINGDUTYLICENSE\n   ,FISCALCODE\n   ,PACKINGMATERIALFEELICENSENUMBER\n   ,ISELECTRONICINVOICE\n   ,ELECTRONICINVOICEEAN\n   ,ISFREIGHTACCRUED\n   ,ISEXPRESSBILLOFLADINGACCEPTED\n   ,ISTRANSACTIONPOSTEDASSHIPMENT\n   ,ISORDERNUMBERREFERENCEUSED\n   ,SALESRETURNTAXGROUP\n   ,RECEIPTEMAIL\n   ,RECEIPTOPTION\n   ,ISWITHHOLDINGTAXCALCULATED\n   ,WITHHOLDINGTAXGROUPCODE\n   ,FRENCHSIRET\n   ,NAFCODE\n   ,COMPANYTYPE\n   ,CURPNUMBER\n   ,RFCNUMBER\n   ,STATEINSCRIPTION\n   ,TAXREGISTRATIONID\n   ,CONSOLIDATIONDAY\n   ,NATIONALREGISTRYNUMBER\n   ,RELIEFGROUPID\n   ,CALCULATEWITHHOLDINGTAX\n   ,FOREIGNCUSTOMER\n   ,TCSGROUP\n   ,TDSGROUP\n   ,PREFERENTIALCUSTOMER\n   ,NATUREOFASSESSEE\n   ,PANNUMBER\n   ,PANREFERENCENUMBER\n   ,PANSTATUS\n   ,CUSTOMERPAYMENTFINECODE\n   ,CUSTOMERPAYMENTFINANCIALINTERESTCODE\n   ,BRAZILIANCCM\n   ,BRAZILIANCNAE\n   ,BRAZILIANCNPJORCPF\n   ,ISFINALUSER\n   ,CUSTOMERWITHHOLDINGCONTRIBUTIONTYPE\n   ,ISINCOMINGFISCALDOCUMENTGENERATED\n   ,ISICMSCONTRIBUTOR\n   ,BRAZILIANIE\n   ,BRAZILIANINSSCEI\n   ,BRAZILIANNIT\n   ,ISSERVICEDELIVERYADDRESSBASED\n   ,ISINSUFRAMAREGION\n   ,SUFRAMANUMBER\n   ,HASSUFRAMADISCOUNTPISANDCOFINS\n   ,FOREIGNERID\n   ,TRANSACTIONPRESENCETYPE\n   ,WRITEOFFREASON\n   ,EXPORTSALE\n   ,BIRTHCOUNTYCODE\n   ,BIRTHPLACE\n   ,RESIDENCEFOREIGNCOUNTRYREGIONID\n   ,ISPURCHREQUESTUSED\n   ,DELIVERYADDRESSDESCRIPTION\n   ,DELIVERYADDRESSZIPCODE\n   ,DELIVERYADDRESSTIMEZONE\n   ,DELIVERYADDRESSCITY\n   ,DELIVERYADDRESSCOUNTRYREGIONID\n   ,DELIVERYADDRESSCOUNTY\n   ,DELIVERYADDRESSDISTRICTNAME\n   ,DELIVERYADDRESSLATITUDE\n   ,DELIVERYADDRESSLONGITUDE\n   ,DELIVERYADDRESSLOCATIONID\n   ,DELIVERYADDRESSSTATE\n   ,DELIVERYADDRESSSTREET\n   ,DELIVERYADDRESSSTREETNUMBER\n   ,DELIVERYADDRESSBUILDINGCOMPLEMENT\n   ,DELIVERYADDRESSVALIDFROM\n   ,DELIVERYADDRESSVALIDTO\n   ,INVOICEADDRESSDESCRIPTION\n   ,INVOICEADDRESSZIPCODE\n   ,INVOICEADDRESSTIMEZONE\n   ,INVOICEADDRESSCITY\n   ,INVOICEADDRESSCOUNTRYREGIONID\n   ,INVOICEADDRESSCOUNTY\n   ,INVOICEADDRESSDISTRICTNAME\n   ,INVOICEADDRESSLATITUDE\n   ,INVOICEADDRESSLONGITUDE\n   ,INVOICEADDRESSLOCATIONID\n   ,INVOICEADDRESSSTATE\n   ,INVOICEADDRESSSTREET\n   ,INVOICEADDRESSSTREETNUMBER\n   ,INVOICEADDRESSBUILDINGCOMPLEMENT\n   ,INVOICEADDRESSVALIDFROM\n   ,INVOICEADDRESSVALIDTO\n   ,ISEXTERNALLYMAINTAINED\n   ,MERCHANTID\n   ,DEFAULTECOMMERCEOPERATOR\n   ,CUSTOMERTYPE\n   ,FULFILLMENTPOLICYNAME\n   ,PIPAPPROVEDCUSTOMERGROUP\n   ,PIPCUSTOMERCHECKITEM\n   ,PIPCERTOFANALYSISCUSTGROUP\n   ,PIPPRINTCUSTSPECIFICCERTOFANALYSIS\n   ,PARTITION\n   ,ADDRESSPOSTBOX\n   ,CUSTCLASSIFICATIONID\n   ,PRIMARYCONTACTEMAILRECORDID\n   ,PRIMARYCONTACTFAXRECORDID\n   ,PRIMARYCONTACTPHONERECORDID\n   ,PRIMARYCONTACTURLRECORDID\n   ,ADDRESSRECORDID\n   ,ISALLOWCREATEINDIRECTORDERLINES\n   ,COLLECTIONLETTERCODE\n   ,METUPSHOTCUSTOMERNUMBER\n   ,DATAAREAID\n   ,SYNCSTARTDATETIME\nFROM metausedpprod.dbo.CustCustomerV3Staging\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.stgCustomer_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PARTYTYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTYTYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSBOOKS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSBOOKS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSLOCATIONROLES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSLOCATIONROLES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTEMAILPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTEMAILPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFAXPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFAXPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONEPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONEPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTELEXPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTELEXPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTURLPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTURLPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFACEBOOKPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFACEBOOKPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTLINKEDINPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTLINKEDINPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTWITTERPURPOSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTWITTERPURPOSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EMPLOYEERESPONSIBLENUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMPLOYEERESPONSIBLENUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULTDIMENSIONDISPLAYVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULTDIMENSIONDISPLAYVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ELECTRONICLOCATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ELECTRONICLOCATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSCOUNTRYREGIONISOCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFINITIONGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFINITIONGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXECUTIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXECUTIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISSELECTED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISSELECTED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "TRANSFERSTATUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "TRANSFERSTATUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERACCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATIONNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORGANIZATIONNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAMEALIAS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAMEALIAS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "KNOWNAS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "KNOWNAS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATIONNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORGANIZATIONNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATIONNUMBEROFEMPLOYEES",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ORGANIZATIONNUMBEROFEMPLOYEES",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATIONABCCODE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ORGANIZATIONABCCODE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATIONPHONETICNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORGANIZATIONPHONETICNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONINITIALS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONINITIALS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONFIRSTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONFIRSTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONMIDDLENAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONMIDDLENAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONLASTNAMEPREFIX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONLASTNAMEPREFIX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONLASTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONLASTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONPROFESSIONALTITLE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONPROFESSIONALTITLE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONPROFESSIONALSUFFIX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONPROFESSIONALSUFFIX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONPHONETICFIRSTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONPHONETICFIRSTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONPHONETICLASTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONPHONETICLASTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONPHONETICMIDDLENAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONPHONETICMIDDLENAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONGENDER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PERSONGENDER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONMARITALSTATUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PERSONMARITALSTATUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONANNIVERSARYDAY",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PERSONANNIVERSARYDAY",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONANNIVERSARYMONTH",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PERSONANNIVERSARYMONTH",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONANNIVERSARYYEAR",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PERSONANNIVERSARYYEAR",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONCHILDRENNAMES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONCHILDRENNAMES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PERSONHOBBIES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PERSONHOBBIES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTYNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTYNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LANGUAGEID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LANGUAGEID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FULLPRIMARYADDRESS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FULLPRIMARYADDRESS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSZIPCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSZIPCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSCITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSCITY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSCOUNTY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSCOUNTY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSDISTRICTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSDISTRICTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSLATITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ADDRESSLATITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSLOCATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSLOCATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSLONGITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ADDRESSLONGITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSSTATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSSTATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSSTREET",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSSTREET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSSTREETNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSSTREETNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSTIMEZONE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ADDRESSTIMEZONE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSVALIDFROM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ADDRESSVALIDFROM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSVALIDTO",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ADDRESSVALIDTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSBRAZILIANCNPJORCPF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSBRAZILIANCNPJORCPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSBRAZILIANIE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSBRAZILIANIE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTEMAIL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTEMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTEMAILDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTEMAILDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTEMAILISIM",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTEMAILISIM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFAX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFAX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFAXDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFAXDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFAXEXTENSION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFAXEXTENSION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONEDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONEDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONEEXTENSION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONEEXTENSION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONEISMOBILE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONEISMOBILE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTELEX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTELEX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTELEXDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTELEXDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTURL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTURL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTURLDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTURLDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFACEBOOK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFACEBOOK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFACEBOOKDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFACEBOOKDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTLINKEDIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTLINKEDIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTLINKEDINDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTLINKEDINDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTWITTERDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTWITTERDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTTWITTER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTTWITTER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISONETIMECUSTOMER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISONETIMECUSTOMER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "STATISTICSGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATISTICSGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACCOUNTSTATEMENT",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ACCOUNTSTATEMENT",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "IDENTIFICATIONNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IDENTIFICATIONNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTYCOUNTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTYCOUNTRY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTYSTATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTYSTATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VENDORACCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VENDORACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FEDERALINDICATOR",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "FEDERALINDICATOR",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FEDERALAGENCYLOCATIONCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FEDERALAGENCYLOCATIONCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FEDERALCOMMENTS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FEDERALCOMMENTS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IRS1099CINDICATOR",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "IRS1099CINDICATOR",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTACTPERSONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTACTPERSONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINEOFBUSINESSID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LINEOFBUSINESSID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESSEGMENTID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESSEGMENTID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESSUBSEGMENTID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESSUBSEGMENTID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESDISTRICT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESDISTRICT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMPANYCHAIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANYCHAIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESCURRENCYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESCURRENCYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ONHOLDSTATUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ONHOLDSTATUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITLIMITISMANDATORY",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CREDITLIMITISMANDATORY",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITRATING",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREDITRATING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITLIMIT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREDITLIMIT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "COLLECTIONSCONTACTPERSONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COLLECTIONSCONTACTPERSONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISEXCLUDEDFROMINTERESTCHARGECALCULATION",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISEXCLUDEDFROMINTERESTCHARGECALCULATION",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISEXCLUDEDFROMCOLLECTIONFEECALCULATION",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISEXCLUDEDFROMCOLLECTIONFEECALCULATION",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CHARGESGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHARGESGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SITEID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SITEID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSEID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WAREHOUSEID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ITEMCUSTOMERGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ITEMCUSTOMERGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMISSIONCUSTOMERGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMISSIONCUSTOMERGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMISSIONSALESGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMISSIONSALESGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESORDERPOOLID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESORDERPOOLID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESACCOUNTNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESACCOUNTNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDERENTRYDEADLINE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDERENTRYDEADLINE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MULTILINEDISCOUNTCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MULTILINEDISCOUNTCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTALDISCOUNTCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TOTALDISCOUNTCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DISCOUNTPRICEGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DISCOUNTPRICEGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINEDISCOUNTCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LINEDISCOUNTCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERREBATEGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERREBATEGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERTMAGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERTMAGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLEMENTARYITEMGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLEMENTARYITEMGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTTERMS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTTERMS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTMETHOD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTMETHOD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTSPECIFICATION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTSPECIFICATION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTSCHEDULE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTSCHEDULE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTDAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTCASHDISCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTCASHDISCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTTERMSBASEDAYS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PAYMENTTERMSBASEDAYS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTBANKACCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTBANKACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTFACTORINGACCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTFACTORINGACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTIDTYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAYMENTIDTYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAYMENTUSECASHDISCOUNT",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PAYMENTUSECASHDISCOUNT",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CENTRALBANKPURPOSECODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CENTRALBANKPURPOSECODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CENTRALBANKPURPOSENOTES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CENTRALBANKPURPOSENOTES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITCARDADDRESSVERIFICATION",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CREDITCARDADDRESSVERIFICATION",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITCARDADDRESSVERIFICATIONISAUTHORIZATIONVOIDEDONFAILURE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CREDITCARDADDRESSVERIFICATIONISAUTHORIZATIONVOIDEDONFAILURE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITCARDADDRESSVERIFICATIONLEVEL",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CREDITCARDADDRESSVERIFICATIONLEVEL",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CREDITCARDCVC",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CREDITCARDCVC",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSEISASNGENERATED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "WAREHOUSEISASNGENERATED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSEISENTIRESHIPMENTFILLED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "WAREHOUSEISENTIRESHIPMENTFILLED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULTINVENTORYSTATUSID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULTINVENTORYSTATUSID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEACCOUNT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "INVOICEADDRESS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBERSEQUENCEGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NUMBERSEQUENCEGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPEFREETEXTINVOICE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPEFREETEXTINVOICE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPEINTERESTNOTE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPEINTERESTNOTE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPECOLLECTIONLETTER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPECOLLECTIONLETTER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPEPROJINVOICE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPEPROJINVOICE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GIROTYPEACCOUNTSTATEMENT",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "GIROTYPEACCOUNTSTATEMENT",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYFREIGHTZONE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYFREIGHTZONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYTERMS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYTERMS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYMODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYMODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYREASON",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYREASON",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DESTINATIONCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DESTINATIONCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIPTCALENDAR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RECEIPTCALENDAR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISFUELSURCHARGEAPPLIED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISFUELSURCHARGEAPPLIED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESTAXGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESTAXGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TAXEXEMPTNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TAXEXEMPTNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISSALESTAXINCLUDEDINPRICES",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISSALESTAXINCLUDEDINPRICES",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PACKINGDUTYLICENSE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PACKINGDUTYLICENSE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISCALCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PACKINGMATERIALFEELICENSENUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PACKINGMATERIALFEELICENSENUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISELECTRONICINVOICE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISELECTRONICINVOICE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ELECTRONICINVOICEEAN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ELECTRONICINVOICEEAN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISFREIGHTACCRUED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISFREIGHTACCRUED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISEXPRESSBILLOFLADINGACCEPTED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISEXPRESSBILLOFLADINGACCEPTED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISTRANSACTIONPOSTEDASSHIPMENT",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISTRANSACTIONPOSTEDASSHIPMENT",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISORDERNUMBERREFERENCEUSED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISORDERNUMBERREFERENCEUSED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SALESRETURNTAXGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALESRETURNTAXGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIPTEMAIL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RECEIPTEMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIPTOPTION",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECEIPTOPTION",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISWITHHOLDINGTAXCALCULATED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISWITHHOLDINGTAXCALCULATED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WITHHOLDINGTAXGROUPCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WITHHOLDINGTAXGROUPCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FRENCHSIRET",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FRENCHSIRET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAFCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAFCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMPANYTYPE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "COMPANYTYPE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CURPNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURPNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RFCNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RFCNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATEINSCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATEINSCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TAXREGISTRATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TAXREGISTRATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSOLIDATIONDAY",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CONSOLIDATIONDAY",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "NATIONALREGISTRYNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATIONALREGISTRYNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RELIEFGROUPID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RELIEFGROUPID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CALCULATEWITHHOLDINGTAX",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CALCULATEWITHHOLDINGTAX",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FOREIGNCUSTOMER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "FOREIGNCUSTOMER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "TCSGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TCSGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TDSGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TDSGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENTIALCUSTOMER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PREFERENTIALCUSTOMER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "NATUREOFASSESSEE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "NATUREOFASSESSEE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PANNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PANNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PANREFERENCENUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PANREFERENCENUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PANSTATUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PANSTATUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERPAYMENTFINECODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERPAYMENTFINECODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERPAYMENTFINANCIALINTERESTCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERPAYMENTFINANCIALINTERESTCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANCCM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANCCM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANCNAE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANCNAE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANCNPJORCPF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANCNPJORCPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISFINALUSER",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISFINALUSER",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERWITHHOLDINGCONTRIBUTIONTYPE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CUSTOMERWITHHOLDINGCONTRIBUTIONTYPE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISINCOMINGFISCALDOCUMENTGENERATED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISINCOMINGFISCALDOCUMENTGENERATED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISICMSCONTRIBUTOR",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISICMSCONTRIBUTOR",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANIE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANIE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANINSSCEI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANINSSCEI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAZILIANNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAZILIANNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISSERVICEDELIVERYADDRESSBASED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISSERVICEDELIVERYADDRESSBASED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ISINSUFRAMAREGION",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISINSUFRAMAREGION",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SUFRAMANUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUFRAMANUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HASSUFRAMADISCOUNTPISANDCOFINS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "HASSUFRAMADISCOUNTPISANDCOFINS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FOREIGNERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FOREIGNERID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRANSACTIONPRESENCETYPE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "TRANSACTIONPRESENCETYPE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "WRITEOFFREASON",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WRITEOFFREASON",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXPORTSALE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "EXPORTSALE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BIRTHCOUNTYCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BIRTHCOUNTYCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BIRTHPLACE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BIRTHPLACE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RESIDENCEFOREIGNCOUNTRYREGIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESIDENCEFOREIGNCOUNTRYREGIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ISPURCHREQUESTUSED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISPURCHREQUESTUSED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSZIPCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSZIPCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSTIMEZONE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSTIMEZONE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSCITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSCITY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSCOUNTY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSCOUNTY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSDISTRICTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSDISTRICTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSLATITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSLATITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSLONGITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSLONGITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSLOCATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSLOCATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSSTATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSSTATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSSTREET",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSSTREET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSSTREETNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSSTREETNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSVALIDFROM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSVALIDFROM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYADDRESSVALIDTO",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DELIVERYADDRESSVALIDTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSDESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSDESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSZIPCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSZIPCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSTIMEZONE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSTIMEZONE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSCITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSCITY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSCOUNTRYREGIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSCOUNTY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSCOUNTY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSDISTRICTNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSDISTRICTNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSLATITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSLATITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSLONGITUDE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSLONGITUDE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSLOCATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSLOCATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSSTATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSSTATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSSTREET",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSSTREET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSSTREETNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSSTREETNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSBUILDINGCOMPLEMENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSVALIDFROM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSVALIDFROM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICEADDRESSVALIDTO",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "INVOICEADDRESSVALIDTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ISEXTERNALLYMAINTAINED",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISEXTERNALLYMAINTAINED",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MERCHANTID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MERCHANTID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEFAULTECOMMERCEOPERATOR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEFAULTECOMMERCEOPERATOR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERTYPE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CUSTOMERTYPE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FULFILLMENTPOLICYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FULFILLMENTPOLICYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPAPPROVEDCUSTOMERGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PIPAPPROVEDCUSTOMERGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPCUSTOMERCHECKITEM",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PIPCUSTOMERCHECKITEM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPCERTOFANALYSISCUSTGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PIPCERTOFANALYSISCUSTGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPPRINTCUSTSPECIFICCERTOFANALYSIS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PIPPRINTCUSTSPECIFICCERTOFANALYSIS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTITION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARTITION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSPOSTBOX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSPOSTBOX",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTCLASSIFICATIONID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTCLASSIFICATIONID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTEMAILRECORDID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTEMAILRECORDID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTFAXRECORDID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTFAXRECORDID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTPHONERECORDID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTPHONERECORDID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARYCONTACTURLRECORDID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRIMARYCONTACTURLRECORDID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSRECORDID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ADDRESSRECORDID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ISALLOWCREATEINDIRECTORDERLINES",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ISALLOWCREATEINDIRECTORDERLINES",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "COLLECTIONLETTERCODE",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "COLLECTIONLETTERCODE",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "METUPSHOTCUSTOMERNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "METUPSHOTCUSTOMERNUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAAREAID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DATAAREAID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYNCSTARTDATETIME",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SYNCSTARTDATETIME",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_CustCustomerV3Staging",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_StgCustomersV3_From_SF_ODS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-29T17:22:34Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

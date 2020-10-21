@@ -1,0 +1,482 @@
+{
+	"name": "DS_ASQL_SINK_StgSalesOrderLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "InventoryLotId",
+				"type": "varchar"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "varchar"
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderLineStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "MultilineDiscountPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "ShippingWarehouseId",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardBuyerName",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomsDocumentNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LineDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliverySalesTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsIntrastatTriangularDeal",
+				"type": "varchar"
+			},
+			{
+				"name": "MultilineDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemBatchNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesProductCategoryName",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderPromisingMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesRebateProductGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesUnitSymbol",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemWithholdingTaxCodeGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "varchar"
+			},
+			{
+				"name": "FixedPriceCharges",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryTermsId",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "varchar"
+			},
+			{
+				"name": "PackingUnitSymbol",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderedSalesQuantity",
+				"type": "varchar"
+			},
+			{
+				"name": "BOMId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreetInKana",
+				"type": "varchar"
+			},
+			{
+				"name": "ShippingSiteId",
+				"type": "varchar"
+			},
+			{
+				"name": "NGPCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDeliveryAddressPrivate",
+				"type": "varchar"
+			},
+			{
+				"name": "LineCreationSequenceNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountIdDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderedInventoryStatusId",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardRecipientEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxItemGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "RouteId",
+				"type": "varchar"
+			},
+			{
+				"name": "EInvoicePropertyNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomsDocumentName",
+				"type": "varchar"
+			},
+			{
+				"name": "WillAutomaticInventoryReservationConsiderBatchAttributes",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "varchar"
+			},
+			{
+				"name": "LineDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceOrderNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDeliveryAddressOrderSpecific",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalDocumentTypeId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryCFOPCode",
+				"type": "varchar"
+			},
+			{
+				"name": "LineDiscountPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesPrice",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardGiftMessage",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderedCatchWeightQuantity",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderLineReference",
+				"type": "varchar"
+			},
+			{
+				"name": "AllowedUnderdeliveryPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCityInKana",
+				"type": "varchar"
+			},
+			{
+				"name": "AllowedOverdeliveryPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatCommodityCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardRecipientName",
+				"type": "varchar"
+			},
+			{
+				"name": "CFOPCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliverySalesTaxItemGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomsDocumentDate",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomersLineNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardType",
+				"type": "varchar"
+			},
+			{
+				"name": "LineAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatSpecialMovementCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesPriceQuantity",
+				"type": "varchar"
+			},
+			{
+				"name": "WillRebateCalculationExcludeLine",
+				"type": "varchar"
+			},
+			{
+				"name": "SuframaDiscountPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "InventoryReservationMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "varchar"
+			},
+			{
+				"name": "WithholdingTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SkipCreateAutoCharges",
+				"type": "varchar"
+			},
+			{
+				"name": "ExternalItemNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatStatisticValue",
+				"type": "varchar"
+			},
+			{
+				"name": "IsLineStopped",
+				"type": "varchar"
+			},
+			{
+				"name": "GiftCardBuyerEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "RemainSalesPhysical",
+				"type": "varchar"
+			},
+			{
+				"name": "RemainInventFinancial",
+				"type": "varchar"
+			},
+			{
+				"name": "RemainSalesFinancial",
+				"type": "varchar"
+			},
+			{
+				"name": "RemainInventPhysical",
+				"type": "varchar"
+			},
+			{
+				"name": "METRefrigerationItemId",
+				"type": "varchar"
+			},
+			{
+				"name": "METUpshotSalesOrderLineNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "METSamplesFlag",
+				"type": "varchar"
+			},
+			{
+				"name": "METSalesStatus",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesOrderLine_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

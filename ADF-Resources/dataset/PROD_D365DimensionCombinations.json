@@ -1,0 +1,19 @@
+{
+	"name": "PROD_D365DimensionCombinations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DimensionCombinations"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

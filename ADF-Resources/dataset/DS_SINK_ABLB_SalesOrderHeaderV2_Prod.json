@@ -1,0 +1,555 @@
+{
+	"name": "DS_SINK_ABLB_SalesOrderHeaderV2_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "D365_SalesOrderHeadersV2_Prod",
+				"folderPath": "Finesse/D365_JSON_Files",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": "Þ",
+			"rowDelimiter": "¬",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalChargesAmount",
+				"type": "String"
+			},
+			{
+				"name": "FiscalDocumentOperationTypeId",
+				"type": "String"
+			},
+			{
+				"name": "OrderTakerPersonnelNumber",
+				"type": "String"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "CampaignId",
+				"type": "String"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "BaseDocumentLineNumber",
+				"type": "String"
+			},
+			{
+				"name": "DefaultShippingSiteId",
+				"type": "String"
+			},
+			{
+				"name": "TransportationBrokerId",
+				"type": "String"
+			},
+			{
+				"name": "TransportationModeId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "CFPSCode",
+				"type": "String"
+			},
+			{
+				"name": "TMACustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "BankSpecificSymbol",
+				"type": "String"
+			},
+			{
+				"name": "NumberSequenceGroupId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "String"
+			},
+			{
+				"name": "TransportationTemplateId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreetInKana",
+				"type": "String"
+			},
+			{
+				"name": "BankConstantSymbol",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalTaxAmount",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "SalesRebateCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectId",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierId",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountPercentage",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "BaseDocumentItemNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "QuotationNumber",
+				"type": "String"
+			},
+			{
+				"name": "LanguageId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "String"
+			},
+			{
+				"name": "MultilineDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "BaseDocumentNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStateId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentMethodSpecificationName",
+				"type": "String"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "String"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsBaseDate",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreetInKana",
+				"type": "String"
+			},
+			{
+				"name": "ChargeCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalAmount",
+				"type": "String"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "String"
+			},
+			{
+				"name": "FormattedInvoiceAddress",
+				"type": "String"
+			},
+			{
+				"name": "ExportReason",
+				"type": "String"
+			},
+			{
+				"name": "OrderResponsiblePersonnelNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "OrderOrAgreementCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "PaymentScheduleName",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "String"
+			},
+			{
+				"name": "URL",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalDiscountAmount",
+				"type": "String"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "OrderCreationDateTime",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCityInKana",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "FixedDueDate",
+				"type": "String"
+			},
+			{
+				"name": "TransportationDocumentLineId",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressPostBox",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierServiceGroupId",
+				"type": "String"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCityInKana",
+				"type": "String"
+			},
+			{
+				"name": "BaseDocumentDate",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPostingProfileId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "TenderCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierServiceId",
+				"type": "String"
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderName",
+				"type": "String"
+			},
+			{
+				"name": "DefaultShippingWarehouseId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountyId",
+				"type": "String"
+			},
+			{
+				"name": "DirectDebitMandateId",
+				"type": "String"
+			},
+			{
+				"name": "LineDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "String"
+			},
+			{
+				"name": "CIPEcode",
+				"type": "String"
+			},
+			{
+				"name": "OrderingCustomerAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceBuildingCompliment",
+				"type": "String"
+			},
+			{
+				"name": "PriceCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "ReportingCurrencyFixedExchangeRate",
+				"type": "String"
+			},
+			{
+				"name": "OrderHeaderTaxAmount",
+				"type": "String"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "TransportationRoutePlanId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentMethodName",
+				"type": "String"
+			},
+			{
+				"name": "SalesUnitId",
+				"type": "String"
+			},
+			{
+				"name": "FixedExchangeRate",
+				"type": "String"
+			},
+			{
+				"name": "METExternalNotes",
+				"type": "String"
+			},
+			{
+				"name": "METDeliveryType",
+				"type": "String"
+			},
+			{
+				"name": "METContactPersonPhone",
+				"type": "String"
+			},
+			{
+				"name": "METInternalNotes",
+				"type": "String"
+			},
+			{
+				"name": "METModifiedDateTimeSales",
+				"type": "String"
+			},
+			{
+				"name": "METUpshotSalesOrderNumber",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

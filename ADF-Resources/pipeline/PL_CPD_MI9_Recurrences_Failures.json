@@ -1,0 +1,78 @@
+{
+	"name": "PL_CPD_MI9_Recurrences_Failures",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Recurrences_Failures",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "select * from recurrences_failures"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.MI9_Recurrences_Failures_Staging",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable10",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_MI9_Recurrences_Failures",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "MI9_Recurrences_Failures_Incremental_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_MI9_Recurrences_Failures",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_Recurrences_Failures_Incr_Load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "MI9 PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-05T07:25:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

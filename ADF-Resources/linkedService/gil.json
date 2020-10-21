@@ -1,0 +1,22 @@
+{
+	"name": "gil",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "gil"
+			}
+		},
+		"connectVia": {
+			"referenceName": "metausedpir1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

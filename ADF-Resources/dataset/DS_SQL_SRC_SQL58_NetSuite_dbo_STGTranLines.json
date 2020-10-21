@@ -1,0 +1,15 @@
+{
+	"name": "DS_SQL_SRC_SQL58_NetSuite_dbo_STGTranLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Bariatric Advantage"
+		},
+		"annotations": [],
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

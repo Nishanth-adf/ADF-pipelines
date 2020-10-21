@@ -1,0 +1,104 @@
+{
+	"name": "DS_ASQL_SRC_metausedp_FactInvoiceSales_DD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Data Warehouse (AV-LV-DW)"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "InvoiceNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32"
+			},
+			{
+				"name": "acctper",
+				"type": "Int32"
+			},
+			{
+				"name": "orderID",
+				"type": "Int32"
+			},
+			{
+				"name": "geographyID",
+				"type": "Int32"
+			},
+			{
+				"name": "customerID",
+				"type": "Int64"
+			},
+			{
+				"name": "salesRepID",
+				"type": "Int64"
+			},
+			{
+				"name": "productID",
+				"type": "Int64"
+			},
+			{
+				"name": "BusinessDivisionchanelID",
+				"type": "Int32"
+			},
+			{
+				"name": "dimDistributorID",
+				"type": "Int32"
+			},
+			{
+				"name": "SalesOriginID",
+				"type": "Int32"
+			},
+			{
+				"name": "productTypeID",
+				"type": "Int64"
+			},
+			{
+				"name": "amount",
+				"type": "Decimal"
+			},
+			{
+				"name": "amounttype",
+				"type": "String"
+			},
+			{
+				"name": "localCurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "commissionableIndicator",
+				"type": "String"
+			},
+			{
+				"name": "lineItem",
+				"type": "Int32"
+			},
+			{
+				"name": "Source",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[factOrderInvoiceSales]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

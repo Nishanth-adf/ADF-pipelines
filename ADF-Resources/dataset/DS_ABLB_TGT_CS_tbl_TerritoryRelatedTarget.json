@@ -1,0 +1,28 @@
+{
+	"name": "DS_ABLB_TGT_CS_tbl_TerritoryRelatedTarget",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": {
+				"value": "@concat('ODS_tbl_TerritoryRelatedTarget-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

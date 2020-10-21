@@ -1,0 +1,51 @@
+{
+	"name": "PL_CPD_MI9_Users",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Users",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "select * from users"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.Mi9_users_Staging",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_MI9_Users",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MI9 PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-06T12:31:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "PL Update_dwh_Update_dwh_DailyForecastHistory",
+	"properties": {
+		"description": "Update table Prod dwh.Update_dwh_DailyForecastHistory\n\nAuthor: GBuenaventura\nDate: 09/24/2020",
+		"activities": [
+			{
+				"name": "SP Prod dwh_Update_dwh_DailyForecastHistory",
+				"description": "Author: GBuenaventura\nDate: 09/24/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[Update_dwh_DailyForecastHistory]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Warehouse Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-24T18:10:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

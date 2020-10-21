@@ -1,0 +1,117 @@
+{
+	"name": "DS_SINK_ASQL_StgSalesInvoicelines_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LineCreationSequenceNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "varchar"
+			},
+			{
+				"name": "InventorySiteId",
+				"type": "varchar"
+			},
+			{
+				"name": "DimensionNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemBatchNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LineTotalDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "varchar"
+			},
+			{
+				"name": "LineTotalTaxAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderedInventoryStatusId",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesPrice",
+				"type": "varchar"
+			},
+			{
+				"name": "InventoryWarehouseId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesUnitSymbol",
+				"type": "varchar"
+			},
+			{
+				"name": "LineTotalChargeAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoicedQuantity",
+				"type": "varchar"
+			},
+			{
+				"name": "LineAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgSalesInvoiceLines]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

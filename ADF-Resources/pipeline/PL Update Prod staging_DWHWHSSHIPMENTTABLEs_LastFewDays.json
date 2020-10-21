@@ -1,0 +1,498 @@
+{
+	"name": "PL Update Prod staging_DWHWHSSHIPMENTTABLEs_LastFewDays",
+	"properties": {
+		"description": "Update table Prod.staging.DwhWHSShipmentTables\n\n\nAuthor: GBuenaventura\nDate: 09/03/2020",
+		"activities": [
+			{
+				"name": "Copy data DWHWHSSHIPMENTTABLEs",
+				"description": "Update table Prod.staging.DwhWHSShipmentTables\n\n\nAuthor: GBuenaventura\nDate: 09/03/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "$filter=WHSShipmentTableModifiedDateTime%20gt%202020-08-31&cross-company=true",
+						"httpRequestTimeout": "00:05:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.DwhWHSShipmentTables_LastFewDays",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipmentId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShipmentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WaveLabelsPrintedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "WaveLabelsPrintedDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "SCAC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SCAC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTableModifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WHSShipmentTableModifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WaveLabelsPrintedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WaveLabelsPrintedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WaveId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WaveId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTablePartition",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "WHSShipmentTablePartition",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ProNum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProNum",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WayBill",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WayBill",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CarrierCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CarrierCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrokerCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrokerCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTableModifiedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "WHSShipmentTableModifiedDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipConfirmUTCDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "ShipConfirmUTCDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderNum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderNum",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipConsolidationPolicy",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ShipConsolidationPolicy",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "LoadId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LoadId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ModeCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Reference",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Reference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CarrierServiceCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CarrierServiceCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRef",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerRef",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryPostalAddress",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DeliveryPostalAddress",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "InventSiteId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InventSiteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DropOffUTCDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "DropOffUTCDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "ManifestedWeightUOM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ManifestedWeightUOM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InventLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InventLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTableRecVersion",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "WHSShipmentTableRecVersion",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerReq",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerReq",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ManifestedWeight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ManifestedWeight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Address",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipmentArrivalUTCDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "ShipmentArrivalUTCDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNum",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RouteCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RouteCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StopNum",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "StopNum",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "METShipItFrgtCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "METShipItFrgtCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FreightTermCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FreightTermCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DlvTermId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DlvTermId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CarrierGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CarrierGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTableCreatedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "WHSShipmentTableCreatedDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipCarrierAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShipCarrierAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillOfLadingId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillOfLadingId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSShipmentTableRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "WHSShipmentTableRecId",
+									"type": "Int64"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "D365_Prod_DWHWHSSHIPMENTTABLEs",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Prod_staging_DwhWHSShipmentTables_LastFewDays",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-04T03:36:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

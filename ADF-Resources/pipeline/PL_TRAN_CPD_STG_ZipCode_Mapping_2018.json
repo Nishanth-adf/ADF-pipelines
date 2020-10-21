@@ -1,0 +1,94 @@
+{
+	"name": "PL_TRAN_CPD_STG_ZipCode_Mapping_2018",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_NetSuite_ZipCode_Mapping_2018-2-stgZipCode_Map",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [zip]\n      ,[county]\n      ,[type]\n      ,[primary_city]\n      ,[state]\n      ,[country]\n      ,[TSM]\n      ,[RSM]\n      ,'NS' as [DBSource]\n      ,Getdate() as [Load_Date_time]\n  FROM [NetSuite].[dbo].[ZipCode_Mapping_2018]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL58_NetSuite_ZipCode_Mapping_2018",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_ZipCode_Mapping_2018",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_ABLB_ZipCode_Mapping_2018-2-stgZipCode_Map",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_NetSuite_ZipCode_Mapping_2018-2-stgZipCode_Map",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_ZipCode_Mapping_2018",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_stgZipCode_Mapping_2018",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:53:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

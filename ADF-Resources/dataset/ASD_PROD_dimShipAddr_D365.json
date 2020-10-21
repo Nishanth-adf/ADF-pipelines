@@ -1,0 +1,252 @@
+{
+	"name": "ASD_PROD_dimShipAddr_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ShipAddrId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "custno",
+				"type": "varchar"
+			},
+			{
+				"name": "subno",
+				"type": "varchar"
+			},
+			{
+				"name": "shipno",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_name",
+				"type": "varchar"
+			},
+			{
+				"name": "contact",
+				"type": "varchar"
+			},
+			{
+				"name": "attention",
+				"type": "varchar"
+			},
+			{
+				"name": "phone",
+				"type": "varchar"
+			},
+			{
+				"name": "ext",
+				"type": "varchar"
+			},
+			{
+				"name": "addr1",
+				"type": "varchar"
+			},
+			{
+				"name": "addr2",
+				"type": "varchar"
+			},
+			{
+				"name": "addr3",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "county",
+				"type": "varchar"
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "zip",
+				"type": "varchar"
+			},
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "shipvia_code",
+				"type": "varchar"
+			},
+			{
+				"name": "last_shipped",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "tax_code",
+				"type": "varchar"
+			},
+			{
+				"name": "shipcomplete",
+				"type": "varchar"
+			},
+			{
+				"name": "correspondence",
+				"type": "varchar"
+			},
+			{
+				"name": "fscm_cage",
+				"type": "varchar"
+			},
+			{
+				"name": "invoicecopies",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tax1",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tax2",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tax3",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tax4",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tax5",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "custclass",
+				"type": "varchar"
+			},
+			{
+				"name": "matrixcd",
+				"type": "varchar"
+			},
+			{
+				"name": "discount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "pcntovercost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "telex",
+				"type": "varchar"
+			},
+			{
+				"name": "usenet",
+				"type": "varchar"
+			},
+			{
+				"name": "fax",
+				"type": "varchar"
+			},
+			{
+				"name": "voicemail",
+				"type": "varchar"
+			},
+			{
+				"name": "entityno",
+				"type": "varchar"
+			},
+			{
+				"name": "currencycd",
+				"type": "varchar"
+			},
+			{
+				"name": "salutation",
+				"type": "varchar"
+			},
+			{
+				"name": "salesmancd",
+				"type": "varchar"
+			},
+			{
+				"name": "locationcd",
+				"type": "varchar"
+			},
+			{
+				"name": "deal_no",
+				"type": "varchar"
+			},
+			{
+				"name": "bankid",
+				"type": "varchar"
+			},
+			{
+				"name": "acctid",
+				"type": "varchar"
+			},
+			{
+				"name": "tele_salesmancd",
+				"type": "varchar"
+			},
+			{
+				"name": "web_custno",
+				"type": "varchar"
+			},
+			{
+				"name": "certificate_expire_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "intrans_loc",
+				"type": "varchar"
+			},
+			{
+				"name": "email_update",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DBSource",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimShipAddr_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

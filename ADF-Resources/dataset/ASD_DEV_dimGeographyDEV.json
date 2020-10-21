@@ -1,0 +1,62 @@
+{
+	"name": "ASD_DEV_dimGeographyDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "geographyID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimGeographyDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

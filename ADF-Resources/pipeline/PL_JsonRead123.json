@@ -1,0 +1,438 @@
+{
+	"name": "PL_JsonRead123",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['abandoned']"
+								},
+								"sink": {
+									"name": "abandoned"
+								}
+							},
+							{
+								"source": {
+									"path": "$['abandonSeconds']"
+								},
+								"sink": {
+									"name": "abandonSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ACWSeconds']"
+								},
+								"sink": {
+									"name": "ACWSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['agentId']"
+								},
+								"sink": {
+									"name": "agentId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['agentSeconds']"
+								},
+								"sink": {
+									"name": "agentSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['callbackTime']"
+								},
+								"sink": {
+									"name": "callbackTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['campaignId']"
+								},
+								"sink": {
+									"name": "campaignId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['campaignName']"
+								},
+								"sink": {
+									"name": "campaignName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['confSeconds']"
+								},
+								"sink": {
+									"name": "confSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contactId']"
+								},
+								"sink": {
+									"name": "contactId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contactStart']"
+								},
+								"sink": {
+									"name": "contactStart"
+								}
+							},
+							{
+								"source": {
+									"path": "$['dateACWWarehoused']"
+								},
+								"sink": {
+									"name": "dateACWWarehoused"
+								}
+							},
+							{
+								"source": {
+									"path": "$['dateContactWarehoused']"
+								},
+								"sink": {
+									"name": "dateContactWarehoused"
+								}
+							},
+							{
+								"source": {
+									"path": "$['dispositionNotes']"
+								},
+								"sink": {
+									"name": "dispositionNotes"
+								}
+							},
+							{
+								"source": {
+									"path": "$['firstName']"
+								},
+								"sink": {
+									"name": "firstName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['fromAddr']"
+								},
+								"sink": {
+									"name": "fromAddr"
+								}
+							},
+							{
+								"source": {
+									"path": "$['holdCount']"
+								},
+								"sink": {
+									"name": "holdCount"
+								}
+							},
+							{
+								"source": {
+									"path": "$['holdSeconds']"
+								},
+								"sink": {
+									"name": "holdSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['inQueueSeconds']"
+								},
+								"sink": {
+									"name": "inQueueSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isLogged']"
+								},
+								"sink": {
+									"name": "isLogged"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isOutbound']"
+								},
+								"sink": {
+									"name": "isOutbound"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isRefused']"
+								},
+								"sink": {
+									"name": "isRefused"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isShortAbandon']"
+								},
+								"sink": {
+									"name": "isShortAbandon"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isTakeover']"
+								},
+								"sink": {
+									"name": "isTakeover"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastName']"
+								},
+								"sink": {
+									"name": "lastName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastUpdateTime']"
+								},
+								"sink": {
+									"name": "lastUpdateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['masterContactId']"
+								},
+								"sink": {
+									"name": "masterContactId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['mediaType']"
+								},
+								"sink": {
+									"name": "mediaType"
+								}
+							},
+							{
+								"source": {
+									"path": "$['mediaTypeName']"
+								},
+								"sink": {
+									"name": "mediaTypeName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['pointOfContactId']"
+								},
+								"sink": {
+									"name": "pointOfContactId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['pointOfContactName']"
+								},
+								"sink": {
+									"name": "pointOfContactName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['postQueueSeconds']"
+								},
+								"sink": {
+									"name": "postQueueSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['preQueueSeconds']"
+								},
+								"sink": {
+									"name": "preQueueSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['primaryDispositionId']"
+								},
+								"sink": {
+									"name": "primaryDispositionId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['releaseSeconds']"
+								},
+								"sink": {
+									"name": "releaseSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['routingTime']"
+								},
+								"sink": {
+									"name": "routingTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['secondaryDispositionId']"
+								},
+								"sink": {
+									"name": "secondaryDispositionId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceLevelFlag']"
+								},
+								"sink": {
+									"name": "serviceLevelFlag"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skillId']"
+								},
+								"sink": {
+									"name": "skillId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skillName']"
+								},
+								"sink": {
+									"name": "skillName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['teamId']"
+								},
+								"sink": {
+									"name": "teamId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['teamName']"
+								},
+								"sink": {
+									"name": "teamName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['toAddr']"
+								},
+								"sink": {
+									"name": "toAddr"
+								}
+							},
+							{
+								"source": {
+									"path": "$['totalDurationSeconds']"
+								},
+								"sink": {
+									"name": "totalDurationSeconds"
+								}
+							},
+							{
+								"source": {
+									"path": "$['transferIndicatorId']"
+								},
+								"sink": {
+									"name": "transferIndicatorId"
+								}
+							},
+							{
+								"source": {
+									"path": "$['transferIndicatorName']"
+								},
+								"sink": {
+									"name": "transferIndicatorName"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isAnalyticsProcessed']"
+								},
+								"sink": {
+									"name": "isAnalyticsProcessed"
+								}
+							}
+						],
+						"collectionReference": "$['agentStates']",
+						"mapComplexValuesToString": true
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json4",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable9",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "RingCentral"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-29T18:29:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

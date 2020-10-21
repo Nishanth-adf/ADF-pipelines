@@ -1,0 +1,46 @@
+{
+	"name": "BA_All_Fact_Load_Pipelines",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_FactOrderInvoiceSales_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FaceSalesRepTarget_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_FactOrderInvoiceSales",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FaceSalesRepTarget_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_FactSalesRepTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:37:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

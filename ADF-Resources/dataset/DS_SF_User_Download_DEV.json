@@ -1,0 +1,13 @@
+{
+	"name": "DS_SF_User_Download_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

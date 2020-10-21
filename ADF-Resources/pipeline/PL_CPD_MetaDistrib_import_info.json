@@ -1,0 +1,145 @@
+{
+	"name": "PL_CPD_MetaDistrib_import_info",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_import_info",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetaimport_info;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "import_info_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "import_info_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "source_id",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "source_id",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "year",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "period",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "period",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "filename",
+									"type": "String"
+								},
+								"sink": {
+									"name": "filename",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "import_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "import_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "imported_by",
+									"type": "String"
+								},
+								"sink": {
+									"name": "imported_by",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sys_filename",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sys_filename",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sheet_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sheet_name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_import_info",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetaimport_info",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-13T01:01:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

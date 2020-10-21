@@ -1,0 +1,26 @@
+{
+	"name": "SQL_ODS_dbo_tbl_AlticorMainAccts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "AlticorMainAcct",
+				"type": "varchar"
+			},
+			{
+				"name": "AlticorMainAcctDesc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_AlticorMainAccts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

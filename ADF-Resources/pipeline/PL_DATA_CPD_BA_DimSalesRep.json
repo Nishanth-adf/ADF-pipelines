@@ -1,0 +1,77 @@
+{
+	"name": "PL_DATA_CPD_BA_DimSalesRep",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_Entity-2-DimSalesRep",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimCustomerMaster]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tsalesmancode\t\t\t=\tCAST(Base_Table.salesmanCode as NVARCHAR(40)),\n\t\t\tBase_Table.name,\n\t\t\tBase_Table.businessDivision,\n\t\t\tBase_Table.city,\n\t\t\tBase_Table.state,\n\t\t\tBase_Table.country,\n\t\t\tBase_Table.zip,\n\t\t\tAccountyear\t\t\t\t=\tBase_Table.Accountyear,\n\t\t\tAccountMonth\t\t\t=\tBase_Table.AccountMonth,\n\t\t\tregionManager\t\t\t=\tCAST(CASE\tWHEN Base_Table.role='RSM' THEN Base_Table.salesmanCode\n\t\t\t\t\t\t\t\t\t\t\t\t\tWHEN Base_Table.role='TSM' THEN (\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\tTOP 1 Employee \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\tdbo.stgSalesAccount \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t[role]='RSM'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\ttopLevelParent\t=\t(\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tTOP 1 sa.topLevelParent\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[stgEntity] E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tINNER JOIN\tdbo.stgSalesAccount SA\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tON\t\t\tE.[Entity_Id]\t\t=\tSA.employee\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tE.[Entity_Id]\t\t=\tBase_Table.salesmanCode\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tLEFT([period],4)\t=\tBase_Table.Accountyear\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tRIGHT([period],2)\t=\tBase_Table.AccountMonth\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tE.ENTITY_TYPE\t\t=\t'Employee'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tSA.[role]\t\t\t=\t'TSM') \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tORDER BY 1 desc) \n\t\t\t\t\t\t\t\t\t\t\t\t\tELSE '' END AS NVARCHAR(40)),\n\t\t\tRegionMangerCd\t\t\t=\tCAST(CASE\tWHEN Base_Table.role='RSM' THEN Base_Table.salesmanCode\n\t\t\t\t\t\t\t\t\t\t\t\t\tWHEN Base_Table.role='TSM' THEN (\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\tTOP 1 Employee \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\tdbo.stgSalesAccount \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t[role]='RSM'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\ttopLevelParent\t=\t(\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tTOP 1 sa.topLevelParent\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[stgEntity] E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tINNER JOIN\tdbo.stgSalesAccount SA\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tON\t\t\tE.[Entity_Id]\t\t=\tSA.employee\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tE.[Entity_Id]\t\t=\tBase_Table.salesmanCode\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tLEFT([period],4)\t=\tBase_Table.Accountyear\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tRIGHT([period],2)\t=\tBase_Table.AccountMonth\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tE.ENTITY_TYPE\t\t=\t'Employee'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tSA.[role]\t\t\t=\t'TSM') \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tORDER BY 1 desc) \n\t\t\t\t\t\t\t\t\t\t\t\t\tELSE '' END AS NVARCHAR(40)),\n\t\t\tinsertby\t\t\t\t=\t'ADF ETL',\n\t\t\t[insertDate]\t\t\t=\tDATEADD(hh,-8,GETDATE()),\n\t\t\tBase_Table.DBSource as source\nFROM\t\t(\n\t\t\t\tSELECT          salesmanCode\t\t=\tSSA.employee,\n\t\t\t\t\t\t\t\tname\t\t\t\t=\tCASE WHEN ISNUMERIC(LEFT(REVERSE(Full_Name),1)) = 0 THEN LTRIM(RTRIM(REVERSE(LEFT(REVERSE(Full_Name),(PATINDEX('%[0-9]%',REVERSE(Full_Name))-1))))) ELSE NULL END,\n\t\t\t\t\t\t\t\tbusinessDivision\t=\t'BA',\n\t\t\t\t\t\t\t\tcity\t\t\t\t=   SE.City,\n\t\t\t\t\t\t\t\t[state]\t\t\t\t=   SE.[state],\n\t\t\t\t\t\t\t\tcountry\t\t\t\t=   SE.Country,\n\t\t\t\t\t\t\t\tzip\t\t\t\t\t=   SE.Zipcode,\n\t\t\t\t\t\t\t\tAccountyear\t\t\t=\tSSA.Accountyear,\n\t\t\t\t\t\t\t\tAccountMonth\t\t=\tSSA.AccountMonth,\n\t\t\t\t\t\t\t\trole\t\t\t\t=\tSSA.role,\n\t\t\t\t\t\t\t\tDBSource\t\t\t=\tDBSource\n\t\t\t\tFROM\t\t\tdbo.stgEntity SE\n\t\t\t\tINNER JOIN\t\t(\n\t\t\t\t\t\t\t\t\tSELECT\t\tDISTINCT employee,role,\n\t\t\t\t\t\t\t\t\t\t\t\tAccountyear\t= LEFT(period,4),\n\t\t\t\t\t\t\t\t\t\t\t\tAccountMonth =\tRIGHT(period,2)\n\t\t\t\t\t\t\t\t\tFROM\t\tdbo.stgSalesAccount\n\t\t\t\t\t\t\t\t\tWHERE\t\t[role]    IN\t('TSM','RSM')\n\t\t\t\t\t\t\t\t)SSA\n\t\t\t\tON              SE.[Entity_Id]\t\t=   SSA.employee\n\t\t\t\tWHERE\t\t\tSE.ENTITY_TYPE\t\t=   'Employee'\n\t\t\t)Base_Table",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": false,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmancode": "salesmanCode",
+							"businessDivision": "businessDivision",
+							"regionManager": "regionManager",
+							"RegionMangerCd": "regionManagerCode",
+							"name": "name",
+							"city": "city",
+							"state": "state",
+							"country": "country",
+							"zip": "zip",
+							"Accountyear": "accountYear",
+							"AccountMonth": "accountMonth",
+							"insertDate": "insertDate",
+							"insertby": "insertBy",
+							"source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metausedp_stgEntity",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_BADimSalesRep",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-20T08:11:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

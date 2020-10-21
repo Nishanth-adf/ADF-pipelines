@@ -1,0 +1,31 @@
+{
+	"name": "ASD_DWH_tbl_CurrencyRatesConstDollar",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "FROM_Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "FX",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "tbl_CurrencyRatesConstDollar"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

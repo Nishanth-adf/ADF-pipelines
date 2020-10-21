@@ -1,0 +1,26 @@
+{
+	"name": "DS_SINK_ABLB_SalesInvoiceHeader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "D365_SalesInvoiceHeader_Prods",
+				"folderPath": "Finesse/D365_JSON_Files",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": "Þ",
+			"rowDelimiter": "¬",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

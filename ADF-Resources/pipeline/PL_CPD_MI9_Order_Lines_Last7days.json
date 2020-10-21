@@ -1,0 +1,86 @@
+{
+	"name": "PL_CPD_MI9_Order_Lines_Last7days",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Orders_Lines_last7days",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": {
+							"value": "@concat('select * from order_lines where updated> DATE(NOW()',' - ',variables('last7days'),')')",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.MI9_Orders_Lines_Staging_Incr",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_MYSQL_MI9_Orders_Lines",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_MI9_Orders_Lines_last7days",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "MI9_Orders_Lines_Incremental_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_MI9_Orders_Lines_last7days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_orders_lines_Incr_Load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"last7days": {
+				"type": "String",
+				"defaultValue": "INTERVAL 7 DAY"
+			}
+		},
+		"folder": {
+			"name": "MI9 PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-05T06:55:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

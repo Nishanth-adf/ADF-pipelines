@@ -1,0 +1,339 @@
+{
+	"name": "PL_CPD_SF_SBFEB2020_AccountProduct",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_SBFEB2020_AccountProduct",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_SBFEB2020_Download_Products",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_AccountProductSales_SF_SBFEB2020]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerProductKeyy__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Account__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_FullScript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_FullScript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_PureScriptions__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_PureScriptions__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_FullScript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_FullScript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_Fullscript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_Fullscript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerProductKeyy__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerProductKeyy__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_AccountProduct",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_SBFEB2020_AccountProduct",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_SBFEB2020_Download_Products",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id,Name from Item__c ",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_sbfeb2020_Products",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_SBFEB2020_Products",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_sf_sbfeb2020_Products",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce_SBFEB2020"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-13T11:43:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

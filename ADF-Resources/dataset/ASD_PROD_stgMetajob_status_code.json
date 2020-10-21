@@ -1,0 +1,30 @@
+{
+	"name": "ASD_PROD_stgMetajob_status_code",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "job_status_cd",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "job_status_desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetajob_status_code"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

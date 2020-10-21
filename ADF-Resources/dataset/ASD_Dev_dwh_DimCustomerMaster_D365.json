@@ -1,0 +1,191 @@
+{
+	"name": "ASD_Dev_dwh_DimCustomerMaster_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CustomerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReferredBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IndustryType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustomerIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustomerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ref1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ref2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EffectiveDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ExpiryDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ActiveIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LatestIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesSegmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesSubsegmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressStreet",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressState",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressZipcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StatisticsGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentTerms",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentMethod",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryContactEmail",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryContactPhone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FullPrimaryAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressState",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressZipcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WarehouseId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimCustomerMaster_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

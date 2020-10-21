@@ -1,0 +1,31 @@
+{
+	"name": "SQL_ODS_tbl_CurrencyRatesConstDollar",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "FROM_Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "FX",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_CurrencyRatesConstDollar"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,47 @@
+{
+	"name": "PL_TEST_PL Migrate PROD tbl_2020AOP_TrailBalanceLevel",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy dataTEST",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "filter=Ledger eq 5637144576"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365GeneralLedgerActivities",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_stgD365GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-02-24T22:24:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

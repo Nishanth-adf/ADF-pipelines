@@ -1,0 +1,26 @@
+{
+	"name": "DS_SF_PROD_sf_PROD_Products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_PROD_Products"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

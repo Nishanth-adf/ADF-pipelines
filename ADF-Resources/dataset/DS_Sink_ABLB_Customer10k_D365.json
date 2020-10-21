@@ -1,0 +1,1045 @@
+{
+	"name": "DS_Sink_ABLB_Customer10k_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('stgcustomerV3_1to_10000_D365-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "Finesse/D365_JSON_Files",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerAccount",
+				"type": "String"
+			},
+			{
+				"name": "AddressBrazilianCNPJOrCPF",
+				"type": "String"
+			},
+			{
+				"name": "PartyType",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFaxExtension",
+				"type": "String"
+			},
+			{
+				"name": "IsFuelSurchargeApplied",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "String"
+			},
+			{
+				"name": "AddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "String"
+			},
+			{
+				"name": "BirthCountyCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddress",
+				"type": "String"
+			},
+			{
+				"name": "PackingMaterialFeeLicenseNumber",
+				"type": "String"
+			},
+			{
+				"name": "TransactionPresenceType",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTwitter",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactEmailIsIM",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "IsFinalUser",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactEmail",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCounty",
+				"type": "String"
+			},
+			{
+				"name": "HasSuframaDiscountPISandCOFINS",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "CURPNumber",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactLinkedInDescription",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "ItemCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "PersonProfessionalTitle",
+				"type": "String"
+			},
+			{
+				"name": "SalesSegmentId",
+				"type": "String"
+			},
+			{
+				"name": "IsServiceDeliveryAddressBased",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTelexDescription",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "SalesAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFacebookDescription",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactPhoneIsMobile",
+				"type": "String"
+			},
+			{
+				"name": "TCSGroup",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "AddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "GiroTypeProjInvoice",
+				"type": "String"
+			},
+			{
+				"name": "LineOfBusinessId",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationPhoneticName",
+				"type": "String"
+			},
+			{
+				"name": "CreditCardCVC",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressValidFrom",
+				"type": "String"
+			},
+			{
+				"name": "GiroTypeAccountStatement",
+				"type": "String"
+			},
+			{
+				"name": "CalculateWithholdingTax",
+				"type": "String"
+			},
+			{
+				"name": "IsRFIDPalletTaggingEnabled",
+				"type": "String"
+			},
+			{
+				"name": "ElectronicInvoiceEAN",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryFreightZone",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFax",
+				"type": "String"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "BirthPlace",
+				"type": "String"
+			},
+			{
+				"name": "AddressCity",
+				"type": "String"
+			},
+			{
+				"name": "PersonInitials",
+				"type": "String"
+			},
+			{
+				"name": "CentralBankPurposeCode",
+				"type": "String"
+			},
+			{
+				"name": "FullPrimaryAddress",
+				"type": "String"
+			},
+			{
+				"name": "GiroTypeCollectionletter",
+				"type": "String"
+			},
+			{
+				"name": "OrderEntryDeadline",
+				"type": "String"
+			},
+			{
+				"name": "ForeignerId",
+				"type": "String"
+			},
+			{
+				"name": "WarehouseIsASNGenerated",
+				"type": "String"
+			},
+			{
+				"name": "AddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactLinkedIn",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactURL",
+				"type": "String"
+			},
+			{
+				"name": "IsFreightAccrued",
+				"type": "String"
+			},
+			{
+				"name": "PartyState",
+				"type": "String"
+			},
+			{
+				"name": "PartyNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAccount",
+				"type": "String"
+			},
+			{
+				"name": "WarehouseFulfillmentRate",
+				"type": "String"
+			},
+			{
+				"name": "CentralBankPurposeNotes",
+				"type": "String"
+			},
+			{
+				"name": "CollectionsContactPersonId",
+				"type": "String"
+			},
+			{
+				"name": "PersonMaritalStatus",
+				"type": "String"
+			},
+			{
+				"name": "AddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "PaymentSchedule",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTwitterPurpose",
+				"type": "String"
+			},
+			{
+				"name": "GiroType",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "AddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryTerms",
+				"type": "String"
+			},
+			{
+				"name": "NumberSequenceGroup",
+				"type": "String"
+			},
+			{
+				"name": "PersonChildrenNames",
+				"type": "String"
+			},
+			{
+				"name": "PaymentMethod",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryMode",
+				"type": "String"
+			},
+			{
+				"name": "PersonProfessionalSuffix",
+				"type": "String"
+			},
+			{
+				"name": "OnHoldStatus",
+				"type": "String"
+			},
+			{
+				"name": "WarehouseFulfillmentType",
+				"type": "String"
+			},
+			{
+				"name": "AccountStatement",
+				"type": "String"
+			},
+			{
+				"name": "WarehouseId",
+				"type": "String"
+			},
+			{
+				"name": "DestinationCode",
+				"type": "String"
+			},
+			{
+				"name": "IRS1099CIndicator",
+				"type": "String"
+			},
+			{
+				"name": "FrenchSiret",
+				"type": "String"
+			},
+			{
+				"name": "PaymentDay",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianNIT",
+				"type": "String"
+			},
+			{
+				"name": "FederalIndicator",
+				"type": "String"
+			},
+			{
+				"name": "EmployeeResponsibleNumber",
+				"type": "String"
+			},
+			{
+				"name": "PersonAnniversaryYear",
+				"type": "String"
+			},
+			{
+				"name": "DefaultInventoryStatusId",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactEmailDescription",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactPhone",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCounty",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "PANReferenceNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "SalesCurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "IsSalesTaxIncludedInPrices",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianCNPJOrCPF",
+				"type": "String"
+			},
+			{
+				"name": "PaymentFactoringAccount",
+				"type": "String"
+			},
+			{
+				"name": "PANNumber",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTwitterDescription",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianCCM",
+				"type": "String"
+			},
+			{
+				"name": "ReceiptEmail",
+				"type": "String"
+			},
+			{
+				"name": "TDSGroup",
+				"type": "String"
+			},
+			{
+				"name": "MultiLineDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "PersonAnniversaryDay",
+				"type": "String"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "SupplementaryItemGroupId",
+				"type": "String"
+			},
+			{
+				"name": "IsWithholdingTaxCalculated",
+				"type": "String"
+			},
+			{
+				"name": "PaymentSpecification",
+				"type": "String"
+			},
+			{
+				"name": "AddressBooks",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactEmailPurpose",
+				"type": "String"
+			},
+			{
+				"name": "SalesDistrict",
+				"type": "String"
+			},
+			{
+				"name": "ConsolidationDay",
+				"type": "String"
+			},
+			{
+				"name": "IsExpressBillOfLadingAccepted",
+				"type": "String"
+			},
+			{
+				"name": "CreditCardAddressVerification",
+				"type": "String"
+			},
+			{
+				"name": "AddressState",
+				"type": "String"
+			},
+			{
+				"name": "IsExcludedFromCollectionFeeCalculation",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "String"
+			},
+			{
+				"name": "IsTransactionPostedAsShipment",
+				"type": "String"
+			},
+			{
+				"name": "IsExternallyMaintained",
+				"type": "String"
+			},
+			{
+				"name": "CreditLimitIsMandatory",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsBaseDays",
+				"type": "String"
+			},
+			{
+				"name": "FiscalCode",
+				"type": "String"
+			},
+			{
+				"name": "KnownAs",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTelex",
+				"type": "String"
+			},
+			{
+				"name": "PaymentBankAccount",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianIE",
+				"type": "String"
+			},
+			{
+				"name": "PreferentialCustomer",
+				"type": "String"
+			},
+			{
+				"name": "ReceiptOption",
+				"type": "String"
+			},
+			{
+				"name": "FulfillmentErrorTolerance",
+				"type": "String"
+			},
+			{
+				"name": "AddressBrazilianIE",
+				"type": "String"
+			},
+			{
+				"name": "PersonAnniversaryMonth",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactPhoneExtension",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactPhonePurpose",
+				"type": "String"
+			},
+			{
+				"name": "ExportSale",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationNumber",
+				"type": "String"
+			},
+			{
+				"name": "CreditCardAddressVerificationIsAuthorizationVoidedOnFailure",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressState",
+				"type": "String"
+			},
+			{
+				"name": "ReceiptCalendar",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressState",
+				"type": "String"
+			},
+			{
+				"name": "StateInscription",
+				"type": "String"
+			},
+			{
+				"name": "SalesReturnTaxGroup",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactURLDescription",
+				"type": "String"
+			},
+			{
+				"name": "CustomerWithholdingContributionType",
+				"type": "String"
+			},
+			{
+				"name": "IsElectronicInvoice",
+				"type": "String"
+			},
+			{
+				"name": "FederalAgencyLocationCode",
+				"type": "String"
+			},
+			{
+				"name": "GiroTypeFreeTextInvoice",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressValidTo",
+				"type": "String"
+			},
+			{
+				"name": "PersonPhoneticMiddleName",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationABCCode",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianCNAE",
+				"type": "String"
+			},
+			{
+				"name": "WithholdingTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "NAFCode",
+				"type": "String"
+			},
+			{
+				"name": "AddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "AddressLocationRoles",
+				"type": "String"
+			},
+			{
+				"name": "PaymentCashDiscount",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "CreditRating",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFacebook",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "LineDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "PartyCountry",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "IsInSuframaRegion",
+				"type": "String"
+			},
+			{
+				"name": "IsIncomingFiscalDocumentGenerated",
+				"type": "String"
+			},
+			{
+				"name": "SalesMemo",
+				"type": "String"
+			},
+			{
+				"name": "ReliefGroupId",
+				"type": "String"
+			},
+			{
+				"name": "IsExcludedFromInterestChargeCalculation",
+				"type": "String"
+			},
+			{
+				"name": "StatisticsGroupId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "String"
+			},
+			{
+				"name": "IsOrderNumberReferenceUsed",
+				"type": "String"
+			},
+			{
+				"name": "AddressValidTo",
+				"type": "String"
+			},
+			{
+				"name": "FederalComments",
+				"type": "String"
+			},
+			{
+				"name": "PersonGender",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTerms",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactPhoneDescription",
+				"type": "String"
+			},
+			{
+				"name": "SalesSubsegmentId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerRebateGroupId",
+				"type": "String"
+			},
+			{
+				"name": "AddressCounty",
+				"type": "String"
+			},
+			{
+				"name": "IsRFIDCaseTaggingEnabled",
+				"type": "String"
+			},
+			{
+				"name": "EnterpriseNumber",
+				"type": "String"
+			},
+			{
+				"name": "IsICMSContributor",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressValidTo",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressValidFrom",
+				"type": "String"
+			},
+			{
+				"name": "CreditLimit",
+				"type": "String"
+			},
+			{
+				"name": "CreditCardAddressVerificationLevel",
+				"type": "String"
+			},
+			{
+				"name": "WarehouseIsEntireShipmentFilled",
+				"type": "String"
+			},
+			{
+				"name": "PackingDutyLicense",
+				"type": "String"
+			},
+			{
+				"name": "NationalRegistryNumber",
+				"type": "String"
+			},
+			{
+				"name": "SiteId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactURLPurpose",
+				"type": "String"
+			},
+			{
+				"name": "ChargesGroupId",
+				"type": "String"
+			},
+			{
+				"name": "PanStatus",
+				"type": "String"
+			},
+			{
+				"name": "CommissionSalesGroupId",
+				"type": "String"
+			},
+			{
+				"name": "NameAlias",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFaxPurpose",
+				"type": "String"
+			},
+			{
+				"name": "PaymentIdType",
+				"type": "String"
+			},
+			{
+				"name": "VendorAccount",
+				"type": "String"
+			},
+			{
+				"name": "AddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "ResidenceForeignCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "RFCNumber",
+				"type": "String"
+			},
+			{
+				"name": "PersonHobbies",
+				"type": "String"
+			},
+			{
+				"name": "ElectronicLocationId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactLinkedInPurpose",
+				"type": "String"
+			},
+			{
+				"name": "IsOneTimeCustomer",
+				"type": "String"
+			},
+			{
+				"name": "ForeignCustomer",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTMAGroupId",
+				"type": "String"
+			},
+			{
+				"name": "AddressValidFrom",
+				"type": "String"
+			},
+			{
+				"name": "CompanyType",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationNumberOfEmployees",
+				"type": "String"
+			},
+			{
+				"name": "IsRFIDItemTaggingEnabled",
+				"type": "String"
+			},
+			{
+				"name": "CustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "GiroTypeInterestNote",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryReason",
+				"type": "String"
+			},
+			{
+				"name": "TaxRegistrationId",
+				"type": "String"
+			},
+			{
+				"name": "PaymentUseCashDiscount",
+				"type": "String"
+			},
+			{
+				"name": "DiscountPriceGroupId",
+				"type": "String"
+			},
+			{
+				"name": "AddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "SuframaNumber",
+				"type": "String"
+			},
+			{
+				"name": "IdentificationNumber",
+				"type": "String"
+			},
+			{
+				"name": "PersonPhoneticFirstName",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactTelexPurpose",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFacebookPurpose",
+				"type": "String"
+			},
+			{
+				"name": "CompanyChain",
+				"type": "String"
+			},
+			{
+				"name": "BrazilianINSSCEI",
+				"type": "String"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryContactFaxDescription",
+				"type": "String"
+			},
+			{
+				"name": "NatureOfAssessee",
+				"type": "String"
+			},
+			{
+				"name": "WriteoffReason",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "PersonPhoneticLastName",
+				"type": "String"
+			},
+			{
+				"name": "LanguageId",
+				"type": "String"
+			},
+			{
+				"name": "AddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "IsPurchRequestUsed",
+				"type": "String"
+			},
+			{
+				"name": "PIPApprovedCustomerGroup",
+				"type": "String"
+			},
+			{
+				"name": "PIPCustomerCheckItem",
+				"type": "String"
+			},
+			{
+				"name": "PIPCertOfAnalysisCustGroup",
+				"type": "String"
+			},
+			{
+				"name": "PIPPrintCustSpecificCertOfAnalysis",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

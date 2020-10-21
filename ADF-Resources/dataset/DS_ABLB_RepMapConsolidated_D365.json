@@ -1,0 +1,122 @@
+{
+	"name": "DS_ABLB_RepMapConsolidated_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('GIL_tbl_Rep_Map_Consolidated_D365-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "Finesse",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": "¬",
+			"rowDelimiter": "Þ",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "VIVIAN OWYANG",
+				"type": "String"
+			},
+			{
+				"name": "VIVIAN",
+				"type": "String"
+			},
+			{
+				"name": "650-593-4447",
+				"type": "String"
+			},
+			{
+				"name": "Prop_3",
+				"type": "String"
+			},
+			{
+				"name": "66 ENCINA AVE",
+				"type": "String"
+			},
+			{
+				"name": "Prop_5",
+				"type": "String"
+			},
+			{
+				"name": "Prop_6",
+				"type": "String"
+			},
+			{
+				"name": "ATHERTON",
+				"type": "String"
+			},
+			{
+				"name": "CA",
+				"type": "String"
+			},
+			{
+				"name": "94027",
+				"type": "String"
+			},
+			{
+				"name": "Prop_10",
+				"type": "String"
+			},
+			{
+				"name": "2008-12-08 16:07:27.0000000",
+				"type": "String"
+			},
+			{
+				"name": "372.0000",
+				"type": "String"
+			},
+			{
+				"name": "0",
+				"type": "String"
+			},
+			{
+				"name": "1",
+				"type": "String"
+			},
+			{
+				"name": "Prop_15",
+				"type": "String"
+			},
+			{
+				"name": "Prop_16",
+				"type": "String"
+			},
+			{
+				"name": "Prop_17",
+				"type": "String"
+			},
+			{
+				"name": "Prop_18",
+				"type": "String"
+			},
+			{
+				"name": "IL",
+				"type": "String"
+			},
+			{
+				"name": "2019-02-19 03:50:24.6770000",
+				"type": "String"
+			},
+			{
+				"name": "UserErrorInvalidDataValue",
+				"type": "String"
+			},
+			{
+				"name": "Column 'orddate' contains an invalid value '650-593-4447'. Cannot convert '650-593-4447' to type 'DateTime'.",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

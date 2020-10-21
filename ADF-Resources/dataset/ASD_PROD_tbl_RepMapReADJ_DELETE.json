@@ -1,0 +1,30 @@
+{
+	"name": "ASD_PROD_tbl_RepMapReADJ_DELETE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "source",
+				"type": "varchar"
+			},
+			{
+				"name": "customerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "salesmanCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_RepMapReADJ_DELETE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "PL_Merge SalesInvoiceLines7Days_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored Proc Merge_stgSalesInvoiceLines",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dwh.Merge_stgSalesInvoiceLines"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-11T23:35:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

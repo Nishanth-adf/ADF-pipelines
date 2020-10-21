@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_Shipping_Methods_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Mi9_Shipping_Methods_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

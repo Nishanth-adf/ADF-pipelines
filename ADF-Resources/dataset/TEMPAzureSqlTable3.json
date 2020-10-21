@@ -1,0 +1,58 @@
+{
+	"name": "TEMPAzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Customer_ID_Netsuite_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Customer_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Billing_State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Billing_Zip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Billing_Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Top_Level_Parent_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Top_Level_Parent_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer_Type_ID_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales_Rep_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales_Rep_Name",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_BA_CustomersTemp"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,42 @@
+{
+	"name": "DS_ASQLOrder_Line__c",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Code__c",
+				"type": "String"
+			},
+			{
+				"name": "Description__c",
+				"type": "String"
+			},
+			{
+				"name": "Discount__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExternalID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "List_Price__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "OrderInvoiceKey__c",
+				"type": "Int32"
+			},
+			{
+				"name": "OrderlineKey__c",
+				"type": "Int32"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

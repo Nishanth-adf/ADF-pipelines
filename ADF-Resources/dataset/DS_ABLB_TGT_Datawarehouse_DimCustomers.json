@@ -1,0 +1,31 @@
+{
+	"name": "DS_ABLB_TGT_Datawarehouse_DimCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('ALVLDW_Datawarehouse_DimCustomers_',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/DataWarehouse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

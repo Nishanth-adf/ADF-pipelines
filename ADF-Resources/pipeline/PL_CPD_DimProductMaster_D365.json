@@ -1,0 +1,33 @@
+{
+	"name": "PL_CPD_DimProductMaster_D365",
+	"properties": {
+		"activities": [
+			{
+				"name": "DimProductMaster_D365_INCR_LOAD",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_dimProductMaster_D365_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-27T16:34:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

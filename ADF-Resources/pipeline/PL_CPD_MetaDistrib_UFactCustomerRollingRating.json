@@ -1,0 +1,95 @@
+{
+	"name": "PL_CPD_MetaDistrib_UFactCustomerRollingRating",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_UFactCustomerRollingRating",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetaUFactCustomerRollingRating;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerRatingID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CustomerRatingID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustomer",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustomer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RatingID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RatingID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DateKey",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DateKey",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_UFactCustomerRollingRating",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetaUFactCustomerRollingRating",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:41:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

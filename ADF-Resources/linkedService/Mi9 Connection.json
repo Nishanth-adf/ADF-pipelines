@@ -1,0 +1,12 @@
+{
+	"name": "Mi9 Connection",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "server=db-2.chs1gq6fhsa8.us-west-2.rds.amazonaws.com;port=3306;database=metagenics_live;user=odbc_meta;sslmode=1;usesystemtruststore=0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1FVEFFRFBBREZfMzNlODZhZTAtNmU3MS00NzI2LWJhZTItNjc0YmFkMDE2ZGI0Ig0KfQ=="
+		}
+	}
+}

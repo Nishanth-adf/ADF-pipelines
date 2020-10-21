@@ -1,0 +1,241 @@
+{
+	"name": "DS_ABLB_TGT_OT_oeshipaddr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "subno",
+				"type": "String"
+			},
+			{
+				"name": "shipno",
+				"type": "String"
+			},
+			{
+				"name": "ship_to_name",
+				"type": "String"
+			},
+			{
+				"name": "contact",
+				"type": "String"
+			},
+			{
+				"name": "attention",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "ext",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "county",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "shipvia_code",
+				"type": "String"
+			},
+			{
+				"name": "last_shipped",
+				"type": "String"
+			},
+			{
+				"name": "tax_code",
+				"type": "String"
+			},
+			{
+				"name": "shipcomplete",
+				"type": "String"
+			},
+			{
+				"name": "correspondence",
+				"type": "String"
+			},
+			{
+				"name": "fscm_cage",
+				"type": "String"
+			},
+			{
+				"name": "invoicecopies",
+				"type": "String"
+			},
+			{
+				"name": "priority",
+				"type": "String"
+			},
+			{
+				"name": "tax1",
+				"type": "String"
+			},
+			{
+				"name": "tax2",
+				"type": "String"
+			},
+			{
+				"name": "tax3",
+				"type": "String"
+			},
+			{
+				"name": "tax4",
+				"type": "String"
+			},
+			{
+				"name": "tax5",
+				"type": "String"
+			},
+			{
+				"name": "custclass",
+				"type": "String"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "discount",
+				"type": "String"
+			},
+			{
+				"name": "pcntovercost",
+				"type": "String"
+			},
+			{
+				"name": "telex",
+				"type": "String"
+			},
+			{
+				"name": "usenet",
+				"type": "String"
+			},
+			{
+				"name": "fax",
+				"type": "String"
+			},
+			{
+				"name": "voicemail",
+				"type": "String"
+			},
+			{
+				"name": "entityno",
+				"type": "String"
+			},
+			{
+				"name": "currencycd",
+				"type": "String"
+			},
+			{
+				"name": "salutation",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "locationcd",
+				"type": "String"
+			},
+			{
+				"name": "deal_no",
+				"type": "String"
+			},
+			{
+				"name": "bankid",
+				"type": "String"
+			},
+			{
+				"name": "acctid",
+				"type": "String"
+			},
+			{
+				"name": "tele_salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "web_custno",
+				"type": "String"
+			},
+			{
+				"name": "certificate_expire_date",
+				"type": "String"
+			},
+			{
+				"name": "intrans_loc",
+				"type": "String"
+			},
+			{
+				"name": "email_update",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "Þ",
+				"rowDelimiter": "¬",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('OT_oeshipaddr-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse/OT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

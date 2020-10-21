@@ -1,0 +1,138 @@
+{
+	"name": "PL_DATA_CPD_DimOrder_2_SFOrder",
+	"properties": {
+		"activities": [
+			{
+				"name": "PL_DATA_CPD_DimOrder_2_SFOrder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select DO.orderDate, DO.orderNumber,DO.OrderId, FO.invoiceNumber, PM.description, FO.quantity, SUM(LINEAMOUNT-LineTotalTaxAmount) as TotalSaleOfOrder, DO.statusCode \nfrom dbo.factOrderInvoiceSales_D365 FO\nJOIN dbo.dimOrder_D365 DO ON  DO.orderID = FO.orderID\nJOIN dbo.dimProductMaster_D365 PM ON PM.productID = FO.productID\nWHERE FO.amountType = 'Product Sales' \ngroup by DO.orderDate, DO.orderNumber, DO.Orderid,FO.invoiceNumber, PM.description, FO.quantity, DO.statusCode",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "OrderInvoiceKey",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "orderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "orderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "OrderInvoiceKey__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "invoiceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Invoice__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product_Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalSaleOfOrder",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Total_Order_Price__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "statusCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimOrders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_DimOrders",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-16T15:55:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

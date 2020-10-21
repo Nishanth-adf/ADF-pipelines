@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SRC_StgSalesInvoiceHeader_MaxDateTimes",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgSalesInvoiceHeader"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

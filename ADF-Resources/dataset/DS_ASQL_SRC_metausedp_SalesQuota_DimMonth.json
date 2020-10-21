@@ -1,0 +1,28 @@
+{
+	"name": "DS_ASQL_SRC_metausedp_SalesQuota_DimMonth",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Bariatric Advantage"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "month",
+				"type": "Int16"
+			},
+			{
+				"name": "year",
+				"type": "Int16"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgSalesQuota]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_Addresses_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Mi9_Addresses_staging_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

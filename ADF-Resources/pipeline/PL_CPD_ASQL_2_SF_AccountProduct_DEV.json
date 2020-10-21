@@ -1,0 +1,594 @@
+{
+	"name": "PL_CPD_ASQL_2_SF_AccountProduct_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_PROD_Download_Products",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_Prod_download_Accounts",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id,Name from Item__c where Purchase_Unit__c <>''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table [ods].[sf_PROD_Products_DEV]",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_PROD_Products",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_AccountProduct_Load_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_Prod_download_Accounts",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_Load_Item__c",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select CustomerKeyERP__c, PrimaryCustNo__c, name, Areaid__c, id,  \nFinesse__c,Emerson__c,BodyLogic__c,EightWeek__c,FullScript__c\nFROM Account\nwhere CustomerKeyERP__c <> ''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table [ods].[sfp_Account_DEV]",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKey__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Finesse__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "D365__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Emerson__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Emerson__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EightWeek__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EightWeek__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FullScript__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FullScript__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_Prod_Accounts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_Account_Product_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_Load_Item__c",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT \nPurchase_Unit__c\t\t\t\t\n,Family\t\t\t\n,Name\t\t\n,Description\t\n,Product_Line__c FROM\n(SELECT\nPurchase_Unit__c\t\t=\tCASE WHEN dpm.description is NULL THEN dpm.catalogNumber + '-' + dpm.source\n\t\t\t\t\t\t\tELSE dpm.catalogNumber + '-' + dpm.source + '-' +\tdpm.description \tEND\n,Family\t\t\t\t\t=\tCASE WHEN dpm.productFamily is NULL then 'NULL IN SOURCE' ELSE dpm.productFamily END\n,Name\t\t\t\t\t=\tCASE WHEN dpm.description is null then 'NULL IN SOURCE' WHEN dpm.description='' THEN 'EMPTY IN SOURCE' ELSE dpm.description END\n,Description\t\t\t\t\t=\tCASE WHEN dpm.description is null then 'NULL IN SOURCE' WHEN dpm.description='' THEN 'EMPTY IN SOURCE' ELSE dpm.description END\n,Product_Line__c\t\t=\tCASE WHEN dpm.ProductLine is NULL then 'NULL IN SOURCE' ELSE dpm.productLine END\n,RANKs\t\t\t\t\t=\tROW_NUMBER() over(partition by catalogNumber+case when source='IL' then '090' when source='OT' then '080' else source end  order by catalogNumber+source)\nFROM dbo.dimProductmaster_D365 dpm Where dpm.productID<>'-1' and dpm.catalogNumber <> '.' AND source<>'NS'\n)x WHERE X.RANKs = 1 \n\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Purchase_Unit__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Family",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Family__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product_Line__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product_Line__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Purchase_Unit__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Purchase_Unit__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_dimProductmaster_2_SF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_SF_PROD_Item__c",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Account_Product_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_PROD_Download_Products",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_AccountProductSales_SF_PROD_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerProductKeyy__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "YTD__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Account__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PYTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PYear__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_FullScript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_FullScript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_PureScriptions__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_PureScriptions__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_EightWeeks__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_EightWeeks__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYear_FullScript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYear_FullScript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_Fullscript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_Fullscript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerProductKeyy__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerProductKeyy__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_AccountProduct_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_AccountProduct_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce Dev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-19T11:11:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

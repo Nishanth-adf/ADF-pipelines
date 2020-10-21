@@ -1,0 +1,51 @@
+{
+	"name": "DS_TGT_ASQL_StgCommissionableSKUS_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DB",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Comment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalogNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CatalognoDesc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Lastupdated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgCommissionableSkus_D365]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

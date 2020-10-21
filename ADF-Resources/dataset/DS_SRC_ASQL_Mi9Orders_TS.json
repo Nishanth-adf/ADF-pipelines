@@ -1,0 +1,661 @@
+{
+	"name": "DS_SRC_ASQL_Mi9Orders_TS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "order_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "user_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "wallet_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "customer_first_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_last_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "subtotal",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "grandtotal",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "created",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "updated",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "date_fulfilled",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "payment_method",
+				"type": "nvarchar"
+			},
+			{
+				"name": "card_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "card_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "card_exp_date_month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "card_exp_date_year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "card_holder",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_first_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_middle_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_last_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_company",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_address1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_address2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_address3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_city",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_state_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "cardholder_zip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_country_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "cardholder_phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardholder_evening_phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "time_on_site",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "customer_ip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "remote_ip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "authorization_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "google_order_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "google_buyer_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "google_checkout",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "avs",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cvn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "google_payment_protection",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "google_account_age",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "site_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "tax",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "pst",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "gst",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "hst",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "tax_import_duties",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "tax_import_taxes",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "composite_import_taxes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "auth_code",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "retry_count",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "financial_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_financial_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "internal_notes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "customer_notes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "paypal",
+				"type": "nvarchar"
+			},
+			{
+				"name": "paypal_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "paypal_payer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "card_start_month",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "card_start_year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "deleted",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "kw",
+				"type": "nvarchar"
+			},
+			{
+				"name": "custom_status_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "google_financial_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "google_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "classification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "author_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "verified",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "last_custom_status_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "last_custom_status_id_update",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "last_status_change",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "email_notification_sent",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "financial_status_override",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "coupons_discount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "billing_matches_shipping",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "not_send_status_update",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "amazon_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_payment_method",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_current_transaction",
+				"type": "nvarchar"
+			},
+			{
+				"name": "user_agent",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_order_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_shipping_service_level",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "amazon_notification_sent",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "cron_fulfillment_date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "cardinal_order_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cardinal_payment_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "referrer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "archived",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "bill_address_key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "test",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "wallet_deleted",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "coupons_shipping_discount",
+				"type": "decimal",
+				"precision": 11,
+				"scale": 2
+			},
+			{
+				"name": "channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "channel_order_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "hostname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "mobile_used",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "purchase_order_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "purchaser",
+				"type": "nvarchar"
+			},
+			{
+				"name": "pci_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "not_send_canceled_items",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "canceled_items_notes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "locked",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "currency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "currency_rate",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			},
+			{
+				"name": "rma_refunded_shipping",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 2
+			},
+			{
+				"name": "note_to_customer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "balance_due",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "shipping_pull",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "shipping_pos",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "rush_shipping",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 3
+			},
+			{
+				"name": "reward_points_for_referrer_order_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "reward_points_discount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "reward_points_to_discount_dollar",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "reward_points_for_spent_dollar",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "sales_agent_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "merchant_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "external_credit_card_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "netsuite_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "netsuite_export_failed_cnt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "no_returns",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "practitioner_monthly_sales",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "new_order_coupon_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "credit_voucher_amount",
+				"type": "decimal",
+				"precision": 11,
+				"scale": 2
+			},
+			{
+				"name": "drop_shipper_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "old_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "netsuite_notified",
+				"type": "nvarchar"
+			},
+			{
+				"name": "order_key",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_Orders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

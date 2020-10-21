@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_MI9_Users",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_users_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

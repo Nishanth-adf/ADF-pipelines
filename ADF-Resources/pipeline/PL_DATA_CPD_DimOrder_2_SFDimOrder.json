@@ -1,0 +1,79 @@
+{
+	"name": "PL_DATA_CPD_DimOrder_2_SFDimOrder",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimOrder_2_SFDimOrder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT top 10 \n [orderID]\n      ,'New_Inserts' [orderNumber]\n      ,[orderDate]\n      ,[customerNumber]\n      ,[statusCode]\n      ,[buyer]\n      ,[buyerPhone]\n      ,[shipToName]\n      ,[attention]\n      ,[phone]\n      ,[addressLine1]\n      ,[addressLine2]\n      ,[addressLine3]\n      ,[city]\n      ,[country]\n      ,[zip]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n      ,[state]\n      ,[orderType]\n  FROM [dbo].[dimOrder] where OrderId <> '-1'",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "orderID__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"orderID": "orderID__c",
+							"orderNumber": "orderNumber__c",
+							"orderDate": "orderDate__c",
+							"customerNumber": "customerNumber__c",
+							"statusCode": "statusCode__c",
+							"buyer": "buyer__c",
+							"buyerPhone": "buyerPhone__c",
+							"shipToName": "shipToName__c",
+							"attention": "attention__c",
+							"phone": "phone__c",
+							"addressLine1": "addressLine1__c",
+							"addressLine2": "addressLine2__c",
+							"addressLine3": "addressLine3__c",
+							"city": "city__c",
+							"country": "country__c",
+							"zip": "zip__c",
+							"insertDate": "insertDate__c",
+							"insertBy": "insertBy__c",
+							"modifiedDate": "modifiedDate__c",
+							"modifiedBy": "modifiedBy__c",
+							"state": "state__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimOrder",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_DimOrder",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-11T11:05:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

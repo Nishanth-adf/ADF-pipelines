@@ -1,0 +1,188 @@
+{
+	"name": "PL_CPD_Products_2_SF_Product_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Products_2_SF_Product",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT \nPurchase_Unit__c\t\t\t\t\n,ProductCode\t\n,Family\t\t\t\n,Name\t\t\t\n,Product_Line__c FROM\n(SELECT\nPurchase_Unit__c\t\t=\tCASE WHEN dpm.description is NULL THEN dpm.catalogNumber + '-' + dpm.source\n\t\t\t\t\t\t\tELSE dpm.catalogNumber + '-' + dpm.source + '-' +\tdpm.description \tEND\n,ProductCode\t\t\t=\tCASE WHEN dpm.catalogNumber is NULL then 'NULL IN SOURCE' ELSE dpm.catalogNumber  END\n,Family\t\t\t\t\t=\tCASE WHEN dpm.productFamily is NULL then 'NULL IN SOURCE' ELSE dpm.productFamily END\n,Name\t\t\t\t\t=\tCASE WHEN dpm.description is null then 'NULL IN SOURCE' WHEN dpm.description='' THEN 'EMPTY IN SOURCE' ELSE dpm.description END\n,Product_Line__c\t\t=\tCASE WHEN dpm.ProductLine is NULL then 'NULL IN SOURCE' ELSE dpm.productLine END\n,RANKs\t\t\t\t\t=\tROW_NUMBER() over(partition by catalogNumber+source  order by catalogNumber+source)\nFROM dwh.dimProductmaster_D365 dpm Where dpm.productID<>'-1' and dpm.catalogNumber <> '.' AND source='NS'\n)x WHERE X.RANKs = 1 ORDER BY X.ProductCode asc",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Purchase_Unit__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProductCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Family",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Family",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Purchase_Unit__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Purchase_Unit__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product_Line__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product_Line__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Products_for_SF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_BA_SF_Products_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_BA_Product_2_ASQL_SF_BA_Products",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Products_2_SF_Product",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id,Purchase_Unit__c,ProductCode from Product2",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table ods.sf_ba_Products_Prod;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Purchase_Unit__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Purchase_Unit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalogNumber",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SINK_BA_SF_Products_Prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_SF_BA_PRODUCTS_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Integration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-28T11:42:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

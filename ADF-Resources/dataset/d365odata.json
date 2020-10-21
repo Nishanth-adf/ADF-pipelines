@@ -1,0 +1,93 @@
+{
+	"name": "d365odata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OData1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "ODataResource",
+		"structure": [
+			{
+				"name": "ChartOfAccounts",
+				"type": "String"
+			},
+			{
+				"name": "MainAccountId",
+				"type": "String"
+			},
+			{
+				"name": "ActiveTo",
+				"type": "DateTimeOffset"
+			},
+			{
+				"name": "ChartOfAccountsRecId",
+				"type": "Int64"
+			},
+			{
+				"name": "ActiveFrom",
+				"type": "DateTimeOffset"
+			},
+			{
+				"name": "AccountCategoryDescription",
+				"type": "String"
+			},
+			{
+				"name": "MainAccountCategory",
+				"type": "String"
+			},
+			{
+				"name": "ParentMainAccountId",
+				"type": "String"
+			},
+			{
+				"name": "ExchangeAdjustmentRateType",
+				"type": "String"
+			},
+			{
+				"name": "FinancialReportingExchangeRateType",
+				"type": "String"
+			},
+			{
+				"name": "SRUCode",
+				"type": "String"
+			},
+			{
+				"name": "DefaultCurrency",
+				"type": "String"
+			},
+			{
+				"name": "OffsetAccountDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "MainAccountRecId",
+				"type": "Int64"
+			},
+			{
+				"name": "User",
+				"type": "String"
+			},
+			{
+				"name": "OpeningAccountId",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "DefaultConsolidationAccount",
+				"type": "String"
+			},
+			{
+				"name": "ReportingExchangeAdjustmentRateType",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"path": "MainAccounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

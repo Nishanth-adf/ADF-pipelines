@@ -1,0 +1,69 @@
+{
+	"name": "DEVDest_stgD365MainAccountLegalEntities",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "MainAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "ChartOfAccounts",
+				"type": "varchar"
+			},
+			{
+				"name": "LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxTableLegalEntity",
+				"type": "varchar"
+			},
+			{
+				"name": "ExchangeAdjustmentRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemSalesTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FixedDimensionsDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemSalesTaxGroupHeadingLegalEntity",
+				"type": "varchar"
+			},
+			{
+				"name": "ReportingExchangeAdjustmentRateType",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365MainAccountLegalEntities"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,51 @@
+{
+	"name": "PL_CPD_MI9_Packages",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Packages",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "select * from packages"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.Mi9_packages_Staging",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable5",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_MI9_Packages",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MI9 PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-04T13:06:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

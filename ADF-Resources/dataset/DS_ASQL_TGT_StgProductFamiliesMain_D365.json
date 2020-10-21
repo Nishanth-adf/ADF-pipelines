@@ -1,0 +1,109 @@
+{
+	"name": "DS_ASQL_TGT_StgProductFamiliesMain_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "acctyr",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "acctper",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "db",
+				"type": "varchar"
+			},
+			{
+				"name": "Group",
+				"type": "varchar"
+			},
+			{
+				"name": "catalogno",
+				"type": "varchar"
+			},
+			{
+				"name": "desc",
+				"type": "varchar"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Line",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Family",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Family_Variety",
+				"type": "varchar"
+			},
+			{
+				"name": "Sub Group",
+				"type": "varchar"
+			},
+			{
+				"name": "matrixcd",
+				"type": "varchar"
+			},
+			{
+				"name": "saleacctcr",
+				"type": "varchar"
+			},
+			{
+				"name": "CIA",
+				"type": "varchar"
+			},
+			{
+				"name": "Private_Label_Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "varchar"
+			},
+			{
+				"name": "TPM",
+				"type": "varchar"
+			},
+			{
+				"name": "Sub2_Group",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Prod_Group1",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Prod_Group2",
+				"type": "varchar"
+			},
+			{
+				"name": "DBSource",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgTblProductFamiliesMain_D365]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

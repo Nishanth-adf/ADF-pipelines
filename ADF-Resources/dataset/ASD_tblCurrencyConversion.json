@@ -1,0 +1,93 @@
+{
+	"name": "ASD_tblCurrencyConversion",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "acctper",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "cfaud",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfcan",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfeur",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfnzd",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfaudnzd",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfaudEOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfcanEOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfeurEOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfnzdEOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfaudnzdEOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ConstCAD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ConstAUD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ConstEuro",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_CurrencyConversion"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

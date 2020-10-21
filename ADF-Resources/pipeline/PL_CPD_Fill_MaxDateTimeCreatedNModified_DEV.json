@@ -1,0 +1,76 @@
+{
+	"name": "PL_CPD_Fill_MaxDateTimeCreatedNModified_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Fill_MaxDateTimeCreatedNModified",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT\n    MAX (DateTimeCreated) AS 'MaxDateTimeCreated'\n   ,MAX (DateTimeModified) AS 'MaxDateTimeModified'\nFROM staging.stgSalesInvoiceHeader",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dwh.InvoiceHeaderMaxDateTimes;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MaxDateTimeCreated",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "MaxDateTimeCreated",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "MaxDateTimeModified",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "MaxDateTimeModified",
+									"type": "DateTimeOffset"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_Dev_Staging_stgSalesInvoiceHeader",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Dev_dwh_InvoiceHeaderMaxDateTimes",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-26T22:41:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

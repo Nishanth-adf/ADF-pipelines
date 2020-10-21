@@ -1,0 +1,51 @@
+{
+	"name": "pl_shipitProd_packages_prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_shipitProd_packages",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.shipitProd_Packages_Staging",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_shipitProd_src_packages_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_shipitProd_tgt_packages_prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ShipItProd Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-26T03:58:13Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

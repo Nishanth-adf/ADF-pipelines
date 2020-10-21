@@ -1,0 +1,140 @@
+{
+	"name": "PL_BA_to_SF_OneTouch_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_CPD_Customers_2_SF_Account_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Customers_2_SF_Account_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_Orders_2_SF_Order_Prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Customers_2_SF_Account_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Orders_2_SF_Order_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_CPD_OrderLine_2_SF_OrderLine_Prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Products_2_SF_Product_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_OrderLine_2_SF_OrderLine_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_Products_2_SF_Product_Prod",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Orders_2_SF_Order_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Products_2_SF_Product_Prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_CPD_BA_PractitionerCodes",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_BA_to_SF_OneTouch_Prod) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;b.petkus@bariatricadvantage.com;p.keshishian@bariatricadvantage.com"
+					}
+				}
+			},
+			{
+				"name": "EPL_PL_CPD_BA_PractitionerCodes",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL_CPD_OrderLine_2_SF_OrderLine_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_BA_PractitionersCode_and_URL",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Integration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-21T10:53:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

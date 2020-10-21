@@ -1,0 +1,88 @@
+{
+	"name": "DS_ASQL_TGT_DimProductMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "productLaunchDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "applicableRegion",
+				"type": "String"
+			},
+			{
+				"name": "group1",
+				"type": "String"
+			},
+			{
+				"name": "catalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "description",
+				"type": "String"
+			},
+			{
+				"name": "productGroupType",
+				"type": "String"
+			},
+			{
+				"name": "productFamily",
+				"type": "String"
+			},
+			{
+				"name": "productFamilyVariety",
+				"type": "String"
+			},
+			{
+				"name": "subgroup",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "String"
+			},
+			{
+				"name": "Active_Ind",
+				"type": "String"
+			},
+			{
+				"name": "Serving",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "productLine",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimProductMaster]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

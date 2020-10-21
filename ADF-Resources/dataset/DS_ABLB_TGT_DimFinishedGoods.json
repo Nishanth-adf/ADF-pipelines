@@ -1,0 +1,261 @@
+{
+	"name": "DS_ABLB_TGT_DimFinishedGoods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "ProductPK",
+				"type": "String"
+			},
+			{
+				"name": "CatalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "CatalogName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogNumberName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogMasterName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogMasterNumberName",
+				"type": "String"
+			},
+			{
+				"name": "PartNumber",
+				"type": "String"
+			},
+			{
+				"name": "PartEnityNumber",
+				"type": "String"
+			},
+			{
+				"name": "ProductGroupNumber",
+				"type": "String"
+			},
+			{
+				"name": "GroupDesc",
+				"type": "String"
+			},
+			{
+				"name": "SubGroupDesc",
+				"type": "String"
+			},
+			{
+				"name": "PartRev",
+				"type": "String"
+			},
+			{
+				"name": "UnitOfMeasure",
+				"type": "String"
+			},
+			{
+				"name": "ListPrice",
+				"type": "String"
+			},
+			{
+				"name": "WSPrice",
+				"type": "String"
+			},
+			{
+				"name": "DistPrice",
+				"type": "String"
+			},
+			{
+				"name": "PackageCode",
+				"type": "String"
+			},
+			{
+				"name": "Weight",
+				"type": "String"
+			},
+			{
+				"name": "PriceChange",
+				"type": "String"
+			},
+			{
+				"name": "MarkUp",
+				"type": "String"
+			},
+			{
+				"name": "SourceEnterDate",
+				"type": "String"
+			},
+			{
+				"name": "LastOrdered",
+				"type": "String"
+			},
+			{
+				"name": "SpecialTax",
+				"type": "String"
+			},
+			{
+				"name": "Taxable",
+				"type": "String"
+			},
+			{
+				"name": "MinOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "MatrixCD",
+				"type": "String"
+			},
+			{
+				"name": "jocreate",
+				"type": "String"
+			},
+			{
+				"name": "Ref1",
+				"type": "String"
+			},
+			{
+				"name": "Ref2",
+				"type": "String"
+			},
+			{
+				"name": "SeminarDate",
+				"type": "String"
+			},
+			{
+				"name": "Ref4",
+				"type": "String"
+			},
+			{
+				"name": "Ref5",
+				"type": "String"
+			},
+			{
+				"name": "Ref6",
+				"type": "String"
+			},
+			{
+				"name": "Ref6Desc",
+				"type": "String"
+			},
+			{
+				"name": "Ref7",
+				"type": "String"
+			},
+			{
+				"name": "Ref7Desc",
+				"type": "String"
+			},
+			{
+				"name": "Ref8",
+				"type": "String"
+			},
+			{
+				"name": "ActiveInd",
+				"type": "String"
+			},
+			{
+				"name": "Conversion",
+				"type": "String"
+			},
+			{
+				"name": "Classify",
+				"type": "String"
+			},
+			{
+				"name": "VariationCD",
+				"type": "String"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "String"
+			},
+			{
+				"name": "optctgryline",
+				"type": "String"
+			},
+			{
+				"name": "group_desc",
+				"type": "String"
+			},
+			{
+				"name": "StandardCost",
+				"type": "String"
+			},
+			{
+				"name": "CategoryManager",
+				"type": "String"
+			},
+			{
+				"name": "CIA",
+				"type": "String"
+			},
+			{
+				"name": "ProductLine",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "String"
+			},
+			{
+				"name": "DWCreateDateTime",
+				"type": "String"
+			},
+			{
+				"name": "DWUpdateDateTime",
+				"type": "String"
+			},
+			{
+				"name": "SourceDB",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamilyOLD",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily2",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('DimFinishedGoods-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/DataWarehouse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

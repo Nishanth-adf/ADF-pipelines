@@ -1,0 +1,48 @@
+{
+	"name": "ASD_DEV_stgMetasourceDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "source_id",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "source_name",
+				"type": "varchar"
+			},
+			{
+				"name": "code_prefix",
+				"type": "varchar"
+			},
+			{
+				"name": "source_code",
+				"type": "varchar"
+			},
+			{
+				"name": "country_cd",
+				"type": "varchar"
+			},
+			{
+				"name": "currency_key",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetasourceDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

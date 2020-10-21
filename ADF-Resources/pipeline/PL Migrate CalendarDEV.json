@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate CalendarDEV",
+	"properties": {
+		"description": "Purge and Migrate PROD.Calendar to DEV.CalendarDEV\n\nAuthor: GBuenaventura\nDate: 2/18/2020",
+		"activities": [
+			{
+				"name": "Copy_CalendarDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.CalendarDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_Prod_Calendar",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_CalendarDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-18T23:22:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

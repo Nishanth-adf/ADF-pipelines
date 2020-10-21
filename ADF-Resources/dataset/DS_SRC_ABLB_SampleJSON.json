@@ -1,0 +1,172 @@
+{
+	"name": "DS_SRC_ABLB_SampleJSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CrossApplyJSON.json",
+				"container": "metausedpblobdev"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Summary": {
+					"type": "object",
+					"properties": {
+						"Recommended Services": {
+							"type": "integer"
+						},
+						"Additional Services": {
+							"type": "integer"
+						},
+						"Overridden Services": {
+							"type": "integer"
+						}
+					}
+				},
+				"Details": {
+					"type": "object",
+					"properties": {
+						"IsDateModified": {
+							"type": "boolean"
+						},
+						"OldPackageLevel": {
+							"type": "integer"
+						},
+						"CurrencyCode": {
+							"type": "string"
+						},
+						"MaxNumberOfOptionalServicesToBeAdded": {
+							"type": "integer"
+						},
+						"PackageType": {
+							"type": "string"
+						},
+						"Contracts": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"IsPublishedToCompassOne": {
+										"type": "boolean"
+									},
+									"PublishedToCompassOneComments": {
+										"type": "null"
+									},
+									"MessageInformation": {
+										"type": "null"
+									},
+									"ServiceLineItems": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"RecommendedQuantity": {
+													"type": "number"
+												},
+												"OverrideQuantity": {
+													"type": "null"
+												},
+												"FinalQuantity": {
+													"type": "number"
+												},
+												"Comments": {
+													"type": "string"
+												},
+												"IsSystemDefined": {
+													"type": "boolean"
+												},
+												"ListRateLocal": {
+													"type": "number"
+												},
+												"MinimumQuantity": {
+													"type": "number"
+												},
+												"MaximumQuantity": {
+													"type": "number"
+												},
+												"UnifiedPRSHours": {
+													"type": "number"
+												},
+												"PremierSoldMargin": {
+													"type": "number"
+												},
+												"IsRequired": {
+													"type": "boolean"
+												},
+												"Country": {
+													"type": "string"
+												},
+												"PackageType": {
+													"type": "string"
+												},
+												"ServiceId": {
+													"type": "integer"
+												},
+												"ServiceName": {
+													"type": "string"
+												},
+												"ListRate": {
+													"type": "number"
+												},
+												"CostRate": {
+													"type": "number"
+												},
+												"LocalPrice": {
+													"type": "number"
+												},
+												"USDPrice": {
+													"type": "number"
+												}
+											}
+										}
+									},
+									"DeletedSystemRecomendedServiceLineItems": {
+										"type": "array"
+									},
+									"Id": {
+										"type": "integer"
+									},
+									"StartDate": {
+										"type": "string"
+									},
+									"EndDate": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"OutputValues": {
+							"type": "object",
+							"properties": {
+								"finalScore": {
+									"type": "string"
+								},
+								"packageLevelBasedOnScore": {
+									"type": "string"
+								},
+								"packageLevelBasedOnOthers": {
+									"type": "string"
+								},
+								"scopeText": {
+									"type": "string"
+								}
+							}
+						},
+						"DealType": {
+							"type": "integer"
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

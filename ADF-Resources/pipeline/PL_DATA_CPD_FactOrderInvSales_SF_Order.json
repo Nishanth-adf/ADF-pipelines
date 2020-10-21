@@ -1,0 +1,64 @@
+{
+	"name": "PL_DATA_CPD_FactOrderInvSales_SF_Order",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_FactOrderInvSales_SFOrder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select acc.id as Account__c,\nacc.AccountName as AccountName__c,\ndo.orderNumber as Order__c,\nfois.invoiceNumber as Invoice__c,\ncast(do.orderDate as date) as Order_Date__c,\nfois.quantity as QTY__c,\nfois.unitPrice as Ext_Price__c,\ndpm.catalogNumber as Catalog__c\nfrom factOrderInvoiceSales fois\ninner join dimCustomerMaster dcm on fois.customerID=dcm.customerID\ninner join dbo.sfaccount acc on dcm.customerNumber=acc.AccountNumber\ninner join dbo.dimOrder do on fois.orderID=do.orderID\ninner join dbo.dimProductMaster dpm on fois.ProductId=dpm.productID\nwhere  fois.acctyr='2019' and fois.acctper='01' and fois.source='OT'",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Order_Date__c": "Order_Date__c",
+							"Order__c": "Order__c",
+							"Invoice__c": "Invoice__c",
+							"Catalog__c": "Catalog__c",
+							"QTY__c": "QTY__c",
+							"Ext_Price__c": "Ext_Price__c",
+							"Account__c": "Account__c",
+							"AccountName__c": "AccountName__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Load_SFOrderQuery",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_SF_Order",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T11:04:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

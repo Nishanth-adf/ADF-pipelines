@@ -1,0 +1,189 @@
+{
+	"name": "PL_CPD_Aggregated_ASQL_2_SF",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Aggregated_ASQL_2_SF",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_AzureToSFDC_Metagenics_Mapping]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_12__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Prior_YTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Prior_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PMTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PMTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Prior_Year__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Prior_Year__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Current3monthsRating__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Current3monthsRating__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Current12monthsRating__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Current12MonthsRating__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_6__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_3__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Aggregates_For_SFDC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_SFDC_MetaForce_Docebo_Dev_Account",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Salesforce_DEV_Metaforce_Docebo"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-14T08:33:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "src_d365metafin_MainAccounts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365metafin",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "MainAccounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

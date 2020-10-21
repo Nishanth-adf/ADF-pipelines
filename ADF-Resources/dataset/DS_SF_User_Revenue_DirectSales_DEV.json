@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_User_Revenue_DirectSales_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

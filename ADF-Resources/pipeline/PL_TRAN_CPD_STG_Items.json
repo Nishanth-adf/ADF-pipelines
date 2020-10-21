@@ -1,0 +1,50 @@
+{
+	"name": "PL_TRAN_CPD_STG_Items",
+	"properties": {
+		"activities": [
+			{
+				"name": "SC58_NetSuite_Items-2-BLB_BA_Items",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [DELETED]\n      ,[ALLOW_DROP_SHIP]\n      ,[ALT_DEMAND_SOURCE_ITEM_ID]\n      ,[ALWAYS_CHARGE_SHIPPING]\n      ,[ASSET_ACCOUNT_ID]\n      ,[ATP_LEAD_TIME]\n      ,[ATP_METHOD]\n      ,[AVAILABLE_TO_PARTNERS]\n      ,[AVERAGECOST]\n      ,[BACKWARD_CONSUMPTION_DAYS]\n      ,[BILL_EXCH_RATE_VAR_ACCOUNT_ID]\n      ,[BILL_PRICE_VARIANCE_ACCOUNT_ID]\n      ,[BILL_QTY_VARIANCE_ACCOUNT_ID]\n      ,[BUILD_SUB_ASSEMBLIES]\n      ,[CASES_PER_PALLET]\n      ,[CATEGORY1_ID]\n      ,[CATEGORY2_ID]\n      ,[CATEGORY3]\n      ,[CATEGORY4]\n      ,[CATEGORY5]\n      ,[CLASS_ID]\n      ,[COSTING_METHOD]\n      ,[COST_0]\n      ,[COST_CATEGORY]\n      ,[COST_ESTIMATE_TYPE]\n      ,[COUNTRY_OF_MANUFACTURE]\n      ,[COUNT_0]\n      ,[CREATED]\n      ,[CREATE_PLAN_ON_EVENT_TYPE]\n      ,[CURRENT_ON_ORDER_COUNT]\n      ,[CUSTRETURN_VARIANCE_ACCOUNT_ID]\n      ,[DATE_LAST_MODIFIED]\n      ,[DATE_OF_LAST_TRANSACTION]\n      ,[DEFAULT_RETURN_COST]\n      ,[DEFERRED_EXPENSE_ACCOUNT_ID]\n      ,[DEFERRED_REVENUE_ACCOUNT_ID]\n      ,[DELIVERY_MECHANISM_ID]\n      ,[DEMAND_SOURCE]\n      ,[DEMAND_TIME_FENCE]\n      ,[DEPARTMENT_ID]\n      ,[DEPOSIT]\n      ,[DISPLAYNAME]\n      ,[DISTRIBUTION_CATEGORY]\n      ,[DISTRIBUTION_NETWORK]\n      ,[DROPSHIP_EXPENSE_ACCOUNT_ID]\n      ,[EFFECTIVE_BOM_CONTROL_TYPE]\n      ,[EXPENSE_ACCOUNT_ID]\n      ,[FEATUREDDESCRIPTION]\n      ,[FEATUREDITEM]\n      ,[FIXED_LOT_SIZE]\n      ,[FLAVOR]\n      ,[FORWARD_CONSUMPTION_DAYS]\n      ,[FRAUD_RISK]\n      ,[FULL_NAME]\n      ,[FULL_SAMPLE_AVAILABLE]\n      ,[FULL_SAMPLE_ID]\n      ,[FX_ADJUSTMENT_ACCOUNT_ID]\n      ,[GAIN_LOSS_ACCOUNT_ID]\n      ,[HANDLING_COST]\n      ,[HAZMAT]\n      ,[HAZMAT_HAZARD_CLASS]\n      ,[HAZMAT_ID]\n      ,[HAZMAT_ITEM_UNITS]\n      ,[HAZMAT_ITEM_UNITS_QTY]\n      ,[HAZMAT_PACKING_GROUP]\n      ,[HAZMAT_SHIPPING_NAME]\n      ,[INCLUDE_CHILD_SUBSIDIARIES]\n      ,[INCOME_ACCOUNT_ID]\n      ,[INDIVIDUAL_SAMPLE_AVAILABLE]\n      ,[INDIVIDUAL_SAMPLE_ID]\n      ,[INTERCO_EXPENSE_ACCOUNT_ID]\n      ,[INTERCO_INCOME_ACCOUNT_ID]\n      ,[INTERNATIONAL_FLAVOR_ID]\n      ,[INVT_COUNT_CLASSIFICATION]\n      ,[INVT_COUNT_INTERVAL]\n      ,[ISINACTIVE]\n      ,[ISONLINE]\n      ,[ISTAXABLE]\n      ,[IS_CONT_REV_HANDLING]\n      ,[IS_ENFORCE_MIN_QTY_INTERNALLY]\n      ,[IS_HOLD_REV_REC]\n      ,[IS_MOSS]\n      ,[IS_PHANTOM]\n      ,[IS_SPECIAL_ORDER_ITEM]\n      ,[ITEM_DEFINED_COST]\n      ,[ITEM_EXTID]\n      ,[ITEM_ID]\n      ,[ITEM_REVENUE_CATEGORY]\n      ,[LABEL]\n      ,[LAST_COGS_CORRECTION]\n      ,[LAST_INVT_COUNT_DATE]\n      ,[LAST_PURCHASE_PRICE]\n      ,[LOCATION_ID]\n      ,[LOT_NUMBERED]\n      ,[LOT_NUMBERED_ITEM]\n      ,[LOT_SIZING_METHOD]\n      ,[MANUFACTURER]\n      ,[MANUFACTURING_CHARGE_ITEM]\n      ,[MATCH_BILL_TO_RECEIPT]\n      ,[MINIMUM_QUANTITY]\n      ,[MODIFIED]\n      ,[MPN]\n      ,[NAME]\n      ,[NEXT_INVT_COUNT_DATE]\n      ,[NS_LEAD_TIME]\n      ,[OFFERSUPPORT]\n      ,[ONSPECIAL]\n      ,[OVERHEAD_TYPE]\n      ,[PACKAGING]\n      ,[PARENT_0]\n      ,[PARENT_ID]\n      ,[PAYMENT_METHOD_ID]\n      ,[PERIODIC_LOT_SIZE_DAYS]\n      ,[PERIODIC_LOT_SIZE_TYPE]\n      ,[PER_SERVING_CALCIUM]\n      ,[PER_SERVING_CALORIES]\n      ,[PER_SERVING_IRON]\n      ,[PER_SERVING_PROTEIN]\n      ,[POWDER]\n      ,[PREF_PURCHASE_TAX_ID]\n      ,[PREF_SALE_TAX_ID]\n      ,[PREF_STOCK_LEVEL]\n      ,[PRICES_INCLUDE_TAX]\n      ,[PRICING_GROUP_ID]\n      ,[PRINT_SUB_ITEMS]\n      ,[PRIOR_PN]\n      ,[PROD_PRICE_VAR_ACCOUNT_ID]\n      ,[PROD_QTY_VAR_ACCOUNT_ID]\n      ,[PURCHASEDESCRIPTION]\n      ,[PURCHASEORDERAMOUNT]\n      ,[PURCHASEORDERQUANTITY]\n      ,[PURCHASEORDERQUANTITYDIFF]\n      ,[PURCHASE_PRICE_VAR_ACCOUNT_ID]\n      ,[PURCHASE_UNIT_ID]\n      ,[QUANTITYAVAILABLE]\n      ,[QUANTITYBACKORDERED]\n      ,[QUANTITYONHAND]\n      ,[RECEIPTAMOUNT]\n      ,[RECEIPTQUANTITY]\n      ,[RECEIPTQUANTITYDIFF]\n      ,[REORDERPOINT]\n      ,[REORDER_MULTIPLE]\n      ,[REPLENISHMENT_METHOD]\n      ,[REQUIRES_RM_ID]\n      ,[RESALABLE]\n      ,[RESCHEDULE_IN_DAYS]\n      ,[RESCHEDULE_OUT_DAYS]\n      ,[REVENUE_ALLOCATION_GROUP]\n      ,[REV_REC_FORECAST_RULE_ID]\n      ,[REV_REC_RULE_ID]\n      ,[ROUND_UP_AS_COMPONENT]\n      ,[SAFETY_STOCK_DAYS]\n      ,[SAFETY_STOCK_LEVEL]\n      ,[SALESDESCRIPTION]\n      ,[SALESPRICE]\n      ,[SALE_UNIT_ID]\n      ,[SCRAP_ACCOUNT_ID]\n      ,[SERIALIZED_ITEM]\n      ,[SERVING_SIZE]\n      ,[SHIPPINGCOST]\n      ,[SIMPLE_DESCRIPTION]\n      ,[SIMPLE_NAME]\n      ,[SPECIALSDESCRIPTION]\n      ,[SPECIAL_WORK_ORDER_ITEM]\n      ,[STOCK_UNIT_ID]\n      ,[STOREDESCRIPTION]\n      ,[STOREDETAILEDDESCRIPTION]\n      ,[STOREDISPLAYNAME]\n      ,[SUBTYPE]\n      ,[SUPPLY_TIME_FENCE]\n      ,[SUPPLY_TYPE]\n      ,[TAX_ITEM_ID]\n      ,[TOTALVALUE]\n      ,[TRANSFERPRICE]\n      ,[TYPE_NAME]\n      ,[UNBUILD_VARIANCE_ACCOUNT_ID]\n      ,[UNITS_PER_CASE]\n      ,[UNITS_TYPE_ID]\n      ,[UPC_CODE]\n      ,[USE_COMPONENT_YIELD]\n      ,[VENDORNAME]\n      ,[VENDOR_ID]\n      ,[VENDRETURN_VARIANCE_ACCOUNT_ID]\n      ,[VSOE_DEFERRAL]\n      ,[VSOE_DELIVERED]\n      ,[VSOE_DISCOUNT]\n      ,[VSOE_PRICE]\n      ,[WEIGHT]\n      ,[WEIGHT_IN_USER_DEFINED_UNIT]\n      ,[WEIGHT_UNIT_INDEX]\n      ,[WIP_ACCOUNT_ID]\n      ,[WIP_COST_VARIANCE_ACCOUNT_ID]\n      ,[WORK_ORDER_LEAD_TIME]\n      ,[WRAPPER]\n\t  ,GetDate() as [LoadDateTime]\n\t  ,'NS' as [DBSource]\n  FROM [NetSuite].[dbo].[Items]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Netsuite_Items",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_NS_Items",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-05-13T09:09:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,773 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_NSCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "DELETED",
+				"type": "Boolean"
+			},
+			{
+				"name": "ACCOUNTNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_SALES",
+				"type": "Double"
+			},
+			{
+				"name": "ADVANTAGE_ENROLLMENT",
+				"type": "DateTime"
+			},
+			{
+				"name": "ALCOHOL_RECIPIENT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "ALLOW_TASK_TIME_FOR_ALLOCATION",
+				"type": "String"
+			},
+			{
+				"name": "ALTEMAIL",
+				"type": "String"
+			},
+			{
+				"name": "ALTERNATE_CATALOG",
+				"type": "String"
+			},
+			{
+				"name": "ALTERNATE_CONTACT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "ALTERNATE_PRICE_LEVEL",
+				"type": "Double"
+			},
+			{
+				"name": "ALTPHONE",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT_COMPLETE",
+				"type": "Double"
+			},
+			{
+				"name": "AR_ALERT_FLAG",
+				"type": "String"
+			},
+			{
+				"name": "AVERAGE_ATTENDANCE_AT_SUPPORT",
+				"type": "Double"
+			},
+			{
+				"name": "BEST_TIME_FOR_INPERSON_VISIT",
+				"type": "String"
+			},
+			{
+				"name": "BILLADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "BILLING_RATE_CARD_ID",
+				"type": "Double"
+			},
+			{
+				"name": "BILLING_SCHEDULE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "BILLING_SCHEDULE_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "BILLING_TRANSACTION_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "BUSINESS_ASSOCIATE_AGREEMENT_",
+				"type": "DateTime"
+			},
+			{
+				"name": "CALCULATED_END",
+				"type": "DateTime"
+			},
+			{
+				"name": "CATEGORY_0",
+				"type": "String"
+			},
+			{
+				"name": "CHANNEL_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CITY",
+				"type": "String"
+			},
+			{
+				"name": "COMMENTS",
+				"type": "String"
+			},
+			{
+				"name": "COMPANYNAME",
+				"type": "String"
+			},
+			{
+				"name": "CONSOL_DAYS_OVERDUE",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_DEPOSIT_BALANCE",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_DEPOSIT_BALANCE_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_OPENBALANCE",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_OPENBALANCE_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_UNBILLED_ORDERS",
+				"type": "Double"
+			},
+			{
+				"name": "CONSOL_UNBILLED_ORDERS_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "CONVERTED_TO_CONTACT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CONVERTED_TO_ID",
+				"type": "Double"
+			},
+			{
+				"name": "COST_ESTIMATE",
+				"type": "Double"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "CREATE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "CREDITHOLD",
+				"type": "String"
+			},
+			{
+				"name": "CREDITLIMIT",
+				"type": "Double"
+			},
+			{
+				"name": "CURRENCY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CURRENT_POSTOPERATIVE_RECOMME",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMER_EXTID",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMER_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CUSTOMER_TYPE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "DATE_CLOSED",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_CONVSERSION",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_FIRST_ORDER",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_FIRST_SALE",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_GROSS_LEAD",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LAST_MODIFIED",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LAST_ORDER",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LAST_SALE",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LEAD",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_PROSPECT",
+				"type": "DateTime"
+			},
+			{
+				"name": "DAYS_ABSENT_THIS_MONTH",
+				"type": "Double"
+			},
+			{
+				"name": "DAYS_OVERDUE",
+				"type": "Double"
+			},
+			{
+				"name": "DEFAULT_ORDER_PRIORITY",
+				"type": "Double"
+			},
+			{
+				"name": "DEFAULT_RECEIVABLES_ACCOUNT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "DEPOSIT_BALANCE",
+				"type": "Double"
+			},
+			{
+				"name": "DEPOSIT_BALANCE_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "DETAILS_OF_PREOPERATIVE_PROGR",
+				"type": "String"
+			},
+			{
+				"name": "DISSATISFACTION_REASON_ID",
+				"type": "Double"
+			},
+			{
+				"name": "DO_NOT_CALL",
+				"type": "String"
+			},
+			{
+				"name": "EMAIL",
+				"type": "String"
+			},
+			{
+				"name": "EMAIL_0",
+				"type": "String"
+			},
+			{
+				"name": "EMAIL_1",
+				"type": "String"
+			},
+			{
+				"name": "EXPECTED_CLOSE",
+				"type": "DateTime"
+			},
+			{
+				"name": "FAX",
+				"type": "String"
+			},
+			{
+				"name": "FIRSTNAME",
+				"type": "String"
+			},
+			{
+				"name": "FIRST_NAME",
+				"type": "String"
+			},
+			{
+				"name": "FIRST_SALE_PERIOD_ID",
+				"type": "Double"
+			},
+			{
+				"name": "FIRST_VISIT",
+				"type": "DateTime"
+			},
+			{
+				"name": "FORECAST_BASED_ON_ALLOCATIONS",
+				"type": "String"
+			},
+			{
+				"name": "FORECAST_CHARGE_RUN_ON_DEMAND",
+				"type": "String"
+			},
+			{
+				"name": "FREQUENCY_OF_CLINIC_DAYS",
+				"type": "String"
+			},
+			{
+				"name": "FREQUENCY_OF_INTERNAL_MEETING",
+				"type": "String"
+			},
+			{
+				"name": "FREQUENCY_OF_SUPPORT_GROUP_ME",
+				"type": "String"
+			},
+			{
+				"name": "FULL_NAME",
+				"type": "String"
+			},
+			{
+				"name": "HAVE_INTERNAL_MEETINGS",
+				"type": "String"
+			},
+			{
+				"name": "HAVE_PRODUCT_SAMPLES_AVAILABL",
+				"type": "String"
+			},
+			{
+				"name": "HAVE_SUPPORT_GROUP_MEETINGS",
+				"type": "String"
+			},
+			{
+				"name": "HOME_PHONE",
+				"type": "String"
+			},
+			{
+				"name": "ISEMAILHTML",
+				"type": "String"
+			},
+			{
+				"name": "ISEMAILPDF",
+				"type": "String"
+			},
+			{
+				"name": "ISINACTIVE",
+				"type": "String"
+			},
+			{
+				"name": "ISTAXABLE",
+				"type": "String"
+			},
+			{
+				"name": "IS_EXEMPT_TIME",
+				"type": "String"
+			},
+			{
+				"name": "IS_EXPLICIT_CONVERSION",
+				"type": "String"
+			},
+			{
+				"name": "IS_JOB",
+				"type": "String"
+			},
+			{
+				"name": "IS_LIMIT_TIME_TO_ASSIGNEES",
+				"type": "String"
+			},
+			{
+				"name": "IS_PERSON",
+				"type": "String"
+			},
+			{
+				"name": "IS_PRODUCTIVE_TIME",
+				"type": "String"
+			},
+			{
+				"name": "IS_PROJECT_COMPLETELY_BILLED",
+				"type": "String"
+			},
+			{
+				"name": "IS_UTILIZED_TIME",
+				"type": "String"
+			},
+			{
+				"name": "JOB_END",
+				"type": "DateTime"
+			},
+			{
+				"name": "JOB_START",
+				"type": "DateTime"
+			},
+			{
+				"name": "JOB_TYPE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "KEY_ACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "LABOR_BUDGET_FROM_ALLOCATIONS",
+				"type": "String"
+			},
+			{
+				"name": "LANDING_PAGE",
+				"type": "Double"
+			},
+			{
+				"name": "LANGUAGE_ID",
+				"type": "String"
+			},
+			{
+				"name": "LASTNAME",
+				"type": "String"
+			},
+			{
+				"name": "LAST_MODIFIED_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "LAST_NAME",
+				"type": "String"
+			},
+			{
+				"name": "LAST_SALE_PERIOD_ID",
+				"type": "Double"
+			},
+			{
+				"name": "LAST_VISIT",
+				"type": "DateTime"
+			},
+			{
+				"name": "LEAD_SOURCE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "LINE1",
+				"type": "String"
+			},
+			{
+				"name": "LINE2",
+				"type": "String"
+			},
+			{
+				"name": "LINE3",
+				"type": "String"
+			},
+			{
+				"name": "LOGINACCESS",
+				"type": "String"
+			},
+			{
+				"name": "LOGO",
+				"type": "Double"
+			},
+			{
+				"name": "METHOD_OF_ENTRY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "MIDDLENAME",
+				"type": "String"
+			},
+			{
+				"name": "MOBILE_PHONE",
+				"type": "String"
+			},
+			{
+				"name": "MULTIPLE_PRICE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "NAME",
+				"type": "String"
+			},
+			{
+				"name": "NOTIFICATION_CONTACT_1",
+				"type": "String"
+			},
+			{
+				"name": "NOTIFICATION_CONTACT_2",
+				"type": "String"
+			},
+			{
+				"name": "NO_ORDER_REASON_ID",
+				"type": "Double"
+			},
+			{
+				"name": "NO__OF_PROCEDURES_PER_MONTH",
+				"type": "Double"
+			},
+			{
+				"name": "NO__OF_REMINDERS",
+				"type": "Double"
+			},
+			{
+				"name": "OPENBALANCE",
+				"type": "Double"
+			},
+			{
+				"name": "OPENBALANCE_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "OPTIFAST_APPROVED",
+				"type": "String"
+			},
+			{
+				"name": "OPTIFAST_CONTRACT",
+				"type": "String"
+			},
+			{
+				"name": "PARENT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PARTICIPATE_IN_PREOPERATIVE_N",
+				"type": "String"
+			},
+			{
+				"name": "PARTNER_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PAYMENT_TERMS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PERCENTAGE_OF_BDDSDGB",
+				"type": "Double"
+			},
+			{
+				"name": "PERCENTAGE_OF_GASTRIC_BAND",
+				"type": "Double"
+			},
+			{
+				"name": "PERCENTAGE_OF_GASTRIC_BYPASSS",
+				"type": "Double"
+			},
+			{
+				"name": "PHONE",
+				"type": "String"
+			},
+			{
+				"name": "PHONE_0",
+				"type": "String"
+			},
+			{
+				"name": "PHONE_CARRIERS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "POINTS_AVAILABLE",
+				"type": "Double"
+			},
+			{
+				"name": "POINTS_COMMITTED",
+				"type": "Double"
+			},
+			{
+				"name": "POINTS_USED",
+				"type": "Double"
+			},
+			{
+				"name": "PREASSIGNED",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARY_CONTACT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PRINT_ON_CHECK_AS",
+				"type": "String"
+			},
+			{
+				"name": "PROBABILITY",
+				"type": "Double"
+			},
+			{
+				"name": "PROJECTED_END",
+				"type": "DateTime"
+			},
+			{
+				"name": "PROJECT_EXPENSE_TYPE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "RECOVER_PARTICIPANT",
+				"type": "String"
+			},
+			{
+				"name": "REFERRER",
+				"type": "String"
+			},
+			{
+				"name": "REIMBURSABLE",
+				"type": "String"
+			},
+			{
+				"name": "REMINDERDAYS",
+				"type": "Double"
+			},
+			{
+				"name": "RENEWAL",
+				"type": "DateTime"
+			},
+			{
+				"name": "REPRESENTS_SUBSIDIARY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "RESALENUMBER",
+				"type": "String"
+			},
+			{
+				"name": "REVENUE_ESTIMATE",
+				"type": "Double"
+			},
+			{
+				"name": "REVENUE_SHARE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "REV_REC_FORECAST_RULE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "REV_REC_FORECAST_TEMPLATE",
+				"type": "Double"
+			},
+			{
+				"name": "SALES_REP_ID",
+				"type": "Double"
+			},
+			{
+				"name": "SALES_TERRITORY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "SALUTATION",
+				"type": "String"
+			},
+			{
+				"name": "SATISFACTION_RATING",
+				"type": "Double"
+			},
+			{
+				"name": "SHIPADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_COMPLETE",
+				"type": "String"
+			},
+			{
+				"name": "SMS_SUBSCRIPTION_STATUS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "STATE",
+				"type": "String"
+			},
+			{
+				"name": "STATUS",
+				"type": "String"
+			},
+			{
+				"name": "STATUS_DESCR",
+				"type": "String"
+			},
+			{
+				"name": "STATUS_PROBABILITY",
+				"type": "Double"
+			},
+			{
+				"name": "STATUS_READ_ONLY",
+				"type": "String"
+			},
+			{
+				"name": "SUBSIDIARY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TAX_ITEM_ID",
+				"type": "Double"
+			},
+			{
+				"name": "THIRD_PARTY_ACCT",
+				"type": "String"
+			},
+			{
+				"name": "THIRD_PARTY_CARRIER",
+				"type": "String"
+			},
+			{
+				"name": "THIRD_PARTY_COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "THIRD_PARTY_ZIP_CODE",
+				"type": "String"
+			},
+			{
+				"name": "TIMEZONE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TOP_LEVEL_PARENT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "UNBILLED_ORDERS",
+				"type": "Double"
+			},
+			{
+				"name": "UNBILLED_ORDERS_FOREIGN",
+				"type": "Double"
+			},
+			{
+				"name": "URL",
+				"type": "String"
+			},
+			{
+				"name": "USERNAME",
+				"type": "String"
+			},
+			{
+				"name": "USER_ID",
+				"type": "String"
+			},
+			{
+				"name": "USE_CALCULATED_BILLING_BUDGET",
+				"type": "String"
+			},
+			{
+				"name": "USE_CALCULATED_COST_BUDGET",
+				"type": "String"
+			},
+			{
+				"name": "USE_PERCENT_COMPLETE_OVERRIDE",
+				"type": "String"
+			},
+			{
+				"name": "VENDOR_RECORD_ID",
+				"type": "Double"
+			},
+			{
+				"name": "WEB_LEAD",
+				"type": "String"
+			},
+			{
+				"name": "ZIPCODE",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgNSCustomers]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

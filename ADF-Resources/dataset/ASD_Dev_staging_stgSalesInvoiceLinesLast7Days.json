@@ -1,0 +1,143 @@
+{
+	"name": "ASD_Dev_staging_stgSalesInvoiceLinesLast7Days",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineCreationSequenceNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "InventorySiteId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DimensionNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ItemBatchNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineTotalDiscountAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineTotalTaxAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "OrderedInventoryStatusId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DateTimeModified",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "SalesPrice",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DateTimeCreated",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "InventoryWarehouseId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesUnitSymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineTotalChargeAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ProductDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoicedQuantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "LineAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ProductName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgSalesInvoiceLinesLast7Days"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "PL_Merge SalesInvoiceLines7Days",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored Proc Merge_stgSalesInvoiceLines",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "staging.Merge_stgSalesInvoiceLines"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-25T20:31:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

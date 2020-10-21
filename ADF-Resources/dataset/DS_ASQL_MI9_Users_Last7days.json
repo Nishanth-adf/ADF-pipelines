@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_MI9_Users_Last7days",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Mi9_users_Staging_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,262 @@
+{
+	"name": "PL_CPD_OrderLine_2_SF_OrderLine_Prod_BKP_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Account_Blended_Test",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Account_FY20_Blended_PROD_Updated_Test]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD_FY2020_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "MTD_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_FY2020_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "YTD_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYMTD_FY19_20_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "PYMTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_FY19_20_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "PYTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PriorMonth_FY2020_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "PriorMonth_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_Blended_Sales__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "FY2020_Blended_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_Emerson_Sales__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "FY2020_Emerson_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_BL_Sales__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "FY2020_BL_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_EW_Sales__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "FY2020_EW_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_FS_Sales__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "FY2020_FS_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3_Month_Avg_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "Rolling_3_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6_Month_Avg_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "Rolling_6_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12_Month_Avg_Blended__c",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								},
+								"sink": {
+									"name": "Rolling_12_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Rolling_3_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Rolling_6_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Rolling_12_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_FY2020_Blended_Test",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Account_Blended",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Integration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-17T11:22:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

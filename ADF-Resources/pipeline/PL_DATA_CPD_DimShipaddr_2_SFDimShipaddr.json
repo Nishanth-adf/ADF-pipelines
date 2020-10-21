@@ -1,0 +1,109 @@
+{
+	"name": "PL_DATA_CPD_DimShipaddr_2_SFDimShipaddr",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_DimShipAddr_2_SFShipAddr",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "/****** Script for SelectTopNRows command from SSMS  ******/\nSELECT top 100 [ShipAddrId]\n      ,[custno]\n      ,[subno]\n      ,[shipno]\n      ,[ship_to_name]\n      ,[contact]\n      ,[attention]\n      ,[phone]\n      ,[ext]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[county]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[shipvia_code]\n      ,[last_shipped]\n      ,[tax_code]\n      ,[shipcomplete]\n      ,[correspondence]\n      ,[fscm_cage]\n      ,[invoicecopies]\n      ,[priority]\n      ,[tax1]\n      ,[tax2]\n      ,[tax3]\n      ,[tax4]\n      ,[tax5]\n      ,[custclass]\n      ,[matrixcd]\n      ,[discount]\n      ,[pcntovercost]\n      ,[telex]\n      ,[usenet]\n      ,[fax]\n      ,[voicemail]\n      ,[entityno]\n      ,[currencycd]\n      ,[salutation]\n      ,[salesmancd]\n      ,[locationcd]\n      ,[deal_no]\n      ,[bankid]\n      ,[acctid]\n      ,[tele_salesmancd]\n      ,[web_custno]\n      ,[certificate_expire_date]\n      ,[intrans_loc]\n      ,[email_update]\n      ,[DBSource]\n      ,[LoadDateTime]\n  FROM [dbo].[dimShipAddr]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"ShipAddrId": "ShipAddrId__c",
+							"custno": "custno__c",
+							"subno": "subno__c",
+							"shipno": "shipno__c",
+							"ship_to_name": "ship_to_name__c",
+							"contact": "contact__c",
+							"attention": "attention__c",
+							"phone": "phone__c",
+							"ext": "ext__c",
+							"addr1": "addr1__c",
+							"addr2": "addr2__c",
+							"addr3": "addr3__c",
+							"city": "city__c",
+							"county": "county__c",
+							"state": "state__c",
+							"zip": "zip__c",
+							"country": "country__c",
+							"shipvia_code": "shipvia_code__c",
+							"last_shipped": "last_shipped__c",
+							"tax_code": "tax_code__c",
+							"shipcomplete": "shipcomplete__c",
+							"correspondence": "correspondence__c",
+							"fscm_cage": "fscm_cage__c",
+							"invoicecopies": "invoicecopies__c",
+							"priority": "priority__c",
+							"tax1": "tax1__c",
+							"tax2": "tax2__c",
+							"tax3": "tax3__c",
+							"tax4": "tax4__c",
+							"tax5": "tax5__c",
+							"custclass": "custclass__c",
+							"matrixcd": "matrixcd__c",
+							"discount": "discount__c",
+							"pcntovercost": "pcntovercost__c",
+							"telex": "telex__c",
+							"usenet": "usenet__c",
+							"fax": "fax__c",
+							"voicemail": "voicemail__c",
+							"entityno": "entityno__c",
+							"currencycd": "currencycd__c",
+							"salutation": "salutation__c",
+							"salesmancd": "salesmancd__c",
+							"locationcd": "locationcd__c",
+							"deal_no": "deal_no__c",
+							"bankid": "bankid__c",
+							"acctid": "acctid__c",
+							"tele_salesmancd": "tele_salesmancd__c",
+							"web_custno": "web_custno__c",
+							"certificate_expire_date": "certificate_expire_date__c",
+							"intrans_loc": "intrans_loc__c",
+							"email_update": "email_update__c",
+							"DBSource": "DBSource__c",
+							"LoadDateTime": "LoadDateTime__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_DimShipAddr",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TGT_SalesForce_DimShipAddr",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T03:39:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

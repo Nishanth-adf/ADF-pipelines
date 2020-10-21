@@ -1,0 +1,146 @@
+{
+	"name": "DS_SQL_SRC_Transaction_Address",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "BILL_ADDRESS_LINE_1",
+				"type": "String"
+			},
+			{
+				"name": "BILL_ADDRESS_LINE_2",
+				"type": "String"
+			},
+			{
+				"name": "BILL_ADDRESS_LINE_3",
+				"type": "String"
+			},
+			{
+				"name": "BILL_CITY",
+				"type": "String"
+			},
+			{
+				"name": "BILL_COMPANY",
+				"type": "String"
+			},
+			{
+				"name": "BILL_COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "BILL_NAME",
+				"type": "String"
+			},
+			{
+				"name": "BILL_PHONE_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "BILL_STATE",
+				"type": "String"
+			},
+			{
+				"name": "BILL_ZIP",
+				"type": "String"
+			},
+			{
+				"name": "CREATED_BY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "DATE_CREATED",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LAST_MODIFIED",
+				"type": "DateTime"
+			},
+			{
+				"name": "LAST_MODIFIED_BY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "RETURN_ADDRESS_LINE_1",
+				"type": "String"
+			},
+			{
+				"name": "RETURN_ADDRESS_LINE_2",
+				"type": "String"
+			},
+			{
+				"name": "RETURN_CITY",
+				"type": "String"
+			},
+			{
+				"name": "RETURN_COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "RETURN_STATE",
+				"type": "String"
+			},
+			{
+				"name": "RETURN_ZIPCODE",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_ADDRESS_LINE_1",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_ADDRESS_LINE_2",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_ADDRESS_LINE_3",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_ATTENTION",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_CITY",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_COMPANY",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_NAME",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_PHONE_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_STATE",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_ZIP",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_ADDRESS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TRANSACTION_ID",
+				"type": "Double"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

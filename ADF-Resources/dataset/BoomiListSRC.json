@@ -1,0 +1,13 @@
+{
+	"name": "BoomiListSRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BoomiList",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

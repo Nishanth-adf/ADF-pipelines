@@ -1,0 +1,16 @@
+{
+	"name": "DS_SINK_SF_SBFEB2020_OrderLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order_Line__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

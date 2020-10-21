@@ -1,0 +1,35 @@
+{
+	"name": "PL_Merge_stgSalesInvoiceHeader",
+	"properties": {
+		"description": "Pipeline - Run Stored Proc Merge_stgSalesInvoiceHeader\n\nAuthor: GBuenaventura\nDate: 11/1/2019",
+		"activities": [
+			{
+				"name": "StoredProc_Merge_stgSalesInvoiceHeader",
+				"description": "Stored Proc in Production - Merge_stgSalesInvoiceHeader",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "staging.Merge_stgSalesInvoiceHeader"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-25T20:41:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

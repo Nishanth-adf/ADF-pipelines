@@ -1,0 +1,40 @@
+{
+	"name": "pl_sf_test_notify",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_sf_test_email",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(pl_sf_one_touch_prod) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "dennislee@metagenics.com"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "SalesForce Dev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-04-15T01:35:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

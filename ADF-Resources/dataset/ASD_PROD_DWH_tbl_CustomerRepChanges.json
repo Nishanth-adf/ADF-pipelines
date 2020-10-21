@@ -1,0 +1,26 @@
+{
+	"name": "ASD_PROD_DWH_tbl_CustomerRepChanges",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "tbl_CustomerRepChanges"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,165 @@
+{
+	"name": "ASD_DEV_CalendarDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DateId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "Year",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "YearQuarterNumber",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "QuarterNumber",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "QuarterYearName",
+				"type": "varchar"
+			},
+			{
+				"name": "QuarterName",
+				"type": "varchar"
+			},
+			{
+				"name": "YearMonthNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearMonthName",
+				"type": "varchar"
+			},
+			{
+				"name": "MonthNumber",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "MonthName",
+				"type": "varchar"
+			},
+			{
+				"name": "YearWeekNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearWeekName",
+				"type": "varchar"
+			},
+			{
+				"name": "WeekStartDate",
+				"type": "date"
+			},
+			{
+				"name": "MonthDayNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "MonthDayName",
+				"type": "varchar"
+			},
+			{
+				"name": "DayNumber",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "DayOfWeekNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DayOfWeekName",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetDays",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "OffsetWeeks",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "OffsetMonths",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "OffsetQuarters",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "OffsetYears",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "IsYearToDate",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "IsPreviousYearToDate",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "IsBusinessDayUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsBusinessDayCA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsReceivablesInvoiceDateUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsReceivablesInvoiceDateCA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CRC",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CalendarDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

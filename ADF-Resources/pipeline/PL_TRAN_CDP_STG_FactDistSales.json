@@ -1,0 +1,174 @@
+{
+	"name": "PL_TRAN_CDP_STG_FactDistSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_DWH_FactDistSales-2-AZDB_StgFactDistSales",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "AVLVDW_MetaDistrub_FactDistSales-2-BLB_DWH_FactDistSals",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/DataWarehouse/FactDistSales-20181227.txt"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-FactDistSales]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"uidCustomerKey": "uidCustomerKey",
+							"PayTermKey": "PayTermKey",
+							"ProductKey": "ProductKey",
+							"ShipViaKey": "ShipViaKey",
+							"Datekey": "Datekey",
+							"EntityKey": "EntityKey",
+							"Invno": "Invno",
+							"Orderno": "Orderno",
+							"ShipNo": "ShipNo",
+							"Qty": "Qty",
+							"ExtPrice": "ExtPrice",
+							"ExtCost": "ExtCost",
+							"ProfitMargin": "ProfitMargin",
+							"ExtDiscount": "ExtDiscount",
+							"salesmancd": "salesmancd",
+							"currencykey": "currencykey",
+							"matrixcd": "matrixcd",
+							"ExtListPrice": "ExtListPrice",
+							"PracticeProfit": "PracticeProfit",
+							"PostDateKey": "PostDateKey",
+							"sourceid": "sourceid",
+							"custno": "custno",
+							"transdatekey": "transdatekey",
+							"importDataId": "importDataId",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_FactDistSales_NoTimeStamp",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_FactDistSales",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "AVLVDW_MetaDistrub_FactDistSales-2-BLB_DWH_FactDistSals",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/DataWarehouse/FactDistSales-20181227.txt"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [uidCustomerKey]\n      ,[PayTermKey]\n      ,[ProductKey]\n      ,[ShipViaKey]\n      ,[Datekey]\n      ,[EntityKey]\n      ,[Invno]\n      ,[Orderno]\n      ,[ShipNo]\n      ,[Qty]\n      ,[ExtPrice]\n      ,[ExtCost]\n      ,[ProfitMargin]\n      ,[ExtDiscount]\n      ,[salesmancd]\n      ,[currencykey]\n      ,[matrixcd]\n      ,[ExtListPrice]\n      ,[PracticeProfit]\n      ,[PostDateKey]\n      ,[sourceid]\n      ,[custno]\n      ,[transdatekey]\n      ,[importDataId]\n\t  ,'MetaDistrib' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [MetaDistrib].[dbo].[FactDistSales] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"uidCustomerKey": "uidCustomerKey",
+							"PayTermKey": "PayTermKey",
+							"ProductKey": "ProductKey",
+							"ShipViaKey": "ShipViaKey",
+							"Datekey": "Datekey",
+							"EntityKey": "EntityKey",
+							"Invno": "Invno",
+							"Orderno": "Orderno",
+							"ShipNo": "ShipNo",
+							"Qty": "Qty",
+							"ExtPrice": "ExtPrice",
+							"ExtCost": "ExtCost",
+							"ProfitMargin": "ProfitMargin",
+							"ExtDiscount": "ExtDiscount",
+							"salesmancd": "salesmancd",
+							"currencykey": "currencykey",
+							"matrixcd": "matrixcd",
+							"ExtListPrice": "ExtListPrice",
+							"PracticeProfit": "PracticeProfit",
+							"PostDateKey": "PostDateKey",
+							"sourceid": "sourceid",
+							"custno": "custno",
+							"transdatekey": "transdatekey",
+							"importDataId": "importDataId",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_AV_LV_DW",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_tableName": "DWH_FactDistSales"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_FactDistSales_NoTimeStamp",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,34 @@
+{
+	"name": "DS_ABLB_Mi9Packages_MaxTS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Mi9_packages_MaxTS.csv",
+				"folderPath": "Mi9_MaxTimestamps",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Max_Created_TS",
+				"type": "String"
+			},
+			{
+				"name": "Max_Updated_TS",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "pl_shipitProd_shipments_Incr_Load_prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "usp_shipitProd_Shipments_IncrLoad_prod",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_shipitProd_Shipments_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ShipItProd Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-31T00:58:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_MI9_Coupon_Use",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_coupon_use_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

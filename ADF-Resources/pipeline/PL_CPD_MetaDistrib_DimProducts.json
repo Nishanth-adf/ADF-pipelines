@@ -1,0 +1,395 @@
+{
+	"name": "PL_CPD_MetaDistrib_DimProducts",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_DimProducts",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetaDimProducts;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "productkey",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "productkey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "catalogno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalogno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "catalog_desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalog_desc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "catalognoname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalognoname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "partno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "partno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "partentityno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "partentityno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "partrev",
+									"type": "String"
+								},
+								"sink": {
+									"name": "partrev",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "unit_meas",
+									"type": "String"
+								},
+								"sink": {
+									"name": "unit_meas",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "list_price",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "list_price",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "ws_price",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ws_price",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "dist_price",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "dist_price",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "package_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "package_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "weight",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "weight",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "price_change",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "price_change",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "markup",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "markup",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "enterdate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "enterdate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "last_ordered",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "last_ordered",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "special_tax",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "special_tax",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "taxable",
+									"type": "String"
+								},
+								"sink": {
+									"name": "taxable",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "minorderqty",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "minorderqty",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "matrixcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "matrixcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "activeind",
+									"type": "String"
+								},
+								"sink": {
+									"name": "activeind",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "conversion",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "conversion",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "classify",
+									"type": "String"
+								},
+								"sink": {
+									"name": "classify",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "prodgroupno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "prodgroupno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "variationcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "variationcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "optctgrycode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "optctgrycode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "optctgryline",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "optctgryline",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "prodgroupdesc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "prodgroupdesc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "seminardate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "seminardate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ref6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref6Desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref6Desc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref7Desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref7Desc",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_DimProducts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetaDimProducts",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-14T13:11:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

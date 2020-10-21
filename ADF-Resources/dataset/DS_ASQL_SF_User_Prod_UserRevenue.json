@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SF_User_Prod_UserRevenue",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_Prod_User_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

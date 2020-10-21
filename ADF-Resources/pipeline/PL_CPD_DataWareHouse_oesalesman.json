@@ -1,0 +1,616 @@
+{
+	"name": "PL_CPD_DataWareHouse_oesalesman",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DataWareHouse_oesalesman",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "\nSELECT [salesmancd]\n      ,[empno]\n      ,[in_out_flag]\n      ,[tax_id]\n      ,[name]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[phone]\n      ,[extension]\n      ,[telex]\n      ,[usenet]\n      ,[fax]\n      ,[voicemail]\n      ,[comm_code]\n      ,[locationcd]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[budget1]\n      ,[budget2]\n      ,[budget3]\n      ,[budget4]\n      ,[budget5]\n      ,[budget6]\n      ,[budget7]\n      ,[budget8]\n      ,[budget9]\n      ,[budget10]\n      ,[budget11]\n      ,[budget12]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[commission]\n      ,[how_paid]\n      ,[cash_only]\n      ,[when_paid]\n  FROM [AV-LV-DW].[DataWarehouse].[dbo].[oesalesman]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgDWHoesalesman;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "salesmancd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesmancd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "empno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "empno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "in_out_flag",
+									"type": "String"
+								},
+								"sink": {
+									"name": "in_out_flag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tax_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tax_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "extension",
+									"type": "String"
+								},
+								"sink": {
+									"name": "extension",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "telex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "telex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "usenet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "usenet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "voicemail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "voicemail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "comm_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "comm_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "locationcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "locationcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "budget1",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget1",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget2",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget2",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget3",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget3",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget4",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget4",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget5",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget5",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget6",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget6",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget7",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget7",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget8",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget8",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget9",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget9",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget10",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget10",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget11",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget11",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "budget12",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "budget12",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "commission",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "commission",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "how_paid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "how_paid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cash_only",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cash_only",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "when_paid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "when_paid",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_DWH_Oesalesman",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgDWHoesalesman",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-14T12:53:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,62 @@
+{
+	"name": "ASD_DEV_dimBusinessDivisionchanelDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "businessDivisionchanelID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "division",
+				"type": "nvarchar"
+			},
+			{
+				"name": "chanel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "subLevel1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sublevel2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimBusinessDivisionchanelDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

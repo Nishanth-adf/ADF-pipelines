@@ -1,0 +1,128 @@
+{
+	"name": "PL_CPD_OrderLine_2_SF_OrderLine",
+	"properties": {
+		"activities": [
+			{
+				"name": "PL_CPD_OrderLine_2_SF_OrderLine",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT --4769\nInvoiceNumber=fois.OrderInvoicesalesId\n,Description__c\t\t\t=\t\tCASE WHEN dp.description IS NULL THEN 'NULL From Source' WHEN dp.description ='' THEN 'Empty from Source' ELSE dp.description END\n,Discount__c\t\t\t=\t\tfois.LineTotalDiscountAmount\n,Order__c\t\t\t\t=\t\tsbo.id\n,Price__c\t\t\t\t=\t\tfois.unitprice\n,Product__c\t\t\t\t=\t\tsbp.id\n,Quantity__c\t\t\t=\t\tfois.quantity\nFROM dbo.factOrderInvoiceSales_D365 fois\nINNER JOIN dbo.dimOrder_D365 do ON do.orderID = fois.orderID\nLEFT JOIN dbo.sf_ba_Order sbo ON do.orderNumber=sbo.orderNumber AND fois.invoiceNumber=sbo.invoicenumber\nINNER JOIN dbo.dimproductmaster_D365 dp on fois.productid=dp.productid\nLEFT JOIN dbo.sf_ba_Products sbp ON dp.catalogNumber=sbp.catalogNumber\nwhere do.OrderId <>'-1'  and do.orderNumber in (select DISTINCT orderNumber from dbo.sf_ba_Order) AND fois.acctyr>='2018'AND fois.amountType in ('Product Sales','Other')\n\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "Invoice_Number__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Order__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Description__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Discount__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Discount__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Price__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Price__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Product__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Quantity__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Invoice_Number__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_OrderLines_Prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_SF_BA_OrderLine",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Sandbox"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-12T14:21:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

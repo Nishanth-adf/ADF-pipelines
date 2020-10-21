@@ -1,0 +1,19 @@
+{
+	"name": "D365_ItemActivatedPrices",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Supply Chain Datasets/PROD"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "ItemActivatedPrices"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

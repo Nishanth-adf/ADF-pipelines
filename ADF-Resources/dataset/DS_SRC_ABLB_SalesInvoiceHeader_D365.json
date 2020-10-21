@@ -1,0 +1,155 @@
+{
+	"name": "DS_SRC_ABLB_SalesInvoiceHeader_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "TotalTaxAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "Int64"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "TotalChargeAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "String"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderResponsiblePersonnelNumber",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceHeaderTaxAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "InvoiceAddressState",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "String"
+			},
+			{
+				"name": "TotalInvoiceAmount",
+				"type": "Double"
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonNodeReference": "$.['value']",
+				"jsonPathDefinition": {
+					"dataAreaId": "['dataAreaId']",
+					"InvoiceNumber": "['InvoiceNumber']",
+					"InvoiceDate": "['InvoiceDate']",
+					"InvoiceAddressCountryRegionISOCode": "['InvoiceAddressCountryRegionISOCode']",
+					"InvoiceAddressZipCode": "['InvoiceAddressZipCode']",
+					"TotalTaxAmount": "['TotalTaxAmount']",
+					"InvoiceAddressStreetNumber": "['InvoiceAddressStreetNumber']",
+					"TotalDiscountCustomerGroupCode": "['TotalDiscountCustomerGroupCode']",
+					"InvoiceAddressStreet": "['InvoiceAddressStreet']",
+					"TotalChargeAmount": "['TotalChargeAmount']",
+					"TotalDiscountAmount": "['TotalDiscountAmount']",
+					"CurrencyCode": "['CurrencyCode']",
+					"SalesOrderNumber": "['SalesOrderNumber']",
+					"DeliveryTermsCode": "['DeliveryTermsCode']",
+					"ContactPersonId": "['ContactPersonId']",
+					"SalesOrderResponsiblePersonnelNumber": "['SalesOrderResponsiblePersonnelNumber']",
+					"PaymentTermsName": "['PaymentTermsName']",
+					"DeliveryModeCode": "['DeliveryModeCode']",
+					"InvoiceCustomerAccountNumber": "['InvoiceCustomerAccountNumber']",
+					"InvoiceAddressCity": "['InvoiceAddressCity']",
+					"InvoiceHeaderTaxAmount": "['InvoiceHeaderTaxAmount']",
+					"InvoiceAddressState": "['InvoiceAddressState']",
+					"InvoiceAddressCountryRegionId": "['InvoiceAddressCountryRegionId']",
+					"CustomersOrderReference": "['CustomersOrderReference']",
+					"TotalInvoiceAmount": "['TotalInvoiceAmount']",
+					"SalesOrderOriginCode": "['SalesOrderOriginCode']"
+				}
+			},
+			"fileName": "SalesInvoiceHeaders.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files/SalesInvoiceHeader"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

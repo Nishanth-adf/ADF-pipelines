@@ -1,0 +1,579 @@
+{
+	"name": "Finesse_Historical_Data_Load_Master_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_STG_DWH_SOURCE",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_DimCustomers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Source",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_DWH_DIM_UID_Customer",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_SOURCE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_DimUidCustomer",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DWH_STG_DIMFinishedGoods",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_DIM_UID_Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_DimFinishedGoods",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DWH_STG_FACTDistSales",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DWH_STG_DIMFinishedGoods",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CDP_STG_FactDistSales",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINArinvdet",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DWH_STG_FACTDistSales",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Arinvdet",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINInpart",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINArinvdet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Inpart",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOecohead",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINInpart",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OecoHead",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOecustomer",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOecohead",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeCustomer",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOefinish",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOecustomer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeFinish",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeSalesman",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOefinish",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeSalesMan",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeshipaddr",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeSalesman",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeShipAddr",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeproductFamilies",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeshipaddr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_ProductFamiliesMain",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOesalesRepConsolidate",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeproductFamilies",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_SalesRepConslidated",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimProductMaster",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimMonth",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_ProductMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimCustomerMaster",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimProductType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimCustomerMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimOrder",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimCustomerMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimOrder",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DIMSalesRep",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimOrder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimSalesRep",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "usp_truncateDwhTable_Finesse",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FIN_tbl_TerritoryRelatedTarget",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_truncateDWHTable]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL_FactInorderVoiceSales",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_Dim_ShipAddr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactInvoiceSales",
+						"type": "PipelineReference"
+					}
+				}
+			},
+			{
+				"name": "EPL_Dim_ShipAddr",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DIMSalesRep",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimShipAddress",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FactInvoiceSales_DD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FactInorderVoiceSales",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactInvoiceSales_DD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FIN_CY_CommisionableSKUs",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOesalesRepConsolidate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_CommisionableSkus",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FIN_tbl_TerritoryRelatedTarget",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FIN_CY_CommisionableSKUs",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_tbl_TerritoryRelatedTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_DWH_DimCustomers",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_STG_DimCustomers",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimProductType",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimProductMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimProductType",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FactSalesRepTarget",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FactInvoiceSales_DD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactSalesRepTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimMonth",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "usp_truncateDwhTable_DD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimMonth",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "usp_truncateDwhTable_DD",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "usp_truncateDwhTable_Finesse",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_truncateDwhTable_DD]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Test_Master_Pipelines_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-28T12:26:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

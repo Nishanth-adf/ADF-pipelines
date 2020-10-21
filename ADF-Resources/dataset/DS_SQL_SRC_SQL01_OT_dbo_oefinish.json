@@ -1,0 +1,165 @@
+{
+	"name": "DS_SQL_SRC_SQL01_OT_dbo_oefinish",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "catalogno",
+				"type": "String"
+			},
+			{
+				"name": "partno",
+				"type": "String"
+			},
+			{
+				"name": "partentityno",
+				"type": "String"
+			},
+			{
+				"name": "partrev",
+				"type": "String"
+			},
+			{
+				"name": "catalog_desc",
+				"type": "String"
+			},
+			{
+				"name": "unit_meas",
+				"type": "String"
+			},
+			{
+				"name": "list_price",
+				"type": "Double"
+			},
+			{
+				"name": "ws_price",
+				"type": "Double"
+			},
+			{
+				"name": "dist_price",
+				"type": "Double"
+			},
+			{
+				"name": "package_code",
+				"type": "String"
+			},
+			{
+				"name": "weight",
+				"type": "Double"
+			},
+			{
+				"name": "price_change",
+				"type": "DateTime"
+			},
+			{
+				"name": "markup",
+				"type": "Double"
+			},
+			{
+				"name": "enterdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_ordered",
+				"type": "DateTime"
+			},
+			{
+				"name": "special_tax",
+				"type": "Double"
+			},
+			{
+				"name": "taxable",
+				"type": "String"
+			},
+			{
+				"name": "minorderqty",
+				"type": "Double"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "jocreate",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "ref3",
+				"type": "DateTime"
+			},
+			{
+				"name": "ref4",
+				"type": "Int32"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "activeind",
+				"type": "String"
+			},
+			{
+				"name": "conversion",
+				"type": "Double"
+			},
+			{
+				"name": "classify",
+				"type": "String"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "String"
+			},
+			{
+				"name": "variationcd",
+				"type": "String"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "String"
+			},
+			{
+				"name": "optctgryline",
+				"type": "Int32"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

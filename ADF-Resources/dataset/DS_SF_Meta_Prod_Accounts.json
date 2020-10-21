@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_Meta_Prod_Accounts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

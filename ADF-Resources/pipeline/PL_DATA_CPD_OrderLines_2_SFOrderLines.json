@@ -1,0 +1,118 @@
+{
+	"name": "PL_DATA_CPD_OrderLines_2_SFOrderLines",
+	"properties": {
+		"activities": [
+			{
+				"name": "PL_DATA_CPD_OrderLines_2_SFOrderLines",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select FO.lineItem, PM.catalogNumber, PM.description, FO.unitPrice, FO.quantity, (FO.quantity * FO.unitPrice) AS Extended_Price, fo.OrderInvoiceSalesID\n\nfrom dbo.factOrderInvoiceSales_D365 FO \njoin dbo.dimProductMaster_D365 PM ON PM.PRODUCTID = FO.PRODUCTID\nWHERE FO.AMOUNTTYPE = 'Product Sales'",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "OrderlineKey",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "catalogNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "unitPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Price__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Extended_Price",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Extended_Price__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderInvoiceSalesID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "OrderlineKey__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_OrderLine",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_SF_OrderLine",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-17T16:25:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

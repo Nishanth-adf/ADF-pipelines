@@ -1,0 +1,66 @@
+{
+	"name": "PL_DATA_CPD_FactSalesRepTarget",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_metausedp_stgtbl_TerritoryRelatedTarget-2-FSRT",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tsalesRepID\t\t=\tDSR.salesRepID,\n\t\t\tmonthID\t\t\t=\tMT.monthID,\n\t\t\tcategory\t\t=\tSTRT.Category,\n\t\t\tProductfamily\t=\tSTRT.ProductFamily,\n\t\t\tbudget\t\t\t=\tSTRT.TargetInLocal,\n\t\t\tlocalCurrency\t=\tSTRT.localCurrency,\n\t\t\tinsertDate\t\t=\tDATEADD(HH,-8,GETDATE()),\n\t\t\tinsertBy\t\t=\t'ADF ETL',\n\t\t\t[source]\t\t=\tDSR.source,\n\t\t\tSaleType\t\t=\tSTRT.SaleType\nFROM\t\t(\n\t\t\t\tSELECT\t\tSalesmancd,Category,ProductFamily,TargetInLocal,[year] = LEFT(MonthKey,4),[month] = RIGHT(MonthKey,2),SaleType,\n\t\t\t\t\t\t\tlocalCurrency\t=\tCASE\tWHEN TargetInLocal = TargetInUSD THEN 'USD' ELSE 'CAD' END,\n\t\t\t\t\t\t\t[source]\t\t=\tCASE\tWHEN TargetInLocal = TargetInUSD THEN 'IL'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHEN TargetInLocal <> TargetInUSD THEN 'OT'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tELSE NULL END\n\t\t\t\tFROM\t\t[dbo].[stgtbl_TerritoryRelatedTarget]\n\t\t\t) STRT\nINNER JOIN\t[dbo].[dimMonth] MT\nON\t\t\tSTRT.[year]\t\t\t=\tMT.year\nAND\t\t\tSTRT.[month]\t\t=\tMT.month\nINNER JOIN\t[dbo].[dimSalesRep] DSR\nON\t\t\tSTRT.Salesmancd\t\t=\tDSR.salesmanCode\nAND\t\t\tSTRT.[year]\t\t\t=\tDSR.accountYear\nAND\t\t\tSTRT.[month]\t\t=\tDSR.accountMonth\nAND\t\t\tSTRT.[source]\t\t=\tDSR.[source]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesRepID": "salesRepID",
+							"monthID": "monthID",
+							"category": "category",
+							"Productfamily": "Productfamily",
+							"budget": "budget",
+							"localCurrency": "localCurrency",
+							"source": "Source",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"SaleType": "SaleType"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metdatusedp_stgtbl_TerritoryRelatedTarget",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedp_FactSalesRepTarget",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-20T06:35:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

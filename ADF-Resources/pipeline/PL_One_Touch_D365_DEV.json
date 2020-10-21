@@ -1,0 +1,349 @@
+{
+	"name": "PL_One_Touch_D365_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_STG_Customer_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Customer_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_Order_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Order_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_CommissionableSKUS_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_CommisionableSkus_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_Product_Families_Main_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_ProductFamiliesMain_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_SalesInvoice_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_SalesInvoice_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_SalesRep_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_SalesRepConslidated_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Wait_Before_Dimensional_tables",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_SalesRep_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_STG_SalesInvoice_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_STG_Product_Families_Main_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_STG_CommissionableSKUS_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_STG_Order_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_STG_Customer_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 60
+				}
+			},
+			{
+				"name": "EPL_DimCustomerMaster_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimCustomerMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimOrder_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimOrder_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimSalesRep_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimSalesRep_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimShipAddr_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimShipAddress_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimDistributor_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimDistributor_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimProductMaster_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimProductMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimProductType_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Wait_Before_Dimensional_tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimProductType_d365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "WAIT_Before_Fact_Execution",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimProductType_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimCustomerMaster_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimOrder_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimSalesRep_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimShipAddr_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimDistributor_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_DimProductMaster_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 60
+				}
+			},
+			{
+				"name": "EPL_FactOrderInvoiceSales_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "WAIT_Before_Fact_Execution",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_FactOrderInvoiceSales_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-28T14:26:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

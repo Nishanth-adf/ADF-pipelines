@@ -1,0 +1,61 @@
+{
+	"name": "ds_sf_tgt_Account_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerKey__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustNo__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AreaID__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Account__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "D365__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Emerson__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BodyLogic__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EightWeek__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FullScript__c",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

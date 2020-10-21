@@ -1,0 +1,62 @@
+{
+	"name": "PL_DATA_CPD_BA_FactSalesRepTarget",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_metausedp_STGSalesQuota-2-FactSalesRepTarget",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tsalesRepID = ISNULL(DSR.salesRepID,-1)\n\t\t   ,monthID    = DM.monthID\n\t\t   ,category   = SQ.[type]\n\t\t   ,budget     = SQ.quota \n\t\t   ,Source     = 'NS'\n\t\t   ,[insertby] = 'ADF ETL'\n\t\t   ,[insertDate] = Dateadd(hh,-8,GetDate())\nFROM\t\t[dbo].[stgSalesQuota] SQ\nLEFT JOIN\t[dbo].[dimMonth] DM \nON\t\t\tLEFT(SQ.[PERIOD],4) = DM.[year] AND cast(RIGHT(SQ.[PERIOD],2) as int) = DM.[month]\nLEFT JOIN\t(\n\t\t\t\tselect distinct salesmanCode,[accountYear],[accountMonth],salesRepID \n\t\t\t\tfrom [dbo].[dimSalesRep] \n\t\t\t\twhere source = 'NS'\n\t\t\t) DSR \nON\t\t\tDSR.[accountYear] = DM.[year] \nAND\t\t\tDSR.[accountMonth] = DM.[month] \nAND\t\t\tCAST(DSR.salesmanCode AS VARCHAR(50))= CAST(SQ.employee AS VARCHAR(50))\nWHERE\t\tLEFT(SQ.period,4) >= '2014'\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesRepID": "salesRepID",
+							"monthID": "monthID",
+							"category": "category",
+							"budget": "budget",
+							"Source": "Source",
+							"insertDate": "insertDate",
+							"insertby": "insertBy"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metausedp_stgSalesQuota",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_FactSalesRepTarget_BA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T08:36:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

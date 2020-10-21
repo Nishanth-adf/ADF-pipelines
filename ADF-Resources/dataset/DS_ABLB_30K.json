@@ -1,0 +1,19 @@
+{
+	"name": "DS_ABLB_30K",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat"
+			},
+			"fileName": "CustomersV3From30001.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

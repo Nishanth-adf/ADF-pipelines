@@ -1,0 +1,70 @@
+{
+	"name": "PL_DATA_CPD_DimCustomerMaster_2_SFAccount",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimCustomerMaster_SFAccount",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT distinct top 1\n       case when fois.dimDistributorID=-1 then 'Yes'  else 'NO' end as Finesse__c,\n       case when fois.dimDistributorID=1 then 'Yes'  else 'NO' end as Emmerson,\n       case when fois.dimDistributorID in (2,4) then 'Yes'  else 'NO' end as FullScript__c,\n       Case When fois.dimDistributorID=3 then 'Yes'  else 'NO' end as BodyLogic__c,\n       Case When fois.dimDistributorID=5 then 'Yes'  else 'NO' end as EightWeek__c,\n       DCM.name as AccountName,\n--'Upserted_Name' as AccountName,\n       'Upserted' as Industry,\n--'FEDO01111'   as AccountNumber,     \nDCM.customerNumber as AccountNumber,\n       USF.Id as IAR_Rep__c,\nDCM.CustomerId as CustomerKey__c\n       --,x.source as Finesse\nFROM \ndbo.factOrderInvoiceSales fois \n join dbo.dimCustomerMaster DCM \n on fois.customerID=DCM.customerID\njoin (\n\t\t\t\tSELECT\tid,sales_rep_code \n\t\t\t\tFROM\t(\n\t\t\t\t\t\t\tSELECT\tID,sales_rep_code,Row_Num = ROW_NUMBER() OVER (PARTITION BY sales_rep_code ORDER BY sales_rep_code) \n\t\t\t\t\t\t\tFROM\tdbo.user_salesforce \n\t\t\t\t\t\t)x \n\t\t\t\tWHERE\tRow_Num = 1\n\t\t\t) USF \n on DCM.salesmanCode=USF.sales_rep_code\nwhere fois.acctyr='2019' \n and fois.acctper in ('01')\nand fois.source='OT' ",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKey__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Emmerson": "Name",
+							"Industry": "Industry",
+							"FullScript__c": "FullScript__c",
+							"Finesse__c": "Finesse__c",
+							"AccountName": "Emerson__c",
+							"BodyLogic__c": "BodyLogic__c",
+							"EightWeek__c": "EightWeek__c",
+							"IAR_Rep__c": "IAR_Rep__c",
+							"AccountNumber": "AccountNumber",
+							"CustomerKey__c": "CustomerKey__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_DimCustMaster",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_SF_Account",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-09T12:01:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

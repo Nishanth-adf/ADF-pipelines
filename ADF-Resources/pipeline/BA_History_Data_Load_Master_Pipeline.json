@@ -1,0 +1,312 @@
+{
+	"name": "BA_History_Data_Load_Master_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_STG_NSDataset",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_NS_SalesQuota",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NetSuiteDataset",
+						"type": "PipelineReference"
+					}
+				}
+			},
+			{
+				"name": "EPL_STG_Entity",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_NSDataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Entity",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_TransactionHeader",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_Entity",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_TransactionHeader",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DIM_SalesRep_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_Dim_CustomerMaster_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimSalesRep",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DIM_Order_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DIM_SalesRep_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimOrder",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_NS_Customer",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_Customers",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_BA_TranLines",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_NS_Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_BA_STG_TranLines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_BA_SalesAccount",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_BA_TranLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_SalesAccount",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_NS_SalesQuota",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_BA_SalesAccount",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_SalesQuota",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_ZipCodeMapping2018",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_TransactionHeader",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_ZipCode_Mapping_2018",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "usp_truncateDwhTable_BA",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_ZipCodeMapping2018",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_truncateDwhTable_BA]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL_Dim_CustomerMaster_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DimMonth",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimCustomerMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DimMonth",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "usp_truncateDwhTable_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimMonth",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FactOrderInvoiceSales_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DIM_Order_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_FactOrderInvoiceSales",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FaceSalesRepTarget_BA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FactOrderInvoiceSales_BA",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_FactSalesRepTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Test_Master_Pipelines_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-28T12:26:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

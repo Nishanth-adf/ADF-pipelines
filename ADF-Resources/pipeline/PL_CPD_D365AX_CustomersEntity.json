@@ -1,0 +1,2200 @@
+{
+	"name": "PL_CPD_D365AX_CustomersEntity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBrazilianCNPJOrCPF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressBrazilianCNPJOrCPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PartyType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartyType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxExtension",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFaxExtension",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesTaxGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ContactPersonId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ContactPersonId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BirthCountyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BirthCountyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PackingMaterialFeeLicenseNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PackingMaterialFeeLicenseNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTwitter",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCounty",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURPNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURPNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedInDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactLinkedInDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ItemCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonProfessionalTitle",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonProfessionalTitle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesSegmentId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesSegmentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelexDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTelexDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesAccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebookDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFacebookDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PrimaryContactFaxRecordId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "TCSGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TCSGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineOfBusinessId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LineOfBusinessId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationPhoneticName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationPhoneticName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "DeliveryAddressValidFrom",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "ElectronicInvoiceEAN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ElectronicInvoiceEAN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryFreightZone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryFreightZone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BirthPlace",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BirthPlace",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonInitials",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonInitials",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultECommerceOperator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultECommerceOperator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CentralBankPurposeCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CentralBankPurposeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FullPrimaryAddress",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FullPrimaryAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderEntryDeadline",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderEntryDeadline",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ForeignerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AddressLongitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedIn",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactLinkedIn",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactURL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PartyState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartyState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PartyNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartyNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CentralBankPurposeNotes",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CentralBankPurposeNotes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CollectionsContactPersonId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CollectionsContactPersonId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressBuildingComplement",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentSchedule",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentSchedule",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitterPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTwitterPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryTerms",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryTerms",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumberSequenceGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NumberSequenceGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonChildrenNames",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonChildrenNames",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryMode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryMode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonProfessionalSuffix",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonProfessionalSuffix",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WarehouseId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WarehouseId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DestinationCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DestinationCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FrenchSiret",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FrenchSiret",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentDay",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentDay",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmployeeResponsibleNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmployeeResponsibleNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonAnniversaryYear",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PersonAnniversaryYear",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultInventoryStatusId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultInventoryStatusId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactEmailDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactPhone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PrimaryContactPhoneRecordId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCounty",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PANReferenceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PANReferenceNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesCurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCNPJOrCPF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianCNPJOrCPF",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentFactoringAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentFactoringAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PANNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PANNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitterDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTwitterDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonFirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCCM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianCCM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReceiptEmail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReceiptEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TDSGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TDSGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MultiLineDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MultiLineDiscountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonAnniversaryDay",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PersonAnniversaryDay",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultDimensionDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultDimensionDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SupplementaryItemGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SupplementaryItemGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentSpecification",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentSpecification",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "AddressRecordId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBooks",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressBooks",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactEmailPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FulfillmentPolicyName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FulfillmentPolicyName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesDistrict",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesDistrict",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConsolidationDay",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ConsolidationDay",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressBuildingComplement",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTermsBaseDays",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PaymentTermsBaseDays",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FiscalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "KnownAs",
+									"type": "String"
+								},
+								"sink": {
+									"name": "KnownAs",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTelex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentBankAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentBankAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianIE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianIE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PrimaryContactEmailRecordId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBrazilianIE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressBrazilianIE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneExtension",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactPhoneExtension",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhonePurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactPhonePurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReceiptCalendar",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReceiptCalendar",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StateInscription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StateInscription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonLastNamePrefix",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonLastNamePrefix",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesReturnTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesReturnTaxGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactURLDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FederalAgencyLocationCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FederalAgencyLocationCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "DeliveryAddressValidTo",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticMiddleName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonPhoneticMiddleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCNAE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianCNAE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WithholdingTaxGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WithholdingTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAFCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAFCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AddressLatitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TotalDiscountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLocationRoles",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressLocationRoles",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentCashDiscount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentCashDiscount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MerchantID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MerchantID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditRating",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreditRating",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebook",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFacebook",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressBuildingComplement",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LineDiscountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PartyCountry",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartyCountry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesMemo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesMemo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReliefGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReliefGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StatisticsGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StatisticsGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustClassificationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustClassificationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "AddressValidTo",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "FederalComments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FederalComments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTerms",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentTerms",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactPhoneDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressPostbox",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressPostbox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesSubsegmentId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesSubsegmentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRebateGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerRebateGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressCounty",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PrimaryContactURLRecordId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "InvoiceAddressValidTo",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "InvoiceAddressValidFrom",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditLimit",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CreditLimit",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PackingDutyLicense",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PackingDutyLicense",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NationalRegistryNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NationalRegistryNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SiteId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SiteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactURLPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChargesGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ChargesGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NameAlias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NameAlias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionSalesGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CommissionSalesGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFaxPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonLastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonLastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentIdType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentIdType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VendorAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VendorAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResidenceForeignCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResidenceForeignCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RFCNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RFCNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonHobbies",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonHobbies",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ElectronicLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ElectronicLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedInPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactLinkedInPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTMAGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerTMAGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "AddressValidFrom",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationNumberOfEmployees",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "OrganizationNumberOfEmployees",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryReason",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryReason",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxRegistrationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TaxRegistrationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DiscountPriceGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DiscountPriceGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SuframaNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SuframaNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IdentificationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IdentificationNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AuthorityOffice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AuthorityOffice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonPhoneticFirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelexPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactTelexPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebookPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFacebookPurpose",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyChain",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CompanyChain",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianINSSCEI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BrazilianINSSCEI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryContactFaxDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WriteoffReason",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WriteoffReason",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMiddleName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMiddleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticLastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonPhoneticLastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPApprovedCustomerGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PIPApprovedCustomerGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIPCertOfAnalysisCustGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PIPCertOfAnalysisCustGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METUpshotCustomerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "METUpshotCustomerNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LTICreatedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "LTICreatedDateTime",
+									"type": "DateTimeOffset"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DynamicsAXResourceFnO",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ABLB_Customers_AX",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AxTest_LinkedService"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-25T15:58:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

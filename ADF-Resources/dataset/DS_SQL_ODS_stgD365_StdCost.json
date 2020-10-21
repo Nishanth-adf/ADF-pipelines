@@ -1,0 +1,93 @@
+{
+	"name": "DS_SQL_ODS_stgD365_StdCost",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Sales Related Datasets"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Price_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Item_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Site",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Price_quantity",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Price_charges",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Total_Cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Cost_per_UOM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Charges_quantity",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Incl#_in_unit_price",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activation_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Blocked",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Calculated",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Log",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365_StdCost"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

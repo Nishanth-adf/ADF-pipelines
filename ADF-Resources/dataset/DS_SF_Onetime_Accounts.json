@@ -1,0 +1,13 @@
+{
+	"name": "DS_SF_Onetime_Accounts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

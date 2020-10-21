@@ -1,0 +1,159 @@
+{
+	"name": "ASD_PROD_stgD365GeneralLedgerActivities",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LedgerDimension",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MainAccountRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Ledger",
+				"type": "varchar"
+			},
+			{
+				"name": "LedgerGregorianDateId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalRevenue",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AccountsPayable",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AccountingCurrencyAmount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QuickRatioAssets",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CurrentRatioAssets",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Liabilities",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ReturnOnTotalAssetsExpenses",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AccountsReceivable",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SalesReturnAndDiscounts",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AnalysisCurrencyAmount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "YearOffset",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Cash",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalAssets",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Equity",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CurrentLiabilities",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OperatingExpenses",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ProfitMarginTaxes",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ReportingCurrencyAmount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SalesPlusReturnsAndDiscounts",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CostOfGoodsSold",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AdditionalEarnings",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Expenses",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Income",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365GeneralLedgerActivities"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

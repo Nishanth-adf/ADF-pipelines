@@ -1,0 +1,16 @@
+{
+	"name": "DS_TGT_ASQL_STGRepMapConsolidated_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "[dbo].[stgTblRepMapConsolidated_D365]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

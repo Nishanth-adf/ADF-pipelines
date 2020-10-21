@@ -1,0 +1,41 @@
+{
+	"name": "ASD_PROD_tbl_PostingLayerTax",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PostingLayer",
+				"type": "varchar"
+			},
+			{
+				"name": "Ledger",
+				"type": "varchar"
+			},
+			{
+				"name": "LedgerDimension",
+				"type": "varchar"
+			},
+			{
+				"name": "LedgerGregorianDateId",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountRecId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_PostingLayerTax"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

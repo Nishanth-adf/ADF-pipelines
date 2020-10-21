@@ -1,0 +1,291 @@
+{
+	"name": "PL Migrate PROD_dwh_TrendAdjustments",
+	"properties": {
+		"description": "Migrate FROM ODS_dbo_TrendAdjustments TO PROD_dwh_TrendAdjustments\n\nAuthor: GBuenaventura\nDate: 07/14/2020",
+		"activities": [
+			{
+				"name": "Copy PROD_dwh_TrendAdjustments",
+				"description": "Migrate FROM ODS_dbo_TrendAdjustments TO PROD_dwh_TrendAdjustments\n\nAuthor: GBuenaventura\nDate: 07/14/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dwh.TrendAdjustments",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Year",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PERIOD",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "Period",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Project",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Project",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountingCurrencyAmount",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "AccountingCurrencyAmount",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_LegalEntityId",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_LegalEntityId",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_MainAccount",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_MainAccount",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_BusinessTypeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_BusinessTypeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_CountryCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_CountryCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_BusinessUnitCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_BusinessUnitCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_DepartmentCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_DepartmentCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FROM_CostCenterCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FROM_CostCenterCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_LegalEntityId",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_LegalEntityId",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_MainAccount",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_MainAccount",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_BusinessTypeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_BusinessTypeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_CountryCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_CountryCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_BusinessUnitCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_BusinessUnitCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_DepartmentCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_DepartmentCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TO_CostCenterCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TO_CostCenterCode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_dbo_TrendAdjustments",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_dwh_TrendAdjustments",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-14T22:49:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

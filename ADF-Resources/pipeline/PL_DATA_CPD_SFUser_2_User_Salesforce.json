@@ -1,0 +1,51 @@
+{
+	"name": "PL_DATA_CPD_SFUser_2_User_Salesforce",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SFUser_2_User_Salesforce",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id, Sales_Rep_Code__c from user  where Sales_Rep_Code__c<>''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table dbo.User_Salesforce"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_SalesforceObject_User",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ASQL_User_From_SalesForce",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-26T07:29:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

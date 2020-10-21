@@ -1,0 +1,102 @@
+{
+	"name": "SQL_ODS_tbl_GlobalProductData_AUS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "LegalEntityDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "DataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductNo",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Positioning",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Corp_Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "MonthNumber",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "YearMonthNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ship_to_Country",
+				"type": "varchar"
+			},
+			{
+				"name": "SALESSUBSEGMENTID",
+				"type": "varchar"
+			},
+			{
+				"name": "Type",
+				"type": "varchar"
+			},
+			{
+				"name": "localCurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Std_Cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Std_Cost_Cur",
+				"type": "varchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 4
+			},
+			{
+				"name": "Sales",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_GlobalProductData_AUS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

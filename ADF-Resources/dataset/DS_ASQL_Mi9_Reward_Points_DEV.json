@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_Reward_Points_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "MI9_Reward_Points_Staging_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DS_TGT_SF_Account_Docebo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Docebo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

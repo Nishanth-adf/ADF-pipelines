@@ -1,0 +1,455 @@
+{
+	"name": "DS_SINK_ABLB_SalesOrderLines_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "D365_SalesOrderLines_Prod",
+				"folderPath": "Finesse/D365_JSON_Files",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": "Þ",
+			"rowDelimiter": "¬",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "InventoryLotId",
+				"type": "String"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "String"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "String"
+			},
+			{
+				"name": "ProjectCategoryId",
+				"type": "String"
+			},
+			{
+				"name": "ItemNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "MultilineDiscountPercentage",
+				"type": "String"
+			},
+			{
+				"name": "ShippingWarehouseId",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardBuyerName",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardNumber",
+				"type": "String"
+			},
+			{
+				"name": "CustomsDocumentNumber",
+				"type": "String"
+			},
+			{
+				"name": "LineDiscountAmount",
+				"type": "String"
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "String"
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "String"
+			},
+			{
+				"name": "DeliverySalesTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "MultilineDiscountAmount",
+				"type": "String"
+			},
+			{
+				"name": "ItemBatchNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "SalesProductCategoryName",
+				"type": "String"
+			},
+			{
+				"name": "ProjectId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectLinePropertyId",
+				"type": "String"
+			},
+			{
+				"name": "SalesRebateProductGroupId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "String"
+			},
+			{
+				"name": "SalesUnitSymbol",
+				"type": "String"
+			},
+			{
+				"name": "ItemWithholdingTaxCodeGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "String"
+			},
+			{
+				"name": "FixedPriceCharges",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryTermsId",
+				"type": "String"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "String"
+			},
+			{
+				"name": "PackingUnitSymbol",
+				"type": "String"
+			},
+			{
+				"name": "OrderedSalesQuantity",
+				"type": "String"
+			},
+			{
+				"name": "BOMId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreetInKana",
+				"type": "String"
+			},
+			{
+				"name": "ShippingSiteId",
+				"type": "String"
+			},
+			{
+				"name": "NGPCode",
+				"type": "String"
+			},
+			{
+				"name": "LineCreationSequenceNumber",
+				"type": "String"
+			},
+			{
+				"name": "MainAccountIdDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "OrderedInventoryStatusId",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardRecipientEmail",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "String"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxItemGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "RouteId",
+				"type": "String"
+			},
+			{
+				"name": "EInvoicePropertyNumber",
+				"type": "String"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "String"
+			},
+			{
+				"name": "CustomsDocumentName",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "String"
+			},
+			{
+				"name": "LineDescription",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "ServiceOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "FiscalDocumentTypeId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryCFOPCode",
+				"type": "String"
+			},
+			{
+				"name": "LineDiscountPercentage",
+				"type": "String"
+			},
+			{
+				"name": "SalesPrice",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardGiftMessage",
+				"type": "String"
+			},
+			{
+				"name": "OrderedCatchWeightQuantity",
+				"type": "String"
+			},
+			{
+				"name": "OrderLineReference",
+				"type": "String"
+			},
+			{
+				"name": "AllowedUnderdeliveryPercentage",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCityInKana",
+				"type": "String"
+			},
+			{
+				"name": "AllowedOverdeliveryPercentage",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatCommodityCode",
+				"type": "String"
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardRecipientName",
+				"type": "String"
+			},
+			{
+				"name": "CFOPCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "String"
+			},
+			{
+				"name": "DeliverySalesTaxItemGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "String"
+			},
+			{
+				"name": "CustomsDocumentDate",
+				"type": "String"
+			},
+			{
+				"name": "CustomersLineNumber",
+				"type": "String"
+			},
+			{
+				"name": "LineAmount",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatSpecialMovementCode",
+				"type": "String"
+			},
+			{
+				"name": "SalesPriceQuantity",
+				"type": "String"
+			},
+			{
+				"name": "SuframaDiscountPercentage",
+				"type": "String"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "WithholdingTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "ExternalItemNumber",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatStatisticValue",
+				"type": "String"
+			},
+			{
+				"name": "GiftCardBuyerEmail",
+				"type": "String"
+			},
+			{
+				"name": "RemainSalesPhysical",
+				"type": "String"
+			},
+			{
+				"name": "RemainInventFinancial",
+				"type": "String"
+			},
+			{
+				"name": "RemainSalesFinancial",
+				"type": "String"
+			},
+			{
+				"name": "RemainInventPhysical",
+				"type": "String"
+			},
+			{
+				"name": "METRefrigerationItemId",
+				"type": "String"
+			},
+			{
+				"name": "METUpshotSalesOrderLineNumber",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

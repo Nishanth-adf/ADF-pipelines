@@ -1,0 +1,284 @@
+{
+	"name": "ZPL_CPD__DimOrder_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD__DimOrder_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM DBO.DimOrder where OrderId <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "orderID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "orderID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "orderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "orderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "customerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customerNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statusCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "statusCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "buyer",
+									"type": "String"
+								},
+								"sink": {
+									"name": "buyer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "buyerPhone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "buyerPhone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "shipToName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "shipToName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "attention",
+									"type": "String"
+								},
+								"sink": {
+									"name": "attention",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orderType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_DimOrder_Dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DimOrder_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T12:46:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

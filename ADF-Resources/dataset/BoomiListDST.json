@@ -1,0 +1,19 @@
+{
+	"name": "BoomiListDST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "boomitok",
+				"container": "boomi"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

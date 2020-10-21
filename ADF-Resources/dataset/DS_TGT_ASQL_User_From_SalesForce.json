@@ -1,0 +1,25 @@
+{
+	"name": "DS_TGT_ASQL_User_From_SalesForce",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "sales_rep_code",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[User_Salesforce]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

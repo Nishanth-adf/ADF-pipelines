@@ -1,0 +1,824 @@
+{
+	"name": "pl_sf_sbfeb2020_factSales_account",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_sf_sbfeb2020_factSales_account",
+				"description": "-- Girish,  Feb2020\n-- create D365 \"C0\" accounts in SFDC",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "sf_sbfeb2020_User",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_src_factSales_Account]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingPostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingPostalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerSince",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Customer_Since__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountEmail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account_Email__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTerms",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Credit_Rating__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountOwner"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingStreet"
+								},
+								"sink": {
+									"name": "ShippingStreet"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCity"
+								},
+								"sink": {
+									"name": "ShippingCity"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingState"
+								},
+								"sink": {
+									"name": "ShippingState"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingPostalCode"
+								},
+								"sink": {
+									"name": "ShippingPostalCode"
+								}
+							},
+							{
+								"source": {
+									"name": "IAR_Rep"
+								},
+								"sink": {
+									"name": "IAR_Rep__c"
+								}
+							},
+							{
+								"source": {
+									"name": "Modality"
+								},
+								"sink": {
+									"name": "Modality__c"
+								}
+							},
+							{
+								"source": {
+									"name": "Discount"
+								},
+								"sink": {
+									"name": "Discount__c"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_factSales_account_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_sf_account_prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "sf_sbfeb2020_Account",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "pl_sf_sbfeb2020_factSales_account_legacy",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select CustomerKeyERP__c, PrimaryCustNo__c, name, Areaid__c, id  from Account\nwhere CustomerKeyERP__c <> ''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_sbfeb2020_Account",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKey__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_Account_download_whole",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_Account_Whole",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "sf_sbfeb2020_User",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id, name, sales_rep_code__c from User \nwhere sales_rep_code__c <> '' and IsActive = True\norder by sales_rep_code__c",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_sbfeb2020_User",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_User_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_User_prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "pl_sf_sbfeb2020_factSales_account_salesrep",
+				"description": "-- Girish, Feb 2020\n-- update sales rep for the legacy accounts ( not starting with \"C0\" ) in SFDC",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "pl_sf_sbfeb2020_factSales_account",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_src_factSales_Account_SalesRep]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaId"
+								},
+								"sink": {
+									"name": "AreaID__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName"
+								},
+								"sink": {
+									"name": "Name"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNumber"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountOwner"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_factSales_account",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_sf_account",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "pl_sf_sbfeb2020_factSales_account_legacy",
+				"description": "-- Girish, feb2020\n-- push legacy Mi9 accounts that do not start with 'C0' to SFDC",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "pl_sf_sbfeb2020_src_Account_Owner_moves",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_src_factSales_Account_Legacy]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaId"
+								},
+								"sink": {
+									"name": "AreaID__c"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingStreet"
+								},
+								"sink": {
+									"name": "BillingStreet"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingCity"
+								},
+								"sink": {
+									"name": "BillingCity"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingState"
+								},
+								"sink": {
+									"name": "BillingState"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingPostalCode"
+								},
+								"sink": {
+									"name": "BillingPostalCode"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName"
+								},
+								"sink": {
+									"name": "Name"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNumber"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerSince"
+								},
+								"sink": {
+									"name": "Customer_Since__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountEmail"
+								},
+								"sink": {
+									"name": "Account_Email__c"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneNumber"
+								},
+								"sink": {
+									"name": "Phone"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTerms"
+								},
+								"sink": {
+									"name": "Credit_Rating__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountOwner"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingStreet"
+								},
+								"sink": {
+									"name": "ShippingStreet"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCity"
+								},
+								"sink": {
+									"name": "ShippingCity"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingState"
+								},
+								"sink": {
+									"name": "ShippingState"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingPostalCode"
+								},
+								"sink": {
+									"name": "ShippingPostalCode"
+								}
+							},
+							{
+								"source": {
+									"name": "IAR_Rep"
+								},
+								"sink": {
+									"name": "IAR_Rep__c"
+								}
+							},
+							{
+								"source": {
+									"name": "Modality"
+								},
+								"sink": {
+									"name": "Modality__c"
+								}
+							},
+							{
+								"source": {
+									"name": "Discount"
+								},
+								"sink": {
+									"name": "Discount__c"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_factSales_account_legacy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_sf_account_legacy",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "pl_sf_sbfeb2020_src_Account_Owner_moves",
+				"description": "-- Girish, Feb 2020\n-- move sales reps to accounts",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "pl_sf_sbfeb2020_factSales_account_salesrep",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_src_Account_Owner_moves]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaId"
+								},
+								"sink": {
+									"name": "AreaID__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName"
+								},
+								"sink": {
+									"name": "Name"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNumber"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountOwner"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_src_factSales_accountowner",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_sbfeb2020_tgt_sf_accountownermove",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce_SBFEB2020"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-12T09:58:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

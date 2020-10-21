@@ -1,0 +1,163 @@
+{
+	"name": "DS_ASQL_SINK_Mi9_Transactions_Incr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "parent_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "order_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "gateway",
+				"type": "nvarchar"
+			},
+			{
+				"name": "code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "void",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "note",
+				"type": "nvarchar"
+			},
+			{
+				"name": "custom",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "external",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "amount",
+				"type": "decimal",
+				"precision": 12,
+				"scale": 2
+			},
+			{
+				"name": "fee",
+				"type": "decimal",
+				"precision": 12,
+				"scale": 2
+			},
+			{
+				"name": "created",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "avs",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cvn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "payment_method",
+				"type": "nvarchar"
+			},
+			{
+				"name": "wallet_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "eci",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rma_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "gc_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "failed",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "settlement_date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "currency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "currency_rate",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 6
+			},
+			{
+				"name": "changes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tax_report_processed",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "credit_voucher_transaction_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "old_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "author_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "MI9_Transactions_Staging_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

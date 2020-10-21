@@ -1,0 +1,17 @@
+{
+	"name": "DynamicsAX_DWHSalesOrderHeadersV2",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 3/26/2020",
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHSalesOrderHeadersV2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

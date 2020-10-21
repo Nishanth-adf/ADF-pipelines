@@ -1,0 +1,31 @@
+{
+	"name": "ASD_DEV_DimSalesPool",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SalesPoolId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Pool",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesPoolName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimSalesPool"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

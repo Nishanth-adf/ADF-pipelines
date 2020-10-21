@@ -1,0 +1,49 @@
+{
+	"name": "DS_ASQL_TGT_DimProductType_BA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			},
+			{
+				"name": "category",
+				"type": "String"
+			},
+			{
+				"name": "productLine",
+				"type": "String"
+			},
+			{
+				"name": "productFamily",
+				"type": "String"
+			},
+			{
+				"name": "catlogNumber",
+				"type": "String"
+			},
+			{
+				"name": "catlogDescription",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimProductType]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

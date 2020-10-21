@@ -1,0 +1,24 @@
+{
+	"name": "BA_Salesforce_One_touch",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_BA_to_SF_OneTouch_Prod",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-07-25T12:30:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

@@ -1,0 +1,131 @@
+{
+	"name": "PL_Migrate_Distributor_Tables",
+	"properties": {
+		"description": "Purge and Reload Distributor Tables from PROD to DEV\n",
+		"activities": [
+			{
+				"name": "CPD_stgMetaFactDistSalesDEV",
+				"description": "Purge and Reload stgMetaFactDistSalesDEV from Prod to DEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.stgMetaFactDistSales",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_stgMetaFactDistSales",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_StgMetaFactDistSales",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_stgMetaDimUidCustomerDEV",
+				"description": "Purge and Reload stgMetaDimUidCustomerDEV from PROD to DEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.stgMetaDimUidCustomer",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_stgMetaDimUidCustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_StgMetaDimUidCustomer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_stgMetasourceDEV",
+				"description": "Purge and Reload stgMetasourceDEV from Prod to Dev",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.stgMetasource",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_stgMetasource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_StgMetasource",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate_Prod_2_Dev_Latest"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-22T14:01:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

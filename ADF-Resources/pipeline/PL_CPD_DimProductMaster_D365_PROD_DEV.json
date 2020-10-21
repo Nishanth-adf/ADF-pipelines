@@ -1,0 +1,33 @@
+{
+	"name": "PL_CPD_DimProductMaster_D365_PROD_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "DimProductMaster_D365_INCR_LOAD_PROD",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dwh.usp_dimProductMaster_D365_IncrLoad"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-18T00:20:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,141 @@
+{
+	"name": "DS_ASQL_TGT_metauseedp_dbo_DimDate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "DateId",
+				"type": "Int32"
+			},
+			{
+				"name": "Date",
+				"type": "Date"
+			},
+			{
+				"name": "Year",
+				"type": "Int16"
+			},
+			{
+				"name": "YearQuarterNumber",
+				"type": "Int16"
+			},
+			{
+				"name": "QuarterNumber",
+				"type": "Byte"
+			},
+			{
+				"name": "QuarterYearName",
+				"type": "String"
+			},
+			{
+				"name": "QuarterName",
+				"type": "String"
+			},
+			{
+				"name": "YearMonthNumber",
+				"type": "Int32"
+			},
+			{
+				"name": "YearMonthName",
+				"type": "String"
+			},
+			{
+				"name": "MonthNumber",
+				"type": "Byte"
+			},
+			{
+				"name": "MonthName",
+				"type": "String"
+			},
+			{
+				"name": "YearWeekNumber",
+				"type": "Int32"
+			},
+			{
+				"name": "YearWeekName",
+				"type": "String"
+			},
+			{
+				"name": "WeekStartDate",
+				"type": "Date"
+			},
+			{
+				"name": "MonthDayNumber",
+				"type": "String"
+			},
+			{
+				"name": "MonthDayName",
+				"type": "String"
+			},
+			{
+				"name": "DayNumber",
+				"type": "Byte"
+			},
+			{
+				"name": "DayOfWeekNumber",
+				"type": "Int32"
+			},
+			{
+				"name": "DayOfWeekName",
+				"type": "String"
+			},
+			{
+				"name": "OffsetDays",
+				"type": "Int32"
+			},
+			{
+				"name": "OffsetWeeks",
+				"type": "Int32"
+			},
+			{
+				"name": "OffsetMonths",
+				"type": "Int16"
+			},
+			{
+				"name": "OffsetQuarters",
+				"type": "Int16"
+			},
+			{
+				"name": "OffsetYears",
+				"type": "Int16"
+			},
+			{
+				"name": "IsYearToDate",
+				"type": "Int16"
+			},
+			{
+				"name": "IsPreviousYearToDate",
+				"type": "Int16"
+			},
+			{
+				"name": "IsBusinessDayUS",
+				"type": "Int32"
+			},
+			{
+				"name": "IsBusinessDayCA",
+				"type": "Int32"
+			},
+			{
+				"name": "IsReceivablesInvoiceDateUS",
+				"type": "Int32"
+			},
+			{
+				"name": "IsReceivablesInvoiceDateCA",
+				"type": "Int32"
+			},
+			{
+				"name": "CRC",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimDate]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

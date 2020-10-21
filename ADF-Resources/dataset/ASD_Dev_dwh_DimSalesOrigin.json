@@ -1,0 +1,51 @@
+{
+	"name": "ASD_Dev_dwh_DimSalesOrigin",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SalesOriginId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "OriginCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OriginDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimSalesOrigin"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

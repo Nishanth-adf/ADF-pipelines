@@ -1,0 +1,59 @@
+{
+	"name": "ASD_Dev_dwh_DimGeography",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "GeographyID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimGeography"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,174 @@
+{
+	"name": "PL_TRAN_CPD_STG_DimFinishedGoods",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_DWH_DimFinishedGoods-2-AZDB_DimFinishedGoods",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "AVLVDW_DWH_DimFinishedGoods-2-BLB_DWH_DimFinishedGoods",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('DimFinishedGoods-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-DimFinishedGoods]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"ProductPK": "ProductPK",
+							"CatalogNumber": "CatalogNumber",
+							"CatalogName": "CatalogName",
+							"CatalogNumberName": "CatalogNumberName",
+							"CatalogMasterName": "CatalogMasterName",
+							"CatalogMasterNumberName": "CatalogMasterNumberName",
+							"PartNumber": "PartNumber",
+							"PartEnityNumber": "PartEnityNumber",
+							"ProductGroupNumber": "ProductGroupNumber",
+							"GroupDesc": "GroupDesc",
+							"SubGroupDesc": "SubGroupDesc",
+							"PartRev": "PartRev",
+							"UnitOfMeasure": "UnitOfMeasure",
+							"ListPrice": "ListPrice",
+							"WSPrice": "WSPrice",
+							"DistPrice": "DistPrice",
+							"PackageCode": "PackageCode",
+							"Weight": "Weight",
+							"PriceChange": "PriceChange",
+							"MarkUp": "MarkUp",
+							"SourceEnterDate": "SourceEnterDate",
+							"LastOrdered": "LastOrdered",
+							"SpecialTax": "SpecialTax",
+							"Taxable": "Taxable",
+							"MinOrderQty": "MinOrderQty",
+							"MatrixCD": "MatrixCD",
+							"jocreate": "jocreate",
+							"Ref1": "Ref1",
+							"Ref2": "Ref2",
+							"SeminarDate": "SeminarDate",
+							"Ref4": "Ref4",
+							"Ref5": "Ref5",
+							"Ref6": "Ref6",
+							"Ref6Desc": "Ref6Desc",
+							"Ref7": "Ref7",
+							"Ref7Desc": "Ref7Desc",
+							"Ref8": "Ref8",
+							"ActiveInd": "ActiveInd",
+							"Conversion": "Conversion",
+							"Classify": "Classify",
+							"VariationCD": "VariationCD",
+							"optctgrycode": "optctgrycode",
+							"optctgryline": "optctgryline",
+							"group_desc": "group_desc",
+							"StandardCost": "StandardCost",
+							"CategoryManager": "CategoryManager",
+							"CIA": "CIA",
+							"ProductLine": "ProductLine",
+							"ProductFamily": "ProductFamily",
+							"DWCreateDateTime": "DWCreateDateTime",
+							"DWUpdateDateTime": "DWUpdateDateTime",
+							"SourceDB": "SourceDB",
+							"TPM": "TPM",
+							"ProductFamilyOLD": "ProductFamilyOLD",
+							"ProductFamily2": "ProductFamily2",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_DimFinishedGoods",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_DimFinishedGoods",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "AVLVDW_DWH_DimFinishedGoods-2-BLB_DWH_DimFinishedGoods",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('DimFinishedGoods-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [ProductPK]\n      ,[CatalogNumber]\n      ,[CatalogName]\n      ,[CatalogNumberName]\n      ,[CatalogMasterName]\n      ,[CatalogMasterNumberName]\n      ,[PartNumber]\n      ,[PartEnityNumber]\n      ,[ProductGroupNumber]\n      ,[GroupDesc]\n      ,[SubGroupDesc]\n      ,[PartRev]\n      ,[UnitOfMeasure]\n      ,[ListPrice]\n      ,[WSPrice]\n      ,[DistPrice]\n      ,[PackageCode]\n      ,[Weight]\n      ,[PriceChange]\n      ,[MarkUp]\n      ,[SourceEnterDate]\n      ,[LastOrdered]\n      ,[SpecialTax]\n      ,[Taxable]\n      ,[MinOrderQty]\n      ,[MatrixCD]\n      ,[jocreate]\n      ,[Ref1]\n      ,[Ref2]\n      ,[SeminarDate]\n      ,[Ref4]\n      ,[Ref5]\n      ,[Ref6]\n      ,[Ref6Desc]\n      ,[Ref7]\n      ,[Ref7Desc]\n      ,[Ref8]\n      ,[ActiveInd]\n      ,[Conversion]\n      ,[Classify]\n      ,[VariationCD]\n      ,[optctgrycode]\n      ,[optctgryline]\n      ,[group_desc]\n      ,[StandardCost]\n      ,[CategoryManager]\n      ,[CIA]\n      ,[ProductLine]\n      ,[ProductFamily]\n      ,[DWCreateDateTime]\n      ,[DWUpdateDateTime]\n      ,[SourceDB]\n      ,[TPM]\n      ,[ProductFamilyOLD]\n      ,[ProductFamily2]\n\t  ,'DWH' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [DataWarehouse].[dbo].[DimFinishedGoods] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_AV_LV_DW",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_tableName": "DWH_DimFinishedGoods"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_DimFinishedGoods",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

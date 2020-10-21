@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_DI9_Orders_Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_orders_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

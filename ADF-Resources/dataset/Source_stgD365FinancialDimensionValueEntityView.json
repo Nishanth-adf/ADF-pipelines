@@ -1,0 +1,86 @@
+{
+	"name": "Source_stgD365FinancialDimensionValueEntityView",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "RecId",
+				"type": "varchar"
+			},
+			{
+				"name": "ActiveFrom",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ActiveTo",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Description",
+				"type": "varchar"
+			},
+			{
+				"name": "DimensionAttribute",
+				"type": "varchar"
+			},
+			{
+				"name": "DimensionAttributeType",
+				"type": "varchar"
+			},
+			{
+				"name": "DimensionAttributeValue",
+				"type": "varchar"
+			},
+			{
+				"name": "DimensionValue",
+				"type": "varchar"
+			},
+			{
+				"name": "GroupDimension",
+				"type": "varchar"
+			},
+			{
+				"name": "IsBlockedForManualEntry",
+				"type": "varchar"
+			},
+			{
+				"name": "IsSuspended",
+				"type": "varchar"
+			},
+			{
+				"name": "IsTotal",
+				"type": "varchar"
+			},
+			{
+				"name": "LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "recVersion",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Partition",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365FinancialDimensionValueEntityView"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

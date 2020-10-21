@@ -1,0 +1,16 @@
+{
+	"name": "DS_SRC_SF_BA_Prod_Orders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

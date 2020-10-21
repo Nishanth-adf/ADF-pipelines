@@ -1,0 +1,17 @@
+{
+	"name": "DS_MI9_Recurrences",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "MI9_Recurrences_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

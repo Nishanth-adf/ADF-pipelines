@@ -1,0 +1,94 @@
+{
+	"name": "PL_DATA_CPD_STG_NS_TransactionAddress",
+	"properties": {
+		"activities": [
+			{
+				"name": "SRC_SC58_Transaction_Addr",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "\nSELECT [BILL_ADDRESS_LINE_1]\n      ,[BILL_ADDRESS_LINE_2]\n      ,[BILL_ADDRESS_LINE_3]\n      ,[BILL_CITY]\n      ,[BILL_COMPANY]\n      ,[BILL_COUNTRY]\n      ,[BILL_NAME]\n      ,[BILL_PHONE_NUMBER]\n      ,[BILL_STATE]\n      ,[BILL_ZIP]\n      ,[CREATED_BY_ID]\n      ,[DATE_CREATED]\n      ,[DATE_LAST_MODIFIED]\n      ,[LAST_MODIFIED_BY_ID]\n      ,[RETURN_ADDRESS_LINE_1]\n      ,[RETURN_ADDRESS_LINE_2]\n      ,[RETURN_CITY]\n      ,[RETURN_COUNTRY]\n      ,[RETURN_STATE]\n      ,[RETURN_ZIPCODE]\n      ,[SHIP_ADDRESS_LINE_1]\n      ,[SHIP_ADDRESS_LINE_2]\n      ,[SHIP_ADDRESS_LINE_3]\n      ,[SHIP_ATTENTION]\n      ,[SHIP_CITY]\n      ,[SHIP_COMPANY]\n      ,[SHIP_COUNTRY]\n      ,[SHIP_NAME]\n      ,[SHIP_PHONE_NUMBER]\n      ,[SHIP_STATE]\n      ,[SHIP_ZIP]\n      ,[TRANSACTION_ADDRESS_ID]\n      ,[TRANSACTION_ID]\n  FROM [NetSuite].[dbo].[Transaction_Address]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_Transaction_Address",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_Transaction_Address",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SC58_Netsuite_TransactionAddress_Blob_to_Stg",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SRC_SC58_Transaction_Addr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_Transaction_Address",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_StgTransaction_Address",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:56:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

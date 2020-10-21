@@ -1,0 +1,224 @@
+{
+	"name": "PL_DATA_CPD_BA_DimProduct",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_stgItems-2-DimProductMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT Cast(NULL as DateTime) as [productLaunchDate]\n      ,Cast(NULL as nvarchar(20)) as[applicableRegion]\n      ,Cast(NULL as nvarchar(100)) as [group1] \n      ,[FULL_NAME] as [catalogNumber]\n      ,[DISPLAYNAME] as [description]\n      ,Cast(NULL as nvarchar(20)) as [productGroupType]\n      ,Cast(NULL as nvarchar(100)) as [ProductLine]\n\t  ,Cast(NULL as nvarchar(100)) as [productFamily]\n      ,Cast(NULL as nvarchar(100)) as [productFamilyVariety]\n      ,Cast(NULL as nvarchar(100)) as [subgroup]\n      ,Cast(NULL as nvarchar(100)) as TPM\n      ,Cast(NULL as nvarchar(100))[Category_Manager]\n      ,Cast(NULL as nvarchar(3)) as [Active_Ind]\n      ,Cast(NULL as nvarchar(100)) as [Serving]\n      ,Dateadd(hh,-8,GetDate()) as [insertDate]\n      ,CAST('ADF ETL' as nvarchar(7)) as insertBy\n      ,'NS' as Source\n  FROM [dbo].[stgItems]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "productLaunchDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "productLaunchDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "applicableRegion",
+									"type": "String"
+								},
+								"sink": {
+									"name": "applicableRegion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "group1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "group1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "catalogNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalogNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productGroupType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productGroupType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productFamily",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productFamily",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "productFamilyVariety",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productFamilyVariety",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "subgroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subgroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TPM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Category_Manager",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Category_Manager",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Active_Ind",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Active_Ind",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Serving",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Serving",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductLine",
+									"type": "String"
+								},
+								"sink": {
+									"name": "productLine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_StgItems",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ASQL_DimProductMaster_BA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-05-13T09:31:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

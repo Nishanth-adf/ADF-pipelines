@@ -1,0 +1,79 @@
+{
+	"name": "DEVDest_stg_D365_FiscalCalendars",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LedgerGregorianDateId",
+				"type": "text"
+			},
+			{
+				"name": "PeriodRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "YearOffset",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PeriodName",
+				"type": "text"
+			},
+			{
+				"name": "CalendarRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "YearName",
+				"type": "text"
+			},
+			{
+				"name": "Quarter",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LedgerRecId",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GregorianDate",
+				"type": "date"
+			},
+			{
+				"name": "QuarterOffset",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Month",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CalendarId",
+				"type": "text"
+			},
+			{
+				"name": "PeriodOffset",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365FiscalCalendars"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

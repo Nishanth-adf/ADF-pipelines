@@ -1,0 +1,104 @@
+{
+	"name": "DS_SF_TGT_DimOrder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SalesForce_Girish_Login",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - SalesForce"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "orderID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "orderNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "orderDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "customerNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "statusCode__c",
+				"type": "String"
+			},
+			{
+				"name": "buyer__c",
+				"type": "String"
+			},
+			{
+				"name": "buyerPhone__c",
+				"type": "String"
+			},
+			{
+				"name": "shipToName__c",
+				"type": "String"
+			},
+			{
+				"name": "attention__c",
+				"type": "String"
+			},
+			{
+				"name": "phone__c",
+				"type": "String"
+			},
+			{
+				"name": "addressLine1__c",
+				"type": "String"
+			},
+			{
+				"name": "addressLine2__c",
+				"type": "String"
+			},
+			{
+				"name": "addressLine3__c",
+				"type": "String"
+			},
+			{
+				"name": "city__c",
+				"type": "String"
+			},
+			{
+				"name": "country__c",
+				"type": "String"
+			},
+			{
+				"name": "zip__c",
+				"type": "String"
+			},
+			{
+				"name": "insertDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy__c",
+				"type": "String"
+			},
+			{
+				"name": "modifiedDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "modifiedBy__c",
+				"type": "String"
+			},
+			{
+				"name": "state__c",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "DimOrder__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

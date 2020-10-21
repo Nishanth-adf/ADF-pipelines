@@ -1,0 +1,12 @@
+{
+	"name": "DS_SQL_SRC_NS_SalesAccount",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

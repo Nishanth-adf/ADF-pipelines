@@ -1,0 +1,41 @@
+{
+	"name": "SQL_ODS_tbl_PostingLayerTax",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "PostingLayer",
+				"type": "varchar"
+			},
+			{
+				"name": "Ledger",
+				"type": "varchar"
+			},
+			{
+				"name": "LedgerDimension",
+				"type": "varchar"
+			},
+			{
+				"name": "LedgerGregorianDateId",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountRecId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_PostingLayerTax"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

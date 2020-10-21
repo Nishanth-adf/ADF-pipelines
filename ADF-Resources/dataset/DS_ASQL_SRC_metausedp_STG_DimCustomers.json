@@ -1,0 +1,256 @@
+{
+	"name": "DS_ASQL_SRC_metausedp_STG_DimCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - metausedp (ASQL)"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "CustomerPK",
+				"type": "Int32"
+			},
+			{
+				"name": "CustNo",
+				"type": "String"
+			},
+			{
+				"name": "CustName",
+				"type": "String"
+			},
+			{
+				"name": "custnoname",
+				"type": "String"
+			},
+			{
+				"name": "creditlmt",
+				"type": "String"
+			},
+			{
+				"name": "activeind",
+				"type": "String"
+			},
+			{
+				"name": "custclass",
+				"type": "String"
+			},
+			{
+				"name": "credithold",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "salesmanname",
+				"type": "String"
+			},
+			{
+				"name": "salesmancdname",
+				"type": "String"
+			},
+			{
+				"name": "in_out_flag",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref5name",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref6name",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref7name",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "ref8name",
+				"type": "String"
+			},
+			{
+				"name": "inceptiondate",
+				"type": "DateTime"
+			},
+			{
+				"name": "dayssinceinception",
+				"type": "String"
+			},
+			{
+				"name": "discount",
+				"type": "Double"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "current_rating",
+				"type": "String"
+			},
+			{
+				"name": "potential_rating",
+				"type": "String"
+			},
+			{
+				"name": "modality",
+				"type": "String"
+			},
+			{
+				"name": "specialties",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "ref4name",
+				"type": "String"
+			},
+			{
+				"name": "implementationdate",
+				"type": "String"
+			},
+			{
+				"name": "certificationdate",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryState",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryCertificationdate",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryDaysSinceInception",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryZip",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryCustClass",
+				"type": "String"
+			},
+			{
+				"name": "Districtname",
+				"type": "String"
+			},
+			{
+				"name": "primarycustomer",
+				"type": "String"
+			},
+			{
+				"name": "primarycustomernoname",
+				"type": "String"
+			},
+			{
+				"name": "ECommerceFlag",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "SourceDB",
+				"type": "String"
+			},
+			{
+				"name": "FinanceChannel",
+				"type": "String"
+			},
+			{
+				"name": "FinanceCountry",
+				"type": "String"
+			},
+			{
+				"name": "FinanceCustomer",
+				"type": "String"
+			},
+			{
+				"name": "FinanceCustomerType",
+				"type": "String"
+			},
+			{
+				"name": "FinanceBusinessType",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryInceptionDate",
+				"type": "Date"
+			},
+			{
+				"name": "DWCreateDateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "DWUpdateDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgDimCustomers]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

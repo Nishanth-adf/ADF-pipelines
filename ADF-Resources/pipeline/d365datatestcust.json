@@ -1,0 +1,2205 @@
+{
+	"name": "d365datatestcust",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "metaedpAzureBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "metausedpblobdev"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerAccount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBrazilianCNPJOrCPF",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"name": "PartyType",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxExtension",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"name": "ContactPersonId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"name": "BirthCountyCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"name": "PackingMaterialFeeLicenseNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitter",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmail",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"name": "CURPNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 17
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedInDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 18
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 19
+								}
+							},
+							{
+								"source": {
+									"name": "ItemCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 20
+								}
+							},
+							{
+								"source": {
+									"name": "PersonProfessionalTitle",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 21
+								}
+							},
+							{
+								"source": {
+									"name": "SalesSegmentId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 22
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelexDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 23
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 24
+								}
+							},
+							{
+								"source": {
+									"name": "SalesAccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 25
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebookDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 26
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 27
+								}
+							},
+							{
+								"source": {
+									"name": "TCSGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 28
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 29
+								}
+							},
+							{
+								"source": {
+									"name": "AddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 30
+								}
+							},
+							{
+								"source": {
+									"name": "LineOfBusinessId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 31
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationPhoneticName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 32
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 33
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 34
+								}
+							},
+							{
+								"source": {
+									"name": "ElectronicInvoiceEAN",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 35
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryFreightZone",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 36
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFax",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 37
+								}
+							},
+							{
+								"source": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 38
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 39
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 40
+								}
+							},
+							{
+								"source": {
+									"name": "BirthPlace",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 41
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 42
+								}
+							},
+							{
+								"source": {
+									"name": "PersonInitials",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 43
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultECommerceOperator",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 44
+								}
+							},
+							{
+								"source": {
+									"name": "CentralBankPurposeCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 45
+								}
+							},
+							{
+								"source": {
+									"name": "FullPrimaryAddress",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 46
+								}
+							},
+							{
+								"source": {
+									"name": "OrderEntryDeadline",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 47
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignerId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 48
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 49
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedIn",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 50
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURL",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 51
+								}
+							},
+							{
+								"source": {
+									"name": "PartyState",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 52
+								}
+							},
+							{
+								"source": {
+									"name": "PartyNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 53
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAccount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 54
+								}
+							},
+							{
+								"source": {
+									"name": "CentralBankPurposeNotes",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 55
+								}
+							},
+							{
+								"source": {
+									"name": "CollectionsContactPersonId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 56
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 57
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 58
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentSchedule",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 59
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitterPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 60
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 61
+								}
+							},
+							{
+								"source": {
+									"name": "AddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 62
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryTerms",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 63
+								}
+							},
+							{
+								"source": {
+									"name": "NumberSequenceGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 64
+								}
+							},
+							{
+								"source": {
+									"name": "PersonChildrenNames",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 65
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 66
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryMode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 67
+								}
+							},
+							{
+								"source": {
+									"name": "PersonProfessionalSuffix",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 68
+								}
+							},
+							{
+								"source": {
+									"name": "WarehouseId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 69
+								}
+							},
+							{
+								"source": {
+									"name": "DestinationCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 70
+								}
+							},
+							{
+								"source": {
+									"name": "FrenchSiret",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 71
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentDay",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 72
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianNIT",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 73
+								}
+							},
+							{
+								"source": {
+									"name": "EmployeeResponsibleNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 74
+								}
+							},
+							{
+								"source": {
+									"name": "PersonAnniversaryYear",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 75
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultInventoryStatusId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 76
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 77
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhone",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 78
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 79
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 80
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 81
+								}
+							},
+							{
+								"source": {
+									"name": "PANReferenceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 82
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 83
+								}
+							},
+							{
+								"source": {
+									"name": "SalesCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 84
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCNPJOrCPF",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 85
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentFactoringAccount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 86
+								}
+							},
+							{
+								"source": {
+									"name": "PANNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 87
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTwitterDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 88
+								}
+							},
+							{
+								"source": {
+									"name": "PersonFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 89
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCCM",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 90
+								}
+							},
+							{
+								"source": {
+									"name": "ReceiptEmail",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 91
+								}
+							},
+							{
+								"source": {
+									"name": "TDSGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 92
+								}
+							},
+							{
+								"source": {
+									"name": "MultiLineDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 93
+								}
+							},
+							{
+								"source": {
+									"name": "PersonAnniversaryDay",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 94
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultDimensionDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 95
+								}
+							},
+							{
+								"source": {
+									"name": "SupplementaryItemGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 96
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentSpecification",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 97
+								}
+							},
+							{
+								"source": {
+									"name": "AddressRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 98
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBooks",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 99
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 100
+								}
+							},
+							{
+								"source": {
+									"name": "FulfillmentPolicyName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 101
+								}
+							},
+							{
+								"source": {
+									"name": "SalesDistrict",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 102
+								}
+							},
+							{
+								"source": {
+									"name": "ConsolidationDay",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 103
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 104
+								}
+							},
+							{
+								"source": {
+									"name": "AddressState",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 105
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 106
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTermsBaseDays",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 107
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 108
+								}
+							},
+							{
+								"source": {
+									"name": "KnownAs",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 109
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelex",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 110
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentBankAccount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 111
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianIE",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 112
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactEmailRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 113
+								}
+							},
+							{
+								"source": {
+									"name": "AddressBrazilianIE",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 114
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneExtension",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 115
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 116
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhonePurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 117
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 118
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressState",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 119
+								}
+							},
+							{
+								"source": {
+									"name": "ReceiptCalendar",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 120
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressState",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 121
+								}
+							},
+							{
+								"source": {
+									"name": "StateInscription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 122
+								}
+							},
+							{
+								"source": {
+									"name": "PersonLastNamePrefix",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 123
+								}
+							},
+							{
+								"source": {
+									"name": "SalesReturnTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 124
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 125
+								}
+							},
+							{
+								"source": {
+									"name": "FederalAgencyLocationCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 126
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 127
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticMiddleName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 128
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianCNAE",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 129
+								}
+							},
+							{
+								"source": {
+									"name": "WithholdingTaxGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 130
+								}
+							},
+							{
+								"source": {
+									"name": "NAFCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 131
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 132
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 133
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLocationRoles",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 134
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentCashDiscount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 135
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 136
+								}
+							},
+							{
+								"source": {
+									"name": "MerchantID",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 137
+								}
+							},
+							{
+								"source": {
+									"name": "CreditRating",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 138
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebook",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 139
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressBuildingComplement",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 140
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 141
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 142
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 143
+								}
+							},
+							{
+								"source": {
+									"name": "PartyCountry",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 144
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 145
+								}
+							},
+							{
+								"source": {
+									"name": "SalesMemo",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 146
+								}
+							},
+							{
+								"source": {
+									"name": "ReliefGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 147
+								}
+							},
+							{
+								"source": {
+									"name": "StatisticsGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 148
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 149
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 150
+								}
+							},
+							{
+								"source": {
+									"name": "CustClassificationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 151
+								}
+							},
+							{
+								"source": {
+									"name": "AddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 152
+								}
+							},
+							{
+								"source": {
+									"name": "FederalComments",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 153
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTerms",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 154
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactPhoneDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 155
+								}
+							},
+							{
+								"source": {
+									"name": "AddressPostbox",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 156
+								}
+							},
+							{
+								"source": {
+									"name": "SalesSubsegmentId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 157
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRebateGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 158
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCounty",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 159
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLRecordId",
+									"type": "Int64"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 160
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressValidTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 161
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 162
+								}
+							},
+							{
+								"source": {
+									"name": "CreditLimit",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 163
+								}
+							},
+							{
+								"source": {
+									"name": "PackingDutyLicense",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 164
+								}
+							},
+							{
+								"source": {
+									"name": "NationalRegistryNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 165
+								}
+							},
+							{
+								"source": {
+									"name": "SiteId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 166
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 167
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactURLPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 168
+								}
+							},
+							{
+								"source": {
+									"name": "ChargesGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 169
+								}
+							},
+							{
+								"source": {
+									"name": "NameAlias",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 170
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionSalesGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 171
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 172
+								}
+							},
+							{
+								"source": {
+									"name": "AddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 173
+								}
+							},
+							{
+								"source": {
+									"name": "PersonLastName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 174
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentIdType",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 175
+								}
+							},
+							{
+								"source": {
+									"name": "VendorAccount",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 176
+								}
+							},
+							{
+								"source": {
+									"name": "AddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 177
+								}
+							},
+							{
+								"source": {
+									"name": "ResidenceForeignCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 178
+								}
+							},
+							{
+								"source": {
+									"name": "RFCNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 179
+								}
+							},
+							{
+								"source": {
+									"name": "PersonHobbies",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 180
+								}
+							},
+							{
+								"source": {
+									"name": "ElectronicLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 181
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 182
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactLinkedInPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 183
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTMAGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 184
+								}
+							},
+							{
+								"source": {
+									"name": "AddressValidFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 185
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationNumberOfEmployees",
+									"type": "Int32"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 186
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 187
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 188
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryReason",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 189
+								}
+							},
+							{
+								"source": {
+									"name": "TaxRegistrationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 190
+								}
+							},
+							{
+								"source": {
+									"name": "DiscountPriceGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 191
+								}
+							},
+							{
+								"source": {
+									"name": "AddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 192
+								}
+							},
+							{
+								"source": {
+									"name": "SuframaNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 193
+								}
+							},
+							{
+								"source": {
+									"name": "IdentificationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 194
+								}
+							},
+							{
+								"source": {
+									"name": "AuthorityOffice",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 195
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 196
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactTelexPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 197
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"type": "Decimal",
+									"ordinal": 198
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 199
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFacebookPurpose",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 200
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyChain",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 201
+								}
+							},
+							{
+								"source": {
+									"name": "BrazilianINSSCEI",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 202
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 203
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryContactFaxDescription",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 204
+								}
+							},
+							{
+								"source": {
+									"name": "WriteoffReason",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 205
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMiddleName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 206
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 207
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageId",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 208
+								}
+							},
+							{
+								"source": {
+									"name": "PersonPhoneticLastName",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 209
+								}
+							},
+							{
+								"source": {
+									"name": "AddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 210
+								}
+							},
+							{
+								"source": {
+									"name": "PIPApprovedCustomerGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 211
+								}
+							},
+							{
+								"source": {
+									"name": "PIPCertOfAnalysisCustGroup",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 212
+								}
+							},
+							{
+								"source": {
+									"name": "METUpshotCustomerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 213
+								}
+							},
+							{
+								"source": {
+									"name": "LTICreatedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"type": "DateTimeOffset",
+									"ordinal": 214
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d365prods",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d365datatestO",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T05:56:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

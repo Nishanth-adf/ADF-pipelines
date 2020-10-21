@@ -1,0 +1,195 @@
+{
+	"name": "ASD_Prod_staging_DwhWHSShipmentTables_LastFewDays",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/03/2020",
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WaveLabelsPrintedDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SCAC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTableModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WaveLabelsPrintedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CountryRegionISOCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WaveId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTablePartition",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProNum",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WayBill",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CarrierCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BrokerCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTableModifiedDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipConfirmUTCDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderNum",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipConsolidationPolicy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LoadId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModeCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CarrierServiceCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerRef",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryPostalAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InventSiteId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DropOffUTCDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ManifestedWeightUOM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InventLocationId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTableRecVersion",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerReq",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ManifestedWeight",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipmentArrivalUTCDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountNum",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RouteCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StopNum",
+				"type": "nvarchar"
+			},
+			{
+				"name": "METShipItFrgtCost",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FreightTermCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DlvTermId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CarrierGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTableCreatedDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipCarrierAccount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillOfLadingId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSShipmentTableRecId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "DwhWHSShipmentTables_LastFewDays"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

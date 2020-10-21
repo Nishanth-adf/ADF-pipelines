@@ -1,0 +1,78 @@
+{
+	"name": "PL_CPD_MI9_Coupon_Codes_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Coupon_Codes",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "select * from coupon_codes"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.Mi9_coupon_codes_Staging",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable7",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Coupon_Codes_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "MI9_Coupon_Code_Incremental_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_MI9_Coupon_Codes",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_coupon_codes_Incr_Load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Mi9 DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-15T04:50:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

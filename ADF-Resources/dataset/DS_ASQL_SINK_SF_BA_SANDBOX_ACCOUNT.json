@@ -1,0 +1,30 @@
+{
+	"name": "DS_ASQL_SINK_SF_BA_SANDBOX_ACCOUNT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sf_BA_Sandbox_Accounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

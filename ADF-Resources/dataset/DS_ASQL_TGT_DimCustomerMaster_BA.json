@@ -1,0 +1,41 @@
+{
+	"name": "DS_ASQL_TGT_DimCustomerMaster_BA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "customerNumber",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "salesmanCode",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimCustomerMaster]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "PL_CPD_STGDWHSalesRep",
+	"properties": {
+		"description": "Step 1)\nMigrate from SQL01.gil.arthurdaly.tbl_Rep_Map_Consolidated to PROD.dbo.stgTblRepMapConsolidated_D365\n\nStep 2)\nBuilds table PROD.dbo.SalesRepMapHierMaster\n\nAuthor: GBuenaventura\nDate: 05/15/2020",
+		"activities": [
+			{
+				"name": "STRD_PROC_Create_SalesRepMapHierMaster",
+				"description": "Build dbo.SalesRepMapHierMaster\n\n\nAuthor: GBuenaventura\nDate: 05/15/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dwh.Create_SalesRepMapHierMaster"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-28T21:21:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

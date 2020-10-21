@@ -1,0 +1,39 @@
+{
+	"name": "ASD_PROD_tbl_D365_DistributorPricing",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/TEST"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "source_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "source_name",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductNo",
+				"type": "varchar"
+			},
+			{
+				"name": "DistPrice",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_D365_DistributorPricing"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

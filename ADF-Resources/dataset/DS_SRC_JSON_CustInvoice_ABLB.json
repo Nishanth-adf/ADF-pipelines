@@ -1,0 +1,260 @@
+{
+	"name": "DS_SRC_JSON_CustInvoice_ABLB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "JournalBatchNumber",
+				"type": "String"
+			},
+			{
+				"name": "LineNumber",
+				"type": "Int64"
+			},
+			{
+				"name": "CustVendBankAccountId",
+				"type": "String"
+			},
+			{
+				"name": "CreditAmount",
+				"type": "Double"
+			},
+			{
+				"name": "CashDiscountDate",
+				"type": "String"
+			},
+			{
+				"name": "ReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "OffsetAccountType",
+				"type": "String"
+			},
+			{
+				"name": "ExchRate",
+				"type": "Int64"
+			},
+			{
+				"name": "ItemSalesTaxGroup",
+				"type": "String"
+			},
+			{
+				"name": "Currency",
+				"type": "String"
+			},
+			{
+				"name": "OffsetTransactionText",
+				"type": "String"
+			},
+			{
+				"name": "MethodOfPayment",
+				"type": "String"
+			},
+			{
+				"name": "TransactionText",
+				"type": "String"
+			},
+			{
+				"name": "Company",
+				"type": "String"
+			},
+			{
+				"name": "Listcode",
+				"type": "String"
+			},
+			{
+				"name": "TransactionType",
+				"type": "String"
+			},
+			{
+				"name": "OffsetAccountDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "DocumentDate",
+				"type": "String"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "IsWithholdingCalculationEnabled",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryDate",
+				"type": "String"
+			},
+			{
+				"name": "OffsetCompany",
+				"type": "String"
+			},
+			{
+				"name": "ChineseVoucher",
+				"type": "String"
+			},
+			{
+				"name": "ChineseVoucherType",
+				"type": "String"
+			},
+			{
+				"name": "CustomerAccountDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "DocumentNumber",
+				"type": "String"
+			},
+			{
+				"name": "ExchRateSecondary",
+				"type": "Int64"
+			},
+			{
+				"name": "DebitAmount",
+				"type": "Double"
+			},
+			{
+				"name": "PostingProfile",
+				"type": "String"
+			},
+			{
+				"name": "BankTransactionType",
+				"type": "String"
+			},
+			{
+				"name": "ItemWithholdingTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "Voucher",
+				"type": "String"
+			},
+			{
+				"name": "DueDate",
+				"type": "String"
+			},
+			{
+				"name": "CashDiscountAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "Approved",
+				"type": "String"
+			},
+			{
+				"name": "AccountType",
+				"type": "String"
+			},
+			{
+				"name": "TypeOfOperation",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "String"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "String"
+			},
+			{
+				"name": "ApprovedBy",
+				"type": "String"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "ReasonComment",
+				"type": "String"
+			},
+			{
+				"name": "TermsOfPayment",
+				"type": "String"
+			},
+			{
+				"name": "PaymentSpecification",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonNodeReference": "$.['value']",
+				"jsonPathDefinition": {
+					"dataAreaId": "['dataAreaId']",
+					"JournalBatchNumber": "['JournalBatchNumber']",
+					"LineNumber": "['LineNumber']",
+					"CustVendBankAccountId": "['CustVendBankAccountId']",
+					"CreditAmount": "['CreditAmount']",
+					"CashDiscountDate": "['CashDiscountDate']",
+					"ReasonCode": "['ReasonCode']",
+					"OffsetAccountType": "['OffsetAccountType']",
+					"ExchRate": "['ExchRate']",
+					"ItemSalesTaxGroup": "['ItemSalesTaxGroup']",
+					"Currency": "['Currency']",
+					"OffsetTransactionText": "['OffsetTransactionText']",
+					"MethodOfPayment": "['MethodOfPayment']",
+					"TransactionText": "['TransactionText']",
+					"Company": "['Company']",
+					"Listcode": "['Listcode']",
+					"TransactionType": "['TransactionType']",
+					"OffsetAccountDisplayValue": "['OffsetAccountDisplayValue']",
+					"DocumentDate": "['DocumentDate']",
+					"CashDiscountCode": "['CashDiscountCode']",
+					"IsWithholdingCalculationEnabled": "['IsWithholdingCalculationEnabled']",
+					"DeliveryDate": "['DeliveryDate']",
+					"OffsetCompany": "['OffsetCompany']",
+					"ChineseVoucher": "['ChineseVoucher']",
+					"ChineseVoucherType": "['ChineseVoucherType']",
+					"CustomerAccountDisplayValue": "['CustomerAccountDisplayValue']",
+					"DocumentNumber": "['DocumentNumber']",
+					"ExchRateSecondary": "['ExchRateSecondary']",
+					"DebitAmount": "['DebitAmount']",
+					"PostingProfile": "['PostingProfile']",
+					"BankTransactionType": "['BankTransactionType']",
+					"ItemWithholdingTaxGroupCode": "['ItemWithholdingTaxGroupCode']",
+					"Voucher": "['Voucher']",
+					"DueDate": "['DueDate']",
+					"CashDiscountAmount": "['CashDiscountAmount']",
+					"Approved": "['Approved']",
+					"AccountType": "['AccountType']",
+					"TypeOfOperation": "['TypeOfOperation']",
+					"InvoiceId": "['InvoiceId']",
+					"InvoiceDate": "['InvoiceDate']",
+					"TaxExemptNumber": "['TaxExemptNumber']",
+					"SalesTaxGroup": "['SalesTaxGroup']",
+					"ApprovedBy": "['ApprovedBy']",
+					"DefaultDimensionDisplayValue": "['DefaultDimensionDisplayValue']",
+					"ReasonComment": "['ReasonComment']",
+					"TermsOfPayment": "['TermsOfPayment']",
+					"PaymentSpecification": "['PaymentSpecification']"
+				}
+			},
+			"fileName": "GeneralLedgerCustInvoiceJournalLines.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files/GeneralLedgerCustInvoice_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,92 @@
+{
+	"name": "PL_TRAN_CPD_STG_CommisionableSkus",
+	"properties": {
+		"activities": [
+			{
+				"name": "SF_ODS_CS_CommissionableSkus_DS-2-BLB_BA_CSK_Dataset",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select \ndb\n,comment\n,category\n,ProductLine\n,ProductFamily\n,CatalogNo\n,CatalognoDesc\n,Lastupdated\nfrom \n[ODS].[cs].[tbl_CYCommissionableSkus]  with( nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SF_ODS_CommissionableSkus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_CommissionableSkus_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_BA_CSK_Dataset-2-AZDB_CommissionableSkus_Dataset",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SF_ODS_CS_CommissionableSkus_DS-2-BLB_BA_CSK_Dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_CommissionableSkus_Dataset",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_CommissionableSkus_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,197 @@
+{
+	"name": "PL_DATA_CPD_DimDate",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_ods_dbo_Date-2-BLOB_DimDate",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [DateId]\n      ,[Date]\n      ,[Year]\n      ,[YearQuarterNumber]\n      ,[QuarterNumber]\n      ,[QuarterYearName]\n      ,[QuarterName]\n      ,[YearMonthNumber]\n      ,[YearMonthName]\n      ,[MonthNumber]\n      ,[MonthName]\n      ,[YearWeekNumber]\n      ,[YearWeekName]\n      ,[WeekStartDate]\n      ,[MonthDayNumber]\n      ,[MonthDayName]\n      ,[DayNumber]\n      ,[DayOfWeekNumber]\n      ,[DayOfWeekName]\n      ,[OffsetDays]\n      ,[OffsetWeeks]\n      ,[OffsetMonths]\n      ,[OffsetQuarters]\n      ,[OffsetYears]\n      ,[IsYearToDate]\n      ,[IsPreviousYearToDate]\n      ,[IsBusinessDayUS]\n      ,[IsBusinessDayCA]\n      ,[IsReceivablesInvoiceDateUS]\n      ,[IsReceivablesInvoiceDateCA]\n      ,[CRC]\n  FROM [ODS].[dbo].[Date]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"DateId": "DateId",
+							"Date": "Date",
+							"Year": "Year",
+							"YearQuarterNumber": "YearQuarterNumber",
+							"QuarterNumber": "QuarterNumber",
+							"QuarterYearName": "QuarterYearName",
+							"QuarterName": "QuarterName",
+							"YearMonthNumber": "YearMonthNumber",
+							"YearMonthName": "YearMonthName",
+							"MonthNumber": "MonthNumber",
+							"MonthName": "MonthName",
+							"YearWeekNumber": "YearWeekNumber",
+							"YearWeekName": "YearWeekName",
+							"WeekStartDate": "WeekStartDate",
+							"MonthDayNumber": "MonthDayNumber",
+							"MonthDayName": "MonthDayName",
+							"DayNumber": "DayNumber",
+							"DayOfWeekNumber": "DayOfWeekNumber",
+							"DayOfWeekName": "DayOfWeekName",
+							"OffsetDays": "OffsetDays",
+							"OffsetWeeks": "OffsetWeeks",
+							"OffsetMonths": "OffsetMonths",
+							"OffsetQuarters": "OffsetQuarters",
+							"OffsetYears": "OffsetYears",
+							"IsYearToDate": "IsYearToDate",
+							"IsPreviousYearToDate": "IsPreviousYearToDate",
+							"IsBusinessDayUS": "IsBusinessDayUS",
+							"IsBusinessDayCA": "IsBusinessDayCA",
+							"IsReceivablesInvoiceDateUS": "IsReceivablesInvoiceDateUS",
+							"IsReceivablesInvoiceDateCA": "IsReceivablesInvoiceDateCA",
+							"CRC": "CRC"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SF_ods_dbo_Date",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_SF_ODS_dbo_Date",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "USP_Truncate_DimDate",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_ods_dbo_Date-2-BLOB_DimDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_TruncateTables]",
+					"storedProcedureParameters": {
+						"Table_Name": {
+							"value": "[dbo].[DimDate]",
+							"type": "string"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CPD_ABLB_DimDate-2-Metausedp_dbo_DimDate",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "USP_Truncate_DimDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"DateId": "DateId",
+							"Date": "Date",
+							"Year": "Year",
+							"YearQuarterNumber": "YearQuarterNumber",
+							"QuarterNumber": "QuarterNumber",
+							"QuarterYearName": "QuarterYearName",
+							"QuarterName": "QuarterName",
+							"YearMonthNumber": "YearMonthNumber",
+							"YearMonthName": "YearMonthName",
+							"MonthNumber": "MonthNumber",
+							"MonthName": "MonthName",
+							"YearWeekNumber": "YearWeekNumber",
+							"YearWeekName": "YearWeekName",
+							"WeekStartDate": "WeekStartDate",
+							"MonthDayNumber": "MonthDayNumber",
+							"MonthDayName": "MonthDayName",
+							"DayNumber": "DayNumber",
+							"DayOfWeekNumber": "DayOfWeekNumber",
+							"DayOfWeekName": "DayOfWeekName",
+							"OffsetDays": "OffsetDays",
+							"OffsetWeeks": "OffsetWeeks",
+							"OffsetMonths": "OffsetMonths",
+							"OffsetQuarters": "OffsetQuarters",
+							"OffsetYears": "OffsetYears",
+							"IsYearToDate": "IsYearToDate",
+							"IsPreviousYearToDate": "IsPreviousYearToDate",
+							"IsBusinessDayUS": "IsBusinessDayUS",
+							"IsBusinessDayCA": "IsBusinessDayCA",
+							"IsReceivablesInvoiceDateUS": "IsReceivablesInvoiceDateUS",
+							"IsReceivablesInvoiceDateCA": "IsReceivablesInvoiceDateCA",
+							"CRC": "CRC"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_SF_ODS_dbo_Date",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metauseedp_dbo_DimDate",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-20T07:41:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

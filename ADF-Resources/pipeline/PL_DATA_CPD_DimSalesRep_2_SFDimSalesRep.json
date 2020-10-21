@@ -1,0 +1,86 @@
+{
+	"name": "PL_DATA_CPD_DimSalesRep_2_SFDimSalesRep",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_DimSalesRep_2_SFSalesRep",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT top 100 [salesRepID]\n      ,[salesmanCode]\n      ,[businessDivision]\n      ,[distManager]\n      ,[distManagerCode]\n      ,[distName]\n      ,[regionManager]\n      ,[regionManagerCode]\n      ,[regionName]\n      ,[name]\n      ,[addressLine1]\n      ,[addressLine2]\n      ,[addressLine3]\n      ,[city]\n      ,[state]\n      ,[country]\n      ,[zip]\n      ,[phone]\n      ,[email]\n      ,[fax]\n      ,[startDate]\n      ,[endDate]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n  FROM [dbo].[dimSalesRep]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "salesRepID__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesRepID": "salesRepID__c",
+							"salesmanCode": "salesmanCode__c",
+							"businessDivision": "businessDivision__c",
+							"distManager": "DistManager__c",
+							"distManagerCode": "DistManagerCode__c",
+							"distName": "DistName__c",
+							"regionManager": "RegionManager__c",
+							"regionManagerCode": "RegionManagerCode__c",
+							"regionName": "RegionName__c",
+							"name": "Name__c",
+							"addressLine1": "AddressLine1__c",
+							"addressLine2": "AddressLine2__c",
+							"addressLine3": "AddressLine3__c",
+							"city": "City__c",
+							"state": "State__c",
+							"country": "Country__c",
+							"zip": "Zip__c",
+							"phone": "Phone__c",
+							"email": "Email__c",
+							"fax": "Fax__c",
+							"startDate": "StartDate__c",
+							"endDate": "EndDate__c",
+							"insertDate": "InsertDate__c",
+							"insertBy": "InsertBy__c",
+							"modifiedDate": "ModifiedDate__c",
+							"modifiedBy": "ModifiedBy__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_DimSalesRep_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_DimSalesRep",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T03:38:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

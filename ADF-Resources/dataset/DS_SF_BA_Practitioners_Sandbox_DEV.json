@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_BA_Practitioners_Sandbox_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

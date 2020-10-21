@@ -1,0 +1,35 @@
+{
+	"name": "AVLVDW_MetaDistrib_match_weight",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "match_weight_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "match_code",
+				"type": "varchar"
+			},
+			{
+				"name": "match_weight",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "match_weight"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

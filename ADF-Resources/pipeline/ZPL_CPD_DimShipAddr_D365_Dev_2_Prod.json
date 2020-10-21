@@ -1,0 +1,584 @@
+{
+	"name": "ZPL_CPD_DimShipAddr_D365_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimShipAddr_D365_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT *,CASE WHEN DbSource ='IL' THEN '090' WHEN DBSource='OT' THEN '080' ELSE DBSource END AS DataAreaId\n FROM dbo.dimShipAddr where shipaddrId <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "custno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "custno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "subno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "shipno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "shipno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ship_to_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "contact",
+									"type": "String"
+								},
+								"sink": {
+									"name": "contact",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "attention",
+									"type": "String"
+								},
+								"sink": {
+									"name": "attention",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ext",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ext",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "county",
+									"type": "String"
+								},
+								"sink": {
+									"name": "county",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "shipvia_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "shipvia_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "last_shipped",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "last_shipped",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "tax_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tax_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "shipcomplete",
+									"type": "String"
+								},
+								"sink": {
+									"name": "shipcomplete",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "correspondence",
+									"type": "String"
+								},
+								"sink": {
+									"name": "correspondence",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fscm_cage",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fscm_cage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "invoicecopies",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "invoicecopies",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "priority",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "priority",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "tax1",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tax1",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tax2",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tax2",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tax3",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tax3",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tax4",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tax4",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tax5",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tax5",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "custclass",
+									"type": "String"
+								},
+								"sink": {
+									"name": "custclass",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "matrixcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "matrixcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "discount",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "discount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "pcntovercost",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "pcntovercost",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "telex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "telex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "usenet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "usenet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "voicemail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "voicemail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "entityno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "entityno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "currencycd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "currencycd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salutation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salutation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesmancd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesmancd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "locationcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "locationcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deal_no",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deal_no",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bankid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bankid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "acctid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "acctid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tele_salesmancd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tele_salesmancd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "web_custno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "web_custno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "certificate_expire_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "certificate_expire_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "intrans_loc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "intrans_loc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "email_update",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "email_update",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DBSource",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DBSource",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LoadDateTime",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LoadDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Metausedpdev_dimshipaddress",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_MetusedpProd_DimShipaddress_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-04T11:02:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

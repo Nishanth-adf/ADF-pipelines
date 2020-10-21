@@ -1,0 +1,249 @@
+{
+	"name": "DS_SQL_SRC_SQL01_OT_dbo_oesalesman",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "empno",
+				"type": "String"
+			},
+			{
+				"name": "in_out_flag",
+				"type": "String"
+			},
+			{
+				"name": "tax_id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "extension",
+				"type": "String"
+			},
+			{
+				"name": "telex",
+				"type": "String"
+			},
+			{
+				"name": "usenet",
+				"type": "String"
+			},
+			{
+				"name": "fax",
+				"type": "String"
+			},
+			{
+				"name": "voicemail",
+				"type": "String"
+			},
+			{
+				"name": "comm_code",
+				"type": "String"
+			},
+			{
+				"name": "locationcd",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "ref3",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "budget1",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget2",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget3",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget4",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget5",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget6",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget7",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget8",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget9",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget10",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget11",
+				"type": "Decimal"
+			},
+			{
+				"name": "budget12",
+				"type": "Decimal"
+			},
+			{
+				"name": "mtdsales",
+				"type": "Decimal"
+			},
+			{
+				"name": "mtdrtrn",
+				"type": "Decimal"
+			},
+			{
+				"name": "mtdother",
+				"type": "Decimal"
+			},
+			{
+				"name": "mtdcosts",
+				"type": "Decimal"
+			},
+			{
+				"name": "ytdsales",
+				"type": "Decimal"
+			},
+			{
+				"name": "ytdrtrn",
+				"type": "Decimal"
+			},
+			{
+				"name": "ytdother",
+				"type": "Decimal"
+			},
+			{
+				"name": "ytdcosts",
+				"type": "Decimal"
+			},
+			{
+				"name": "lastyrsales",
+				"type": "Decimal"
+			},
+			{
+				"name": "lastyrrtrn",
+				"type": "Decimal"
+			},
+			{
+				"name": "lastyrother",
+				"type": "Decimal"
+			},
+			{
+				"name": "lastyrcosts",
+				"type": "Decimal"
+			},
+			{
+				"name": "commission",
+				"type": "Double"
+			},
+			{
+				"name": "how_paid",
+				"type": "String"
+			},
+			{
+				"name": "cash_only",
+				"type": "String"
+			},
+			{
+				"name": "when_paid",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

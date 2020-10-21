@@ -1,0 +1,74 @@
+{
+	"name": "PL_DATA_CPD_BA_DimCustomerMaster",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_NSCustomers-2-DimCustomerMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tCustomerNumber\t\t=\tNSC.[CUSTOMER_ID],\n\t\t\tName\t\t\t\t=\tNSC.[NAME],\n\t\t\tActiveInd\t\t\t=\tNULL,\n\t\t\tSalesmanCd\t\t\t=\tNSC.[SALES_REP_ID],\n\t\t\tReferredBy\t\t\t=\tNULL,\n\t\t\tIndustryType\t\t=\tNULL,\n\t\t\tPrimarySubCustomerInd = CASE when TOP_LEVEL_PARENT_ID is not null and TOP_LEVEL_PARENT_ID <> customer_id   THEN 'Yes'ELSE 'No' END,\n\t\t\tPrimaryCustomerNbr\t=\tNULL,\n\t\t\tRef1\t\t\t\t=\t[CUSTOMER_TYPE_ID],\n\t\t\tRef2\t\t\t\t=\tNULL,\n\t\t\tEfffectiveDate\t\t=\tcast('' as datetime),\n\t\t\tExpiryDate\t\t\t=\tcast('' as datetime),\n\t\t\tlatestIndicator\t\t=\tNULL,\n\t\t\tInsertDate\t\t\t=\tDateadd(hh,-8,GetDate()),\n\t\t\tInsertBy\t\t\t=\t'ADF ETL',\n\t\t\tsource\t\t\t\t=\t'NS'\nFROM\t\t[dbo].[stgNSCustomers] NSC\nLEFT JOIN\t(\n\t\t\t\tSELECT\t\tDISTINCT Employee \n\t\t\t\tFROM\t\t[dbo].[stgSalesAccount] \n\t\t\t\tWHERE\t\trole='TSM'\n\t\t\t)SSA \nON\t\t\tNSC.SALES_REP_ID = SSA.Employee \nWHERE\t\tNSC.DELETED = 0",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"CustomerNumber": "customerNumber",
+							"Name": "name",
+							"SalesmanCd": "salesmanCode",
+							"ReferredBy": "referredBy",
+							"IndustryType": "industryType",
+							"PrimarySubCustomerInd": "primaryCustomerIndicator",
+							"PrimaryCustomerNbr": "primaryCustomerNumber",
+							"Ref1": "ref1",
+							"Ref2": "ref2",
+							"EfffectiveDate": "effectiveDate",
+							"ExpiryDate": "expiryDate",
+							"ActiveInd": "activeIndicator",
+							"InsertDate": "insertDate",
+							"InsertBy": "insertBy",
+							"latestIndicator": "latestIndicator",
+							"source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_tbl_STG_NSCustomers_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimCustomerMaster_BA_NS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-20T01:10:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

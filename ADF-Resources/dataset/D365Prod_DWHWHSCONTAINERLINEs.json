@@ -1,0 +1,17 @@
+{
+	"name": "D365Prod_DWHWHSCONTAINERLINEs",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/03/2020",
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHWHSCONTAINERLINEs"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

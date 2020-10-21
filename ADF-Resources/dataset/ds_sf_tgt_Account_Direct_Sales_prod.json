@@ -1,0 +1,59 @@
+{
+	"name": "ds_sf_tgt_Account_Direct_Sales_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerKey__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustNo__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AreaID__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Account__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YTD__c",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Prior_YTD__c",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Prior_Year__c",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_Account_Direct_Sales"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

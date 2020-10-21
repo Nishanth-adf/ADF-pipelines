@@ -1,0 +1,380 @@
+{
+	"name": "PL_TRAN_CPD_STG_OeFinish",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_FINISHGOOD-2-AZDB_FINISHGOOD",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_FINISHGOOD-2-BLB_OT_FINISHGOOD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oefinish-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oefinish]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"catalogno": "catalogno",
+							"partno": "partno",
+							"partentityno": "partentityno",
+							"partrev": "partrev",
+							"catalog_desc": "catalog_desc",
+							"unit_meas": "unit_meas",
+							"list_price": "list_price",
+							"ws_price": "ws_price",
+							"dist_price": "dist_price",
+							"package_code": "package_code",
+							"weight": "weight",
+							"price_change": "price_change",
+							"markup": "markup",
+							"enterdate": "enterdate",
+							"last_ordered": "last_ordered",
+							"special_tax": "special_tax",
+							"taxable": "taxable",
+							"minorderqty": "minorderqty",
+							"matrixcd": "matrixcd",
+							"jocreate": "jocreate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"activeind": "activeind",
+							"conversion": "conversion",
+							"classify": "classify",
+							"prodgroupno": "prodgroupno",
+							"variationcd": "variationcd",
+							"optctgrycode": "optctgrycode",
+							"optctgryline": "optctgryline",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oefinish",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oefinish",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_FINISHGOOD-2-BLB_OT_FINISHGOOD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oefinish-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "\nSELECT [catalogno]\n      ,[partno]\n      ,[partentityno]\n      ,[partrev]\n      ,[catalog_desc]\n      ,[unit_meas]\n      ,[list_price]\n      ,[ws_price]\n      ,[dist_price]\n      ,[package_code]\n      ,[weight]\n      ,[price_change]\n      ,[markup]\n      ,[enterdate]\n      ,[last_ordered]\n      ,[special_tax]\n      ,[taxable]\n      ,[minorderqty]\n      ,[matrixcd]\n      ,[jocreate]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[activeind]\n      ,[conversion]\n      ,[classify]\n      ,[prodgroupno]\n      ,[variationcd]\n      ,[optctgrycode]\n      ,[optctgryline]\n\t  ,'OT' as [DBSource] \n\t  ,Getdate() as [LoadDateTime]\n  FROM [OT].[dbo].[oefinish] with (nolock)\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"catalogno": "catalogno",
+							"partno": "partno",
+							"partentityno": "partentityno",
+							"partrev": "partrev",
+							"catalog_desc": "catalog_desc",
+							"unit_meas": "unit_meas",
+							"list_price": "list_price",
+							"ws_price": "ws_price",
+							"dist_price": "dist_price",
+							"package_code": "package_code",
+							"weight": "weight",
+							"price_change": "price_change",
+							"markup": "markup",
+							"enterdate": "enterdate",
+							"last_ordered": "last_ordered",
+							"special_tax": "special_tax",
+							"taxable": "taxable",
+							"minorderqty": "minorderqty",
+							"matrixcd": "matrixcd",
+							"jocreate": "jocreate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"activeind": "activeind",
+							"conversion": "conversion",
+							"classify": "classify",
+							"prodgroupno": "prodgroupno",
+							"variationcd": "variationcd",
+							"optctgrycode": "optctgrycode",
+							"optctgryline": "optctgryline",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_OT_dbo_oefinish",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oefinish",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_IL_FINISHGOOD-2-BLB_IL_FINISHGOOD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oefinish-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "\nSELECT [catalogno]\n      ,[partno]\n      ,[partentityno]\n      ,[partrev]\n      ,[catalog_desc]\n      ,[unit_meas]\n      ,[list_price]\n      ,[ws_price]\n      ,[dist_price]\n      ,[package_code]\n      ,[weight]\n      ,[price_change]\n      ,[markup]\n      ,[enterdate]\n      ,[last_ordered]\n      ,[special_tax]\n      ,[taxable]\n      ,[minorderqty]\n      ,[matrixcd]\n      ,[jocreate]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[activeind]\n      ,[conversion]\n      ,[classify]\n      ,[prodgroupno]\n      ,[variationcd]\n      ,[optctgrycode]\n      ,[optctgryline]\n\t  ,'IL' as [DBSource] \n\t  ,Getdate() as [LoadDateTime]\n  FROM [IL].[dbo].[oefinish] with (nolock)\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"catalogno": "catalogno",
+							"partno": "partno",
+							"partentityno": "partentityno",
+							"partrev": "partrev",
+							"catalog_desc": "catalog_desc",
+							"unit_meas": "unit_meas",
+							"list_price": "list_price",
+							"ws_price": "ws_price",
+							"dist_price": "dist_price",
+							"package_code": "package_code",
+							"weight": "weight",
+							"price_change": "price_change",
+							"markup": "markup",
+							"enterdate": "enterdate",
+							"last_ordered": "last_ordered",
+							"special_tax": "special_tax",
+							"taxable": "taxable",
+							"minorderqty": "minorderqty",
+							"matrixcd": "matrixcd",
+							"jocreate": "jocreate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"activeind": "activeind",
+							"conversion": "conversion",
+							"classify": "classify",
+							"prodgroupno": "prodgroupno",
+							"variationcd": "variationcd",
+							"optctgrycode": "optctgrycode",
+							"optctgryline": "optctgryline",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_IL_dbo_oefinish",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oefinish",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_IL_FINISHGOOD-2-AZDB_FINISHGOOD",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_IL_FINISHGOOD-2-BLB_IL_FINISHGOOD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oefinish-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oefinish]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "metaedpAzureBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "metausedpblobdev/Finesse/IncompatiableRows"
+					},
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"catalogno": "catalogno",
+							"partno": "partno",
+							"partentityno": "partentityno",
+							"partrev": "partrev",
+							"catalog_desc": "catalog_desc",
+							"unit_meas": "unit_meas",
+							"list_price": "list_price",
+							"ws_price": "ws_price",
+							"dist_price": "dist_price",
+							"package_code": "package_code",
+							"weight": "weight",
+							"price_change": "price_change",
+							"markup": "markup",
+							"enterdate": "enterdate",
+							"last_ordered": "last_ordered",
+							"special_tax": "special_tax",
+							"taxable": "taxable",
+							"minorderqty": "minorderqty",
+							"matrixcd": "matrixcd",
+							"jocreate": "jocreate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"activeind": "activeind",
+							"conversion": "conversion",
+							"classify": "classify",
+							"prodgroupno": "prodgroupno",
+							"variationcd": "variationcd",
+							"optctgrycode": "optctgrycode",
+							"optctgryline": "optctgryline",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oefinish",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oefinish",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

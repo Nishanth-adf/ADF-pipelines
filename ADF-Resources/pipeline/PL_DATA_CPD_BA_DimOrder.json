@@ -1,0 +1,79 @@
+{
+	"name": "PL_DATA_CPD_BA_DimOrder",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_TransactionHeader-2-DimOrder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimOrder]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tcustomerNumber\t=\t[ENTITY_ID],\n\t\t\torderNumber\t\t=\tSTH.[SRC_TRAN],\n\t\t\torderDate\t\t=\t[TRANDATE],\n\t\t\taddressLine1\t=\tSTA.[SHIP_ADDRESS_LINE_1],\n\t\t\taddressLine2\t=\tSTA.[SHIP_ADDRESS_LINE_2],\n\t\t\taddressLine3\t=\tSTA.[SHIP_ADDRESS_LINE_3],\n\t\t\tcity\t\t\t=\tSTA.[SHIP_CITY],\n\t\t\t[state]\t\t\t=\tSTA.[SHIP_STATE],\n\t\t\tzip\t\t\t\t=\tSTA.[SHIP_ZIP],\n\t\t\tCountry\t\t\t=\tSTA.[SHIP_COUNTRY],\n\t\t\tattention\t\t=\tSTA.[SHIP_ATTENTION],\n\t\t\tphone\t\t\t=\tSTA.[SHIP_PHONE_NUMBER],\n\t\t\tshipToName\t\t=\tSTA.[SHIP_NAME],\n\t\t\t[Source]\t\t=\tDBSource,\n\t\t\t[insertDate]\t=\tDateadd(hh,-8,GetDate()),\n\t\t\t[insertBy]\t\t=\tCAST('ADF ETL' as nvarchar(30))\nFROM\t\t[dbo].[stgTransactionHeader] STH\nLEFT JOIN [dbo].[stgTransaction_Address] STA on STH.TRANSACTION_ID = STA.[TRANSACTION_ID]\nWHERE YEAR(STH.TRANDATE) >= 2014",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": false,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"orderNumber": "orderNumber",
+							"orderDate": "orderDate",
+							"customerNumber": "customerNumber",
+							"shipToName": "shipToName",
+							"attention": "attention",
+							"phone": "phone",
+							"addressLine1": "addressLine1",
+							"addressLine2": "addressLine2",
+							"addressLine3": "addressLine3",
+							"city": "city",
+							"Country": "country",
+							"zip": "zip",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"state": "state",
+							"Source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_STG_TransactionHeader_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimOrder_BA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T10:52:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

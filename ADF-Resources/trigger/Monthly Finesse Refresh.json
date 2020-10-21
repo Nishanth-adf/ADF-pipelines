@@ -1,0 +1,18 @@
+{
+	"name": "Monthly Finesse Refresh",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2019-04-19T04:00:00Z",
+				"endTime": "2019-04-19T06:52:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

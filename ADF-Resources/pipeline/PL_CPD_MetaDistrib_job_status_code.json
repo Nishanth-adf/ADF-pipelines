@@ -1,0 +1,75 @@
+{
+	"name": "PL_CPD_MetaDistrib_job_status_code",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_job_status_code",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetajob_status_code;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "job_status_cd",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "job_status_cd",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "job_status_desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "job_status_desc",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_job_status_code",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_stgMetajob_status_code",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-14T13:15:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

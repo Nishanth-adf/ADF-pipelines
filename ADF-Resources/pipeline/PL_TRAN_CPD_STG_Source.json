@@ -1,0 +1,122 @@
+{
+	"name": "PL_TRAN_CPD_STG_Source",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_DWH_source-2-AZDB_source",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "AVLVDW_MetaDisturb_source-2-BLB_DWH_source",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('source-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-source]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"source_id": "source_id",
+							"source_name": "source_name",
+							"code_prefix": "code_prefix",
+							"source_code": "source_code",
+							"country_cd": "country_cd",
+							"currency_key": "currency_key",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_source",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metauseedpdev_source",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "AVLVDW_MetaDisturb_source-2-BLB_DWH_source",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('source-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "\nSELECT [source_id]\n      ,[source_name]\n      ,[code_prefix]\n      ,[source_code]\n      ,[country_cd]\n      ,[currency_key]\n\t  ,'MetaDistrib' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [MetaDistrib].[dbo].[source] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_AV_LV_DW_TBL_SOURCE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_source",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

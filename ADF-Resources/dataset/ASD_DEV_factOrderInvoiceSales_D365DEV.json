@@ -1,0 +1,185 @@
+{
+	"name": "ASD_DEV_factOrderInvoiceSales_D365DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderInvoiceSalesID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "orderID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "geographyID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "customerID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "salesRepID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "productID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BusinessDivisionchanelID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "dimDistributorID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SalesOriginID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "productTypeID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "commissionableIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "invoiceNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "invoiceDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "acctper",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "lineItem",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "shipmentNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "quantity",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "unitPrice",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "amount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "amountType",
+				"type": "varchar"
+			},
+			{
+				"name": "localCurrencyCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "orderType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesPoolId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "LineTotalDiscountAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "LineTotalTaxAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "LineAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "factOrderInvoiceSales_D365DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

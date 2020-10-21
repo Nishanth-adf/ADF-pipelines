@@ -1,0 +1,64 @@
+{
+	"name": "ASD_Prod_stgDWHSalesOrderHeadersV2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DateTimeCreated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DateTimeModified",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgDWHSalesOrderHeadersV2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

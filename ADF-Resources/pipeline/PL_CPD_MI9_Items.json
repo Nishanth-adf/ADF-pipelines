@@ -1,0 +1,78 @@
+{
+	"name": "PL_CPD_MI9_Items",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MI9_Items",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "select * from items"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.Mi9_items_Staging",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_MI9_Items",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "MI9_Items_Incremental_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_MI9_Items",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_Items_Incr_Load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "MI9 PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-06T17:26:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

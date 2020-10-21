@@ -1,0 +1,66 @@
+{
+	"name": "Finesse_All_Fact_Load_Pipelines",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_FactInorderVoiceSales",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FactSalesRepTarget",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactInvoiceSales",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FactInvoiceSales_DD",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactInvoiceSales_DD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_FactSalesRepTarget",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_FactInvoiceSales_DD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_FactSalesRepTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:40:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

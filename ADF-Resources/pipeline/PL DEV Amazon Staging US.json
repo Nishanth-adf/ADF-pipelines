@@ -1,0 +1,450 @@
+{
+	"name": "PL DEV Amazon Staging US",
+	"properties": {
+		"description": "\n\nAuthor: GBuenaventura\nDate: 09/15/2020",
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "Source",
+								"value": {
+									"value": "USA",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "UpdateTimeUTC",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "Currency",
+								"value": "USD"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "Amazon FBA/USA",
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.AmazonFBA_Us",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "date/time",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DateTime",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "settlement id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SettlementId",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "order id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OrderId",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sku",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Sku",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "marketplace",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Marketplace",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "account type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AccountType",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "fulfillment",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fulfillment",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "order city",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OrderCity",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "order state",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OrderState",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "order postal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OrderPostal",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "tax collection model",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TaxCollectionModel",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "product sales",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ProductSales",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "product sales tax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ProductSalesTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "shipping credits",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ShippingCredits",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "shipping credits tax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ShippingCreditsTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "gift wrap credits",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GiftWrapCredits",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "giftwrap credits tax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GiftwrapCreditsTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "promotional rebates",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PromotionalRebates",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "promotional rebates tax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PromotionalRebatesTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "marketplace withheld tax",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MarketplaceWithheldTax",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "selling fees",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SellingFees",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "fba fees",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FbaFees",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "other transaction fees",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OtherTransactionFees",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "other",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Other",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "total",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Total",
+									"type": "Decimal",
+									"physicalType": "decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Source"
+								}
+							},
+							{
+								"source": {
+									"name": "UpdateTimeUTC"
+								},
+								"sink": {
+									"name": "UpdateTimeUTC"
+								}
+							},
+							{
+								"source": {
+									"name": "Currency"
+								},
+								"sink": {
+									"name": "Currency"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Blob_USAmazonFBA",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_AmazonFBA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Amazon Blob Load/DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-17T22:30:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

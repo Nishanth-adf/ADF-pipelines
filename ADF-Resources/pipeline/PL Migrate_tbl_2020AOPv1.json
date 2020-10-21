@@ -1,0 +1,53 @@
+{
+	"name": "PL Migrate_tbl_2020AOPv1",
+	"properties": {
+		"description": "Migrate ODS.tbl_2020AOPv1 to PROD.tbl_2020AOPv1\n\nAuthor: GBuenaventura\nDate: 5/5/2020",
+		"activities": [
+			{
+				"name": "Copy ODS_tbl_2020AOPv1",
+				"description": "Migrate ODS.tbl_2020AOPv1 to PROD.tbl_2020AOPv1\n\nAuthor: GBuenaventura\nDate: 5/5/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dwh.tbl_2020AOPv1",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_2020AOPv1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_2020AOPv1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-29T16:29:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

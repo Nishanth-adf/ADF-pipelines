@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAX_Prod_InvoiceHeader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHSalesInvoiceHeaders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

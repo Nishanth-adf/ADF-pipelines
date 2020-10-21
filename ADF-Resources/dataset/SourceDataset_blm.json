@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_blm",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365fo_qa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "MainAccounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

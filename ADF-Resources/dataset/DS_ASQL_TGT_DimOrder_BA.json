@@ -1,0 +1,81 @@
+{
+	"name": "DS_ASQL_TGT_DimOrder_BA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "orderNumber",
+				"type": "String"
+			},
+			{
+				"name": "orderDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "customerNumber",
+				"type": "String"
+			},
+			{
+				"name": "shipToName",
+				"type": "String"
+			},
+			{
+				"name": "attention",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "addressLine1",
+				"type": "String"
+			},
+			{
+				"name": "addressLine2",
+				"type": "String"
+			},
+			{
+				"name": "addressLine3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimOrder]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,22 @@
+{
+	"name": "sfstg2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sfstg"
+			}
+		},
+		"connectVia": {
+			"referenceName": "metausedpir1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

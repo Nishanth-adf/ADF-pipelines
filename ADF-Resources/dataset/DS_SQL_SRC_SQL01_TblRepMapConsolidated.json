@@ -1,0 +1,13 @@
+{
+	"name": "DS_SQL_SRC_SQL01_TblRepMapConsolidated",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

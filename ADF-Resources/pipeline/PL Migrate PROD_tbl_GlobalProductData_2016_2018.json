@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate PROD_tbl_GlobalProductData_2016_2018",
+	"properties": {
+		"description": "Migrate ODS.tbl_GlobalProductData_2016_2018 to PROD.tbl_GlobalProductData_2016_2018\n\nMigrate Historical Global Dataset. Only need to run once.\n\nAuthor: GBuenaventura\nDate: 3/18/2020",
+		"activities": [
+			{
+				"name": "Copy_PROD_tbl_GlobalProductData_2016_2018",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_GlobalProductData_2016_2018",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_GlobalProductData_2016_2018",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_GlobalProductData_2016_2018",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Global Product Data Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-18T23:56:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

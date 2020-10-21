@@ -1,0 +1,57 @@
+{
+	"name": "BoomiListPipe",
+	"properties": {
+		"activities": [
+			{
+				"name": "bmicpy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "POST",
+						"requestBody": "{\n  \"QueryFilter\" : \n    {\n      \"expression\" :\n        {\n          \"operator\" : \"and\",\n          \"nestedExpression\" : [\n            {\n              \"argument\" : [\"9fe45038-cadf-4791-8fa3-b703b161ee20\"],\n              \"operator\" : \"EQUALS\",\n              \"property\":\"containerId\"\n            }\n          ]\n        }\n    }\n}",
+						"additionalHeaders": {
+							"Content-Type": "application/json"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "BoomiListSRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "BoomiListDST",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-06-25T01:02:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

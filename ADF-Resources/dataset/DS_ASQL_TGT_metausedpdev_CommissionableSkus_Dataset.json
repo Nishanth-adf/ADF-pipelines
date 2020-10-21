@@ -1,0 +1,49 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_CommissionableSkus_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "DB",
+				"type": "String"
+			},
+			{
+				"name": "Comment",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "ProductLine",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "String"
+			},
+			{
+				"name": "CatalogNo",
+				"type": "String"
+			},
+			{
+				"name": "CatalognoDesc",
+				"type": "String"
+			},
+			{
+				"name": "Lastupdated",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgCommissionableSkus]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate dimDistributor_D365",
+	"properties": {
+		"description": "Migrate dimDistributor_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/10/2019",
+		"activities": [
+			{
+				"name": "Copy_dimDistributor_D365",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.dimDistributor_D365DEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_dimDistributor_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_dimDistributor_D365DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-11T01:43:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

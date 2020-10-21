@@ -1,0 +1,151 @@
+{
+	"name": "DS_ASQL_SRC_metausedp_BA_FactOrderInvoiceSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - metausedp (ASQL)"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "orderID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "geographyID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "customerID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "salesRepID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "productID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "BusinessDivisionchanelID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "dimDistributorID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "SalesOriginID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "productTypeID",
+				"type": "Int64",
+				"precision": 19,
+				"scale": 255
+			},
+			{
+				"name": "invoiceNumber",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "invoiceDate",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "acctper",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "lineItem",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "quantity",
+				"type": "Decimal",
+				"precision": 18
+			},
+			{
+				"name": "UnitPrice",
+				"type": "Decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "amount",
+				"type": "Decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "orderType",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "commissionableIndicator",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Source",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[STGTranLines]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

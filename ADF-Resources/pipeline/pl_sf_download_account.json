@@ -1,0 +1,165 @@
+{
+	"name": "pl_sf_download_account",
+	"properties": {
+		"activities": [
+			{
+				"name": "account",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select CustomerKeyERP__c, PrimaryCustNo__c, name, Areaid__c, id,  \nFinesse__c,Emerson__c,BodyLogic__c,EightWeek__c,FullScript__c, OwnerID\nFROM Account\nwhere CustomerKeyERP__c <> ''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_Account_test",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKey__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Finesse__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "D365__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Emerson__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Emerson__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EightWeek__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EightWeek__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FullScript__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FullScript__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OwnerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_src_Account_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_tgt_Account_prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce Dev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-07T00:50:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

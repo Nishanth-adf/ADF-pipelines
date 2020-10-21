@@ -1,0 +1,28 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_DimMonth",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Bariatric Advantage"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "month",
+				"type": "Int32"
+			},
+			{
+				"name": "year",
+				"type": "Int32"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimMonth]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

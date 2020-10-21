@@ -1,0 +1,77 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_RefCurrency",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "acctper",
+				"type": "Int32"
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32"
+			},
+			{
+				"name": "cfaud",
+				"type": "Double"
+			},
+			{
+				"name": "cfcan",
+				"type": "Double"
+			},
+			{
+				"name": "cfeur",
+				"type": "Double"
+			},
+			{
+				"name": "cfnzd",
+				"type": "Double"
+			},
+			{
+				"name": "cfaudnzd",
+				"type": "Double"
+			},
+			{
+				"name": "cfaudEOM",
+				"type": "Double"
+			},
+			{
+				"name": "cfcanEOM",
+				"type": "Double"
+			},
+			{
+				"name": "cfeurEOM",
+				"type": "Double"
+			},
+			{
+				"name": "cfnzdEOM",
+				"type": "Double"
+			},
+			{
+				"name": "cfaudnzdEOM",
+				"type": "Double"
+			},
+			{
+				"name": "ConstCAD",
+				"type": "Double"
+			},
+			{
+				"name": "ConstAUD",
+				"type": "Double"
+			},
+			{
+				"name": "ConstEuro",
+				"type": "Double"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[refCurrency]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

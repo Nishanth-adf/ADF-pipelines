@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_Prac_OneTime",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

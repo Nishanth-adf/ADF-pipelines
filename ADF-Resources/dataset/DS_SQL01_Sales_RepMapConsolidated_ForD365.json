@@ -1,0 +1,13 @@
+{
+	"name": "DS_SQL01_Sales_RepMapConsolidated_ForD365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

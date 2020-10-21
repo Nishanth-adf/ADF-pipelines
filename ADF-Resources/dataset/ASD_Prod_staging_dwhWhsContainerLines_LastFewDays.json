@@ -1,0 +1,79 @@
+{
+	"name": "ASD_Prod_staging_dwhWhsContainerLines_LastFewDays",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/03/2020",
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLineRecId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ItemId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InventDimId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLineRecVersion",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLineModifiedDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Qty",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLineCreatedDateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LoadLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLinePartition",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UnitId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WHSContainerLineModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContainerId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CapturedWeight",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "dwhWhsContainerLines_LastFewDays"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

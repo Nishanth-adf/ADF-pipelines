@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Test_SalesOrderLineV2_Increment",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesOrderLinesV2_Incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

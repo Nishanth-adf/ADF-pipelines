@@ -1,0 +1,77 @@
+{
+	"name": "PL_DATA_CPD_DimCustomerMaster",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_oecustomer-2-DimCustomerMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimCustomerMaster]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\tCast(A.[custno] as nvarchar(50)) as CustomerNumber,\n\t\t\tCast(A.[name] as nvarchar(100)) as [name],\n\t\t\t[salesmancd]\t\t=\tB.salesmancd,\n\t\t\t\t\t\t\t\t\t--(\n\t\t\t\t\t\t\t\t\t--\tSELECT\t\tTOP 1 salesmancd \n\t\t\t\t\t\t\t\t\t--\tFROM\t\t[dbo].[stgOeshipaddr] B \n\t\t\t\t\t\t\t\t\t--\tWHERE\t\tB.custno = A.custno \n\t\t\t\t\t\t\t\t\t--\tAND\t\t\tB.subno = '1' and B.shipno = '1'\n\t\t\t\t\t\t\t\t\t--),\n\t\t\tCast(A.[referred_by] as nvarchar(50)) as [referred_by],\n\t\t\tCast(A.[industry_type] as nvarchar(30)) as [industry_type],\n\t\t\tCast(Case when A.[ref7] is null then 'Yes' else 'No' end as nvarchar(3)) as PrimarySubCustomerInd, -- If ref7=Null then Primary customer else subcustomer\n\t\t\tCast(A.[ref7] as nvarchar(50)) as PrimaryCustomerNbr,\n\t\t\tCast(NULL as nvarchar(50)) as [ref1],\n\t\t\tCast(NULL as nvarchar(50)) as [ref2],\n\t\t\tCast(GetDate() as DateTime) as [effectiveDate],\n\t\t\tCast(NULL as DateTime) as [expiryDate],\n\t\t\tCast(A.[activeind] as nvarchar(3)) as [activeIndicator],\n\t\t\tDateadd(hh,-8,GetDate()) as [insertDate],\n\t\t\t'ADF ETL' as [insertBy],\n\t\t\tCast('Y' as nvarchar(3)) as [latestIndicator],\n\t\t\t[Source] = A.DBSource\nFROM\t\t[dbo].[stgOecustomer] A\nLEFT JOIN\t(\n\t\t\t\tSELECT\tDISTINCT custno,salesmancd,DBSource\n\t\t\t\tFROM\t[dbo].[stgOeshipaddr]\n\t\t\t\tWHERE\tsubno = '1' and shipno = '1'\n\t\t\t) B\nON\t\t\tA.custno\t=\tB.custno\nAND\t\t\tA.DBSource\t=\tB.DBSource\nINNER JOIN\t(\n\t\t\t\tSELECT\t\tDISTINCT custno,DBSource\n\t\t\t\tFROM\t\tdbo.stgArinvdet\n\t\t\t\tWHERE\t\tacctyr >= '2014'\n\t\t\t) C\nON\t\t\tC.custno\t=\tA.custno\nAND\t\t\tC.DBSource\t=\tA.DBSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"CustomerNumber": "customerNumber",
+							"name": "name",
+							"salesmancd": "salesmanCode",
+							"referred_by": "referredBy",
+							"industry_type": "industryType",
+							"PrimarySubCustomerInd": "primaryCustomerIndicator",
+							"PrimaryCustomerNbr": "primaryCustomerNumber",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"effectiveDate": "effectiveDate",
+							"expiryDate": "expiryDate",
+							"activeIndicator": "activeIndicator",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"latestIndicator": "latestIndicator",
+							"Source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_tbl_STG_oecustomer_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimCustomerMaster",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T10:09:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

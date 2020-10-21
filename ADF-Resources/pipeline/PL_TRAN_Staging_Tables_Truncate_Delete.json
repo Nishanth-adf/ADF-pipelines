@@ -1,0 +1,63 @@
+{
+	"name": "PL_TRAN_Staging_Tables_Truncate_Delete",
+	"properties": {
+		"activities": [
+			{
+				"name": "Usp_DeleteCurrentMonthData",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_DeleteCurrentMonthData]",
+					"storedProcedureParameters": {
+						"month": {
+							"value": "5",
+							"type": "Int32"
+						},
+						"year": {
+							"value": "2019",
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "USP_STGTblTruncate",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[USP_STGTBLTruncate]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipeline_All_Staging_Truncate"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T07:23:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

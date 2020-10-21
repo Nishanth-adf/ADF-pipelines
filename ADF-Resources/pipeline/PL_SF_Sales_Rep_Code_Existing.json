@@ -1,0 +1,58 @@
+{
+	"name": "PL_SF_Sales_Rep_Code_Existing",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_dbo_dimSaleRep-2-SF_SalesRepCode",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\t [Name] = salesmanCode,User__c = id\t\nFROM\t\t(SELECT DISTINCT salesmanCode FROM dimSalesRep where source='OT') DSR\nLEFT JOIN\t(\n\t\t\t\tSELECT\tid,sales_rep_code \n\t\t\t\tFROM\t(\n\t\t\t\t\t\t\tSELECT\tID,sales_rep_code,Row_Num = ROW_NUMBER() OVER (PARTITION BY sales_rep_code ORDER BY sales_rep_code) \n\t\t\t\t\t\t\tFROM\tdbo.user_salesforce \n\t\t\t\t\t\t)x \n\t\t\t\tWHERE\tRow_Num = 1\n\t\t\t) USF\nON\t\t\tDSR.salesmanCode\t=\tUSF.sales_rep_code",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Name": "Name",
+							"User__c": "User__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimSalesRep",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_SalesRepCode",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T10:38:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

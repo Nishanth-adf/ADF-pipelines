@@ -1,0 +1,104 @@
+{
+	"name": "DS_ASQL_TGT_metausedp_FactInvoiceSales_DD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "orderID",
+				"type": "Int64"
+			},
+			{
+				"name": "geographyID",
+				"type": "Int64"
+			},
+			{
+				"name": "customerID",
+				"type": "Int64"
+			},
+			{
+				"name": "salesRepID",
+				"type": "Int64"
+			},
+			{
+				"name": "productID",
+				"type": "Int64"
+			},
+			{
+				"name": "BusinessDivisionchanelID",
+				"type": "Int64"
+			},
+			{
+				"name": "dimDistributorID",
+				"type": "Int64"
+			},
+			{
+				"name": "SalesOriginID",
+				"type": "Int64"
+			},
+			{
+				"name": "productTypeID",
+				"type": "Int64"
+			},
+			{
+				"name": "commissionableIndicator",
+				"type": "String"
+			},
+			{
+				"name": "invoiceNumber",
+				"type": "String"
+			},
+			{
+				"name": "invoiceDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32"
+			},
+			{
+				"name": "acctper",
+				"type": "Int32"
+			},
+			{
+				"name": "lineItem",
+				"type": "Int32"
+			},
+			{
+				"name": "amount",
+				"type": "Decimal"
+			},
+			{
+				"name": "amountType",
+				"type": "String"
+			},
+			{
+				"name": "localCurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[factOrderInvoiceSales]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

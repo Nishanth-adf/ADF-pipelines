@@ -1,0 +1,125 @@
+{
+	"name": "PL_CPD_MetaDistrib_job_status",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_job_status",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetajob_status;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "job_status_id",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "job_status_id",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "job_status_cd",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "job_status_cd",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "start_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "start_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "end_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "end_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "status",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "reference_data_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "reference_data_id",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_job_status",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_stgMetajob_status",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:41:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

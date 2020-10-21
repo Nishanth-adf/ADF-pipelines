@@ -1,0 +1,345 @@
+{
+	"name": "DS_ABLB_TGT_IL_arinvdet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "batchno",
+				"type": "String"
+			},
+			{
+				"name": "invno",
+				"type": "String"
+			},
+			{
+				"name": "item",
+				"type": "Int32"
+			},
+			{
+				"name": "order_code",
+				"type": "String"
+			},
+			{
+				"name": "orderno",
+				"type": "String"
+			},
+			{
+				"name": "orderitem",
+				"type": "Int32"
+			},
+			{
+				"name": "entityno",
+				"type": "String"
+			},
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "subno",
+				"type": "String"
+			},
+			{
+				"name": "shipno",
+				"type": "String"
+			},
+			{
+				"name": "printyn",
+				"type": "String"
+			},
+			{
+				"name": "invdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "duedate",
+				"type": "DateTime"
+			},
+			{
+				"name": "memotype",
+				"type": "String"
+			},
+			{
+				"name": "paytermscd",
+				"type": "String"
+			},
+			{
+				"name": "locationcd",
+				"type": "String"
+			},
+			{
+				"name": "salesman",
+				"type": "String"
+			},
+			{
+				"name": "qty",
+				"type": "Double"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "taxyn",
+				"type": "String"
+			},
+			{
+				"name": "taxcode",
+				"type": "String"
+			},
+			{
+				"name": "taxdesc1",
+				"type": "String"
+			},
+			{
+				"name": "tax1",
+				"type": "Double"
+			},
+			{
+				"name": "taxmatrix1",
+				"type": "String"
+			},
+			{
+				"name": "taxdesc2",
+				"type": "String"
+			},
+			{
+				"name": "tax2",
+				"type": "Double"
+			},
+			{
+				"name": "taxmatrix2",
+				"type": "String"
+			},
+			{
+				"name": "taxdesc3",
+				"type": "String"
+			},
+			{
+				"name": "tax3",
+				"type": "Double"
+			},
+			{
+				"name": "taxmatrix3",
+				"type": "String"
+			},
+			{
+				"name": "taxdesc4",
+				"type": "String"
+			},
+			{
+				"name": "tax4",
+				"type": "Double"
+			},
+			{
+				"name": "taxmatrix4",
+				"type": "String"
+			},
+			{
+				"name": "discacctcd",
+				"type": "String"
+			},
+			{
+				"name": "fcacctcd",
+				"type": "String"
+			},
+			{
+				"name": "currencycd",
+				"type": "String"
+			},
+			{
+				"name": "orig_totalpay",
+				"type": "Double"
+			},
+			{
+				"name": "totalpay",
+				"type": "Double"
+			},
+			{
+				"name": "fcamt",
+				"type": "Double"
+			},
+			{
+				"name": "orig_discamt",
+				"type": "Double"
+			},
+			{
+				"name": "discamt",
+				"type": "Double"
+			},
+			{
+				"name": "discdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "orig_price",
+				"type": "Double"
+			},
+			{
+				"name": "price",
+				"type": "Double"
+			},
+			{
+				"name": "salegl",
+				"type": "String"
+			},
+			{
+				"name": "saleacctcr",
+				"type": "String"
+			},
+			{
+				"name": "saleacctdb",
+				"type": "String"
+			},
+			{
+				"name": "orig_cost",
+				"type": "Double"
+			},
+			{
+				"name": "cost",
+				"type": "Double"
+			},
+			{
+				"name": "costgl",
+				"type": "String"
+			},
+			{
+				"name": "costacctcr",
+				"type": "String"
+			},
+			{
+				"name": "costacctdb",
+				"type": "String"
+			},
+			{
+				"name": "saleind",
+				"type": "String"
+			},
+			{
+				"name": "custpo",
+				"type": "String"
+			},
+			{
+				"name": "custpodate",
+				"type": "DateTime"
+			},
+			{
+				"name": "catalogno",
+				"type": "String"
+			},
+			{
+				"name": "cataloguom",
+				"type": "String"
+			},
+			{
+				"name": "pdesc",
+				"type": "String"
+			},
+			{
+				"name": "optdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "ref3",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "ref9",
+				"type": "String"
+			},
+			{
+				"name": "ref10",
+				"type": "String"
+			},
+			{
+				"name": "ref11",
+				"type": "String"
+			},
+			{
+				"name": "rtrn_conc",
+				"type": "String"
+			},
+			{
+				"name": "acctper",
+				"type": "Int32"
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32"
+			},
+			{
+				"name": "datetime",
+				"type": "DateTime"
+			},
+			{
+				"name": "tidp",
+				"type": "Int32"
+			},
+			{
+				"name": "convert_user",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "Þ",
+				"rowDelimiter": "¬",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('IL_arinvdet-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse/IL"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

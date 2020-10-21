@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAXResource_GeneralLedgerCustInvoiceJournalLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "GeneralLedgerCustInvoiceJournalLines"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

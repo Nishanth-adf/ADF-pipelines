@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate tbl_FinesseCustomerMasterDEV",
+	"properties": {
+		"description": "Purge and Reload tbl_FinesseCustomerMasterDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/13/2019",
+		"activities": [
+			{
+				"name": "Copy_tbl_FinesseCustomerMasterDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_FinesseCustomerMasterDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_FinesseCustomerMaster",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_FinesseCustomerMasterDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-13T21:48:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

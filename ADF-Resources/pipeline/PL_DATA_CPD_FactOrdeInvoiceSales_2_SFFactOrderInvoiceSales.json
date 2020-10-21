@@ -1,0 +1,81 @@
+{
+	"name": "PL_DATA_CPD_FactOrdeInvoiceSales_2_SFFactOrderInvoiceSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_FactOrdeInvoiceSales_2_SFFactOrderInvoiceSales",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT top 100  [OrderInvoiceSalesID]\n      ,[orderID]\n      ,[geographyID]\n      ,[customerID]\n      ,[salesRepID]\n      ,[productID]\n      ,[BusinessDivisionchanelID]\n      ,[dimDistributorID]\n      ,[SalesOriginID]\n      ,[productTypeID]\n      ,[commissionableIndicator]\n      ,[invoiceNumber]\n      ,[invoiceDate]\n      ,[lineItem]\n      ,[shipmentNumber]\n      ,[quantity]\n      ,[unitPrice]\n      ,[amount]\n      ,[amountType]\n      ,[localCurrencyCode]\n      ,[orderType]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n  FROM [dbo].[factOrderInvoiceSales]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"OrderInvoiceSalesID": "OrderInvoiceSalesID__c",
+							"orderID": "orderID__c",
+							"geographyID": "geographyID__c",
+							"customerID": "customerID__c",
+							"salesRepID": "salesRepID__c",
+							"productID": "productID__c",
+							"BusinessDivisionchanelID": "BusinessDivisionchanelID__c",
+							"dimDistributorID": "dimDistributorID__c",
+							"SalesOriginID": "SalesOriginID__c",
+							"productTypeID": "productTypeID__c",
+							"commissionableIndicator": "commissionableIndicator__c",
+							"invoiceNumber": "invoiceNumber__c",
+							"invoiceDate": "invoiceDate__c",
+							"lineItem": "lineItem__c",
+							"shipmentNumber": "shipmentNumber__c",
+							"quantity": "Quantity__c",
+							"unitPrice": "unitPrice__c",
+							"amount": "Amount__c",
+							"amountType": "amountType__c",
+							"localCurrencyCode": "localCurrencyCode__c",
+							"orderType": "orderType__c",
+							"insertDate": "insertDate__c",
+							"insertBy": "insertBy__c",
+							"modifiedDate": "modifiedDate__c",
+							"modifiedBy": "ModifiedBy__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_FactOrderInvoiceSales_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_FactOrderInvoiceSales",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T03:40:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

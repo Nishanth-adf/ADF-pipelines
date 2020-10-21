@@ -1,0 +1,48 @@
+{
+	"name": "AVLVDW_MetaDistrib_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "source_id",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "source_name",
+				"type": "varchar"
+			},
+			{
+				"name": "code_prefix",
+				"type": "varchar"
+			},
+			{
+				"name": "source_code",
+				"type": "varchar"
+			},
+			{
+				"name": "country_cd",
+				"type": "varchar"
+			},
+			{
+				"name": "currency_key",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "source"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

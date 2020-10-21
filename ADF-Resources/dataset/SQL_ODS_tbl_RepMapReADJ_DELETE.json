@@ -1,0 +1,30 @@
+{
+	"name": "SQL_ODS_tbl_RepMapReADJ_DELETE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "source",
+				"type": "varchar"
+			},
+			{
+				"name": "customerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "salesmanCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_RepMapReADJ_DELETE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

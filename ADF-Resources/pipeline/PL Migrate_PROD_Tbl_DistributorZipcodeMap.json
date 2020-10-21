@@ -1,0 +1,123 @@
+{
+	"name": "PL Migrate_PROD_Tbl_DistributorZipcodeMap",
+	"properties": {
+		"description": "Migrate FROM ODS.dbo.Tbl_DistributorZipcodeMap TO PROD.staging.Tbl_DistributorZipcodeMap\n\nAuthor: GBuenaventura\nDate: 07/28/2020",
+		"activities": [
+			{
+				"name": "Copy PROD_Tbl_DistributorZipcodeMap",
+				"description": "Migrate FROM ODS.dbo.Tbl_DistributorZipcodeMap TO PROD.staging.Tbl_DistributorZipcodeMap\n\nAuthor: GBuenaventura\nDate: 07/28/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.Tbl_DistributorZipcodeMap",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Zipcode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Zipcode",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_Tbl_DistributorZipcodeMap",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_staging_Tbl_DistributorZipcodeMap",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-25T17:48:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

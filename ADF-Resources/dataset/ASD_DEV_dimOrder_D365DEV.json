@@ -1,0 +1,124 @@
+{
+	"name": "ASD_DEV_dimOrder_D365DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "orderID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "orderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "orderDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "customerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "statusCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "buyer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "buyerPhone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "shipToName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "attention",
+				"type": "nvarchar"
+			},
+			{
+				"name": "phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "addressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "addressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "addressLine3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "city",
+				"type": "nvarchar"
+			},
+			{
+				"name": "country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "zip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "orderType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dataareaid",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimOrder_D365DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

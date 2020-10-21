@@ -1,0 +1,16 @@
+{
+	"name": "DS_TGT_SF_OrderLine",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Docebo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order_Line__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

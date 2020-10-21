@@ -1,0 +1,76 @@
+{
+	"name": "PL_DATA_CPD_DimCustomerMaster_2_SFDimCustometMaster",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimCustomerMaster_2_SFdimCustometMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT TOP (100) [customerID]\n      ,[customerNumber]\n      ,[name]\n      ,[salesmanCode]\n      ,[referredBy]\n      ,[industryType]\n      ,[primaryCustomerIndicator]\n      ,[primaryCustomerNumber]\n      ,[ref1]\n      ,[ref2]\n      ,[effectiveDate]\n      ,[expiryDate]\n      ,[activeIndicator]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n      ,[latestIndicator]\n  FROM [dbo].[dimCustomerMaster]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "customerID__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"customerID": "customerID__c",
+							"customerNumber": "customerNumber__c",
+							"name": "name__c",
+							"salesmanCode": "salesmanCode__c",
+							"referredBy": "referredBy__c",
+							"industryType": "industryType__c",
+							"primaryCustomerIndicator": "primaryCustomerIndicator__c",
+							"primaryCustomerNumber": "primaryCustomerNumber__c",
+							"ref1": "ref1__c",
+							"ref2": "ref2__c",
+							"effectiveDate": "effectiveDate__c",
+							"activeIndicator": "activeIndicator__c",
+							"insertDate": "insertDate__c",
+							"insertBy": "insertBy__c",
+							"modifiedDate": "modifiedDate__c",
+							"modifiedBy": "modifiedBy__c",
+							"latestIndicator": "latestIndicator__c",
+							"expiryDate": "expiryDate__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimCustomerMaster",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_DimCustomerMaster",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T07:04:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,261 @@
+{
+	"name": "DS_ABLB_TGT_DimUidCustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "uidCustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "finCustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "customerId",
+				"type": "Int32"
+			},
+			{
+				"name": "custNo",
+				"type": "String"
+			},
+			{
+				"name": "sourceId",
+				"type": "Int32"
+			},
+			{
+				"name": "custName",
+				"type": "String"
+			},
+			{
+				"name": "custnoname",
+				"type": "String"
+			},
+			{
+				"name": "creditlmt",
+				"type": "Decimal"
+			},
+			{
+				"name": "activeind",
+				"type": "String"
+			},
+			{
+				"name": "custclass",
+				"type": "String"
+			},
+			{
+				"name": "credithold",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "salesmanname",
+				"type": "String"
+			},
+			{
+				"name": "salesmancdname",
+				"type": "String"
+			},
+			{
+				"name": "in_out_flag",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref5name",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref6name",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref7name",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "ref8name",
+				"type": "String"
+			},
+			{
+				"name": "Districtname",
+				"type": "String"
+			},
+			{
+				"name": "primarycustomer",
+				"type": "String"
+			},
+			{
+				"name": "primarycustomernoname",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "Boolean"
+			},
+			{
+				"name": "inceptiondate",
+				"type": "DateTime"
+			},
+			{
+				"name": "dayssinceinception",
+				"type": "String"
+			},
+			{
+				"name": "discount",
+				"type": "Double"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "current_rating",
+				"type": "String"
+			},
+			{
+				"name": "potential_rating",
+				"type": "String"
+			},
+			{
+				"name": "modality",
+				"type": "String"
+			},
+			{
+				"name": "specialties",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "ref4name",
+				"type": "String"
+			},
+			{
+				"name": "implementationdate",
+				"type": "String"
+			},
+			{
+				"name": "certificationdate",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryState",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryCertificationdate",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryDaysSinceInception",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryZip",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryCustClass",
+				"type": "String"
+			},
+			{
+				"name": "ProductChannel",
+				"type": "String"
+			},
+			{
+				"name": "PrimaryInceptionDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "ECommerceFlag",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('DimUidCustomer-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/DataWarehouse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

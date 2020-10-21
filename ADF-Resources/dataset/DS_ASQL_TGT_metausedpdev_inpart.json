@@ -1,0 +1,584 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_inpart",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "partno",
+				"type": "String"
+			},
+			{
+				"name": "partentityno",
+				"type": "String"
+			},
+			{
+				"name": "partrev",
+				"type": "String"
+			},
+			{
+				"name": "partdesc",
+				"type": "String"
+			},
+			{
+				"name": "bomind",
+				"type": "String"
+			},
+			{
+				"name": "rtgind",
+				"type": "String"
+			},
+			{
+				"name": "class",
+				"type": "String"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "draw_ind",
+				"type": "String"
+			},
+			{
+				"name": "commmodity",
+				"type": "String"
+			},
+			{
+				"name": "lead_source",
+				"type": "String"
+			},
+			{
+				"name": "purchaselt",
+				"type": "Int32"
+			},
+			{
+				"name": "mfglt",
+				"type": "Int32"
+			},
+			{
+				"name": "accumlt",
+				"type": "Int32"
+			},
+			{
+				"name": "lastactivity",
+				"type": "DateTime"
+			},
+			{
+				"name": "planner",
+				"type": "String"
+			},
+			{
+				"name": "package",
+				"type": "String"
+			},
+			{
+				"name": "locationcd",
+				"type": "String"
+			},
+			{
+				"name": "uom",
+				"type": "String"
+			},
+			{
+				"name": "purchaseuom",
+				"type": "String"
+			},
+			{
+				"name": "accttype",
+				"type": "String"
+			},
+			{
+				"name": "acctno",
+				"type": "String"
+			},
+			{
+				"name": "qcaccttp",
+				"type": "String"
+			},
+			{
+				"name": "qcacctno",
+				"type": "String"
+			},
+			{
+				"name": "cstaccttp",
+				"type": "String"
+			},
+			{
+				"name": "cstacctno",
+				"type": "String"
+			},
+			{
+				"name": "chglevel",
+				"type": "String"
+			},
+			{
+				"name": "chgno",
+				"type": "String"
+			},
+			{
+				"name": "drawref",
+				"type": "String"
+			},
+			{
+				"name": "drawsize",
+				"type": "String"
+			},
+			{
+				"name": "estpriceflag",
+				"type": "String"
+			},
+			{
+				"name": "scrap_value",
+				"type": "Double"
+			},
+			{
+				"name": "unitprice",
+				"type": "Double"
+			},
+			{
+				"name": "onhand",
+				"type": "Double"
+			},
+			{
+				"name": "orderpurch",
+				"type": "Double"
+			},
+			{
+				"name": "ordermfg",
+				"type": "Double"
+			},
+			{
+				"name": "ordersched",
+				"type": "Double"
+			},
+			{
+				"name": "orderreqstn",
+				"type": "Double"
+			},
+			{
+				"name": "ordercust",
+				"type": "Double"
+			},
+			{
+				"name": "inqc",
+				"type": "Double"
+			},
+			{
+				"name": "scrapped",
+				"type": "Double"
+			},
+			{
+				"name": "rejected",
+				"type": "Double"
+			},
+			{
+				"name": "allocated",
+				"type": "Double"
+			},
+			{
+				"name": "reserved",
+				"type": "Double"
+			},
+			{
+				"name": "backorder",
+				"type": "Double"
+			},
+			{
+				"name": "planned",
+				"type": "Double"
+			},
+			{
+				"name": "shortqty",
+				"type": "Double"
+			},
+			{
+				"name": "freeze",
+				"type": "String"
+			},
+			{
+				"name": "commodity1",
+				"type": "String"
+			},
+			{
+				"name": "commodity2",
+				"type": "String"
+			},
+			{
+				"name": "secure_class",
+				"type": "String"
+			},
+			{
+				"name": "fscm_code",
+				"type": "String"
+			},
+			{
+				"name": "cyclecd",
+				"type": "String"
+			},
+			{
+				"name": "cycleper",
+				"type": "Int32"
+			},
+			{
+				"name": "lastcount",
+				"type": "DateTime"
+			},
+			{
+				"name": "nextcount",
+				"type": "DateTime"
+			},
+			{
+				"name": "lastcountvar",
+				"type": "Double"
+			},
+			{
+				"name": "countamt",
+				"type": "Double"
+			},
+			{
+				"name": "begperonhand",
+				"type": "Double"
+			},
+			{
+				"name": "mtdadj",
+				"type": "Double"
+			},
+			{
+				"name": "mtdrec",
+				"type": "Double"
+			},
+			{
+				"name": "mtddemands",
+				"type": "Double"
+			},
+			{
+				"name": "mtdbackorder",
+				"type": "Double"
+			},
+			{
+				"name": "mtdissue",
+				"type": "Double"
+			},
+			{
+				"name": "ytdadj",
+				"type": "Double"
+			},
+			{
+				"name": "ytdrec",
+				"type": "Double"
+			},
+			{
+				"name": "ytddemands",
+				"type": "Double"
+			},
+			{
+				"name": "ytdbackorder",
+				"type": "Double"
+			},
+			{
+				"name": "ytdissues",
+				"type": "Double"
+			},
+			{
+				"name": "lyradj",
+				"type": "Double"
+			},
+			{
+				"name": "lyrrec",
+				"type": "Double"
+			},
+			{
+				"name": "lyrdemands",
+				"type": "Double"
+			},
+			{
+				"name": "lyrbackorder",
+				"type": "Double"
+			},
+			{
+				"name": "lyrissue",
+				"type": "Double"
+			},
+			{
+				"name": "lyservice",
+				"type": "Double"
+			},
+			{
+				"name": "invactdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "low_level",
+				"type": "Int32"
+			},
+			{
+				"name": "lot_track_cd",
+				"type": "String"
+			},
+			{
+				"name": "serial_flag",
+				"type": "String"
+			},
+			{
+				"name": "dms_rating",
+				"type": "String"
+			},
+			{
+				"name": "classify_cd",
+				"type": "String"
+			},
+			{
+				"name": "fed_stock_no",
+				"type": "String"
+			},
+			{
+				"name": "material_desc",
+				"type": "String"
+			},
+			{
+				"name": "material_specs",
+				"type": "String"
+			},
+			{
+				"name": "stock_size",
+				"type": "String"
+			},
+			{
+				"name": "ordersize",
+				"type": "Double"
+			},
+			{
+				"name": "setupcost",
+				"type": "Double"
+			},
+			{
+				"name": "movequeue",
+				"type": "Double"
+			},
+			{
+				"name": "setuptime",
+				"type": "Double"
+			},
+			{
+				"name": "runtime",
+				"type": "Double"
+			},
+			{
+				"name": "projpercent",
+				"type": "Double"
+			},
+			{
+				"name": "carrying",
+				"type": "Double"
+			},
+			{
+				"name": "orderpolcd",
+				"type": "String"
+			},
+			{
+				"name": "maxdays",
+				"type": "Int32"
+			},
+			{
+				"name": "safetystk",
+				"type": "Double"
+			},
+			{
+				"name": "orderpoint",
+				"type": "Double"
+			},
+			{
+				"name": "tripdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "lotsize",
+				"type": "Double"
+			},
+			{
+				"name": "stndorderqty",
+				"type": "Double"
+			},
+			{
+				"name": "minorder",
+				"type": "Double"
+			},
+			{
+				"name": "maxorder",
+				"type": "Double"
+			},
+			{
+				"name": "multorder",
+				"type": "Double"
+			},
+			{
+				"name": "shrinkage",
+				"type": "Double"
+			},
+			{
+				"name": "actcutoff",
+				"type": "Int32"
+			},
+			{
+				"name": "mrpdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "grossprojind",
+				"type": "String"
+			},
+			{
+				"name": "grossprojfac",
+				"type": "Double"
+			},
+			{
+				"name": "toolfunction",
+				"type": "String"
+			},
+			{
+				"name": "eoqcategory",
+				"type": "String"
+			},
+			{
+				"name": "custsubmit",
+				"type": "DateTime"
+			},
+			{
+				"name": "custapproval",
+				"type": "DateTime"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			},
+			{
+				"name": "supersedes",
+				"type": "String"
+			},
+			{
+				"name": "supersededby",
+				"type": "String"
+			},
+			{
+				"name": "prodplangrp",
+				"type": "String"
+			},
+			{
+				"name": "resistance",
+				"type": "Double"
+			},
+			{
+				"name": "tradename",
+				"type": "String"
+			},
+			{
+				"name": "msds",
+				"type": "String"
+			},
+			{
+				"name": "profile",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "ref3",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "lvlmatcost1",
+				"type": "Double"
+			},
+			{
+				"name": "totmatcost1",
+				"type": "Double"
+			},
+			{
+				"name": "lvllabcost1",
+				"type": "Double"
+			},
+			{
+				"name": "totlabcost1",
+				"type": "Double"
+			},
+			{
+				"name": "lvloutside1",
+				"type": "Double"
+			},
+			{
+				"name": "totoutside1",
+				"type": "Double"
+			},
+			{
+				"name": "lvloh1cost1",
+				"type": "Double"
+			},
+			{
+				"name": "totoh1cost1",
+				"type": "Double"
+			},
+			{
+				"name": "lvloh2cost1",
+				"type": "Double"
+			},
+			{
+				"name": "totoh2cost1",
+				"type": "Double"
+			},
+			{
+				"name": "lvlacq1",
+				"type": "Double"
+			},
+			{
+				"name": "totacq1",
+				"type": "Double"
+			},
+			{
+				"name": "length_uom",
+				"type": "String"
+			},
+			{
+				"name": "depth_uom",
+				"type": "String"
+			},
+			{
+				"name": "width_uom",
+				"type": "String"
+			},
+			{
+				"name": "blocked_onhand",
+				"type": "Double"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgInpart]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

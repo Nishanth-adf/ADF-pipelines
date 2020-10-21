@@ -1,0 +1,33 @@
+{
+	"name": "ds_sf_tgt_User_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales_Rep_Code__c",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

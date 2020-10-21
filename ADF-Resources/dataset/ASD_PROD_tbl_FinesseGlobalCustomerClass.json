@@ -1,0 +1,38 @@
+{
+	"name": "ASD_PROD_tbl_FinesseGlobalCustomerClass",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "custno",
+				"type": "varchar"
+			},
+			{
+				"name": "custclass",
+				"type": "varchar"
+			},
+			{
+				"name": "SALESSUBSEGMENTID",
+				"type": "varchar"
+			},
+			{
+				"name": "SALESSEGMENTID",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMERGROUPID",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_FinesseGlobalCustomerClass"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "SQL_ODS_tbl_CustomerRepChanges",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "customerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_CustomerRepChanges"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

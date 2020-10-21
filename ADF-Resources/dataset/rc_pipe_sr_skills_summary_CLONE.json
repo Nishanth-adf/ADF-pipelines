@@ -1,0 +1,19 @@
+{
+	"name": "rc_pipe_sr_skills_summary_CLONE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rc_pipe_sr_rst",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "services/v19.0/agents/performance?startDate=@{startOfMonth(utcnow())}&endDate=@{startOfHour(utcnow())}",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

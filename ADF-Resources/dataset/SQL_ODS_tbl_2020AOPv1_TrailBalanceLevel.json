@@ -1,0 +1,109 @@
+{
+	"name": "SQL_ODS_tbl_2020AOPv1_TrailBalanceLevel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "CostCenter",
+				"type": "varchar"
+			},
+			{
+				"name": "BusinessTypeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "BusinessUnitCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DepartmentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "CostCenterCode",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "V1202001MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202002MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202003MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202004MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202005MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202006MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202007MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202008MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V1202009MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V12020010MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V12020011MTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "V12020012MTH",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_2020AOPv1_TrailBalanceLevel"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,229 @@
+{
+	"name": "DS_ABLB_TGT_OT_oecohead",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "order_code",
+				"type": "String"
+			},
+			{
+				"name": "orderno",
+				"type": "String"
+			},
+			{
+				"name": "orddate",
+				"type": "DateTime"
+			},
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "status_code",
+				"type": "String"
+			},
+			{
+				"name": "credithold",
+				"type": "String"
+			},
+			{
+				"name": "enterdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "last_shipped",
+				"type": "DateTime"
+			},
+			{
+				"name": "lastinvno",
+				"type": "String"
+			},
+			{
+				"name": "lastinvdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "creditcard",
+				"type": "String"
+			},
+			{
+				"name": "invoicecd",
+				"type": "String"
+			},
+			{
+				"name": "discpcnt",
+				"type": "Double"
+			},
+			{
+				"name": "authorize_id",
+				"type": "String"
+			},
+			{
+				"name": "paidamt",
+				"type": "Double"
+			},
+			{
+				"name": "creditamt",
+				"type": "Double"
+			},
+			{
+				"name": "taxamt",
+				"type": "Double"
+			},
+			{
+				"name": "freightamt",
+				"type": "Double"
+			},
+			{
+				"name": "serviceamt",
+				"type": "Double"
+			},
+			{
+				"name": "refridgeamt",
+				"type": "Double"
+			},
+			{
+				"name": "codamt",
+				"type": "Double"
+			},
+			{
+				"name": "ordertotal",
+				"type": "Double"
+			},
+			{
+				"name": "amtreleased",
+				"type": "Double"
+			},
+			{
+				"name": "invdate",
+				"type": "DateTime"
+			},
+			{
+				"name": "buyer",
+				"type": "String"
+			},
+			{
+				"name": "buyer_phone",
+				"type": "String"
+			},
+			{
+				"name": "engineer",
+				"type": "String"
+			},
+			{
+				"name": "eng_phone",
+				"type": "String"
+			},
+			{
+				"name": "ship_to_name",
+				"type": "String"
+			},
+			{
+				"name": "attention",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "ext",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "lastactivity",
+				"type": "DateTime"
+			},
+			{
+				"name": "orig_ordertotal",
+				"type": "Decimal"
+			},
+			{
+				"name": "currencycd",
+				"type": "String"
+			},
+			{
+				"name": "curr_factor",
+				"type": "Double"
+			},
+			{
+				"name": "county",
+				"type": "String"
+			},
+			{
+				"name": "tokenid",
+				"type": "String"
+			},
+			{
+				"name": "order_email",
+				"type": "String"
+			},
+			{
+				"name": "fromweb",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "¬",
+				"rowDelimiter": "Þ",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('OT_oecohead-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse/OT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

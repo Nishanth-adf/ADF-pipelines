@@ -1,0 +1,19 @@
+{
+	"name": "ds_sf_src_User_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

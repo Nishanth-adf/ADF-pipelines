@@ -1,0 +1,711 @@
+{
+	"name": "PL Migrate_dimShipAddr_D365",
+	"properties": {
+		"description": "Migrate FROM PROD.dbo.dimShipAddr_D365 TO DEV.dwh.dimShipAddr_D365\n\nAuthor: GBuenaventura\nDate: 06/30/2020",
+		"activities": [
+			{
+				"name": "Copy_PROD_dbo_dimShipAddr_D365",
+				"description": "Migrate FROM PROD.dbo.dimShipAddr_D365 TO DEV.dwh.dimShipAddr_D365\n\nAuthor: GBuenaventura\nDate: 06/30/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dwh.dimShipAddr_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ShipAddrId",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "ShipAddrId",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "custno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "custno",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "subno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "subno",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "shipno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "shipno",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ship_to_name",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ship_to_name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "contact",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "contact",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "attention",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "attention",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ext",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ext",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "addr1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "addr1",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "addr2",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "addr2",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "addr3",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "addr3",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "county",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "county",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "shipvia_code",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "shipvia_code",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "last_shipped",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "last_shipped",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "tax_code",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tax_code",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "shipcomplete",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "shipcomplete",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "correspondence",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "correspondence",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "fscm_cage",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "fscm_cage",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "invoicecopies",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "invoicecopies",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "priority",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "priority",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "tax1",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "tax1",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "tax2",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "tax2",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "tax3",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "tax3",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "tax4",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "tax4",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "tax5",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "tax5",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "custclass",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "custclass",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "matrixcd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "matrixcd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "discount",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "discount",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "pcntovercost",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "pcntovercost",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "telex",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "telex",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "usenet",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "usenet",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "fax",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "fax",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "voicemail",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "voicemail",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "entityno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "entityno",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "currencycd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "currencycd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "salutation",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "salutation",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "locationcd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "locationcd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "deal_no",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "deal_no",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "bankid",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "bankid",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "acctid",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "acctid",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "tele_salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tele_salesmancd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "web_custno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "web_custno",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "certificate_expire_date",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "certificate_expire_date",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "intrans_loc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "intrans_loc",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "email_update",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "email_update",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DBSource",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "DBSource",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LoadDateTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "LoadDateTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_dimShipAddr_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_dwh_dimShipAddr_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-30T23:30:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

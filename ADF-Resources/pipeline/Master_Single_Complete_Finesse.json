@@ -1,0 +1,46 @@
+{
+	"name": "Master_Single_Complete_Finesse",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_Complete_Staging",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Master_Single_Staging_Finesse",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Complete_Fact_Dim",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_Complete_Staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Master_Single_Fact_Dim_Finesse",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Consolidated_Master_Pipeline_Finesse_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:33:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,248 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_DimFinishedGoods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "ProductPK",
+				"type": "Int32"
+			},
+			{
+				"name": "CatalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "CatalogName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogNumberName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogMasterName",
+				"type": "String"
+			},
+			{
+				"name": "CatalogMasterNumberName",
+				"type": "String"
+			},
+			{
+				"name": "PartNumber",
+				"type": "String"
+			},
+			{
+				"name": "PartEnityNumber",
+				"type": "String"
+			},
+			{
+				"name": "ProductGroupNumber",
+				"type": "String"
+			},
+			{
+				"name": "GroupDesc",
+				"type": "String"
+			},
+			{
+				"name": "SubGroupDesc",
+				"type": "String"
+			},
+			{
+				"name": "PartRev",
+				"type": "String"
+			},
+			{
+				"name": "UnitOfMeasure",
+				"type": "String"
+			},
+			{
+				"name": "ListPrice",
+				"type": "Double"
+			},
+			{
+				"name": "WSPrice",
+				"type": "Double"
+			},
+			{
+				"name": "DistPrice",
+				"type": "Double"
+			},
+			{
+				"name": "PackageCode",
+				"type": "String"
+			},
+			{
+				"name": "Weight",
+				"type": "Double"
+			},
+			{
+				"name": "PriceChange",
+				"type": "DateTime"
+			},
+			{
+				"name": "MarkUp",
+				"type": "Double"
+			},
+			{
+				"name": "SourceEnterDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "LastOrdered",
+				"type": "DateTime"
+			},
+			{
+				"name": "SpecialTax",
+				"type": "Double"
+			},
+			{
+				"name": "Taxable",
+				"type": "String"
+			},
+			{
+				"name": "MinOrderQty",
+				"type": "Double"
+			},
+			{
+				"name": "MatrixCD",
+				"type": "String"
+			},
+			{
+				"name": "jocreate",
+				"type": "String"
+			},
+			{
+				"name": "Ref1",
+				"type": "String"
+			},
+			{
+				"name": "Ref2",
+				"type": "String"
+			},
+			{
+				"name": "SeminarDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "Ref4",
+				"type": "Int32"
+			},
+			{
+				"name": "Ref5",
+				"type": "String"
+			},
+			{
+				"name": "Ref6",
+				"type": "String"
+			},
+			{
+				"name": "Ref6Desc",
+				"type": "String"
+			},
+			{
+				"name": "Ref7",
+				"type": "String"
+			},
+			{
+				"name": "Ref7Desc",
+				"type": "String"
+			},
+			{
+				"name": "Ref8",
+				"type": "String"
+			},
+			{
+				"name": "ActiveInd",
+				"type": "String"
+			},
+			{
+				"name": "Conversion",
+				"type": "Double"
+			},
+			{
+				"name": "Classify",
+				"type": "String"
+			},
+			{
+				"name": "VariationCD",
+				"type": "String"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "String"
+			},
+			{
+				"name": "optctgryline",
+				"type": "Int32"
+			},
+			{
+				"name": "group_desc",
+				"type": "String"
+			},
+			{
+				"name": "StandardCost",
+				"type": "Double"
+			},
+			{
+				"name": "CategoryManager",
+				"type": "String"
+			},
+			{
+				"name": "CIA",
+				"type": "String"
+			},
+			{
+				"name": "ProductLine",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "String"
+			},
+			{
+				"name": "DWCreateDateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "DWUpdateDateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "SourceDB",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamilyOLD",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily2",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgDimFinishedGoods]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

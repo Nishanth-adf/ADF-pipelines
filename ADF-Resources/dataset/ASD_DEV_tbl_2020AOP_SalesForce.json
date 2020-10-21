@@ -1,0 +1,45 @@
+{
+	"name": "ASD_DEV_tbl_2020AOP_SalesForce",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAreaID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesPoolId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CustomerNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AOP",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 6
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_2020AOP_SalesForce"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

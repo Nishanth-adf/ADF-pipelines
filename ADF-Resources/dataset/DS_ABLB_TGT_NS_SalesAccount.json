@@ -1,0 +1,28 @@
+{
+	"name": "DS_ABLB_TGT_NS_SalesAccount",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "¬",
+				"rowDelimiter": "Þ",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('NetSuite_NS_SalesAccount-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/BariatricAdvantage"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

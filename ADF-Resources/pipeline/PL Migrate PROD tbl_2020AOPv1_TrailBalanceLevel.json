@@ -1,0 +1,53 @@
+{
+	"name": "PL Migrate PROD tbl_2020AOPv1_TrailBalanceLevel",
+	"properties": {
+		"description": "Migrate from ODS.tbl_2020AOPv1_TrailBalanceLevel to PROD.tbl_2020AOPv1_TrailBalanceLevel\n\nAuthor: GBuenaventura\nDate: 4/29/2020",
+		"activities": [
+			{
+				"name": "Copy PROD_tbl_2020AOPv1_TrailBalanceLevel",
+				"description": "Migrate from ODS.tbl_2020AOPv1_TrailBalanceLevel to PROD.tbl_2020AOPv1_TrailBalanceLevel\n\nAuthor: GBuenaventura\nDate: 4/29/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_2020AOPv1_TrailBalanceLevel",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_2020AOPv1_TrailBalanceLevel",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_2020AOPv1_TrailBalanceLevel",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-04-29T17:33:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

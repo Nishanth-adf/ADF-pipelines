@@ -1,0 +1,17 @@
+{
+	"name": "DS_SINK_ASQL_users",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_users"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

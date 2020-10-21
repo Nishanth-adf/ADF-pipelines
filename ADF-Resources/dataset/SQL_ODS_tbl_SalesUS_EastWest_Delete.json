@@ -1,0 +1,84 @@
+{
+	"name": "SQL_ODS_tbl_SalesUS_EastWest_Delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/TEST"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "RegMgrDesc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalCompanylvl1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegMgrcd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegMgr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistMgrcd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistMgr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistDesc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "salesmancd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustno",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustnoName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Territory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Year",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SalesInConstDollar",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_SalesUS_EastWest_Delete"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

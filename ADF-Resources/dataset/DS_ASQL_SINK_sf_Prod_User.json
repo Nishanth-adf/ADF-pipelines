@@ -1,0 +1,74 @@
+{
+	"name": "DS_ASQL_SINK_sf_Prod_User",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "salesRepCode_Status__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales_Rep_Code__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "isActive",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Username",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Alias",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TimeZoneSidKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LocaleSidKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EmailEncodingKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProfileId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LanguageLocaleKey",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_Prod_User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

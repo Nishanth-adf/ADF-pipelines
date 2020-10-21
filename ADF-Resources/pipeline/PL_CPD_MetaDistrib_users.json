@@ -1,0 +1,135 @@
+{
+	"name": "PL_CPD_MetaDistrib_users",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_users",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetausers;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "user_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "user_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pwd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pwd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fullname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fullname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_dt",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "created_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "disabled_dt",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "disabled_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "authority_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "authority_id",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_users",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetausers",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:41:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_SQL_SC58_dmwforecastdemandforecastentitystaging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58_dmd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dmwforecastdemandforecastentitystaging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

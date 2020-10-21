@@ -1,0 +1,20 @@
+{
+	"name": "ds_shipitProd_tgt_shipments_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - ShipitProd/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "shipitProd_Shipments_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

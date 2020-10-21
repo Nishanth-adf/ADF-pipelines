@@ -1,0 +1,724 @@
+{
+	"name": "PL_One_Touch_Prod_2_Dev_Sync",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_DEV_CREATEfactOrderInvoiceSales_D365",
+				"description": "Drop and Rebuilds dbo.factOrderInvoiceSales_D365DEV. In preparation for data migration from Prod to Dev.",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[CREATEfactOrderInvoiceSales_D365]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimCustomerMaster_D365",
+				"description": "Migrate dimCustomerMaster_D365 from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimCustomerMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimProductMaster_D365",
+				"description": "Migrate dimProductMaster_D365 from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimProductMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimOrder_D365",
+				"description": "Purge and reload dimOrder_D365DEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimOrder_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimGeography",
+				"description": "Purge and Reload dimGeographyDEV from PROD to DEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimGeography",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimSalesRep_D365",
+				"description": "Purge and Reload dimSalesRep_D365 from PROD to DEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimSalesRep_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimBusinessDivisionchanell",
+				"description": "Purge and Reload dimBusinessDivisionchanel from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimBusinessDivisionchanell",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimDistributor_D365",
+				"description": "Purge and Reload dimDistributor_D365 from PROD to DEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimDistributor_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimSalesOrigin",
+				"description": "Purge and Reload dimSalesOrigin from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimSalesOrigin",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_dimProductType_D365",
+				"description": "Purge and Reload dimProductType_D365 from PROD to DEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_dimProductType_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_DimSalesPool",
+				"description": "Purge and Reload DimSalesPool from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_DimSalesPool",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgTblProductFamiliesMain_D365",
+				"description": "Purge and Reload PL Migrate stgTblProductFamiliesMain_D365DEV. Move from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgTblProductFamiliesMain_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgSalesInvoiceHeaderDEV",
+				"description": "Purge and ReLoad stgSalesInvoiceHeaderDEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgSalesInvoiceHeaderDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgSalesInvoiceLines",
+				"description": "Purge and ReLoad stgSalesInvoiceLinesDEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgSalesInvoiceLines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgSalesOrderHeader_D365",
+				"description": "stgSalesOrderHeader_D365DEV from PROD to DEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgSalesOrderHeader_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_MigrateSalesRepMapHierMasterDEV",
+				"description": "Purge and Reload SalesRepMapHierMasterDEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_MigrateSalesRepMapHierMasterDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_tbl_FinesseCustomerMaster",
+				"description": "Purge and Reload tbl_FinesseCustomerMasterDEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_FinesseCustomerMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_tbl_CustomerCreatedMaster",
+				"description": "Purge and Reload tbl_CustomerCreatedMasterDEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_CustomerCreatedMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_Distributor_Tables",
+				"description": "Purge and Reload Distributor Tables from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_Distributor_Tables",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_tbl_StandardCostByItem",
+				"description": "Purge and Reload tbl_StandardCostByItemDEV from Prod to Dev.",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_StandardCostByItem",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_tbl_FinesseStdCostMaster",
+				"description": "Migrate Standard Cost Master 'tbl_FinesseStdCostMaster' from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_FinesseStdCostMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_MigrateStgCustomer_D365DEV",
+				"description": "Purge and Reload stgCustomer_D365DEV from Prod to Dev.",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_MigrateStgCustomer_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_tbl_2020AOP_SalesForce",
+				"description": "Purge and Migrate PROD.tbl_2020AOP_SalesForce to DEV.dbo.tbl_2020AOP_SalesForceDEV\n\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_2020AOP_SalesForce",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgSalesInvoiceHeaderLast7Days",
+				"description": "Purge and Migrate PROD.stgSalesInvoiceHeaderLast7Days to DEV.stgSalesInvoiceHeaderLast7DaysDEV\n\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgSalesInvoiceHeaderLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Migrate_stgSalesInvoiceLinesLast7Days",
+				"description": "Purge and Migrate PROD.stgSalesInvoiceLinesLast7Days to DEV.stgSalesInvoiceLinesLast7DaysDEV\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_MigratefactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_stgSalesInvoiceLinesLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_MigratefactOrderInvoiceSales_D365",
+				"description": "Purge and reload PL Migrate factOrderInvoiceSales_D365DEV from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_MigratefactOrderInvoiceSales_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "SP_DEV_CREATE_FK_factOrderInvoiceSales_D365",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL_Migrate_stgSalesInvoiceLinesLast7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_stgSalesInvoiceHeaderLast7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_tbl_2020AOP_SalesForce",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_MigrateStgCustomer_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_tbl_FinesseStdCostMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_tbl_StandardCostByItem",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_Distributor_Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_tbl_CustomerCreatedMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_tbl_FinesseCustomerMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_MigrateSalesRepMapHierMasterDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_stgSalesOrderHeader_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_stgSalesInvoiceLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_stgSalesInvoiceHeaderDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_stgTblProductFamiliesMain_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_DimSalesPool",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimProductType_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimSalesOrigin",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimDistributor_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimBusinessDivisionchanell",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimSalesRep_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimGeography",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimOrder_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimProductMaster_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Migrate_dimCustomerMaster_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[CREATE_FK_factOrderInvoiceSales_D365]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Migrate_Prod_2_Dev_Latest"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-22T14:01:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

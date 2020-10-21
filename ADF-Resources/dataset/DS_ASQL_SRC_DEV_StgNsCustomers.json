@@ -1,0 +1,891 @@
+{
+	"name": "DS_ASQL_SRC_DEV_StgNsCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DELETED",
+				"type": "bit"
+			},
+			{
+				"name": "ACCOUNTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ACTUAL_SALES",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ADVANTAGE_ENROLLMENT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ALCOHOL_RECIPIENT_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ALLOW_TASK_TIME_FOR_ALLOCATION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ALTEMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ALTERNATE_CATALOG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ALTERNATE_CONTACT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ALTERNATE_PRICE_LEVEL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ALTPHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AMOUNT_COMPLETE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AR_ALERT_FLAG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AVERAGE_ATTENDANCE_AT_SUPPORT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BEST_TIME_FOR_INPERSON_VISIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BILLADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BILLING_RATE_CARD_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BILLING_SCHEDULE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BILLING_SCHEDULE_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BILLING_TRANSACTION_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUSINESS_ASSOCIATE_AGREEMENT_",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CALCULATED_END",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CATEGORY_0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CHANNEL_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMENTS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMPANYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONSOL_DAYS_OVERDUE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_DEPOSIT_BALANCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_DEPOSIT_BALANCE_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_OPENBALANCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_OPENBALANCE_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_UNBILLED_ORDERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONSOL_UNBILLED_ORDERS_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONVERTED_TO_CONTACT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CONVERTED_TO_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_ESTIMATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATE_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREDITHOLD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREDITLIMIT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CURRENCY_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CURRENT_POSTOPERATIVE_RECOMME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMER_EXTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMER_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CUSTOMER_TYPE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DATE_CLOSED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_CONVSERSION",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_FIRST_ORDER",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_FIRST_SALE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_GROSS_LEAD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_LAST_MODIFIED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_LAST_ORDER",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_LAST_SALE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_LEAD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_PROSPECT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DAYS_ABSENT_THIS_MONTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DAYS_OVERDUE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEFAULT_ORDER_PRIORITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEFAULT_RECEIVABLES_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEPOSIT_BALANCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEPOSIT_BALANCE_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DETAILS_OF_PREOPERATIVE_PROGR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISSATISFACTION_REASON_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DO_NOT_CALL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL_0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXPECTED_CLOSE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FAX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIRSTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIRST_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIRST_SALE_PERIOD_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FIRST_VISIT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FORECAST_BASED_ON_ALLOCATIONS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORECAST_CHARGE_RUN_ON_DEMAND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FREQUENCY_OF_CLINIC_DAYS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FREQUENCY_OF_INTERNAL_MEETING",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FREQUENCY_OF_SUPPORT_GROUP_ME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FULL_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAVE_INTERNAL_MEETINGS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAVE_PRODUCT_SAMPLES_AVAILABL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAVE_SUPPORT_GROUP_MEETINGS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HOME_PHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISEMAILHTML",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISEMAILPDF",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISINACTIVE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISTAXABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_EXEMPT_TIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_EXPLICIT_CONVERSION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_JOB",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_LIMIT_TIME_TO_ASSIGNEES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_PERSON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_PRODUCTIVE_TIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_PROJECT_COMPLETELY_BILLED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_UTILIZED_TIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "JOB_END",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "JOB_START",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "JOB_TYPE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KEY_ACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LABOR_BUDGET_FROM_ALLOCATIONS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LANDING_PAGE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LANGUAGE_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LASTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_MODIFIED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_SALE_PERIOD_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LAST_VISIT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LEAD_SOURCE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LINE1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINE2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINE3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOGINACCESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOGO",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "METHOD_OF_ENTRY_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MIDDLENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MOBILE_PHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MULTIPLE_PRICE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTIFICATION_CONTACT_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTIFICATION_CONTACT_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NO_ORDER_REASON_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "NO__OF_PROCEDURES_PER_MONTH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "NO__OF_REMINDERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OPENBALANCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OPENBALANCE_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OPTIFAST_APPROVED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OPTIFAST_CONTRACT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARENT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PARTICIPATE_IN_PREOPERATIVE_N",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTNER_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PAYMENT_TERMS_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PERCENTAGE_OF_BDDSDGB",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PERCENTAGE_OF_GASTRIC_BAND",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PERCENTAGE_OF_GASTRIC_BYPASSS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PHONE_0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PHONE_CARRIERS_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "POINTS_AVAILABLE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "POINTS_COMMITTED",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "POINTS_USED",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PREASSIGNED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARY_CONTACT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PRINT_ON_CHECK_AS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROBABILITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROJECTED_END",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROJECT_EXPENSE_TYPE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECOVER_PARTICIPANT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REFERRER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REIMBURSABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REMINDERDAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RENEWAL",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "REPRESENTS_SUBSIDIARY_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RESALENUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REVENUE_ESTIMATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REVENUE_SHARE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REV_REC_FORECAST_RULE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REV_REC_FORECAST_TEMPLATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALES_REP_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALES_TERRITORY_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALUTATION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SATISFACTION_RATING",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SHIPADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHIP_COMPLETE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SMS_SUBSCRIPTION_STATUS_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_DESCR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_PROBABILITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STATUS_READ_ONLY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUBSIDIARY_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TAX_ITEM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "THIRD_PARTY_ACCT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "THIRD_PARTY_CARRIER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "THIRD_PARTY_COUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "THIRD_PARTY_ZIP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIMEZONE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOP_LEVEL_PARENT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNBILLED_ORDERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNBILLED_ORDERS_FOREIGN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "URL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USERNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USER_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USE_CALCULATED_BILLING_BUDGET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USE_CALCULATED_COST_BUDGET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USE_PERCENT_COMPLETE_OVERRIDE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VENDOR_RECORD_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WEB_LEAD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZIPCODE",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgNSCustomers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

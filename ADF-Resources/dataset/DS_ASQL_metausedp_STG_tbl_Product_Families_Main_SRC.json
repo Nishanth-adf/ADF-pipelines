@@ -1,0 +1,85 @@
+{
+	"name": "DS_ASQL_metausedp_STG_tbl_Product_Families_Main_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "productLaunchDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "applicableRegion",
+				"type": "String"
+			},
+			{
+				"name": "group1",
+				"type": "String"
+			},
+			{
+				"name": "catalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "description",
+				"type": "String"
+			},
+			{
+				"name": "productGroupType",
+				"type": "String"
+			},
+			{
+				"name": "ProductLine",
+				"type": "String"
+			},
+			{
+				"name": "productFamily",
+				"type": "String"
+			},
+			{
+				"name": "productFamilyVariety",
+				"type": "String"
+			},
+			{
+				"name": "subgroup",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "String"
+			},
+			{
+				"name": "Active_Ind",
+				"type": "String"
+			},
+			{
+				"name": "Serving",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "Source",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

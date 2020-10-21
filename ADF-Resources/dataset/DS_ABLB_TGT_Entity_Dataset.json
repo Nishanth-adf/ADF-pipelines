@@ -1,0 +1,94 @@
+{
+	"name": "DS_ABLB_TGT_Entity_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "Deleted",
+				"type": "Boolean"
+			},
+			{
+				"name": "Entity_Id",
+				"type": "Double"
+			},
+			{
+				"name": "Entity_type",
+				"type": "String"
+			},
+			{
+				"name": "First_Name",
+				"type": "String"
+			},
+			{
+				"name": "First_Name_0",
+				"type": "String"
+			},
+			{
+				"name": "Full_Name",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Parent_Id",
+				"type": "Double"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Zipcode",
+				"type": "String"
+			},
+			{
+				"name": "Create_date",
+				"type": "DateTime"
+			},
+			{
+				"name": "Date_Last_Modified",
+				"type": "DateTime"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "Load Date time",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "¬",
+				"rowDelimiter": "Þ",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('NetSuite_Entity_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/BariatricAdvantage"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,427 @@
+{
+	"name": "PL_TRAN_CPD_STG_OecoHead",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_OECOHEAD-2-AZDB_OECOHEAD",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_OECOHEAD-2-BLB_OT_OECOHEAD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oecohead-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oecohead]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orddate": "orddate",
+							"custno": "custno",
+							"status_code": "status_code",
+							"credithold": "credithold",
+							"enterdate": "enterdate",
+							"last_shipped": "last_shipped",
+							"lastinvno": "lastinvno",
+							"lastinvdate": "lastinvdate",
+							"creditcard": "creditcard",
+							"invoicecd": "invoicecd",
+							"discpcnt": "discpcnt",
+							"authorize_id": "authorize_id",
+							"paidamt": "paidamt",
+							"creditamt": "creditamt",
+							"taxamt": "taxamt",
+							"freightamt": "freightamt",
+							"serviceamt": "serviceamt",
+							"refridgeamt": "refridgeamt",
+							"codamt": "codamt",
+							"ordertotal": "ordertotal",
+							"amtreleased": "amtreleased",
+							"invdate": "invdate",
+							"buyer": "buyer",
+							"buyer_phone": "buyer_phone",
+							"engineer": "engineer",
+							"eng_phone": "eng_phone",
+							"ship_to_name": "ship_to_name",
+							"attention": "attention",
+							"phone": "phone",
+							"ext": "ext",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"lastactivity": "lastactivity",
+							"orig_ordertotal": "orig_ordertotal",
+							"currencycd": "currencycd",
+							"curr_factor": "curr_factor",
+							"county": "county",
+							"tokenid": "tokenid",
+							"order_email": "order_email",
+							"fromweb": "fromweb",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oecohead",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL__TGT_metausedpdev_oecohead",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_OECOHEAD-2-BLB_OT_OECOHEAD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oecohead-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [order_code]\n      ,[orderno]\n      ,[orddate]\n      ,[custno]\n      ,[status_code]\n      ,[credithold]\n      ,[enterdate]\n      ,[last_shipped]\n      ,[lastinvno]\n      ,[lastinvdate]\n      ,[creditcard]\n      ,[invoicecd]\n      ,[discpcnt]\n      ,[authorize_id]\n      ,[paidamt]\n      ,[creditamt]\n      ,[taxamt]\n      ,[freightamt]\n      ,[serviceamt]\n      ,[refridgeamt]\n      ,[codamt]\n      ,[ordertotal]\n      ,[amtreleased]\n      ,[invdate]\n      ,[buyer]\n      ,[buyer_phone]\n      ,[engineer]\n      ,[eng_phone]\n      ,[ship_to_name]\n      ,[attention]\n      ,[phone]\n      ,[ext]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[lastactivity]\n      ,[orig_ordertotal]\n      ,[currencycd]\n      ,[curr_factor]\n      ,[county]\n      ,[tokenid]\n      ,[order_email]\n      ,[fromweb]\n\t  ,'OT' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [OT].[dbo].[oecohead]  with (nolock)\nWhere Year(orddate) = 2019 and Month(orddate) >= 5",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orddate": "orddate",
+							"custno": "custno",
+							"status_code": "status_code",
+							"credithold": "credithold",
+							"enterdate": "enterdate",
+							"last_shipped": "last_shipped",
+							"lastinvno": "lastinvno",
+							"lastinvdate": "lastinvdate",
+							"creditcard": "creditcard",
+							"invoicecd": "invoicecd",
+							"discpcnt": "discpcnt",
+							"authorize_id": "authorize_id",
+							"paidamt": "paidamt",
+							"creditamt": "creditamt",
+							"taxamt": "taxamt",
+							"freightamt": "freightamt",
+							"serviceamt": "serviceamt",
+							"refridgeamt": "refridgeamt",
+							"codamt": "codamt",
+							"ordertotal": "ordertotal",
+							"amtreleased": "amtreleased",
+							"invdate": "invdate",
+							"buyer": "buyer",
+							"buyer_phone": "buyer_phone",
+							"engineer": "engineer",
+							"eng_phone": "eng_phone",
+							"ship_to_name": "ship_to_name",
+							"attention": "attention",
+							"phone": "phone",
+							"ext": "ext",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"lastactivity": "lastactivity",
+							"orig_ordertotal": "orig_ordertotal",
+							"currencycd": "currencycd",
+							"curr_factor": "curr_factor",
+							"county": "county",
+							"tokenid": "tokenid",
+							"order_email": "order_email",
+							"fromweb": "fromweb",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_OT_dbo_oecohead",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oecohead",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_IL_OECOHEAD-2-BLB_IL_OECOHEAD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oecohead-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [order_code]\n      ,[orderno]\n      ,[orddate]\n      ,[custno]\n      ,[status_code]\n      ,[credithold]\n      ,[enterdate]\n      ,[last_shipped]\n      ,[lastinvno]\n      ,[lastinvdate]\n      ,[creditcard]\n      ,[invoicecd]\n      ,[discpcnt]\n      ,[authorize_id] \n      ,[paidamt]\n      ,[creditamt]\n      ,[taxamt]\n      ,[freightamt]\n      ,[serviceamt]\n      ,[refridgeamt]\n      ,[codamt]\n      ,[ordertotal]\n      ,[amtreleased]\n      ,[invdate]\n      ,[buyer]\n      ,[buyer_phone]\n      ,[engineer]\n      ,[eng_phone]\n      ,[ship_to_name]\n      ,[attention]\n      ,[phone]\n      ,[ext]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[lastactivity]\n      ,[orig_ordertotal]\n      ,[currencycd]\n      ,[curr_factor]\n      ,[county]\n      ,[tokenid]\n      ,[order_email]\n      ,[fromweb]\n\t  ,'IL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [IL].[dbo].[oecohead]  with (nolock)\nWhere Year(orddate) = 2019 and Month(orddate) >= 5",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orddate": "orddate",
+							"custno": "custno",
+							"status_code": "status_code",
+							"credithold": "credithold",
+							"enterdate": "enterdate",
+							"last_shipped": "last_shipped",
+							"lastinvno": "lastinvno",
+							"lastinvdate": "lastinvdate",
+							"creditcard": "creditcard",
+							"invoicecd": "invoicecd",
+							"discpcnt": "discpcnt",
+							"authorize_id": "authorize_id",
+							"paidamt": "paidamt",
+							"creditamt": "creditamt",
+							"taxamt": "taxamt",
+							"freightamt": "freightamt",
+							"serviceamt": "serviceamt",
+							"refridgeamt": "refridgeamt",
+							"codamt": "codamt",
+							"ordertotal": "ordertotal",
+							"amtreleased": "amtreleased",
+							"invdate": "invdate",
+							"buyer": "buyer",
+							"buyer_phone": "buyer_phone",
+							"engineer": "engineer",
+							"eng_phone": "eng_phone",
+							"ship_to_name": "ship_to_name",
+							"attention": "attention",
+							"phone": "phone",
+							"ext": "ext",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"lastactivity": "lastactivity",
+							"orig_ordertotal": "orig_ordertotal",
+							"currencycd": "currencycd",
+							"curr_factor": "curr_factor",
+							"county": "county",
+							"tokenid": "tokenid",
+							"order_email": "order_email",
+							"fromweb": "fromweb",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_IL_dbo_oecohead",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oecohead",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_IL_OECOHEAD-2-AZDB_OECOHEAD",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_IL_OECOHEAD-2-BLB_IL_OECOHEAD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oecohead-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oecohead]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orddate": "orddate",
+							"custno": "custno",
+							"status_code": "status_code",
+							"credithold": "credithold",
+							"enterdate": "enterdate",
+							"last_shipped": "last_shipped",
+							"lastinvno": "lastinvno",
+							"lastinvdate": "lastinvdate",
+							"creditcard": "creditcard",
+							"invoicecd": "invoicecd",
+							"discpcnt": "discpcnt",
+							"authorize_id": "authorize_id",
+							"paidamt": "paidamt",
+							"creditamt": "creditamt",
+							"taxamt": "taxamt",
+							"freightamt": "freightamt",
+							"serviceamt": "serviceamt",
+							"refridgeamt": "refridgeamt",
+							"codamt": "codamt",
+							"ordertotal": "ordertotal",
+							"amtreleased": "amtreleased",
+							"invdate": "invdate",
+							"buyer": "buyer",
+							"buyer_phone": "buyer_phone",
+							"engineer": "engineer",
+							"eng_phone": "eng_phone",
+							"ship_to_name": "ship_to_name",
+							"attention": "attention",
+							"phone": "phone",
+							"ext": "ext",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"lastactivity": "lastactivity",
+							"orig_ordertotal": "orig_ordertotal",
+							"currencycd": "currencycd",
+							"curr_factor": "curr_factor",
+							"county": "county",
+							"tokenid": "tokenid",
+							"order_email": "order_email",
+							"fromweb": "fromweb",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oecohead",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL__TGT_metausedpdev_oecohead",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T07:27:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

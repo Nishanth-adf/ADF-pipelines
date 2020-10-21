@@ -1,0 +1,225 @@
+{
+	"name": "DS_SQL_SRC_SQL01_IL_dbo_oeshipaddr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "subno",
+				"type": "String"
+			},
+			{
+				"name": "shipno",
+				"type": "String"
+			},
+			{
+				"name": "ship_to_name",
+				"type": "String"
+			},
+			{
+				"name": "contact",
+				"type": "String"
+			},
+			{
+				"name": "attention",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "ext",
+				"type": "String"
+			},
+			{
+				"name": "addr1",
+				"type": "String"
+			},
+			{
+				"name": "addr2",
+				"type": "String"
+			},
+			{
+				"name": "addr3",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "county",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zip",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "shipvia_code",
+				"type": "String"
+			},
+			{
+				"name": "last_shipped",
+				"type": "DateTime"
+			},
+			{
+				"name": "tax_code",
+				"type": "String"
+			},
+			{
+				"name": "shipcomplete",
+				"type": "String"
+			},
+			{
+				"name": "correspondence",
+				"type": "String"
+			},
+			{
+				"name": "fscm_cage",
+				"type": "String"
+			},
+			{
+				"name": "invoicecopies",
+				"type": "Int32"
+			},
+			{
+				"name": "priority",
+				"type": "Int32"
+			},
+			{
+				"name": "tax1",
+				"type": "Double"
+			},
+			{
+				"name": "tax2",
+				"type": "Double"
+			},
+			{
+				"name": "tax3",
+				"type": "Double"
+			},
+			{
+				"name": "tax4",
+				"type": "Double"
+			},
+			{
+				"name": "tax5",
+				"type": "Double"
+			},
+			{
+				"name": "custclass",
+				"type": "String"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "discount",
+				"type": "Double"
+			},
+			{
+				"name": "pcntovercost",
+				"type": "Double"
+			},
+			{
+				"name": "telex",
+				"type": "String"
+			},
+			{
+				"name": "usenet",
+				"type": "String"
+			},
+			{
+				"name": "fax",
+				"type": "String"
+			},
+			{
+				"name": "voicemail",
+				"type": "String"
+			},
+			{
+				"name": "entityno",
+				"type": "String"
+			},
+			{
+				"name": "currencycd",
+				"type": "String"
+			},
+			{
+				"name": "salutation",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "locationcd",
+				"type": "String"
+			},
+			{
+				"name": "deal_no",
+				"type": "String"
+			},
+			{
+				"name": "bankid",
+				"type": "String"
+			},
+			{
+				"name": "acctid",
+				"type": "String"
+			},
+			{
+				"name": "tele_salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "web_custno",
+				"type": "String"
+			},
+			{
+				"name": "certificate_expire_date",
+				"type": "DateTime"
+			},
+			{
+				"name": "intrans_loc",
+				"type": "String"
+			},
+			{
+				"name": "email_update",
+				"type": "DateTime"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
