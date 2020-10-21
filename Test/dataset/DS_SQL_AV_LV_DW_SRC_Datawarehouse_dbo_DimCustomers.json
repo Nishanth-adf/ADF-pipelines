@@ -1,0 +1,15 @@
+{
+	"name": "DS_SQL_AV_LV_DW_SRC_Datawarehouse_dbo_DimCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Data Warehouse (AV-LV-DW)"
+		},
+		"annotations": [],
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,27 @@
+{
+	"name": "DS_SQL_Metadistrib_customer_class",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "customer_class",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_class_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "customer_class"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

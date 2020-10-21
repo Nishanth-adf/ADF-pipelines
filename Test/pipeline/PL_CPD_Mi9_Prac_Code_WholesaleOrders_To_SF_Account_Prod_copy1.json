@@ -1,0 +1,96 @@
+{
+	"name": "PL_CPD_Mi9_Prac_Code_WholesaleOrders_To_SF_Account_Prod_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Patients_Cancelled_ARO_2_SF",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Patients_Cancelled_ARO_Data]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 20,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__C",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD__C",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD_Count__C",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD_Count__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SA_ASQL_Mi9_Patients_ARO",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Mi9_Patients_ARO",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-09-28T17:14:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

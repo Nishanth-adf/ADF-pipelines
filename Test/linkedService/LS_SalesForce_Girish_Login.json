@@ -1,0 +1,17 @@
+{
+	"name": "LS_SalesForce_Girish_Login",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Salesforce",
+		"typeProperties": {
+			"environmentUrl": "https://test.salesforce.com",
+			"username": "girishvenkat.bhimarasetty@lntinfotech.com",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1FVEFFRFBBREZfNDVkM2Y0YzEtNjBkMi00YTQ5LWI5MmUtNDZiN2EzYTRiNmM2Ig0KfQ=="
+		},
+		"connectVia": {
+			"referenceName": "SalesForceIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_AccountMonthSales_DEV11",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account_Month_Sales__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

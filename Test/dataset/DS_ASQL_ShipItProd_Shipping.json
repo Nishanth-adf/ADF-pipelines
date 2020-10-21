@@ -1,0 +1,234 @@
+{
+	"name": "DS_ASQL_ShipItProd_Shipping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "shipitprod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PackageGUID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ShipmentGUID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "MSN",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Bundle_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Package_List_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Oversize",
+				"type": "bit"
+			},
+			{
+				"name": "Tracking_Number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Weight",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Packaging",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Dimension",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMERCIAL_INVOICE_INFO",
+				"type": "ntext"
+			},
+			{
+				"name": "Additional_Handling",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOFN_Sequence",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Documents_Only",
+				"type": "bit"
+			},
+			{
+				"name": "Apportioned_VAT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Apportioned_Total",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Apportioned_Special",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Apportioned_Discount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Apportioned_Base",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Hazmat",
+				"type": "bit"
+			},
+			{
+				"name": "Hazmat_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Class",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Quantity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Packing",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Packing_Group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Label",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Cargo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Accessible",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_ltdqty",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_Alternate_Number",
+				"type": "bit"
+			},
+			{
+				"name": "COD_Amount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "COD_Instructions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_Payment_Method",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Misc_Package_Field_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Package_Field_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Package_Field_3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Package_Field_4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Package_Field_5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOL_Package_Count",
+				"type": "varchar"
+			},
+			{
+				"name": "Item_Number",
+				"type": "varchar"
+			},
+			{
+				"name": "Sub_Number",
+				"type": "varchar"
+			},
+			{
+				"name": "Commodity_Class",
+				"type": "varchar"
+			},
+			{
+				"name": "BOL_Comment",
+				"type": "varchar"
+			},
+			{
+				"name": "BOL_Hazmat_Comment",
+				"type": "varchar"
+			},
+			{
+				"name": "HOST_CONTAINER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "AMZMWS_ITEMS_BY_SKU",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Packages"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

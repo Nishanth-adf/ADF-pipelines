@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SINK_PROD_stgDimFinishedGoods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgDimFinishedGoods"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

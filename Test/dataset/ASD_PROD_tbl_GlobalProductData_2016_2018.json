@@ -1,0 +1,103 @@
+{
+	"name": "ASD_PROD_tbl_GlobalProductData_2016_2018",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LegalEntityDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "source",
+				"type": "varchar"
+			},
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductNo",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Positioning",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Corp_Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MonthNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "YearMonthNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_to_Country",
+				"type": "varchar"
+			},
+			{
+				"name": "SALESSUBSEGMENTID",
+				"type": "varchar"
+			},
+			{
+				"name": "Type",
+				"type": "varchar"
+			},
+			{
+				"name": "localCurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Std_Cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Std_Cost_Cur",
+				"type": "varchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Sales",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_GlobalProductData_2016_2018"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

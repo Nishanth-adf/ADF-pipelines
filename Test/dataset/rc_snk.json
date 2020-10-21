@@ -1,0 +1,19 @@
+{
+	"name": "rc_snk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "rc_data_net.json",
+				"container": "rcdatanet"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

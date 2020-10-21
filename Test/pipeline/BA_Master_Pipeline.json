@@ -1,0 +1,66 @@
+{
+	"name": "BA_Master_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_All_Dim_Truncate_Exec",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "BA_All_Dim_Truncate",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_All_Dim_Exec",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_All_Dim_Truncate_Exec",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "BA_All_Dim_Load_Pipelines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_All_Fact_Exec",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_All_Dim_Exec",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "BA_All_Fact_Load_Pipelines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:22:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

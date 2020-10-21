@@ -1,0 +1,16 @@
+{
+	"name": "D365DataTestS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OData1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "ODataResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "CustomersV3"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

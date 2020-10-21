@@ -1,0 +1,455 @@
+{
+	"name": "PL_Copy_tbl_GlobalProductMASTER_to_ADF",
+	"properties": {
+		"description": "Copy tbl_GlobalProductMASTER to Azure Data Factory.",
+		"activities": [
+			{
+				"name": "PL_DATA_Copy_GlobalTables",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "USP_Truncate_GlobalTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "[dbo].[tbl_GlobalProductMASTER]"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[pbi_tbl_GlobalProductMASTER]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Legal_Entity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Legal_Entity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SKU",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SKU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SKU_Desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SKU_Desc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Global Positioning",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Global Positioning",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Global Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Global Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Corp Brand",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Corp Brand",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Product Brand",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Product Brand",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CRC",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"name": "CRC",
+									"type": "Byte[]"
+								}
+							},
+							{
+								"source": {
+									"name": "UpdatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UpdatedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_GlobalProductMASTER",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Destination_pbi_tbl_GlobalProductMASTER",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PL_DATA_Copy_GlobalSalesTable",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "PL_DATA_Copy_GlobalTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Legal_Entity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Legal_Entity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SKU",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SKU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Yr",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Yr",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Period",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Period",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Ship_to_Country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Ship_to_Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inv_to_Country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inv_to_Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Cust_lvl2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Cust_lvl2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "qty",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "qty",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "sales",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "sales",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Cur",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Cur",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Std_Cost",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Std_Cost",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Std_Cost_Cur",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Std_Cost_Cur",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Legal_Trans_Price",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Legal_Trans_Price",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Legal_Trans_Cur",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Legal_Trans_Cur",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastUpdated",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UpdatedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_GlobalSalesMASTER",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_pbi_tbl_GlobalSalesMASTER",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "USP_Truncate_GlobalTables",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_TruncateGlobalTables]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CopyData_GlobalTypeMASTER",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "PL_DATA_Copy_GlobalSalesTable",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "GlobalType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GlobalType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GlobalType_Desc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GlobalType_Desc",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_ODS_GlobalTypeMASTER",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_GlobalTypeMASTER",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Global Revenue"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-06-19T21:23:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

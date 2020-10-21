@@ -1,0 +1,38 @@
+{
+	"name": "DS_ASQL_stgMetapreferences",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "preference_name",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_value",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_display_name",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_category",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetapreferences"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,478 @@
+{
+	"name": "PL_CPD_Mi9_Prac_Code_WholesaleOrders_To_SF_Account_Prod_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Prac_Code_to_Account_SF_DEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Practitioner_Code_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Mi9_Prac_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Mi9_Prac_Code__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Practitioner_Code_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Mi9_Prac_Code_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Mi9_Prac_WholesaleOrder_2_SF_Account_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Prac_Code_to_Account_SF_DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Practitioner_WholesaleOrders_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WholesaleMTD__C",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "WholesaleMTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WholesaleYTD__C",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "WholesaleYTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CS_Wholesale_MTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CS_Wholesale_MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CS_Wholesale_YTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CS_Wholesale_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Wholesale_ARO_MTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Wholesale_ARO_MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Wholesale_ARO_YTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Wholesale_ARO_YTD__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_wholesaleOrders_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Prac_WholesaleOrders_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Mi9_Patient_Wholesale_Orders_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Mi9_Prac_WholesaleOrder_2_SF_Account_DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Patients_WholesaleOrders_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerkeyERP__C",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_One_Time_Orders_MTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_One_Time_Orders_MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_One_Time_Orders_YTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_One_Time_Orders_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_One_Time_Orders_Count_YTD__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Patient_One_Time_Orders_Count_YTD__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerkeyERP__C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Orders_CS_YTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_Orders_CS_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Orders_CS_MTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_Orders_CS_MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_ARO_Orders_MTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_ARO_Orders_MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_ARO_Orders_YTD__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Patient_ARO_Orders_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_ARO_Count_YTD__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Patient_ARO_Count_YTD__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Orders_CS_YTD_Count__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Patient_Orders_CS_YTD_Count__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Patients_WholesaleOrders_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Mi9_Patients_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Mi9_Patients_Cancelled_ARO_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Mi9_Patient_Wholesale_Orders_DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_sbfeb2020_Mi9_Patients_Cancelled_ARO_Data_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__C",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD__C",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD_Count__C",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Patient_Cancelled_ARO_Orders_YTD_Count__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Patients_Cancelled_ARO_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Mi9_Patients_Cancelled_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Mi9 DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-24T06:44:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,34 @@
+{
+	"name": "SQL_ODS_stgMainAccountALTCat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "MainAccountCategory",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAcctCatDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMainAccountALTCat"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

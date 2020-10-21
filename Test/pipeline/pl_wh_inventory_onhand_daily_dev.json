@@ -1,0 +1,34 @@
+{
+	"name": "pl_wh_inventory_onhand_daily_dev",
+	"properties": {
+		"activities": [
+			{
+				"name": "usp_wh_inventory_OnHandDailyHistory_dev",
+				"description": "-- need to copy table data (ods.wh_inventory_OnHandDailyHistory) from production database metausedpprod before  inserting/running this pipeline",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_wh_inventory_OnHandDailyHistory_dev]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Warehouse Dev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-25T21:24:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

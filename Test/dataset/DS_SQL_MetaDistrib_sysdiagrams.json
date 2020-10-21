@@ -1,0 +1,41 @@
+{
+	"name": "DS_SQL_MetaDistrib_sysdiagrams",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "principal_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "diagram_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "version",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "definition",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sysdiagrams"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

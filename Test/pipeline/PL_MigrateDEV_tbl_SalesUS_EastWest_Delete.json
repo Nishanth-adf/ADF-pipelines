@@ -1,0 +1,51 @@
+{
+	"name": "PL_MigrateDEV_tbl_SalesUS_EastWest_Delete",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_DEV_tbl_SalesUS_EastWest_Delete",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_SalesUS_EastWest_Delete",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_SalesUS_EastWest_Delete",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_SalesUS_EastWest_Delete",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/Testing"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-07T22:25:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

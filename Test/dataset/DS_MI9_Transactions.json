@@ -1,0 +1,17 @@
+{
+	"name": "DS_MI9_Transactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MI9_Transactions_Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

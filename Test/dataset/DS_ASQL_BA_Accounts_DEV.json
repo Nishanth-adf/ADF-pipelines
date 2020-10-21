@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_BA_Accounts_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_BA_Sandbox_Accounts_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

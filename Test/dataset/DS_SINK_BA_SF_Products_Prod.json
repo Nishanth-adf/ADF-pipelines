@@ -1,0 +1,16 @@
+{
+	"name": "DS_SINK_BA_SF_Products_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Product2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

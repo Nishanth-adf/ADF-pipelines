@@ -1,0 +1,32 @@
+{
+	"name": "ASD_PROD_tbl_HistStdCostFinesse",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "partno",
+				"type": "varchar"
+			},
+			{
+				"name": "StdCost",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_HistStdCostFinesse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

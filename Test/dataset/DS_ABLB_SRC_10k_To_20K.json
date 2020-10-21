@@ -1,0 +1,19 @@
+{
+	"name": "DS_ABLB_SRC_10k_To_20K",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat"
+			},
+			"fileName": "CustomersV3From10001to20000.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

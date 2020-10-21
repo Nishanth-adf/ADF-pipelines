@@ -1,0 +1,474 @@
+{
+	"name": "DS_ASQL_SINK_MiUsers_Incr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "site_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "username",
+				"type": "nvarchar"
+			},
+			{
+				"name": "first_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "password",
+				"type": "nvarchar"
+			},
+			{
+				"name": "email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tax_exempt",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "tax_exempt_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cart",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "active",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "last_login",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "last_ip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "created",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "updated",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "noreg",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "external_customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "number_of_orders",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "kw",
+				"type": "nvarchar"
+			},
+			{
+				"name": "referrer_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "toolkit_locked",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_activity",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "view_invisible_pricing",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ip_allow",
+				"type": "nvarchar"
+			},
+			{
+				"name": "job_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "company_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "opt_in",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "forgot_password_key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "forgot_password_link_expire",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "password_last_change_time",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "deleted",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "preferences",
+				"type": "nvarchar"
+			},
+			{
+				"name": "email_confirmed",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "welcome_email_sent",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "referrer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "default_address_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "default_wallet_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "has_ordered",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "login_attempts",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "login_lock_expiration",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "how_did_hear",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "wepay_practitioner_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "wepay_practitioner_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sales_rep",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practice_area",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_license_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_license_state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_url",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_language",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_score",
+				"type": "nvarchar"
+			},
+			{
+				"name": "promo_email_sent",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "reward_points",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 3
+			},
+			{
+				"name": "reward_points_discount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 3
+			},
+			{
+				"name": "sales_agent_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "last_user_lang",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_website",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_catalog",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "merchant_settings",
+				"type": "nvarchar"
+			},
+			{
+				"name": "location_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "old_customer_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ssn_ein",
+				"type": "nvarchar"
+			},
+			{
+				"name": "in_locator",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "assigned_doctor",
+				"type": "nvarchar"
+			},
+			{
+				"name": "notifications",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_credentials",
+				"type": "nvarchar"
+			},
+			{
+				"name": "biography",
+				"type": "nvarchar"
+			},
+			{
+				"name": "welcome_message",
+				"type": "nvarchar"
+			},
+			{
+				"name": "office_hours",
+				"type": "nvarchar"
+			},
+			{
+				"name": "netsuite_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rewards_enrollment_date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "listrak_sync",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "ba_patient_price_group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_license_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_license_holder",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tagline",
+				"type": "nvarchar"
+			},
+			{
+				"name": "practitioner_retail_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_terms_agreement",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "last_estore_terms_agreement",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "last_policies_agreement",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "hide_email",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "filed_for_bankruptcy",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "years_in_business",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "practitioner_monthly_sales",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "ba_practitioner_price_group",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ba_affiliated_patient_retail_price_only",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "shipment_notifications",
+				"type": "nvarchar"
+			},
+			{
+				"name": "merchant_estore_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "received_free_es",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "old_id",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "google_login_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "not_eligible_for_coupons",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "practitioner_earn_profit",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "account_terms_on_hold",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "user_key",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Mi9_users_incr"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

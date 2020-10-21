@@ -1,0 +1,51 @@
+{
+	"name": "PL Migrate stgD365DimensionCombinations",
+	"properties": {
+		"description": "Migrate D365.DimensionCombinations to Prod.stgD365DimensionCombinations\n\nAuthor: GBuenaventura\nDate: 4/4/2020",
+		"activities": [
+			{
+				"name": "Copy_stgD365DimensionCombinations",
+				"description": "Author: GBuenaventura\nDate: 4/4/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365DimensionCombinations",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365DimensionCombinations",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgD365DimensionCombinations",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-04-04T22:08:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

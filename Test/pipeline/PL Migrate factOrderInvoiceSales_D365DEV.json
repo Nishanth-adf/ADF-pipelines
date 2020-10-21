@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate factOrderInvoiceSales_D365DEV",
+	"properties": {
+		"description": "Purge and reload factOrderInvoiceSales_D365DEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+		"activities": [
+			{
+				"name": "Copy_factOrderInvoiceSales_D365",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.factOrderInvoiceSales_D365DEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_factOrderInvoiceSales_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_factOrderInvoiceSales_D365DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-11T22:51:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

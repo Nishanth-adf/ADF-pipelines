@@ -1,0 +1,371 @@
+{
+	"name": "PL_CPD_DD_Data_2_Temp",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DD_Data_2_Temp",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT [OrderInvoiceSalesID]\n      ,[orderID]\n      ,[geographyID]\n      ,[customerID]\n      ,[salesRepID]\n      ,[productID]\n      ,[BusinessDivisionchanelID]\n      ,[dimDistributorID]\n      ,[SalesOriginID]\n      ,[productTypeID]\n      ,[commissionableIndicator]\n      ,[invoiceNumber]\n      ,[invoiceDate]\n      ,[acctyr]\n      ,[acctper]\n      ,[lineItem]\n      ,[shipmentNumber]\n      ,[quantity]\n      ,[unitPrice]\n      ,[amount]\n      ,[amountType]\n      ,[localCurrencyCode]\n      ,[orderType]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n      ,[source]\n      ,[dataAreaId]\n      ,[SalesPoolId]\n      ,[LineTotalDiscountAmount]\n      ,[LineTotalTaxAmount]\n      ,[LineAmount]\n  FROM [dbo].[factOrderInvoiceSales_D365] where source='DD'",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "orderID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "orderID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "geographyID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "geographyID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "customerID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "customerID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "salesRepID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "productID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "productID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessDivisionchanelID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BusinessDivisionchanelID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "dimDistributorID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "dimDistributorID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOriginID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SalesOriginID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "productTypeID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "productTypeID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "commissionableIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "commissionableIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "invoiceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "invoiceNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "invoiceDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "invoiceDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "acctyr",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "acctyr",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "acctper",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "acctper",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "lineItem",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "lineItem",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "shipmentNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "shipmentNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "quantity",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "unitPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "unitPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "amount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "amount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "amountType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "amountType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "localCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "localCurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orderType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesPoolId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SalesPoolId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "LineTotalDiscountAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LineTotalDiscountAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LineTotalTaxAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LineTotalTaxAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LineAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LineAmount",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_Fact_DD_Prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_FactDistributor_NewTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2019-10-07T14:39:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

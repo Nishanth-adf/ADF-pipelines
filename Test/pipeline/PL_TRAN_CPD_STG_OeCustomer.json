@@ -1,0 +1,500 @@
+{
+	"name": "PL_TRAN_CPD_STG_OeCustomer",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_CUST-2-AZDB_CUST",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_CUST-2-BLB_OT_CUST",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oecustomer-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oecustomer]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"custno": "custno",
+							"name": "name",
+							"creditlmt": "creditlmt",
+							"arcurr": "arcurr",
+							"arover30": "arover30",
+							"arover60": "arover60",
+							"arover90": "arover90",
+							"arover120": "arover120",
+							"highbal": "highbal",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"lastactivity": "lastactivity",
+							"activeind": "activeind",
+							"fscm_cage": "fscm_cage",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ips_date": "ips_date",
+							"ips_baseline": "ips_baseline",
+							"misc": "misc",
+							"salesmancd2": "salesmancd2",
+							"referred_by": "referred_by",
+							"next_objective": "next_objective",
+							"industry_type": "industry_type",
+							"probability": "probability",
+							"last_yr_sale": "last_yr_sale",
+							"prev_yr_sale": "prev_yr_sale",
+							"company_size": "company_size",
+							"reminder": "reminder",
+							"rptform": "rptform",
+							"last_contact": "last_contact",
+							"next_contact": "next_contact",
+							"custclass": "custclass",
+							"oeused": "oeused",
+							"credithold": "credithold",
+							"d_b_rating": "d_b_rating",
+							"comp_rating": "comp_rating",
+							"last_dunning": "last_dunning",
+							"dunningcnt": "dunningcnt",
+							"enterdate": "enterdate",
+							"bo_allow": "bo_allow",
+							"matrixcd": "matrixcd",
+							"paytermdef": "paytermdef",
+							"specialty1": "specialty1",
+							"specialty2": "specialty2",
+							"specialty3": "specialty3",
+							"specialty4": "specialty4",
+							"specialty5": "specialty5",
+							"specialty6": "specialty6",
+							"mailing_cleanup": "mailing_cleanup",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oecustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oecustomer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_CUST-2-BLB_OT_CUST",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oecustomer-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [custno]\n      ,[name]\n      ,[creditlmt]\n      ,[arcurr]\n      ,[arover30]\n      ,[arover60]\n      ,[arover90]\n      ,[arover120]\n      ,[highbal]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[lastactivity]\n      ,[activeind]\n      ,[fscm_cage]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[ips_date]\n      ,[ips_baseline]\n      ,[misc]\n      ,[salesmancd2]\n      ,[referred_by]\n      ,[next_objective]\n      ,[industry_type]\n      ,[probability]\n      ,[last_yr_sale]\n      ,[prev_yr_sale]\n      ,[company_size]\n      ,[reminder]\n      ,[rptform]\n      ,[last_contact]\n      ,[next_contact]\n      ,[custclass]\n      ,[oeused]\n      ,[credithold]\n      ,[d_b_rating]\n      ,[comp_rating]\n      ,[last_dunning]\n      ,[dunningcnt]\n      ,[enterdate]\n      ,[bo_allow]\n      ,[matrixcd]\n      ,[paytermdef]\n      ,[specialty1]\n      ,[specialty2]\n      ,[specialty3]\n      ,[specialty4]\n      ,[specialty5]\n      ,[specialty6]\n      ,[mailing_cleanup]\n\t  ,'OT' as DBSource\n\t  ,GetDate() as LoadDateTime\n  FROM [OT].[dbo].[oecustomer]  with (nolock)\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"custno": "custno",
+							"name": "name",
+							"creditlmt": "creditlmt",
+							"arcurr": "arcurr",
+							"arover30": "arover30",
+							"arover60": "arover60",
+							"arover90": "arover90",
+							"arover120": "arover120",
+							"highbal": "highbal",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"lastactivity": "lastactivity",
+							"activeind": "activeind",
+							"fscm_cage": "fscm_cage",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ips_date": "ips_date",
+							"ips_baseline": "ips_baseline",
+							"misc": "misc",
+							"salesmancd2": "salesmancd2",
+							"referred_by": "referred_by",
+							"next_objective": "next_objective",
+							"industry_type": "industry_type",
+							"probability": "probability",
+							"last_yr_sale": "last_yr_sale",
+							"prev_yr_sale": "prev_yr_sale",
+							"company_size": "company_size",
+							"reminder": "reminder",
+							"rptform": "rptform",
+							"last_contact": "last_contact",
+							"next_contact": "next_contact",
+							"custclass": "custclass",
+							"oeused": "oeused",
+							"credithold": "credithold",
+							"d_b_rating": "d_b_rating",
+							"comp_rating": "comp_rating",
+							"last_dunning": "last_dunning",
+							"dunningcnt": "dunningcnt",
+							"enterdate": "enterdate",
+							"bo_allow": "bo_allow",
+							"matrixcd": "matrixcd",
+							"paytermdef": "paytermdef",
+							"specialty1": "specialty1",
+							"specialty2": "specialty2",
+							"specialty3": "specialty3",
+							"specialty4": "specialty4",
+							"specialty5": "specialty5",
+							"specialty6": "specialty6",
+							"mailing_cleanup": "mailing_cleanup",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_OT_dbo_oecustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oecustomer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_IL_CUST-2-BLB_IL_CUST",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oecustomer-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [custno]\n      ,[name]\n      ,[creditlmt]\n      ,[arcurr]\n      ,[arover30]\n      ,[arover60]\n      ,[arover90]\n      ,[arover120]\n      ,[highbal]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[lastactivity]\n      ,[activeind]\n      ,[fscm_cage]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[ips_date]\n      ,[ips_baseline]\n      ,[misc]\n      ,[salesmancd2]\n      ,[referred_by]\n      ,[next_objective]\n      ,[industry_type]\n      ,[probability]\n      ,[last_yr_sale]\n      ,[prev_yr_sale]\n      ,[company_size]\n      ,[reminder]\n      ,[rptform]\n      ,[last_contact]\n      ,[next_contact]\n      ,[custclass]\n      ,[oeused]\n      ,[credithold]\n      ,[d_b_rating]\n      ,[comp_rating]\n      ,[last_dunning]\n      ,[dunningcnt]\n      ,[enterdate]\n      ,[bo_allow]\n      ,[matrixcd]\n      ,[paytermdef]\n      ,[specialty1]\n      ,[specialty2]\n      ,[specialty3]\n      ,[specialty4]\n      ,[specialty5]\n      ,[specialty6]\n      ,[mailing_cleanup]\n\t  ,'IL' as DBSource\n\t  ,GetDate() as LoadDateTime\n  FROM [IL].[dbo].[oecustomer]   with (nolock) where  [custno] not in ('FAR426', 'EUR100', 'CIR100','EST 9.17.18*DAL*')\nor [name] not in ('Error')",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"custno": "custno",
+							"name": "name",
+							"creditlmt": "creditlmt",
+							"arcurr": "arcurr",
+							"arover30": "arover30",
+							"arover60": "arover60",
+							"arover90": "arover90",
+							"arover120": "arover120",
+							"highbal": "highbal",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"lastactivity": "lastactivity",
+							"activeind": "activeind",
+							"fscm_cage": "fscm_cage",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ips_date": "ips_date",
+							"ips_baseline": "ips_baseline",
+							"misc": "misc",
+							"salesmancd2": "salesmancd2",
+							"referred_by": "referred_by",
+							"next_objective": "next_objective",
+							"industry_type": "industry_type",
+							"probability": "probability",
+							"last_yr_sale": "last_yr_sale",
+							"prev_yr_sale": "prev_yr_sale",
+							"company_size": "company_size",
+							"reminder": "reminder",
+							"rptform": "rptform",
+							"last_contact": "last_contact",
+							"next_contact": "next_contact",
+							"custclass": "custclass",
+							"oeused": "oeused",
+							"credithold": "credithold",
+							"d_b_rating": "d_b_rating",
+							"comp_rating": "comp_rating",
+							"last_dunning": "last_dunning",
+							"dunningcnt": "dunningcnt",
+							"enterdate": "enterdate",
+							"bo_allow": "bo_allow",
+							"matrixcd": "matrixcd",
+							"paytermdef": "paytermdef",
+							"specialty1": "specialty1",
+							"specialty2": "specialty2",
+							"specialty3": "specialty3",
+							"specialty4": "specialty4",
+							"specialty5": "specialty5",
+							"specialty6": "specialty6",
+							"mailing_cleanup": "mailing_cleanup",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_IL_db_oecustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oecustomer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_IL_CUST-2-AZDB_CUST",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_IL_CUST-2-BLB_IL_CUST",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oecustomer-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oecustomer]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "metaedpAzureBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "metausedpblobdev/Finesse/IncompatiableRows"
+					},
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"custno": "custno",
+							"name": "name",
+							"creditlmt": "creditlmt",
+							"arcurr": "arcurr",
+							"arover30": "arover30",
+							"arover60": "arover60",
+							"arover90": "arover90",
+							"arover120": "arover120",
+							"highbal": "highbal",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"lastactivity": "lastactivity",
+							"activeind": "activeind",
+							"fscm_cage": "fscm_cage",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ips_date": "ips_date",
+							"ips_baseline": "ips_baseline",
+							"misc": "misc",
+							"salesmancd2": "salesmancd2",
+							"referred_by": "referred_by",
+							"next_objective": "next_objective",
+							"industry_type": "industry_type",
+							"probability": "probability",
+							"last_yr_sale": "last_yr_sale",
+							"prev_yr_sale": "prev_yr_sale",
+							"company_size": "company_size",
+							"reminder": "reminder",
+							"rptform": "rptform",
+							"last_contact": "last_contact",
+							"next_contact": "next_contact",
+							"custclass": "custclass",
+							"oeused": "oeused",
+							"credithold": "credithold",
+							"d_b_rating": "d_b_rating",
+							"comp_rating": "comp_rating",
+							"last_dunning": "last_dunning",
+							"dunningcnt": "dunningcnt",
+							"enterdate": "enterdate",
+							"bo_allow": "bo_allow",
+							"matrixcd": "matrixcd",
+							"paytermdef": "paytermdef",
+							"specialty1": "specialty1",
+							"specialty2": "specialty2",
+							"specialty3": "specialty3",
+							"specialty4": "specialty4",
+							"specialty5": "specialty5",
+							"specialty6": "specialty6",
+							"mailing_cleanup": "mailing_cleanup",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oecustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oecustomer",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

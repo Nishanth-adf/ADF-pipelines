@@ -1,0 +1,17 @@
+{
+	"name": "DS_SINK_ASQL_CustInvoiceGeneral",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgCustInvoiceGeneral"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

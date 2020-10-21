@@ -1,0 +1,160 @@
+{
+	"name": "DS_SQL_SRC_SQL01_tbl_Rep_Map_Consolidated",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_tableName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "DB",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "salesmancd",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "acctper",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "salesmancdOrigin",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "IsLOA",
+				"type": "Int32",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "name",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Role",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "manager",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "territory",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "roll_up_name",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ref1",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ref5",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ref6",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ref7",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ref8",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "DistMgr",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "RegMgr",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Type1",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Type2",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Date_Created",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DBSource",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

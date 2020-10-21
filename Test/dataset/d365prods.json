@@ -1,0 +1,16 @@
+{
+	"name": "d365prods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "CustomersV3"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

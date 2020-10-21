@@ -1,0 +1,186 @@
+{
+	"name": "BA_All_Staging_Load_Pipelines",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_STG_NSDataset",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_BA_TranLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NetSuiteDataset",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_Entity",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_NSDataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Entity",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_TransactionHeader",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_Items",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_TransactionHeader",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_NS_Customer",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_Entity",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_Customers",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_BA_TranLines",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_TransactionHeader",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_BA_STG_TranLines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_BA_SalesAccount",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_NS_Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_SalesAccount",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_ZipCodeMapping2018",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_BA_SalesAccount",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_ZipCode_Mapping_2018",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_TransactionAddress",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_ZipCodeMapping2018",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_STG_NS_TransactionAddress",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_Items",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Items",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-05-14T05:27:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

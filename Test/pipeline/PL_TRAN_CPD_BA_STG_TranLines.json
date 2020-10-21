@@ -1,0 +1,93 @@
+{
+	"name": "PL_TRAN_CPD_BA_STG_TranLines",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SC58_NetSuite_TranLines-2-BLB_BA_STGTranLines",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\nA.AMOUNT,\nA.ITEM_COUNT,\nA.Item_Id,\nA.ITEM_UNIT_PRICE,\nA.TRANSACTION_ID,\nA.TRANSACTION_LINE_ID,\nA.TRANSACTION_TYPE,\nLoadDateTime= GETDATE(),\ninsertBy = 'ADF ETL'\nFROM\t\tdbo.TranLines A\nINNER JOIN\tdbo.TransactionHeader B\nON\t\tA.TRANSACTION_ID = B.TRANSACTION_ID \nWHERE\t\tYear(B.TRANDATE) = 2019\nand Month(B.TRANDATE) >=5",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL58_NetSuite_dbo_STGTranLines",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_STGTranLines",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_BLB_BA_STGTranLines-2-ASQL_dboines",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SC58_NetSuite_TranLines-2-BLB_BA_STGTranLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_STGTranLines",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metdausedpdev_stgTranLines",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T07:27:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

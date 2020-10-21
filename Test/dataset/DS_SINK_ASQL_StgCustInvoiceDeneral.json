@@ -1,0 +1,205 @@
+{
+	"name": "DS_SINK_ASQL_StgCustInvoiceDeneral",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "JournalBatchNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LineNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CustVendBankAccountId",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "CashDiscountDate",
+				"type": "varchar"
+			},
+			{
+				"name": "ReasonCode",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetAccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "ExchRate",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemSalesTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetTransactionText",
+				"type": "varchar"
+			},
+			{
+				"name": "MethodOfPayment",
+				"type": "varchar"
+			},
+			{
+				"name": "TransactionText",
+				"type": "varchar"
+			},
+			{
+				"name": "Company",
+				"type": "varchar"
+			},
+			{
+				"name": "Listcode",
+				"type": "varchar"
+			},
+			{
+				"name": "TransactionType",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetAccountDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "DocumentDate",
+				"type": "varchar"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsWithholdingCalculationEnabled",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryDate",
+				"type": "varchar"
+			},
+			{
+				"name": "OffsetCompany",
+				"type": "varchar"
+			},
+			{
+				"name": "ChineseVoucher",
+				"type": "varchar"
+			},
+			{
+				"name": "ChineseVoucherType",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerAccountDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "DocumentNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ExchRateSecondary",
+				"type": "varchar"
+			},
+			{
+				"name": "DebitAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "PostingProfile",
+				"type": "varchar"
+			},
+			{
+				"name": "BankTransactionType",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemWithholdingTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Voucher",
+				"type": "varchar"
+			},
+			{
+				"name": "DueDate",
+				"type": "varchar"
+			},
+			{
+				"name": "CashDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "Approved",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "TypeOfOperation",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "ApprovedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "ReasonComment",
+				"type": "varchar"
+			},
+			{
+				"name": "TermsOfPayment",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentSpecification",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgCustInvoiceGeneral]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

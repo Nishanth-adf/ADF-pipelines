@@ -1,0 +1,28 @@
+{
+	"name": "DestinationDataset_GlobalTypeMASTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Global Revenue"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "GlobalType",
+				"type": "varchar"
+			},
+			{
+				"name": "GlobalType_Desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[pbi_tbl_GlobalType_MASTER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

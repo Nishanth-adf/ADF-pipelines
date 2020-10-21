@@ -1,0 +1,101 @@
+{
+	"name": "ASD_stgD365Ledgers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LedgerRecId",
+				"type": "varchar"
+			},
+			{
+				"name": "LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccountIdUnrealizedLoss",
+				"type": "varchar"
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Description",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalCalendar",
+				"type": "varchar"
+			},
+			{
+				"name": "ReportingCurrency",
+				"type": "varchar"
+			},
+			{
+				"name": "ReportingCurrencyExchangeRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "BudgetExchangeRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName2",
+				"type": "varchar"
+			},
+			{
+				"name": "IsBudgetControlEnabled",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName3",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName1",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName6",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName4",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructureName5",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountingCurrency",
+				"type": "varchar"
+			},
+			{
+				"name": "ChartOfAccounts",
+				"type": "varchar"
+			},
+			{
+				"name": "ExchangeRateType",
+				"type": "varchar"
+			},
+			{
+				"name": "ChartOfAccountsRecId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365Ledgers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

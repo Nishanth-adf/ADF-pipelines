@@ -1,0 +1,57 @@
+{
+	"name": "PL_CPD_STGProductFamiliesMain",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SQL01D365_ProductFam2-ASQL_ProductFamilies",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Product_Families_Main-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [acctyr]\n      ,[acctper]\n      ,[db]\n      ,[Group]\n      ,[catalogno]\n      ,[desc]\n      ,[prodgroupno]\n      ,[Product_Line]\n      ,[Product_Family]\n      ,[Product_Family_Variety]\n      ,[Sub Group]\n      ,[matrixcd]\n      ,[saleacctcr]\n      ,[CIA]\n      ,[Private_Label_Code]\n      ,[Category_Manager]\n      ,[TPM]\n      ,[Sub2_Group]\n      ,[Global_Prod_Group1]\n      ,[Global_Prod_Group2]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Product_Families_Main] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table staging.stgTblProductFamiliesMain_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_TblProductFamiliesMain",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_Prod_StgTblProductFamiliesMain",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-25T20:54:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

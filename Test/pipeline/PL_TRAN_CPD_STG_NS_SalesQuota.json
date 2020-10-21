@@ -1,0 +1,95 @@
+{
+	"name": "PL_TRAN_CPD_STG_NS_SalesQuota",
+	"properties": {
+		"activities": [
+			{
+				"name": "SC58_NetSuite_SalesQuota-2-BLB_BA_SalesQuota",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select id,period,employee,role,type,quota from [NetSuite].[dbo].[SalesQuota]\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_NS_SalesQuota",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_NS_SalesQuota",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_BA_NS_SalesQuota-2-AZDB_NSSalesQuota",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SC58_NetSuite_SalesQuota-2-BLB_BA_SalesQuota",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": false,
+					"dataIntegrationUnits": 4
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_NS_SalesQuota",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_NSSalesQuota",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:54:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

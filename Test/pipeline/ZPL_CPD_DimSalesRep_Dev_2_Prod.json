@@ -1,0 +1,344 @@
+{
+	"name": "ZPL_CPD_DimSalesRep_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimSalesRep_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM DBO.DimSalesRep WHERE salesRepId <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "salesRepID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "salesRepID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "salesmanCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesmanCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "businessDivision",
+									"type": "String"
+								},
+								"sink": {
+									"name": "businessDivision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "distManager",
+									"type": "String"
+								},
+								"sink": {
+									"name": "distManager",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "distManagerCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "distManagerCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "distName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "distName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "regionManager",
+									"type": "String"
+								},
+								"sink": {
+									"name": "regionManager",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "regionManagerCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "regionManagerCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "regionName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "regionName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addressLine3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addressLine3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "startDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "startDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "endDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "endDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "accountYear",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "accountYear",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "accountMonth",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "accountMonth",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_DimSalesRep_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_DimSalesRep_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T12:49:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

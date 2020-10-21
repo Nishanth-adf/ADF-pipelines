@@ -1,0 +1,472 @@
+{
+	"name": "PL Migrate PROD Finance Tables",
+	"properties": {
+		"description": "Updates Trail Balance Tables in Data Warehouse.",
+		"activities": [
+			{
+				"name": "Truncate All PROD Finance Tables",
+				"description": "TRUNCATE TABLE metausedpprod.dbo.stgD365FiscalCalendars -- 09/04/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365GeneralLedgerActivities -- 09/04/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365Ledgers -- 09/04/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365MainAccounts -- 09/04/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365DimensionCombinations -- 09/04/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365FinancialDimensionValues -- 09/06/2019\nTRUNCATE TABLE metausedpprod.dbo.stgD365MainAccountCategories -- 09/06/2019",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Truncate_FinanceTables]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "PROD_stgD365FiscalCalendars",
+				"description": "Load table stgD365FiscalCalendars from D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365FiscalCalendars",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PeriodRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "YearOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "YearOffset",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PeriodName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CalendarRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "YearName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "YearName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LedgerRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LedgerRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "QuarterOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "QuarterOffset",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CalendarId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PeriodOffset",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365FiscalCalendars",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_stgD365FiscalCalendars",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PROD_stgD365Ledgers",
+				"description": "Load Table stgD365Ledgers from D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365Ledgers",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365Ledgers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgD365Ledgers",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PROD_stgD365MainAccounts",
+				"description": "Load Table stgD365MainAccounts from D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365MainAccounts",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Prod_D365MainAccounts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgD365MainAccounts",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Load stgD365DimensionCombinationsPivot",
+				"description": "Execute Stored Proc: Load_stgD365DimensionCombinationsPivot",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL PL Migrate stgD365DimensionCombinations",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Load_stgD365DimensionCombinationsPivot]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "PROD D365 stgD365FinancialDimensionValues",
+				"description": "Load Table stgD365FinancialDimensionValues from D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365FinancialDimensionValues",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_FinancialDimensionValues",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgD365FinancialDimensionValues",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PROD D365 MainAccountCategories",
+				"description": "Load Table stgD365MainAccountCategories from D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgD365MainAccountCategories",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "PROD_D365_MainAccountCategories",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgD365MainAccountCategories",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "EPL PL Migrate PROD tbl_2020AOP_TrailBalanceLevel",
+				"description": "Purge and Reload tbl_2020AOP_TrailBalanceLevel from ODS.tbl_2020AOP_TrailBalanceLevel to PROD.tbl_2020AOP_TrailBalanceLevel\n\nAuthor: GBuenaventura\nDate: 01/20/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate PROD tbl_2020AOP_TrailBalanceLevel",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate stgD365DimensionCombinations",
+				"description": "Migrate D365.DimensionCombinations to Prod.stgD365DimensionCombinations\n\nAuthor: GBuenaventura\nDate: 4/4/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgD365DimensionCombinations",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate PROD tbl_2020AOPv1_TrailBalanceLevel",
+				"description": "Migrate from ODS.tbl_2020AOPv1_TrailBalanceLevel to PROD.tbl_2020AOPv1_TrailBalanceLevel\n\n2020 AOP v1 Table\n\nAuthor: GBuenaventura\nDate: 4/29/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate PROD tbl_2020AOPv1_TrailBalanceLevel",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate_tbl_2020AOPv1",
+				"description": "Migrate ODS.tbl_2020AOPv1 to PROD.tbl_2020AOPv1\n\nHolds Revenue 2020 AOP v1\n\nAuthor: GBuenaventura\nDate: 5/5/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Truncate All PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate_tbl_2020AOPv1",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-05-06T18:27:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

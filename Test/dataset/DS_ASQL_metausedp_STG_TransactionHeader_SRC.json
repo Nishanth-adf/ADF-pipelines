@@ -1,0 +1,113 @@
+{
+	"name": "DS_ASQL_metausedp_STG_TransactionHeader_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "customerNumber",
+				"type": "Double",
+				"precision": 15,
+				"scale": 255
+			},
+			{
+				"name": "orderNumber",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "orderDate",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "addressLine1",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "addressLine2",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "addressLine3",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "city",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "state",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "zip",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Country",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "attention",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "phone",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "shipToName",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Source",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgTransactionHeader]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

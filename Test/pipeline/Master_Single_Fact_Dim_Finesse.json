@@ -1,0 +1,93 @@
+{
+	"name": "Master_Single_Fact_Dim_Finesse",
+	"properties": {
+		"activities": [
+			{
+				"name": "USP_Truncate_ALL_Fact_Dimesions",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[USP_TruncateDWHTables_AllStreams]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finesse_Dim_Load",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_LOAD_DIMMONTH",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Finesse_ALL_Dim_Load_Except_DimMonth",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Finesse_Fact_Load",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Finesse_Dim_Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Finesse_All_Fact_Load_Pipelines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_LOAD_DIMMONTH",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "USP_Truncate_ALL_Fact_Dimesions",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_BA_DimMonth",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Consolidated_Master_Pipeline_Finesse_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:30:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

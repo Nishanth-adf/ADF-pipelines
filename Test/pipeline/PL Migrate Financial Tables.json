@@ -1,0 +1,1927 @@
+{
+	"name": "PL Migrate Financial Tables",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy MainAccounts",
+				"description": "Migrate D365 MainAccounts Table",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "StoredProc_TruncateFinanceTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ActiveTo",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "ActiveTo",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "ChartOfAccountsRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ChartOfAccountsRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "ActiveFrom",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "ActiveFrom",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountCategoryDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountCategoryDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountCategory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ParentMainAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ParentMainAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExchangeAdjustmentRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ExchangeAdjustmentRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FinancialReportingExchangeRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FinancialReportingExchangeRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SRUCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRUCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultCurrency",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultCurrency",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetAccountDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OffsetAccountDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "MainAccountRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "User",
+									"type": "String"
+								},
+								"sink": {
+									"name": "User",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OpeningAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OpeningAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultConsolidationAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultConsolidationAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReportingExchangeAdjustmentRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReportingExchangeAdjustmentRateType",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_D365_MainAccounts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stg_d365_MainAccounts",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "StoredProc_TruncateFinanceTables",
+				"description": "Truncate Finance Tables in DEV then reload.",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Truncate_D365_FinanceTables]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Copy FiscalCalendars",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MainAccounts",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PeriodRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "YearOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "YearOffset",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PeriodName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CalendarRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "YearName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "YearName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LedgerRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LedgerRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "QuarterOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "QuarterOffset",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CalendarId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CalendarId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PeriodOffset",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PeriodOffset",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_D365_FiscalCalendars",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stg_D365_FiscalCalendars",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy GeneralLedgerActivities",
+				"description": "Copy D365 GeneralLedgerActivities table to ADF",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy FiscalCalendars",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LedgerDimension",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LedgerDimension",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "MainAccountRecId",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Ledger",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "Ledger",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LedgerGregorianDateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalRevenue",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalRevenue",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountsPayable",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AccountsPayable",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountingCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AccountingCurrencyAmount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "QuickRatioAssets",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QuickRatioAssets",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentRatioAssets",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CurrentRatioAssets",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Liabilities",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Liabilities",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "ReturnOnTotalAssetsExpenses",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ReturnOnTotalAssetsExpenses",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountsReceivable",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AccountsReceivable",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesReturnAndDiscounts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SalesReturnAndDiscounts",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "AnalysisCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AnalysisCurrencyAmount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "YearOffset",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "YearOffset",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Cash",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Cash",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalAssets",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalAssets",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Equity",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Equity",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentLiabilities",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CurrentLiabilities",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "OperatingExpenses",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OperatingExpenses",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfitMarginTaxes",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ProfitMarginTaxes",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "ReportingCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ReportingCurrencyAmount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Sales",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesPlusReturnsAndDiscounts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SalesPlusReturnsAndDiscounts",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "CostOfGoodsSold",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CostOfGoodsSold",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "AdditionalEarnings",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AdditionalEarnings",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Expenses",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Expenses",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Income",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Income",
+									"type": "Double"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_D365_GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stg_D365_stgD365GeneralLedgerActivities",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy MainAccountLegalEntities",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy GeneralLedgerActivities",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MainAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LegalEntityId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LegalEntityId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultDimensionDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultDimensionDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxTableLegalEntity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TaxTableLegalEntity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExchangeAdjustmentRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ExchangeAdjustmentRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemSalesTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ItemSalesTaxGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesTaxCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FixedDimensionsDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FixedDimensionsDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesTaxGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemSalesTaxGroupHeadingLegalEntity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ItemSalesTaxGroupHeadingLegalEntity",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_stgD365MainAccountLegalEntities",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stgD365MainAccountLegalEntities",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy stgD365MainAccountCompanies",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy MainAccountLegalEntities",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MainAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LegalEntityId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LegalEntityId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_D365MainAccountCompanies",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stgD365MainAccountCompanies",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy stgD365Ledgers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy stgD365MainAccountCompanies",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LedgerRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LedgerRecId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LegalEntityId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LegalEntityId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountIdUnrealizedLoss",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountIdUnrealizedLoss",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalCalendar",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FiscalCalendar",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReportingCurrency",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReportingCurrency",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReportingCurrencyExchangeRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ReportingCurrencyExchangeRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BudgetExchangeRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BudgetExchangeRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructureName5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructureName5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountingCurrency",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountingCurrency",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ChartOfAccounts",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExchangeRateType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ExchangeRateType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChartOfAccountsRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ChartOfAccountsRecId",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MetaFin_Source_stgD365Ledgers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stgD365Ledgers",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy stgD365AttributeValueCombo",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy stgD365Ledgers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "RecId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructure_Dimensiontreename",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructure_Dimensiontreename",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountStructure_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountStructure_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUSINESSTYPE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "BUSINESSTYPE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "BUSINESSTYPEVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUSINESSTYPEVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUSINESSUNIT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "BUSINESSUNIT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "BUSINESSUNITVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUSINESSUNITVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COSTCENTER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "COSTCENTER",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "COSTCENTERVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COSTCENTERVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "COUNTRY",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRYVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRYVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEPARTMENT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DEPARTMENT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "DEPARTMENTVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEPARTMENTVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LedgerDimensionType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LedgerDimensionType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MainAccountValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROJECT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PROJECT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "PROJECTVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROJECTVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNTVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNTVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTECUSTOMER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTECUSTOMER",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTECUSTOMERVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTECUSTOMERVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEEVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEEVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RU",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RU",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RUVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RUVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSET",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSET",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RU",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RU",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RUVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RUVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEITEM",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEITEM",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEITEMVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEITEMVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEPROJECT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEPROJECT",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEPROJECTVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEPROJECTVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTERCASH",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTERCASH",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTERCASHVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTERCASHVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALS",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALSVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALSVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEVENDOR",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEVENDOR",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "SYSTEMGENERATEDATTRIBUTEVENDORVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SYSTEMGENERATEDATTRIBUTEVENDORVALUE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDateTime",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdDateTime",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "createdDateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "createdBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "createdBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "recVersion",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "recVersion",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Partition",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Partition",
+									"type": "Double"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Source_SF_ODS_stgD365AttributeValueCombo",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stgD365AttributeValueCombo",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copy stgD365FinancialDimensionValueEntityView",
+				"description": "stgD365FinancialDimensionValueEntityView",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copy stgD365AttributeValueCombo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "RecId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ActiveFrom",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ActiveFrom",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ActiveTo",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ActiveTo",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DimensionAttribute",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DimensionAttribute",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DimensionAttributeType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DimensionAttributeType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DimensionAttributeValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DimensionAttributeValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DimensionValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DimensionValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GroupDimension",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GroupDimension",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsBlockedForManualEntry",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IsBlockedForManualEntry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsSuspended",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IsSuspended",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IsTotal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LegalEntityId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LegalEntityId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "recVersion",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "recVersion",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Partition",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Partition",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Source_stgD365FinancialDimensionValueEntityView",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEVDest_stgD365FinancialDimensionValueEntityView",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpdev"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T17:48:23Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

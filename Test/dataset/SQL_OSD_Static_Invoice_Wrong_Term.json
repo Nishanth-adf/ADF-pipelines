@@ -1,0 +1,34 @@
+{
+	"name": "SQL_OSD_Static_Invoice_Wrong_Term",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "SalesOrderKEY",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICENUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "WrongTerms",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Static_Invoice_Wrong_Term"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,52 @@
+{
+	"name": "PL_Migrate_tbl_StandardCostByItem",
+	"properties": {
+		"description": "Purge and Reload tbl_StandardCostByItemDEV from Prod to Dev.",
+		"activities": [
+			{
+				"name": "CPD_tbl_StandardCostByItemDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.tbl_StandardCostByItem",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_StandardCostByItemDEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_StandardCostByItem",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate_Prod_2_Dev_Latest"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-22T14:00:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

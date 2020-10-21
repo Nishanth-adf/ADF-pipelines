@@ -1,0 +1,24 @@
+{
+	"name": "MI9_Incremental_Load_last7days",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_One_Touch_Mi9_Pipelines",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-03-24T11:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

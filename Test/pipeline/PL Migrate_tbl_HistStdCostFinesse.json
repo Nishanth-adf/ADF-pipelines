@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate_tbl_HistStdCostFinesse",
+	"properties": {
+		"description": "Migrate from SF.ODS.vw_HistStdCost to PROD.tbl_HistStdCostFinesse\n\nNeed to run only once, since historical data is static.\n\nAuthor: GBuenaventura\nDate: 2/19/2020",
+		"activities": [
+			{
+				"name": "Copy_tbl_HistStdCostFinesse",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_HistStdCostFinesse",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_vw_HistStdCost",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_HistStdCostFinesse",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/Testing"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-19T23:24:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

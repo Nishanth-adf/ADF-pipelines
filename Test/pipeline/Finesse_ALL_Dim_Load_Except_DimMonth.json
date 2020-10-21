@@ -1,0 +1,146 @@
+{
+	"name": "Finesse_ALL_Dim_Load_Except_DimMonth",
+	"properties": {
+		"activities": [
+			{
+				"name": "EEPL_DimProductMaster",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimCustomerMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_ProductMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimCustomerMaster",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimShipAddr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimCustomerMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimOrder",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimOrder",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimSalesRep",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimProductMaster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimSalesRep",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimShipAddr",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimOrder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimShipAddress",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimProductType",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimSalesRep",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimProductType",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EEPL_DimDate",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EEPL_DimProductType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_DimDate",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:30:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

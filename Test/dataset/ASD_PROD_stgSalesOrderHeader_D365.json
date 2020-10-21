@@ -1,0 +1,575 @@
+{
+	"name": "ASD_PROD_stgSalesOrderHeader_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderTotalAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalDiscountPercentage",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "URL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BankSpecificSymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseDocumentNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CFPSCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCountyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MultilineDiscountCustomerGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DefaultShippingWarehouseId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerPaymentMethodName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesUnitId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DateTimeModified",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DefaultShippingSiteId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryReasonCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CampaignId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderTotalDiscountAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShippingCarrierServiceGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CIPEcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "BaseDocumentDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderingCustomerAccountNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderTotalChargesAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "SalesRebateCustomerGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TransportationBrokerId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DirectDebitMandateId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TMACustomerGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReportingCurrencyFixedExchangeRate",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NumberSequenceGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderTotalTaxAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ChargeCustomerGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderHeaderTaxAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "FiscalDocumentOperationTypeId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderCreationDateTime",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerPostingProfileId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseDocumentItemNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TransportationDocumentLineId",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "DateTimeCreated",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DeliveryAddressStreetInKana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentScheduleName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentTermsBaseDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "ShippingCarrierId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressPostBox",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "TenderCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseDocumentLineNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TransportationModeId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesOrderName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FormattedInvoiceAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerPaymentMethodSpecificationName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BankConstantSymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PriceCustomerGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCityInKana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TransportationTemplateId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderOrAgreementCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TransportationRoutePlanId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedDueDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ExportReason",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedExchangeRate",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressStreetInKana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceBuildingCompliment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ShippingCarrierServiceId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderTakerPersonnelNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressCityInKana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressStateId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "QuotationNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderResponsiblePersonnelNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LanguageId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineDiscountCustomerGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesOrderStatus",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesOrderHeader_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

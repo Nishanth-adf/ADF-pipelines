@@ -1,0 +1,22 @@
+{
+	"name": "d365dev",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsAX",
+		"typeProperties": {
+			"url": "https://dev-metadevaos.sandbox.ax.dynamics.com/data",
+			"tenant": "5d3d5325-ed63-487c-a91f-a6712548bdc0",
+			"aadResourceId": "https://dev-metadevaos.sandbox.ax.dynamics.com",
+			"servicePrincipalId": "e79c3f1e-8225-4b4a-8277-307100aae9ea",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "d365dev"
+			}
+		}
+	}
+}

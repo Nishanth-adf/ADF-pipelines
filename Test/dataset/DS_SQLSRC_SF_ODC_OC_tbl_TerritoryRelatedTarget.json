@@ -1,0 +1,113 @@
+{
+	"name": "DS_SQLSRC_SF_ODC_OC_tbl_TerritoryRelatedTarget",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "SaleType",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "String"
+			},
+			{
+				"name": "RegMgrcd",
+				"type": "String"
+			},
+			{
+				"name": "RegMgr",
+				"type": "String"
+			},
+			{
+				"name": "RegMgrName",
+				"type": "String"
+			},
+			{
+				"name": "DistMgrcd",
+				"type": "String"
+			},
+			{
+				"name": "DistMgr",
+				"type": "String"
+			},
+			{
+				"name": "DistMgrName",
+				"type": "String"
+			},
+			{
+				"name": "Salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "RepName",
+				"type": "String"
+			},
+			{
+				"name": "SalesmancdName",
+				"type": "String"
+			},
+			{
+				"name": "MonthKey",
+				"type": "String"
+			},
+			{
+				"name": "TargetInLocal",
+				"type": "Double"
+			},
+			{
+				"name": "TargetInUSD",
+				"type": "Double"
+			},
+			{
+				"name": "USBusinessDays",
+				"type": "Int32"
+			},
+			{
+				"name": "CABusinessDays",
+				"type": "Int32"
+			},
+			{
+				"name": "USBusinessDaysElapsed",
+				"type": "Int32"
+			},
+			{
+				"name": "CABusinessDaysElapsed",
+				"type": "Int32"
+			},
+			{
+				"name": "USAvgDailyTarget",
+				"type": "Double"
+			},
+			{
+				"name": "CAAvgDailyTarget",
+				"type": "Double"
+			},
+			{
+				"name": "RunningTargetInUSD",
+				"type": "Double"
+			},
+			{
+				"name": "RunningTargetInLocal",
+				"type": "Double"
+			},
+			{
+				"name": "TblUpdated",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[cs].[tbl_TerritoryRelatedTarget]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

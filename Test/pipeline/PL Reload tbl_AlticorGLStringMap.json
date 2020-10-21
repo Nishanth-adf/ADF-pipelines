@@ -1,0 +1,51 @@
+{
+	"name": "PL Reload tbl_AlticorGLStringMap",
+	"properties": {
+		"description": "Pipeline - Purge and reload tbl_AlticorGLStringMap. Used for Alticor monthly upload file.\n\nAuthor: GBuenaventura\nDate: 10/30/2019",
+		"activities": [
+			{
+				"name": "Copy tbl_AlticorGLStringMap",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_AlticorGLStringMap",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_AlticorGLStringMap",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_AlticorGLStringMap",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-30T23:15:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

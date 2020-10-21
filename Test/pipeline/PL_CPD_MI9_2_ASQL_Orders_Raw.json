@@ -1,0 +1,50 @@
+{
+	"name": "PL_CPD_MI9_2_ASQL_Orders_Raw",
+	"properties": {
+		"description": "This Pipeline copies Data from 'orders' table resides in MiRODB(metagenics-read.chs1gq6fhsa8.us-west-2.rds.amazonaws.com) to Azure SQL Dev Environment.",
+		"activities": [
+			{
+				"name": "CPD_MI9_2_ASQL_Orders",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "Select  * from `orders`;"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_MYSQL_Orders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_MI9_Orders",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AAAAMi9_Tables_Extraction"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-19T12:07:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

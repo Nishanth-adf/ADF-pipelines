@@ -1,0 +1,62 @@
+{
+	"name": "DS_SRC_ASQL_Load_SFOrderQuery",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Account__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "AccountName__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Order__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Invoice__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Order_Date__c",
+				"type": "Date",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "QTY__c",
+				"type": "Decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Ext_Price__c",
+				"type": "Decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Catalog__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

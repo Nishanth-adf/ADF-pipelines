@@ -1,0 +1,25 @@
+{
+	"name": "Trigger Daily at 5_15AM PST",
+	"properties": {
+		"description": "UTC Time is 7 Hours ahead of PST Time.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL One Touch Migrate Trail Balance",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-04-17T12:15:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

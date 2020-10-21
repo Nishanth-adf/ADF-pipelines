@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_rma_lines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "Mi9_rma_lines"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

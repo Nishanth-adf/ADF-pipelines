@@ -1,0 +1,163 @@
+{
+	"name": "PL_TRAN_CPD_STG_ProductFamiliesMain",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_ProductFamiliesMain-2-AZDB_ProductFamiliesMain",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_ProductFamiliesMain-2-BLB_OT_ProductFamiliesMn",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Product_Families_Main-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-tbl_Product_Families_Main]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"acctyr": "acctyr",
+							"acctper": "acctper",
+							"db": "db",
+							"Group": "Group",
+							"catalogno": "catalogno",
+							"desc": "desc",
+							"prodgroupno": "prodgroupno",
+							"Product_Line": "Product_Line",
+							"Product_Family": "Product_Family",
+							"Product_Family_Variety": "Product_Family_Variety",
+							"Sub Group": "Sub Group",
+							"matrixcd": "matrixcd",
+							"saleacctcr": "saleacctcr",
+							"CIA": "CIA",
+							"Private_Label_Code": "Private_Label_Code",
+							"Category_Manager": "Category_Manager",
+							"TPM": "TPM",
+							"Sub2_Group": "Sub2_Group",
+							"Global_Prod_Group1": "Global_Prod_Group1",
+							"Global_Prod_Group2": "Global_Prod_Group2",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_GIL_tbl_Product_Families_Main",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_tbl_Product_Families_Main",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_ProductFamiliesMain-2-BLB_OT_ProductFamiliesMn",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Product_Families_Main-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [acctyr]\n      ,[acctper]\n      ,[db]\n      ,[Group]\n      ,[catalogno]\n      ,[desc]\n      ,[prodgroupno]\n      ,[Product_Line]\n      ,[Product_Family]\n      ,[Product_Family_Variety]\n      ,[Sub Group]\n      ,[matrixcd]\n      ,[saleacctcr]\n      ,[CIA]\n      ,[Private_Label_Code]\n      ,[Category_Manager]\n      ,[TPM]\n      ,[Sub2_Group]\n      ,[Global_Prod_Group1]\n      ,[Global_Prod_Group2]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Product_Families_Main] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"acctyr": "acctyr",
+							"acctper": "acctper",
+							"db": "db",
+							"Group": "Group",
+							"catalogno": "catalogno",
+							"desc": "desc",
+							"prodgroupno": "prodgroupno",
+							"Product_Line": "Product_Line",
+							"Product_Family": "Product_Family",
+							"Product_Family_Variety": "Product_Family_Variety",
+							"Sub Group": "Sub Group",
+							"matrixcd": "matrixcd",
+							"saleacctcr": "saleacctcr",
+							"CIA": "CIA",
+							"Private_Label_Code": "Private_Label_Code",
+							"Category_Manager": "Category_Manager",
+							"TPM": "TPM",
+							"Sub2_Group": "Sub2_Group",
+							"Global_Prod_Group1": "Global_Prod_Group1",
+							"Global_Prod_Group2": "Global_Prod_Group2",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_tbl_Product_Families_Main",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_GIL_tbl_Product_Families_Main",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:02:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

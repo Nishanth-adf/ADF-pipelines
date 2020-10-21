@@ -1,0 +1,230 @@
+{
+	"name": "PL_sf_UserRevenue_Prod_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "User_downlaod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_sf_UserRevenue_Prod) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com"
+					}
+				}
+			},
+			{
+				"name": "User_downlaod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id\n,name\n,salesRepCode_Status__c\n,Sales_Rep_Code__c\n,isActive\n,Username\n,LastName\n,Email\n,Alias\n,TimeZoneSidKey\n,LocaleSidKey\n,EmailEncodingKey\n,ProfileId\n,LanguageLocaleKey  from User \nwhere sales_rep_code__c <> '' and IsActive = True\norder by sales_rep_code__c",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_Prod_User",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsActive",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "isActive",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SFDC_SRC_Prod_User",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_sf_Prod_User",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-18T07:45:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

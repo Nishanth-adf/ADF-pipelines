@@ -1,0 +1,15 @@
+{
+	"name": "d365_sbx",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsAX",
+		"typeProperties": {
+			"url": "https://metagenics-sandbox.sandbox.operations.dynamics.com/data",
+			"tenant": "5d3d5325-ed63-487c-a91f-a6712548bdc0",
+			"aadResourceId": "https://metagenics-sandbox.sandbox.operations.dynamics.com",
+			"servicePrincipalId": "c3f97865-3582-4cf0-b221-747bc80e07a0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1FVEFFRFBBREZfN2EwNDkzMjEtNjdmMC00ZDY5LWE0OTEtOWIyYjEzOTM1MTFkIg0KfQ=="
+		}
+	}
+}

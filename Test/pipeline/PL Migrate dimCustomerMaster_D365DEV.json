@@ -1,0 +1,51 @@
+{
+	"name": "PL Migrate dimCustomerMaster_D365DEV",
+	"properties": {
+		"description": "Purpose - Migrate dimCustomerMaster_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/5/2019",
+		"activities": [
+			{
+				"name": "Copy_dimCustomerMaster_D365DEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.dimCustomerMaster_D365DEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_dimCustomerMaster_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_dimCustomerMaster_D365DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-06T00:52:06Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

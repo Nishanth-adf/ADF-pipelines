@@ -1,0 +1,137 @@
+{
+	"name": "DS_TGT_BLB_FactDistSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "uidCustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "PayTermKey",
+				"type": "Int32"
+			},
+			{
+				"name": "ProductKey",
+				"type": "Int32"
+			},
+			{
+				"name": "ShipViaKey",
+				"type": "Int32"
+			},
+			{
+				"name": "Datekey",
+				"type": "Int32"
+			},
+			{
+				"name": "EntityKey",
+				"type": "Int32"
+			},
+			{
+				"name": "Invno",
+				"type": "String"
+			},
+			{
+				"name": "Orderno",
+				"type": "String"
+			},
+			{
+				"name": "ShipNo",
+				"type": "String"
+			},
+			{
+				"name": "Qty",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtPrice",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtCost",
+				"type": "Decimal"
+			},
+			{
+				"name": "ProfitMargin",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtDiscount",
+				"type": "Decimal"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "currencykey",
+				"type": "Int32"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "ExtListPrice",
+				"type": "Decimal"
+			},
+			{
+				"name": "PracticeProfit",
+				"type": "Decimal"
+			},
+			{
+				"name": "PostDateKey",
+				"type": "Int32"
+			},
+			{
+				"name": "sourceid",
+				"type": "Int32"
+			},
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "transdatekey",
+				"type": "Int32"
+			},
+			{
+				"name": "importDataId",
+				"type": "Int32"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('FactDistSales-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/DataWarehouse"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

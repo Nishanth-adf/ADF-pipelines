@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_PROD_Products",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Product2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

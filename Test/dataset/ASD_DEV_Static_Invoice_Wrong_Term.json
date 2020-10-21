@@ -1,0 +1,34 @@
+{
+	"name": "ASD_DEV_Static_Invoice_Wrong_Term",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SalesOrderKEY",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICENUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "WrongTerms",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Static_Invoice_Wrong_Term"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

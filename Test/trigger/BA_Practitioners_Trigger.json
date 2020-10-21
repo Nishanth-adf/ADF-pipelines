@@ -1,0 +1,24 @@
+{
+	"name": "BA_Practitioners_Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_CPD_Practitioners_2_SF_Account_PROD",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-04-14T14:30:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

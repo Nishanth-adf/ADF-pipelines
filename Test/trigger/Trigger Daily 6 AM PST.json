@@ -1,0 +1,31 @@
+{
+	"name": "Trigger Daily 6 AM PST",
+	"properties": {
+		"description": "Daily @ 6 AM",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_cpd_dmdForcast_2_sc58_dev",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL dwh_OperationalInvoiceSales and DemandWorks Update",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-01-31T13:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

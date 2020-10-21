@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAX_CustGeneral_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHCustInvoiceJournalLines"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

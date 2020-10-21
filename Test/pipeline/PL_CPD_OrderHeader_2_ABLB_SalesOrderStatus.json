@@ -1,0 +1,56 @@
+{
+	"name": "PL_CPD_OrderHeader_2_ABLB_SalesOrderStatus",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_OrderHeader_2_ABLB_SalesOrderStatus",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "?$select=SalesOrderStatus,SalesOrderNumber&$top=2"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_AX_SalesOrderHeader",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ABLB_SalesOrdeStatus_N_SalesOrderNumber",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ADF_ISSUES"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-11-04T13:16:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

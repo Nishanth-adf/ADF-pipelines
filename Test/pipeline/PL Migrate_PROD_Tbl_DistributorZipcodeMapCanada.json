@@ -1,0 +1,61 @@
+{
+	"name": "PL Migrate_PROD_Tbl_DistributorZipcodeMapCanada",
+	"properties": {
+		"description": "Migrate FROM ODS.dbo.Tbl_DistributorZipcodeMapCanada TO PROD.staging.Tbl_DistributorZipcodeMapCanada\n\nAuthor: GBuenaventura\nDate: 08/25/2020",
+		"activities": [
+			{
+				"name": "Copy staging_Tbl_DistributorZipcodeMapCanada",
+				"description": "Migrate FROM ODS.dbo.Tbl_DistributorZipcodeMapCanada TO PROD.staging.Tbl_DistributorZipcodeMapCanada\n\nAuthor: GBuenaventura\nDate: 08/25/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.Tbl_DistributorZipcodeMapCanada",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ods_dbo_Tbl_DistributorZipcodeMapCanada",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Prod_staging_Tbl_DistributorZipcodeMapCanada",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-25T18:17:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

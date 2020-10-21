@@ -1,0 +1,105 @@
+{
+	"name": "DS_SINK_ASQL_DimProductmaster_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "productID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "productLaunchDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "applicableRegion",
+				"type": "nvarchar"
+			},
+			{
+				"name": "group1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "catalogNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productGroupType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productFamily",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productFamilyVariety",
+				"type": "nvarchar"
+			},
+			{
+				"name": "subgroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TPM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Active_Ind",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Serving",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimProductMaster_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

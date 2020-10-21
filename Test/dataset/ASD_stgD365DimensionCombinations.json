@@ -1,0 +1,41 @@
+{
+	"name": "ASD_stgD365DimensionCombinations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructure",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountValue",
+				"type": "varchar"
+			},
+			{
+				"name": "DisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "MainAccount",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365DimensionCombinations"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,22 @@
+{
+	"name": "av_lv_dw",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "av-lv-dw"
+			}
+		},
+		"connectVia": {
+			"referenceName": "metausedpir1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

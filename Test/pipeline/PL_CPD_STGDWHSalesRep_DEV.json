@@ -1,0 +1,87 @@
+{
+	"name": "PL_CPD_STGDWHSalesRep_DEV",
+	"properties": {
+		"description": "Step 1)\nMigrate from SQL01.gil.arthurdaly.tbl_Rep_Map_Consolidated to PROD.dbo.stgTblRepMapConsolidated_D365\n\nStep 2)\nBuilds table PROD.dbo.SalesRepMapHierMaster\n\nAuthor: GBuenaventura\nDate: 05/15/2020",
+		"activities": [
+			{
+				"name": "SQL01D365_SalesRepConsl-2-BLB_OT_SalesRepConslid_Prod",
+				"description": "Migrate from SQL01.gil.arthurdaly.tbl_Rep_Map_Consolidated to PROD.dbo.stgTblRepMapConsolidated_D365\n\nAuthor: GBuenaventura\nDate: 05/15/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Rep_Map_Consolidated_D365-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT\n    DB\n   ,salesmancd\n   ,acctyr\n   ,acctper\n   ,salesmancdOrigin\n   ,IsLOA\n   ,name\n   ,Role\n   ,manager\n   ,territory\n   ,roll_up_name\n   ,ref1\n   ,ref5\n   ,ref6\n   ,ref7\n   ,ref8\n   ,DistMgr\n   ,RegMgr\n   ,RegMgrDesc\n   ,Type1\n   ,Type2\n   ,Date_Created\n   ,'GIL' AS 'DBSource'\n   ,GETDATE () AS 'LoadDateTime'\nFROM gil.arthurdaly.tbl_Rep_Map_Consolidated WITH (NOLOCK)\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.stgTblRepMapConsolidated_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_TblRepMapConsolidated",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Dev_Staging_stgTblRepMapConsolidated_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "STRD_PROC_Create_SalesRepMapHierMaster",
+				"description": "Build dwh.SalesRepMapHierMaster\n\n\nAuthor: GBuenaventura\nDate: 05/15/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SQL01D365_SalesRepConsl-2-BLB_OT_SalesRepConslid_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "dwh.Create_SalesRepMapHierMaster"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-14T19:07:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

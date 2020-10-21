@@ -1,0 +1,41 @@
+{
+	"name": "DS_TGT_ASQL_SFAccount",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "AccountName",
+				"type": "String"
+			},
+			{
+				"name": "Industry",
+				"type": "String"
+			},
+			{
+				"name": "AccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "IAR_Rep__c",
+				"type": "String"
+			},
+			{
+				"name": "Finesse",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[SFAccount]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

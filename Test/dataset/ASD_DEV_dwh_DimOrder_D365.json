@@ -1,0 +1,135 @@
+{
+	"name": "ASD_DEV_dwh_DimOrder_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "OrderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CustomerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StatusCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Buyer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BuyerPhone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ShipToName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Attention",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Classification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderDateModified",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimOrder_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

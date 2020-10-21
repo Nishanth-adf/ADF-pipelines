@@ -1,0 +1,38 @@
+{
+	"name": "SQL_ODS_pbi_tbl_StdCostMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Catalogno",
+				"type": "varchar"
+			},
+			{
+				"name": "StdCostInUSD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "StdCostInCAD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LastUpdated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "pbi",
+			"table": "tbl_StdCostMaster"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

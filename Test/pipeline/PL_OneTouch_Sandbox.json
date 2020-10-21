@@ -1,0 +1,86 @@
+{
+	"name": "PL_OneTouch_Sandbox",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_CPD_Customers_2_SF_Account",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Customers_2_SF_Account",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_Orders_2_SF_Order",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Customers_2_SF_Account",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Orders_2_SF_Order",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_OrderLine_2_SF_OrderLine",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Products_2_SF_Product",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_OrderLine_2_SF_OrderLine",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_Products_2_SF_Product",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Orders_2_SF_Order",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Products_2_SF_Product",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Sandbox"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-05-13T06:55:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

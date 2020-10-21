@@ -1,0 +1,45 @@
+{
+	"name": "DS_ASQL_TGT_FactSalesRepTarget_BA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "salesRepID",
+				"type": "Int64"
+			},
+			{
+				"name": "monthID",
+				"type": "Int32"
+			},
+			{
+				"name": "category",
+				"type": "String"
+			},
+			{
+				"name": "budget",
+				"type": "Decimal"
+			},
+			{
+				"name": "Source",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[factSalesRepTarget]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

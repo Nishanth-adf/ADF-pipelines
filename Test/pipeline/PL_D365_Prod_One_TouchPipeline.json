@@ -1,0 +1,550 @@
+{
+	"name": "PL_D365_Prod_One_TouchPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_CPD_STGDWHCustInvoiceJournalLines",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGDWHCustInvoiceJournalLines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_STGDWHSalesRep",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_STGDWHCustInvoiceJournalLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL Stored Proc Merge_stgSalesInvoiceLines",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Merge_STGDWHSalesOrderLinesLast7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_Merge_stgSalesInvoiceHeader",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Stored Proc Create_stgSalesOrderHeader_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGDWHSalesRep",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_STGProductFamiliesMain",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_STGDWHSalesRep",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGProductFamiliesMain",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimCustomerMaster_D365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_STGProductFamiliesMain",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimCustomerMaster_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimDistributor_PROD_D365",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimCustomerMaster_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimDistributor_PROD_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimOrder_D365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimDistributor_PROD_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimOrder_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimProductMaster_D365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimOrder_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimProductMaster_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimProductType_d365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimProductMaster_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimProductType_d365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimSalesRep_D365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimProductType_d365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimSalesRep_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_FactOrderInvoiceSales_D365_PROD",
+				"description": "Build Fact Table",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimShipAddress_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_FactOrderInvoiceSales_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_DimShipAddress_D365_PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_DimSalesRep_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_DimShipAddress_D365_PROD",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_UpdateRepMap_Calendar",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_UpdateRepMap_Calendar",
+				"description": "Part of this Pipeline is dependent on a Job running nightly on SF.ODS @4AM. 'Update Power BI Tables pbi schema'\n\nAuthor: GBuenaventura",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate SalesRepHierMaster",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_InvoiceData",
+				"description": "Execute Pipeline - Run stored procedure, 'Create_tbl_InvoiceSalesData'. Create table tbl_InvoiceSalesData used for America's Daily Revenue report and Power BI Reporting.\n\nAuthor: GBuenaventura\nDate: 10/19/2019\n\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_FactOrderInvoiceSales_D365_PROD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "STOR_PROC_Create_tbl_InvoiceSalesData",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_STGDWHInvoiceLines7Days",
+				"description": "Author: GBuenaventura\nDate: 10/19/2019\n\nIncremental Pull from D365 Sales Invoice LInes",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGDWHInvoiceLinesLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL Stored Proc Merge_stgSalesInvoiceLines",
+				"description": "Run Stored Procedure to Merge Sales Invoice Lines to Staging\n\nAuthor: GBuenaventura\nDate: 10/19/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_STGDWHInvoiceLines7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Merge SalesInvoiceLines7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_STGDWHSalesOrderLinesLast7Days",
+				"description": "Author: GBuenaventura\nDate: 10/19/2019\n\nExecute Pipeline - Migrate over last few days of Sales Order Lines into table to be merged into Staging table.",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGDWHSalesOrderLinesLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Merge_STGDWHSalesOrderLinesLast7Days",
+				"description": "Run Stored Proc to Merge Sales Order Lines for Incremental Load into Staging Table.\n\nAuthor: GBuenaventura\nDate: 10/19/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_STGDWHSalesOrderLinesLast7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Merge_STGDWHSalesOrderLinesLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL_Run SP Create_tbl_CompSalesData",
+				"description": "Execute Pipeline - Run stored procedure, 'Create_tbl_CompSalesData'. Used for Power BI Meta Commissionable Sales.\n\nAuthor: GBuenaventura\nDate: 10/19/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_InvoiceData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Run SP Create_tbl_CompSalesData",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_CPD_stgSalesInvoiceHeaderLast7Days",
+				"description": "Execute Pipeline – Copy over last few days of Sales Invoice Header table for Incremental Load\n\nAuthor: GBuenaventura\nDate: 11/1/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CPD_STGDWHInvoiceHeadersLast7Days",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_Merge_stgSalesInvoiceHeader",
+				"description": "Execute Pipeline – For incremental load of Sales Invoice Header\n\nAuthor: GBuenaventura\nDate: 11/1/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_stgSalesInvoiceHeaderLast7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Merge_stgSalesInvoiceHeader",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Stored Proc Create_stgSalesOrderHeader_D365",
+				"description": "Author: GBuenaventura\nDate: 3/25/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL PL Migrate Prod_DWHSalesOrderHeadersV2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "staging.Create_stgSalesOrderHeader_D365"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL PL Migrate Prod_DWHSalesOrderHeadersV2",
+				"description": "Migrate - Pull last Several Days from D365.DWHSalesOrderHeadersV2 to PROD.stgDWHSalesOrderHeadersV2\n\nUsed for Order Create and Modified Dates.\n\nAuthor: GBuenaventura\nDate: 3/26/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_CPD_Fill_MaxDateTimeCreatedNModified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Prod_DWHSalesOrderHeadersV2",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL pl_sf_one_touch_prod",
+				"description": "Execute SalesForce.com nightly process.\n\nAdded on 4/15/2020\nBy: GBuenaventura",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL PL_Run SP Create_tbl_CompSalesData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sf_one_touch_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_One_touch_Account_User_Account_Blended",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL pl_sf_one_touch_prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_One_touch_Account_User_Account_Blended_AccountProduct",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-08T08:16:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

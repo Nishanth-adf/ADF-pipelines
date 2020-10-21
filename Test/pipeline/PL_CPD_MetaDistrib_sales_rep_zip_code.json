@@ -1,0 +1,95 @@
+{
+	"name": "PL_CPD_MetaDistrib_sales_rep_zip_code",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_sales_rep_zip_code",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetasales_rep_zip_code;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "sales_rep_zip_code_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "sales_rep_zip_code_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "zip_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_sales_rep_zip_code",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_stgMetasales_rep_zip_code",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:41:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

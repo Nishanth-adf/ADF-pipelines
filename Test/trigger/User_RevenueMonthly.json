@@ -1,0 +1,24 @@
+{
+	"name": "User_RevenueMonthly",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_sf_UserRevenue_Prod",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-03-24T14:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

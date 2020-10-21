@@ -1,0 +1,51 @@
+{
+	"name": "PL_CPD_STGDWHInvoiceHeadersLast7Days_DEV",
+	"properties": {
+		"description": "Pipeline for incremental load of Invoice Header table. Move table from D365 to Production.\n\nAuthor: GBuenaventura\nDate: 11/1/2019",
+		"activities": [
+			{
+				"name": "Copy stgSalesInvoiceHeaderLast7Days",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "$filter=DateTimeModified%20gt%202020-09-20&cross-company=true"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.stgSalesOrderLine_D365Last7Days",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DynamicsAX_Prod_InvoiceHeader",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Dev_staging_stgSalesOrderLine_D365Last7Days",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365 Development/OneTouchPipeline DEV Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-22T18:13:55Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,34 @@
+{
+	"name": "ASD_DEV_tbl_RepZipCodesTEMP",
+	"properties": {
+		"description": "Temp. OK to Delete\n\nDate: 1/21/2020",
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/TEST"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Source",
+				"type": "varchar"
+			},
+			{
+				"name": "Code5Digit",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_RepZipCodesTEMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

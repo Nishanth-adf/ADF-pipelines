@@ -1,0 +1,123 @@
+{
+	"name": "PL_TRAN_CPD_STG_SalesRepConslidated_D365",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLBD365_SalesRepConslidated-2-AZDB_SalesRepConslidated",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01D365_SalesRepConslidated-2-BLB_OT_SalesRepConslid",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Rep_Map_Consolidated-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-tbl_Rep_Map_Consolidated]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [dbo].[stgTblRepMapConsolidated_D365];"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_RepMapConsolidated_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ASQL_STGRepMapConsolidated_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01D365_SalesRepConslidated-2-BLB_OT_SalesRepConslid",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/gil/@{concat('GIL_tbl_Rep_Map_Consolidated_D365-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,[salesmancdOrigin]\n      ,[IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated] with (nolock)\n  union all\n  SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,[salesmancdOrigin]\n      ,[IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated_2018] with (nolock)\n  union all\n  SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,'NA' as [salesmancdOrigin]\n      ,0 as [IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated_2017] with (nolock)\n  union all\n  SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,'NA' as [salesmancdOrigin]\n      ,0 as [IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated_2016] with (nolock)\n  /*union all\n  SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,'NA' as[salesmancdOrigin]\n      ,0 as [IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated_2015] with (nolock)\n  union all\n  SELECT [DB]\n      ,[salesmancd]\n      ,[acctyr]\n      ,[acctper]\n      ,'NA' as [salesmancdOrigin]\n      ,0 as [IsLOA]\n      ,[name]\n      ,[Role]\n      ,[manager]\n      ,[territory]\n      ,[roll_up_name]\n      ,[ref1]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[DistMgr]\n      ,[RegMgr]\n      ,[Type1]\n      ,[Type2]\n      ,[Date_Created]\n\t  ,'GIL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [gil].[arthurdaly].[tbl_Rep_Map_Consolidated_2014] with (nolock)*/\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL01_Sales_RepMapConsolidated_ForD365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_RepMapConsolidated_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-28T14:24:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,52 @@
+{
+	"name": "PL_Migrate_tbl_CustomerCreatedMaster",
+	"properties": {
+		"description": "Purge and Reload tbl_CustomerCreatedMasterDEV from PROD to DEV",
+		"activities": [
+			{
+				"name": "CPD_tbl_CustomerCreatedMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.tbl_CustomerCreatedMaster",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_CustomerCreatedMaster",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_CustomerCreatedMaster",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate_Prod_2_Dev_Latest"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-22T14:01:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

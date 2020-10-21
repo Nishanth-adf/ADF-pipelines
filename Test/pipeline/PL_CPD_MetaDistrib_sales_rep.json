@@ -1,0 +1,115 @@
+{
+	"name": "PL_CPD_MetaDistrib_sales_rep",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_sales_rep",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetasales_rep;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_rep_cd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sales_rep_cd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_rep_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sales_rep_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "territory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "territory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "district",
+									"type": "String"
+								},
+								"sink": {
+									"name": "district",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_CPD_MetaDistrib_sales_rep",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_stgMetasales_rep",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:41:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

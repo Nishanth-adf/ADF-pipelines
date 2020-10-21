@@ -1,0 +1,557 @@
+{
+	"name": "DS_Sink_ASQL_SalesOrderHeader_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesUnitId",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTotalTaxAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "AreTotalsCalculated",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountPercentage",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "varchar"
+			},
+			{
+				"name": "WillAutomaticInventoryReservationConsiderBatchAttributes",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderName",
+				"type": "varchar"
+			},
+			{
+				"name": "MultilineDiscountCustomerGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TransportationRoutePlanId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStateId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderPromisingMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "LineDiscountCustomerGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceBuildingCompliment",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "NumberSequenceGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "FormattedInvoiceAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "ShippingCarrierServiceId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FixedExchangeRate",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalOperationPresenceType",
+				"type": "varchar"
+			},
+			{
+				"name": "BankConstantSymbol",
+				"type": "varchar"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "ShippingCarrierId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPostingProfileId",
+				"type": "varchar"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentMethodName",
+				"type": "varchar"
+			},
+			{
+				"name": "EUSalesListCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderProcessingStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsConsolidatedInvoiceTarget",
+				"type": "varchar"
+			},
+			{
+				"name": "IsEInvoiceDimensionAccountCodeSpecifiedPerLine",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentScheduleName",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTotalChargesAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTakerPersonnelNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountyId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "FixedDueDate",
+				"type": "varchar"
+			},
+			{
+				"name": "IsEntryCertificateRequired",
+				"type": "varchar"
+			},
+			{
+				"name": "IsInvoiceAddressPrivate",
+				"type": "varchar"
+			},
+			{
+				"name": "CFPSCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TMACustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "varchar"
+			},
+			{
+				"name": "PriceCustomerGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentMethodSpecificationName",
+				"type": "varchar"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "TransportationDocumentLineId",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentTermsBaseDate",
+				"type": "varchar"
+			},
+			{
+				"name": "InventoryReservationMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDeliveryAddressPrivate",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "TransportationModeId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsOneTimeCustomer",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsFinalUser",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTotalAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "URL",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "varchar"
+			},
+			{
+				"name": "TransportationBrokerId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsExportSale",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryReasonCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoicePaymentAttachmentType",
+				"type": "varchar"
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultShippingWarehouseId",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ArePricesIncludingSalesTax",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "BankSpecificSymbol",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesRebateCustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderingCustomerAccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalDocumentOperationTypeId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsSalesProcessingStopped",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressPostBox",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "varchar"
+			},
+			{
+				"name": "CampaignId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceType",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderResponsiblePersonnelNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "varchar"
+			},
+			{
+				"name": "ShippingCarrierServiceGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "varchar"
+			},
+			{
+				"name": "TransportationTemplateId",
+				"type": "varchar"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ExportReason",
+				"type": "varchar"
+			},
+			{
+				"name": "LanguageId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsOwnEntryCertificateIssued",
+				"type": "varchar"
+			},
+			{
+				"name": "IsServiceDeliveryAddressBased",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "varchar"
+			},
+			{
+				"name": "ChargeCustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderTotalDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultShippingSiteId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "QuotationNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "IsDeliveryAddressOrderSpecific",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTransactionSettlementType",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalDocumentTypeId",
+				"type": "varchar"
+			},
+			{
+				"name": "Email",
+				"type": "varchar"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "varchar"
+			},
+			{
+				"name": "DirectDebitMandateId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgSalesOrderHeader_D365]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

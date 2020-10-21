@@ -1,0 +1,16 @@
+{
+	"name": "DS_SINK_SFDC_MetaForce_Docebo_Dev_Account",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Docebo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

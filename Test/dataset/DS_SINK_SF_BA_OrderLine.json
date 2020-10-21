@@ -1,0 +1,16 @@
+{
+	"name": "DS_SINK_SF_BA_OrderLine",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order_Line_Item__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

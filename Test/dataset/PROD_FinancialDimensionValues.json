@@ -1,0 +1,19 @@
+{
+	"name": "PROD_FinancialDimensionValues",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "FinancialDimensionValues"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

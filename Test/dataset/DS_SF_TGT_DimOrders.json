@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_TGT_DimOrders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Docebo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

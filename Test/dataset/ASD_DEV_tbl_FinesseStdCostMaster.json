@@ -1,0 +1,38 @@
+{
+	"name": "ASD_DEV_tbl_FinesseStdCostMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Catalogno",
+				"type": "varchar"
+			},
+			{
+				"name": "StdCostInUSD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "StdCostInCAD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LastUpdated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_FinesseStdCostMaster"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,362 @@
+{
+	"name": "PL_CPD_DimDate_DEV_2_PROD",
+	"properties": {
+		"description": "This pipeline copies the data from dimDate in Dev environment to dimDate in PROD environment.",
+		"activities": [
+			{
+				"name": "CPD_DimDate_DEV_2_PROD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DateId",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DateId",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Year",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "YearQuarterNumber",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "YearQuarterNumber",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "QuarterNumber",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "QuarterNumber",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "QuarterYearName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QuarterYearName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QuarterName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QuarterName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "YearMonthNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "YearMonthNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "YearMonthName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "YearMonthName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthNumber",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "MonthNumber",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MonthName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "YearWeekNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "YearWeekNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "YearWeekName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "YearWeekName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WeekStartDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "WeekStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthDayNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MonthDayNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthDayName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MonthDayName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DayNumber",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "DayNumber",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "DayOfWeekNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DayOfWeekNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DayOfWeekName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DayOfWeekName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetDays",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "OffsetDays",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetWeeks",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "OffsetWeeks",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetMonths",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "OffsetMonths",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetQuarters",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "OffsetQuarters",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "OffsetYears",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "OffsetYears",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "IsYearToDate",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "IsYearToDate",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "IsPreviousYearToDate",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "IsPreviousYearToDate",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "IsBusinessDayUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "IsBusinessDayUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "IsBusinessDayCA",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "IsBusinessDayCA",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "IsReceivablesInvoiceDateUS",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "IsReceivablesInvoiceDateUS",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "IsReceivablesInvoiceDateCA",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "IsReceivablesInvoiceDateCA",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CRC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CRC",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimDate_Dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DimDate_PROD",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2019-12-20T09:48:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

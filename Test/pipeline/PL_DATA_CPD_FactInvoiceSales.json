@@ -1,0 +1,88 @@
+{
+	"name": "PL_DATA_CPD_FactInvoiceSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_arinvdet-2-factOrderInvoiceSales",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[factOrderInvoiceSales]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select\t\tms.orderID, \n\t\t\tisnull((\tselect top 1 dsr.salesRepID \n\t\t\t\t\t\tfrom dimSalesRep dsr \n\t\t\t\t\t\twhere dsr.salesmanCode=ms.salesmanCd),-1) as salesRepID\n\t\t\t,ms.customerID,productID,geographyID,BusinessDivisionchanelID,dimDistributorID,SalesOriginID,productTypeID,invoiceNumber,invoiceDate,acctyr,\n\t\t\tacctper,lineItem,shipmentNumber,quantity,unitPrice,amount,amountType,localCurrencyCode,orderType,commissionableIndicator,Source,insertDate,insertBy\nfrom\t\t(\n\t\t\t\tSELECT\tisnull(do.ORDERID,-1) AS orderID\n\t\t\t\t--     , isnull(dsr.salesrepid,-1)  AS salesRepID\n\t\t\t\t\t\t,arv.custno\n\t\t\t\t\t\t,osa.salesmancd\n\t\t\t\t\t\t--arv.custno,\n\t\t\t\t\t\t, isnull(dcm.customerid,-1) AS customerID\n\t\t\t\t\t\t, isnull(dpm.productid,-1) AS productID\n\t\t\t\t\t\t,-1 as geographyID\n\t\t\t\t\t\t,6 as BusinessDivisionchanelID \n\t\t\t\t\t\t,-1 as dimDistributorID \n\t\t\t\t\t\t,1 as SalesOriginID\n\t\t\t\t\t\t, isnull(dpt.productTypeID,-1) as productTypeID\n\t\t\t\t\t\t,Cast(arv.[invno] as nvarchar(20)) as invoiceNumber\n\t\t\t\t\t\t,Cast(arv.[invdate] as Datetime) as invoiceDate\n\t\t\t\t\t\t,arv.acctyr as acctyr\n\t\t\t\t\t\t,arv.acctper as acctper\n\t\t\t\t\t\t,Cast(arv.[item] as int)as lineItem\n\t\t\t\t\t\t,Cast(arv.[shipno] as nvarchar(20)) as shipmentNumber\n\t\t\t\t\t\t,Cast(arv.[qty] as decimal(18,4)) as quantity\n\t\t\t\t\t\t,Cast(arv.[price] as decimal(18,4)) as unitPrice\n\t\t\t\t\t\t,Cast(([qty] * [price]) as decimal(18,4)) as amount\n\t\t\t\t\t\t,Cast((Case when left(arv.saleacctcr,1) in ('4') and left(arv.saleacctcr,2) <> '44' then 'Product Sales'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\twhen left(arv.saleacctcr,2) in ('44') then 'Freight'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\twhen left(arv.saleacctcr,3) in ('215') then 'Tax'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\twhen left(arv.saleacctcr,1) in ('6','7','8','9') then 'Expenses'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnd) as varchar(20)) as amountType\n\t\t\t\t\t\t,Cast((Case when arv.DBSource in ('IL') then 'USD'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\twhen arv.DBSource in ('OT') then 'CAD'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnd) as nvarchar(10)) as localCurrencyCode\n\t\t\t\t\t\t,Cast(arv.[order_code] as nvarchar(30))as orderType\n\t\t\t\t\t\t,Cast((Case when left(arv.saleacctcr,2)<> '44' and left(arv.saleacctcr,1)='4' \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tthen 'Y' \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\telse 'N'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnd) as nvarchar(3)) as commissionableIndicator,\n\t\t\t\t\t\tSource = arv.DBSource\n\t\t\t\t\t\t,Dateadd(hh,-8,GetDate()) as insertDate\n\t\t\t\t\t\t,CAST('ADF ETL' as nvarchar(30)) as insertBy \n\t\t\t\tfrom\t\t(SELECT * FROM [dbo].[stgArinvdet] WHERE acctyr >= '2014')arv \n\t\t\t\tLEFT JOIN\t[dbo].[stgOecustomer] oc on arv.custno = oc.custno and arv.DBSource     =      oc.DBSource \n\t\t\t\tLEFT JOIN\t(SELECT * FROM [dbo].[stgOeShipAddr] WHERE subno='1' and shipno='1') osa \n\t\t\t\t\t\t\t\t\t\tON  oc. custno= osa.custno and  /*arv.salesman = osa.salesmancd  and */ osa.DBSource = arv.DBSource \n\t\t\t\tLEFT JOIN\t[dbo].[stgOecohead] och on arv.orderno = och.orderno and arv.custno = och.custno and och.DBSource = arv.DBSource \n\t\t\t\tLEFT JOIN\t[dbo].[stgTblProductFamiliesMain] tpf on arv.catalogno = tpf.catalogno and (CASE WHEN tpf.db = 'Canada' then 'OT' else tpf.db END)  = arv.DBSource \n\t\t\t\tLEFT JOIN\t[dbo].[dimOrder] do on och.custno = do.customerNumber and och.orderno = do.orderNumber -- and do.source = arv.DBSource   \n\t\t\t\t--LEFT JOIN [dbo].[dimSalesRep] dsr on  arv.[salesman] = dsr.salesmanCode and arv.acctyr = dsr.accountYear and arv.acctper = dsr.accountMonth \n\t\t\t\t--                   and dsr.source = arv.DBSource \n\t\t\t\tLEFT JOIN\t[dbo].[dimProductMaster] dpm on  arv.catalogno = dpm.catalogNumber and dpm.source = arv.DBSource \n\t\t\t\tLEFT JOIN\t[dbo].[dimCustomerMaster] dcm on arv.custno = dcm.customerNumber and dcm.source = arv.DBSource --AND DCM.salesmanCode = ARV.salesman \n\t\t\t\tLEFT JOIN\t[dbo].[dimProductType] dpt on dpt.productLine = tpf.Product_Line and dpt.productFamily = tpf.Product_Family and \n\t\t\t\t\t\t\t\t\t\t\t\t  dpt.catlogNumber = tpf.catalogno and dpt.source = arv.DBSource and dpt.source = (CASE WHEN tpf.db = 'Canada' then 'OT' else tpf.db END)\n\t\t)MS",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 15,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 8,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"orderID": "orderID",
+							"geographyID": "geographyID",
+							"customerID": "customerID",
+							"salesRepID": "salesRepID",
+							"productID": "productID",
+							"BusinessDivisionchanelID": "BusinessDivisionchanelID",
+							"dimDistributorID": "dimDistributorID",
+							"SalesOriginID": "SalesOriginID",
+							"productTypeID": "productTypeID",
+							"commissionableIndicator": "commissionableIndicator",
+							"invoiceNumber": "invoiceNumber",
+							"invoiceDate": "invoiceDate",
+							"acctyr": "acctyr",
+							"acctper": "acctper",
+							"lineItem": "lineItem",
+							"shipmentNumber": "shipmentNumber",
+							"quantity": "quantity",
+							"unitPrice": "unitPrice",
+							"amount": "amount",
+							"amountType": "amountType",
+							"localCurrencyCode": "localCurrencyCode",
+							"orderType": "orderType",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"Source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metausedpdev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_factOrderInvoiceSales",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T08:32:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

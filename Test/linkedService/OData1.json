@@ -1,0 +1,24 @@
+{
+	"name": "OData1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "OData",
+		"typeProperties": {
+			"url": "https://qa-meta1devaos.sandbox.ax.dynamics.com/data",
+			"authenticationType": "AadServicePrincipal",
+			"tenant": "5d3d5325-ed63-487c-a91f-a6712548bdc0",
+			"aadResourceId": "https://qa-meta1devaos.sandbox.ax.dynamics.com",
+			"aadServicePrincipalCredentialType": "ServicePrincipalKey",
+			"servicePrincipalId": "75e26851-44c5-457f-a283-e5e841d91809",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "d365qa"
+			}
+		}
+	}
+}

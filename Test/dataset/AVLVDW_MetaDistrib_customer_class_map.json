@@ -1,0 +1,34 @@
+{
+	"name": "AVLVDW_MetaDistrib_customer_class_map",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "dist_code",
+				"type": "varchar"
+			},
+			{
+				"name": "meta_code",
+				"type": "varchar"
+			},
+			{
+				"name": "source_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "customer_class_map"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

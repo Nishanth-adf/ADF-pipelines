@@ -1,0 +1,109 @@
+{
+	"name": "PL_DATA_CPD_DimShipAddress",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Stg-Shipaddr-to-DimShipAddress",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select custno\n,subno\n,shipno\n,ship_to_name\n,contact\n,attention\n,phone\n,ext\n,addr1\n,addr2\n,addr3\n,city\n,county\n,state\n,zip\n,country\n,shipvia_code\n,last_shipped\n,tax_code\n,shipcomplete\n,correspondence\n,fscm_cage\n,invoicecopies\n,priority\n,tax1\n,tax2\n,tax3\n,tax4\n,tax5\n,custclass\n,matrixcd\n,discount\n,pcntovercost\n,telex\n,usenet\n,fax\n,voicemail\n,entityno\n,currencycd\n,salutation\n,salesmancd\n,locationcd\n,deal_no\n,bankid\n,acctid\n,tele_salesmancd\n,web_custno\n,certificate_expire_date\n,intrans_loc\n,email_update\n,DBSource\n,LoadDateTime from dbo.stgOeshipaddr with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"custno": "custno",
+							"subno": "subno",
+							"shipno": "shipno",
+							"ship_to_name": "ship_to_name",
+							"contact": "contact",
+							"attention": "attention",
+							"phone": "phone",
+							"ext": "ext",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"county": "county",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"shipvia_code": "shipvia_code",
+							"last_shipped": "last_shipped",
+							"tax_code": "tax_code",
+							"shipcomplete": "shipcomplete",
+							"correspondence": "correspondence",
+							"fscm_cage": "fscm_cage",
+							"invoicecopies": "invoicecopies",
+							"priority": "priority",
+							"tax1": "tax1",
+							"tax2": "tax2",
+							"tax3": "tax3",
+							"tax4": "tax4",
+							"tax5": "tax5",
+							"custclass": "custclass",
+							"matrixcd": "matrixcd",
+							"discount": "discount",
+							"pcntovercost": "pcntovercost",
+							"telex": "telex",
+							"usenet": "usenet",
+							"fax": "fax",
+							"voicemail": "voicemail",
+							"entityno": "entityno",
+							"currencycd": "currencycd",
+							"salutation": "salutation",
+							"salesmancd": "salesmancd",
+							"locationcd": "locationcd",
+							"deal_no": "deal_no",
+							"bankid": "bankid",
+							"acctid": "acctid",
+							"tele_salesmancd": "tele_salesmancd",
+							"web_custno": "web_custno",
+							"certificate_expire_date": "certificate_expire_date",
+							"intrans_loc": "intrans_loc",
+							"email_update": "email_update",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_STG_Shipaddress",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TGT_ASQL_DimShipaddress",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-06T16:10:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

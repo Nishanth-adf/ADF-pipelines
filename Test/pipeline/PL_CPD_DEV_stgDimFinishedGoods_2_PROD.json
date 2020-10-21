@@ -1,0 +1,50 @@
+{
+	"name": "PL_CPD_DEV_stgDimFinishedGoods_2_PROD",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DEV_stgDimFinishedGoods_2_PROD",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DEV_stgDimFinishedGoods",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_PROD_stgDimFinishedGoods",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-17T10:09:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

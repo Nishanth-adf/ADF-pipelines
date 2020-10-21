@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate DimSalesPool",
+	"properties": {
+		"description": "Migrate DimSalesPool from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/10/2019",
+		"activities": [
+			{
+				"name": "Copy_DimSalesPool",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.DimSalesPoolDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_DimSalesPool",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_DimSalesPoolDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-12-11T02:00:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

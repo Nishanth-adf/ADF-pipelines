@@ -1,0 +1,19 @@
+{
+	"name": "PROD_D365_MainAccountCategories",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "MainAccountCategories"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

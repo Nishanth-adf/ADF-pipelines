@@ -1,0 +1,36 @@
+{
+	"name": "DS_SQL_MetaDistrib_sales_rep_zip_code",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "sales_rep_zip_code_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "zip_code",
+				"type": "varchar"
+			},
+			{
+				"name": "sales_rep_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_rep_zip_code"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

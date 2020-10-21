@@ -1,0 +1,252 @@
+{
+	"name": "AzureSqlTable9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Abandoned",
+				"type": "bit"
+			},
+			{
+				"name": "AbandonSeconds",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 4
+			},
+			{
+				"name": "AcwSeconds",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 4
+			},
+			{
+				"name": "AgentId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AgentSeconds",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 4
+			},
+			{
+				"name": "CallbackTime",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CampaignId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CampaignName",
+				"type": "varchar"
+			},
+			{
+				"name": "ConfSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ContactId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ContactStart",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DateAcwWarehoused",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DateContactWarehoused",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DispositionNotes",
+				"type": "varchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "FromAddr",
+				"type": "varchar"
+			},
+			{
+				"name": "HoldCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "HoldSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "InQueueSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsLogged",
+				"type": "bit"
+			},
+			{
+				"name": "IsOutbound",
+				"type": "bit"
+			},
+			{
+				"name": "IsRefused",
+				"type": "bit"
+			},
+			{
+				"name": "IsShortAbandon",
+				"type": "bit"
+			},
+			{
+				"name": "Istakeover",
+				"type": "bit"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "LastUpdateTime",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "MasterContactid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MediaType",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MediaTypeName",
+				"type": "varchar"
+			},
+			{
+				"name": "PointOfContactId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PointOfContactName",
+				"type": "varchar"
+			},
+			{
+				"name": "PostQueueSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PreQueueSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PrimaryDispositionId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RefuseReason",
+				"type": "varchar"
+			},
+			{
+				"name": "RefuseTime",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "ReleaseSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RoutingTime",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "SecondaryDispositionId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ServiceLevelFlag",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SkillId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SkillName",
+				"type": "varchar"
+			},
+			{
+				"name": "TeamId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TeamName",
+				"type": "varchar"
+			},
+			{
+				"name": "ToAddr",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDurationSeconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TransferIndicatorId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TransferIndicatorName",
+				"type": "varchar"
+			},
+			{
+				"name": "IsAnalyticsProcessed",
+				"type": "bit"
+			},
+			{
+				"name": "AnalyticsProcessedDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "RingCentral"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

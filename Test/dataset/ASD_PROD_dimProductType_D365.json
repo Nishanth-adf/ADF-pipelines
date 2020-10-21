@@ -1,0 +1,90 @@
+{
+	"name": "ASD_PROD_dimProductType_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "productTypeID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "salesRepCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "effectiveDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "endDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "latestIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "productFamily",
+				"type": "nvarchar"
+			},
+			{
+				"name": "catlogNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "catlogDescription",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimProductType_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

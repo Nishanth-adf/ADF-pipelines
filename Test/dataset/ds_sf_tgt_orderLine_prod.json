@@ -1,0 +1,19 @@
+{
+	"name": "ds_sf_tgt_orderLine_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order_Line__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

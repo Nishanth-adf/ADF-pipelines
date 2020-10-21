@@ -1,0 +1,13 @@
+{
+	"name": "DS_MySQL_Users_Last7days",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MI9RODB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

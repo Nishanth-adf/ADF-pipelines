@@ -1,0 +1,17 @@
+{
+	"name": "DS_SINK_ASQL_DWHSalesOrderLinesV2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesOrderLine_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

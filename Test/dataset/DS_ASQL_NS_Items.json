@@ -1,0 +1,914 @@
+{
+	"name": "DS_ASQL_NS_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DELETED",
+				"type": "bit"
+			},
+			{
+				"name": "ALLOW_DROP_SHIP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ALT_DEMAND_SOURCE_ITEM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ALWAYS_CHARGE_SHIPPING",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ASSET_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ATP_LEAD_TIME",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ATP_METHOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AVAILABLE_TO_PARTNERS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AVERAGECOST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BACKWARD_CONSUMPTION_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BILL_EXCH_RATE_VAR_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BILL_PRICE_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BILL_QTY_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BUILD_SUB_ASSEMBLIES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CASES_PER_PALLET",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CATEGORY1_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CATEGORY2_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CATEGORY3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CATEGORY4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CATEGORY5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLASS_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COSTING_METHOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COST_0",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_CATEGORY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COST_ESTIMATE_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRY_OF_MANUFACTURE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNT_0",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CREATED",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "CREATE_PLAN_ON_EVENT_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CURRENT_ON_ORDER_COUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CUSTRETURN_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DATE_LAST_MODIFIED",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "DATE_OF_LAST_TRANSACTION",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "DEFAULT_RETURN_COST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEFERRED_EXPENSE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEFERRED_REVENUE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DELIVERY_MECHANISM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEMAND_SOURCE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEMAND_TIME_FENCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEPARTMENT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEPOSIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPLAYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISTRIBUTION_CATEGORY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISTRIBUTION_NETWORK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DROPSHIP_EXPENSE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EFFECTIVE_BOM_CONTROL_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXPENSE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FEATUREDDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FEATUREDITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIXED_LOT_SIZE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FLAVOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORWARD_CONSUMPTION_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FRAUD_RISK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FULL_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FULL_SAMPLE_AVAILABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FULL_SAMPLE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FX_ADJUSTMENT_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GAIN_LOSS_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "HANDLING_COST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "HAZMAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAZMAT_HAZARD_CLASS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAZMAT_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAZMAT_ITEM_UNITS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAZMAT_ITEM_UNITS_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "HAZMAT_PACKING_GROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HAZMAT_SHIPPING_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INCLUDE_CHILD_SUBSIDIARIES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INCOME_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INDIVIDUAL_SAMPLE_AVAILABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INDIVIDUAL_SAMPLE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INTERCO_EXPENSE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INTERCO_INCOME_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INTERNATIONAL_FLAVOR_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INVT_COUNT_CLASSIFICATION",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INVT_COUNT_INTERVAL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ISINACTIVE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISONLINE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISTAXABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_CONT_REV_HANDLING",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_ENFORCE_MIN_QTY_INTERNALLY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_HOLD_REV_REC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_MOSS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_PHANTOM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IS_SPECIAL_ORDER_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ITEM_DEFINED_COST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ITEM_EXTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ITEM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ITEM_REVENUE_CATEGORY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LABEL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_COGS_CORRECTION",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "LAST_INVT_COUNT_DATE",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "LAST_PURCHASE_PRICE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LOCATION_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LOT_NUMBERED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOT_NUMBERED_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOT_SIZING_METHOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MANUFACTURER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MANUFACTURING_CHARGE_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MATCH_BILL_TO_RECEIPT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MINIMUM_QUANTITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MODIFIED",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "MPN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NEXT_INVT_COUNT_DATE",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "NS_LEAD_TIME",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OFFERSUPPORT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ONSPECIAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OVERHEAD_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PACKAGING",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARENT_0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARENT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PAYMENT_METHOD_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PERIODIC_LOT_SIZE_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PERIODIC_LOT_SIZE_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PER_SERVING_CALCIUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PER_SERVING_CALORIES",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PER_SERVING_IRON",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PER_SERVING_PROTEIN",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "POWDER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PREF_PURCHASE_TAX_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PREF_SALE_TAX_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PREF_STOCK_LEVEL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PRICES_INCLUDE_TAX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRICING_GROUP_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PRINT_SUB_ITEMS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIOR_PN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROD_PRICE_VAR_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROD_QTY_VAR_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PURCHASEDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PURCHASEORDERAMOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PURCHASEORDERQUANTITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PURCHASEORDERQUANTITYDIFF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PURCHASE_PRICE_VAR_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PURCHASE_UNIT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QUANTITYAVAILABLE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QUANTITYBACKORDERED",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QUANTITYONHAND",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECEIPTAMOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECEIPTQUANTITY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECEIPTQUANTITYDIFF",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REORDERPOINT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REORDER_MULTIPLE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REPLENISHMENT_METHOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQUIRES_RM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RESALABLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESCHEDULE_IN_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RESCHEDULE_OUT_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REVENUE_ALLOCATION_GROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REV_REC_FORECAST_RULE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REV_REC_RULE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ROUND_UP_AS_COMPONENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SAFETY_STOCK_DAYS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SAFETY_STOCK_LEVEL",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALESDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESPRICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALE_UNIT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SCRAP_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SERIALIZED_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SERVING_SIZE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SHIPPINGCOST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SIMPLE_DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SIMPLE_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SPECIALSDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SPECIAL_WORK_ORDER_ITEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STOCK_UNIT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STOREDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STOREDETAILEDDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STOREDISPLAYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUBTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUPPLY_TIME_FENCE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SUPPLY_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TAX_ITEM_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOTALVALUE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TRANSFERPRICE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TYPE_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UNBUILD_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_TYPE_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UPC_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USE_COMPONENT_YIELD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VENDORNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VENDOR_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "VENDRETURN_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "VSOE_DEFERRAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VSOE_DELIVERED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VSOE_DISCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VSOE_PRICE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WEIGHT_IN_USER_DEFINED_UNIT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WEIGHT_UNIT_INDEX",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WIP_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WIP_COST_VARIANCE_ACCOUNT_ID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WORK_ORDER_LEAD_TIME",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WRAPPER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DBSource",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgItems]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

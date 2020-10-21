@@ -1,0 +1,33 @@
+{
+	"name": "PL_CPD_FactOrderInvoiceSales_D365",
+	"properties": {
+		"activities": [
+			{
+				"name": "FactOrderInvoiceSales_D365_Incr_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_factOrderInvoiceSales_D365_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-27T16:34:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

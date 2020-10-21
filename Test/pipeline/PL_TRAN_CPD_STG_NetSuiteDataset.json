@@ -1,0 +1,206 @@
+{
+	"name": "PL_TRAN_CPD_STG_NetSuiteDataset",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_BA_NS_Dataset-2-AZDB_NS_Dataset",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SC58_NetSuite_NS_Dataset-2-BLB_BA_NS_Dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/BariatricAdvantage/@{concat('NetSuite_NS_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-NS_Dataset]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Yr": "Yr",
+							"Period": "Period",
+							"Day": "Day",
+							"TRANDATE": "TRANDATE",
+							"Quarter": "Quarter",
+							"TOP_LEVEL_PARENT_ID": "TOP_LEVEL_PARENT_ID",
+							"Top Level Parent Name": "Top Level Parent Name",
+							"Parent_Addr1": "Parent_Addr1",
+							"Parent_City": "Parent_City",
+							"Parent_State": "Parent_State",
+							"Parent_Zip": "Parent_Zip",
+							"CUSTOMER_ID": "CUSTOMER_ID",
+							"Customer ID Name": "Customer ID Name",
+							"ADDRESS_LINE_1": "ADDRESS_LINE_1",
+							"CITY": "CITY",
+							"STATE": "STATE",
+							"ZIP": "ZIP",
+							"CUSTOMER_TYPE_ID": "CUSTOMER_TYPE_ID",
+							"Customer Type Name": "Customer Type Name",
+							"Customer Type Commissions": "Customer Type Commissions",
+							"TSM_EMPLNo": "TSM_EMPLNo",
+							"TSM Full Name": "TSM Full Name",
+							"RSM_EMPLNo": "RSM_EMPLNo",
+							"RSM Full Name": "RSM Full Name",
+							"Customer Key": "Customer Key",
+							"SKU": "SKU",
+							"SKU Description": "SKU Description",
+							"Product_Line": "Product_Line",
+							"Product_Family": "Product_Family",
+							"Global Position": "Global Position",
+							"Global Type": "Global Type",
+							"MEMO": "MEMO",
+							"NetSuite Trans Number": "NetSuite Trans Number",
+							"Sales Order": "Sales Order",
+							"TRANSACTION_TYPE": "TRANSACTION_TYPE",
+							"CY_std_cost": "CY_std_cost",
+							"ACCOUNTNUMBER": "ACCOUNTNUMBER",
+							"Sales": "Sales",
+							"Qty": "Qty",
+							"LastUpdated": "LastUpdated",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_NS_Dataset",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_NS_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SC58_NetSuite_NS_Dataset-2-BLB_BA_NS_Dataset",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/BariatricAdvantage/@{concat('NetSuite_NS_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [Yr]\n      ,[Period]\n      ,[Day]\n      ,[TRANDATE]\n      ,[Quarter]\n      ,[TOP_LEVEL_PARENT_ID]\n      ,[Top Level Parent Name]\n      ,[Parent_Addr1]\n      ,[Parent_City]\n      ,[Parent_State]\n      ,[Parent_Zip]\n      ,[CUSTOMER_ID]\n      ,[Customer ID Name]\n      ,[ADDRESS_LINE_1]\n      ,[CITY]\n      ,[STATE]\n      ,[ZIP]\n      ,[CUSTOMER_TYPE_ID]\n      ,[Customer Type Name]\n      ,[Customer Type Commissions]\n      ,[TSM_EMPLNo]\n      ,[TSM Full Name]\n      ,[RSM_EMPLNo]\n      ,[RSM Full Name]\n      ,[Customer Key]\n      ,[SKU]\n      ,[SKU Description]\n      ,[Product_Line]\n      ,[Product_Family]\n      ,[Global Position]\n      ,[Global Type]\n      ,[MEMO]\n      ,[NetSuite Trans Number]\n      ,[Sales Order]\n      ,[TRANSACTION_TYPE]\n      ,[CY_std_cost]\n      ,[ACCOUNTNUMBER]\n      ,[Sales]\n      ,[Qty]\n      ,[LastUpdated]\n\t  ,'NS' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [dbo].[NS_Dataset]\n  Where [Yr] >= 2015",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Yr": "Yr",
+							"Period": "Period",
+							"Day": "Day",
+							"TRANDATE": "TRANDATE",
+							"Quarter": "Quarter",
+							"TOP_LEVEL_PARENT_ID": "TOP_LEVEL_PARENT_ID",
+							"Top Level Parent Name": "Top Level Parent Name",
+							"Parent_Addr1": "Parent_Addr1",
+							"Parent_City": "Parent_City",
+							"Parent_State": "Parent_State",
+							"Parent_Zip": "Parent_Zip",
+							"CUSTOMER_ID": "CUSTOMER_ID",
+							"Customer ID Name": "Customer ID Name",
+							"ADDRESS_LINE_1": "ADDRESS_LINE_1",
+							"CITY": "CITY",
+							"STATE": "STATE",
+							"ZIP": "ZIP",
+							"CUSTOMER_TYPE_ID": "CUSTOMER_TYPE_ID",
+							"Customer Type Name": "Customer Type Name",
+							"Customer Type Commissions": "Customer Type Commissions",
+							"TSM_EMPLNo": "TSM_EMPLNo",
+							"TSM Full Name": "TSM Full Name",
+							"RSM_EMPLNo": "RSM_EMPLNo",
+							"RSM Full Name": "RSM Full Name",
+							"Customer Key": "Customer Key",
+							"SKU": "SKU",
+							"SKU Description": "SKU Description",
+							"Product_Line": "Product_Line",
+							"Product_Family": "Product_Family",
+							"Global Position": "Global Position",
+							"Global Type": "Global Type",
+							"MEMO": "MEMO",
+							"NetSuite Trans Number": "NetSuite Trans Number",
+							"Sales Order": "Sales Order",
+							"TRANSACTION_TYPE": "TRANSACTION_TYPE",
+							"CY_std_cost": "CY_std_cost",
+							"ACCOUNTNUMBER": "ACCOUNTNUMBER",
+							"Sales": "Sales",
+							"Qty": "Qty",
+							"LastUpdated": "LastUpdated",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_NetSuite",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_tableName": "NetSuite_NS_Dataset"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_NS_Dataset",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:55:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

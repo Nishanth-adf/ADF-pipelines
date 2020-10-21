@@ -1,0 +1,319 @@
+{
+	"name": "DS_ASQL_stgDWHoecustbill",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "custno",
+				"type": "varchar"
+			},
+			{
+				"name": "subno",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_name",
+				"type": "varchar"
+			},
+			{
+				"name": "contact",
+				"type": "varchar"
+			},
+			{
+				"name": "attention",
+				"type": "varchar"
+			},
+			{
+				"name": "phone",
+				"type": "varchar"
+			},
+			{
+				"name": "ext",
+				"type": "varchar"
+			},
+			{
+				"name": "addr1",
+				"type": "varchar"
+			},
+			{
+				"name": "addr2",
+				"type": "varchar"
+			},
+			{
+				"name": "addr3",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "county",
+				"type": "varchar"
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "zip",
+				"type": "varchar"
+			},
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "discount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "pcntovercost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "creditlmt",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "arcurr",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "arover30",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "arover60",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "arover90",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "arover120",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "highbal",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "mtdsales",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "mtdrtrn",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "mtdother",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "mtdcosts",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ytdsales",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ytdrtrn",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ytdother",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ytdcosts",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "lastyrsales",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "lastyrrtrn",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "lastyrother",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "lastyrcosts",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "oeused",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "credithold",
+				"type": "varchar"
+			},
+			{
+				"name": "d_b_rating",
+				"type": "varchar"
+			},
+			{
+				"name": "comp_rating",
+				"type": "varchar"
+			},
+			{
+				"name": "last_dunning",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "dunningcnt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "lastcollection",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "nextcollection",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "correspondence",
+				"type": "varchar"
+			},
+			{
+				"name": "fscm_cage",
+				"type": "varchar"
+			},
+			{
+				"name": "custclass",
+				"type": "varchar"
+			},
+			{
+				"name": "invoicecopies",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "priority",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "taxexempt",
+				"type": "varchar"
+			},
+			{
+				"name": "taxexempt_no",
+				"type": "varchar"
+			},
+			{
+				"name": "currencycd",
+				"type": "varchar"
+			},
+			{
+				"name": "telex",
+				"type": "varchar"
+			},
+			{
+				"name": "usenet",
+				"type": "varchar"
+			},
+			{
+				"name": "fax",
+				"type": "varchar"
+			},
+			{
+				"name": "voicemail",
+				"type": "varchar"
+			},
+			{
+				"name": "lastfeeearnedcd",
+				"type": "varchar"
+			},
+			{
+				"name": "deal_no",
+				"type": "varchar"
+			},
+			{
+				"name": "paytermscd",
+				"type": "varchar"
+			},
+			{
+				"name": "last_invoice",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "telmktrepcd",
+				"type": "varchar"
+			},
+			{
+				"name": "telmktreploc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgDWHoecustbill"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,366 @@
+{
+	"name": "Finesse_All_Staging_Load_Pipelines",
+	"properties": {
+		"activities": [
+			{
+				"name": "EPL_STG_DWH_SOURCE",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOecohead",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Source",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_DWH_DIM_UID_Customer",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_SOURCE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_DimUidCustomer",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DWH_STG_DIMFinishedGoods",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_DIM_UID_Customer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_DimFinishedGoods",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_DWH_STG_FACTDistSales",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DWH_STG_DIMFinishedGoods",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CDP_STG_FactDistSales",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINArinvdet",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_BA_StgSalesQuto",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Arinvdet",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINInpart",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_DWH_STG_FACTDistSales",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_Inpart",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOecohead",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINArinvdet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OecoHead",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOecustomer",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINInpart",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeCustomer",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOefinish",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOecustomer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeFinish",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeSalesman",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOefinish",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeSalesMan",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeshipaddr",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeSalesman",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_OeShipAddr",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOeproductFamilies",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeshipaddr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_ProductFamiliesMain",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FINOesalesRepConsolidate",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOeproductFamilies",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_SalesRepConslidated",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FIN_CY_CommisionableSKUS",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FINOesalesRepConsolidate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_CommisionableSkus",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_FIN_tbl_TerritoryRelatedTarget",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FIN_CY_CommisionableSKUS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_tbl_TerritoryRelatedTarget",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_DWH_DimCustomers",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_FIN_tbl_TerritoryRelatedTarget",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_CPD_STG_DimCustomers",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_RefCurrency",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_STG_DWH_DimCustomers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_RefCurrency",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_STG_BA_StgSalesQuto",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_CPD_STG_NS_SalesQuota",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Master_Pipelines_Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-05-09T07:25:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

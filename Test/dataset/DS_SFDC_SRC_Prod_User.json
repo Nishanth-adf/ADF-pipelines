@@ -1,0 +1,13 @@
+{
+	"name": "DS_SFDC_SRC_Prod_User",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_PROD",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

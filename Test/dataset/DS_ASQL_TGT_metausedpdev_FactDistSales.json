@@ -1,0 +1,124 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_FactDistSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "uidCustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "PayTermKey",
+				"type": "Int32"
+			},
+			{
+				"name": "ProductKey",
+				"type": "Int32"
+			},
+			{
+				"name": "ShipViaKey",
+				"type": "Int32"
+			},
+			{
+				"name": "Datekey",
+				"type": "Int32"
+			},
+			{
+				"name": "EntityKey",
+				"type": "Int32"
+			},
+			{
+				"name": "Invno",
+				"type": "String"
+			},
+			{
+				"name": "Orderno",
+				"type": "String"
+			},
+			{
+				"name": "ShipNo",
+				"type": "String"
+			},
+			{
+				"name": "Qty",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtPrice",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtCost",
+				"type": "Decimal"
+			},
+			{
+				"name": "ProfitMargin",
+				"type": "Decimal"
+			},
+			{
+				"name": "ExtDiscount",
+				"type": "Decimal"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "currencykey",
+				"type": "Int32"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "ExtListPrice",
+				"type": "Decimal"
+			},
+			{
+				"name": "PracticeProfit",
+				"type": "Decimal"
+			},
+			{
+				"name": "PostDateKey",
+				"type": "Int32"
+			},
+			{
+				"name": "sourceid",
+				"type": "Int32"
+			},
+			{
+				"name": "custno",
+				"type": "String"
+			},
+			{
+				"name": "transdatekey",
+				"type": "Int32"
+			},
+			{
+				"name": "importDataId",
+				"type": "Int32"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgFactDistSales]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

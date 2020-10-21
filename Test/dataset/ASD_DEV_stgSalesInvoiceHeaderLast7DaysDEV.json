@@ -1,0 +1,148 @@
+{
+	"name": "ASD_DEV_stgSalesInvoiceHeaderLast7DaysDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceHeaderTaxAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DateTimeCreated",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesOrderResponsiblePersonnelNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalChargeAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "TotalInvoiceAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DateTimeModified",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalTaxAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InvoiceAddressState",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesInvoiceHeaderLast7DaysDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "ASD_PROD_stgMetamatch_weight",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "match_weight_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "match_code",
+				"type": "varchar"
+			},
+			{
+				"name": "match_weight",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetamatch_weight"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

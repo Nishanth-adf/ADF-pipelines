@@ -1,0 +1,33 @@
+{
+	"name": "PL_CPD_DimCustomerMaster_D365_PROD",
+	"properties": {
+		"activities": [
+			{
+				"name": "DimCustomerMaster_D365_Incr_Load_PROD",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_dimCustomerMaster_D365_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-25T20:57:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

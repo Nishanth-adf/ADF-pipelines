@@ -1,0 +1,181 @@
+{
+	"name": "DS_ABLB_TGT_IL_oefinish",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "catalogno",
+				"type": "String"
+			},
+			{
+				"name": "partno",
+				"type": "String"
+			},
+			{
+				"name": "partentityno",
+				"type": "String"
+			},
+			{
+				"name": "partrev",
+				"type": "String"
+			},
+			{
+				"name": "catalog_desc",
+				"type": "String"
+			},
+			{
+				"name": "unit_meas",
+				"type": "String"
+			},
+			{
+				"name": "list_price",
+				"type": "String"
+			},
+			{
+				"name": "ws_price",
+				"type": "String"
+			},
+			{
+				"name": "dist_price",
+				"type": "String"
+			},
+			{
+				"name": "package_code",
+				"type": "String"
+			},
+			{
+				"name": "weight",
+				"type": "String"
+			},
+			{
+				"name": "price_change",
+				"type": "String"
+			},
+			{
+				"name": "markup",
+				"type": "String"
+			},
+			{
+				"name": "enterdate",
+				"type": "String"
+			},
+			{
+				"name": "last_ordered",
+				"type": "String"
+			},
+			{
+				"name": "special_tax",
+				"type": "String"
+			},
+			{
+				"name": "taxable",
+				"type": "String"
+			},
+			{
+				"name": "minorderqty",
+				"type": "String"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "jocreate",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "ref3",
+				"type": "String"
+			},
+			{
+				"name": "ref4",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "activeind",
+				"type": "String"
+			},
+			{
+				"name": "conversion",
+				"type": "String"
+			},
+			{
+				"name": "classify",
+				"type": "String"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "String"
+			},
+			{
+				"name": "variationcd",
+				"type": "String"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "String"
+			},
+			{
+				"name": "optctgryline",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "¬",
+				"rowDelimiter": "Þ",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('IL_oefinish-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse/IL"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

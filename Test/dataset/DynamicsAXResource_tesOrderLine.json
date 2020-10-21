@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAXResource_tesOrderLine",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHSalesOrderLinesV2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

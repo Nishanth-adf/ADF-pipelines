@@ -1,0 +1,29 @@
+{
+	"name": "DS_TGT_ABLB_CommissionableSKUS_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('CommissionableSkus_D365_Dataset-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "Finesse",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": "¬",
+			"rowDelimiter": "Þ",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

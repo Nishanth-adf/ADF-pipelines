@@ -1,0 +1,200 @@
+{
+	"name": "ASD_Dev_staging_stgCustInvoiceGeneral",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "JournalBatchNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LineNumber",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ItemSalesTaxGroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CashDiscountDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "Voucher",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TermsOfPayment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ExchRateSecondary",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "DocumentNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MethodOfPayment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ApprovedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BankTransactionType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReasonCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CashDiscountAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ExchRate",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "ChineseVoucherType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DebitAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "DateTimeModified",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "TransactionText",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DocumentDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "OffsetAccountDisplayValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OffsetTransactionText",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PaymentSpecification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DueDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "InvoiceId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostingProfile",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustVendBankAccountId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CreditAmount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "CustomerAccountDisplayValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OffsetCompany",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ItemWithholdingTaxGroupCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReasonComment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryDate",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "Company",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ChineseVoucher",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgCustInvoiceGeneral"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

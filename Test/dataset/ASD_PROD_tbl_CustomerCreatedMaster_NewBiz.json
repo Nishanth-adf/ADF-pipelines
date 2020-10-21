@@ -1,0 +1,33 @@
+{
+	"name": "ASD_PROD_tbl_CustomerCreatedMaster_NewBiz",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CUSTOMERACCOUNT",
+				"type": "varchar"
+			},
+			{
+				"name": "CustName",
+				"type": "varchar"
+			},
+			{
+				"name": "CustnoEnterDate",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_CustomerCreatedMaster_NewBiz"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,48 @@
+{
+	"name": "DS_gilbertb_currencyconversion",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gil",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "acctper",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "cfaud",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfcan",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfeur",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cfnzd",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "gilbertb",
+			"table": "currencyconversion"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

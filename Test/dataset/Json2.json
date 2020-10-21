@@ -1,0 +1,190 @@
+{
+	"name": "Json2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "rcd"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"businessUnitId": {
+					"type": "integer"
+				},
+				"lastPollTime": {
+					"type": "string"
+				},
+				"totalRecords": {
+					"type": "integer"
+				},
+				"completedContacts": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"abandoned": {
+								"type": "boolean"
+							},
+							"abandonSeconds": {
+								"type": "integer"
+							},
+							"ACWSeconds": {
+								"type": "integer"
+							},
+							"agentId": {
+								"type": "integer"
+							},
+							"agentSeconds": {
+								"type": "integer"
+							},
+							"callbackTime": {
+								"type": "integer"
+							},
+							"campaignId": {
+								"type": "integer"
+							},
+							"campaignName": {
+								"type": "string"
+							},
+							"confSeconds": {
+								"type": "integer"
+							},
+							"contactId": {
+								"type": "integer"
+							},
+							"contactStart": {
+								"type": "string"
+							},
+							"dateACWWarehoused": {
+								"type": "string"
+							},
+							"dateContactWarehoused": {
+								"type": "string"
+							},
+							"dispositionNotes": {
+								"type": "string"
+							},
+							"firstName": {
+								"type": "string"
+							},
+							"fromAddr": {
+								"type": "string"
+							},
+							"holdCount": {
+								"type": "integer"
+							},
+							"holdSeconds": {
+								"type": "integer"
+							},
+							"inQueueSeconds": {
+								"type": "integer"
+							},
+							"isLogged": {
+								"type": "boolean"
+							},
+							"isOutbound": {
+								"type": "boolean"
+							},
+							"isRefused": {
+								"type": "boolean"
+							},
+							"isShortAbandon": {
+								"type": "boolean"
+							},
+							"isTakeover": {
+								"type": "boolean"
+							},
+							"lastName": {
+								"type": "string"
+							},
+							"lastUpdateTime": {
+								"type": "string"
+							},
+							"masterContactId": {
+								"type": "integer"
+							},
+							"mediaType": {
+								"type": "integer"
+							},
+							"mediaTypeName": {
+								"type": "string"
+							},
+							"pointOfContactId": {
+								"type": "integer"
+							},
+							"pointOfContactName": {
+								"type": "string"
+							},
+							"postQueueSeconds": {
+								"type": "integer"
+							},
+							"preQueueSeconds": {
+								"type": "integer"
+							},
+							"primaryDispositionId": {
+								"type": "integer"
+							},
+							"refuseReason": {
+								"type": "null"
+							},
+							"refuseTime": {
+								"type": "null"
+							},
+							"releaseSeconds": {
+								"type": "integer"
+							},
+							"routingTime": {
+								"type": "integer"
+							},
+							"secondaryDispositionId": {
+								"type": "integer"
+							},
+							"serviceLevelFlag": {
+								"type": "integer"
+							},
+							"skillId": {
+								"type": "integer"
+							},
+							"skillName": {
+								"type": "string"
+							},
+							"teamId": {
+								"type": "integer"
+							},
+							"teamName": {
+								"type": "string"
+							},
+							"toAddr": {
+								"type": "string"
+							},
+							"totalDurationSeconds": {
+								"type": "integer"
+							},
+							"transferIndicatorId": {
+								"type": "integer"
+							},
+							"transferIndicatorName": {
+								"type": "string"
+							},
+							"isAnalyticsProcessed": {
+								"type": "boolean"
+							},
+							"analyticsProcessedDate": {
+								"type": "null"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

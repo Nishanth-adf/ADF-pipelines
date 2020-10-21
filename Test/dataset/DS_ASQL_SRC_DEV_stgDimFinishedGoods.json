@@ -1,0 +1,272 @@
+{
+	"name": "DS_ASQL_SRC_DEV_stgDimFinishedGoods",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductPK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CatalogNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CatalogName",
+				"type": "varchar"
+			},
+			{
+				"name": "CatalogNumberName",
+				"type": "varchar"
+			},
+			{
+				"name": "CatalogMasterName",
+				"type": "varchar"
+			},
+			{
+				"name": "CatalogMasterNumberName",
+				"type": "varchar"
+			},
+			{
+				"name": "PartNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PartEnityNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductGroupNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "GroupDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "SubGroupDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "PartRev",
+				"type": "varchar"
+			},
+			{
+				"name": "UnitOfMeasure",
+				"type": "varchar"
+			},
+			{
+				"name": "ListPrice",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WSPrice",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DistPrice",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PackageCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Weight",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PriceChange",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MarkUp",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SourceEnterDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LastOrdered",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SpecialTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Taxable",
+				"type": "varchar"
+			},
+			{
+				"name": "MinOrderQty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MatrixCD",
+				"type": "varchar"
+			},
+			{
+				"name": "jocreate",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref1",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref2",
+				"type": "varchar"
+			},
+			{
+				"name": "SeminarDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Ref4",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ref5",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref6",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref6Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref7",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref7Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "Ref8",
+				"type": "varchar"
+			},
+			{
+				"name": "ActiveInd",
+				"type": "varchar"
+			},
+			{
+				"name": "Conversion",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Classify",
+				"type": "varchar"
+			},
+			{
+				"name": "VariationCD",
+				"type": "varchar"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "varchar"
+			},
+			{
+				"name": "optctgryline",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "group_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "StandardCost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CategoryManager",
+				"type": "varchar"
+			},
+			{
+				"name": "CIA",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductLine",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "varchar"
+			},
+			{
+				"name": "DWCreateDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DWUpdateDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SourceDB",
+				"type": "varchar"
+			},
+			{
+				"name": "TPM",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductFamilyOLD",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductFamily2",
+				"type": "varchar"
+			},
+			{
+				"name": "DBSource",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgDimFinishedGoods"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

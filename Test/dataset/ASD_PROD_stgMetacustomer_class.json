@@ -1,0 +1,30 @@
+{
+	"name": "ASD_PROD_stgMetacustomer_class",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer_class",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_class_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetacustomer_class"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,233 @@
+{
+	"name": "PL_TRAN_CPD_STG_DimUidCustomer",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_DWH_source-2-AZDB_source",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "AVLVDW_MetaDisturb_DimUidCustomer-2-BLB_DWH_DimUidCust",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('source-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-source]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"uidCustomerKey": "uidCustomerKey",
+							"finCustomerKey": "finCustomerKey",
+							"customerId": "customerId",
+							"custNo": "custNo",
+							"sourceId": "sourceId",
+							"custName": "custName",
+							"custnoname": "custnoname",
+							"creditlmt": "creditlmt",
+							"activeind": "activeind",
+							"custclass": "custclass",
+							"credithold": "credithold",
+							"phone": "phone",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"salesmancd": "salesmancd",
+							"salesmanname": "salesmanname",
+							"salesmancdname": "salesmancdname",
+							"in_out_flag": "in_out_flag",
+							"ref5": "ref5",
+							"ref5name": "ref5name",
+							"ref6": "ref6",
+							"ref6name": "ref6name",
+							"ref7": "ref7",
+							"ref7name": "ref7name",
+							"ref8": "ref8",
+							"ref8name": "ref8name",
+							"Districtname": "Districtname",
+							"primarycustomer": "primarycustomer",
+							"primarycustomernoname": "primarycustomernoname",
+							"active": "active",
+							"inceptiondate": "inceptiondate",
+							"dayssinceinception": "dayssinceinception",
+							"discount": "discount",
+							"type": "type",
+							"current_rating": "current_rating",
+							"potential_rating": "potential_rating",
+							"modality": "modality",
+							"specialties": "specialties",
+							"ref4": "ref4",
+							"ref4name": "ref4name",
+							"implementationdate": "implementationdate",
+							"certificationdate": "certificationdate",
+							"PrimaryState": "PrimaryState",
+							"PrimaryCertificationdate": "PrimaryCertificationdate",
+							"PrimaryDaysSinceInception": "PrimaryDaysSinceInception",
+							"PrimaryZip": "PrimaryZip",
+							"PrimaryCustClass": "PrimaryCustClass",
+							"ProductChannel": "ProductChannel",
+							"PrimaryInceptionDate": "PrimaryInceptionDate",
+							"ECommerceFlag": "ECommerceFlag",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_DimUidCustomer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metauseedpdev_DimUidCustomer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "AVLVDW_MetaDisturb_DimUidCustomer-2-BLB_DWH_DimUidCust",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/DataWarehouse/@{concat('source-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [uidCustomerKey]\n      ,[finCustomerKey]\n      ,[customerId]\n      ,[custNo]\n      ,[sourceId]\n      ,[custName]\n      ,[custnoname]\n      ,[creditlmt]\n      ,[activeind]\n      ,[custclass]\n      ,[credithold]\n      ,[phone]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[salesmancd]\n      ,[salesmanname]\n      ,[salesmancdname]\n      ,[in_out_flag]\n      ,[ref5]\n      ,[ref5name]\n      ,[ref6]\n      ,[ref6name]\n      ,[ref7]\n      ,[ref7name]\n      ,[ref8]\n      ,[ref8name]\n      ,[Districtname]\n      ,[primarycustomer]\n      ,[primarycustomernoname]\n      ,[active]\n      ,[inceptiondate]\n      ,[dayssinceinception]\n      ,[discount]\n      ,[type]\n      ,[current_rating]\n      ,[potential_rating]\n      ,[modality]\n      ,[specialties]\n      ,[ref4]\n      ,[ref4name]\n      ,[implementationdate]\n      ,[certificationdate]\n      ,[PrimaryState]\n      ,[PrimaryCertificationdate]\n      ,[PrimaryDaysSinceInception]\n      ,[PrimaryZip]\n      ,[PrimaryCustClass]\n      ,[ProductChannel]\n      ,[PrimaryInceptionDate]\n      ,[ECommerceFlag]\n\t  ,'MetaDistrib' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [MetaDistrib].[dbo].[DimUidCustomer] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"uidCustomerKey": "uidCustomerKey",
+							"finCustomerKey": "finCustomerKey",
+							"customerId": "customerId",
+							"custNo": "custNo",
+							"sourceId": "sourceId",
+							"custName": "custName",
+							"custnoname": "custnoname",
+							"creditlmt": "creditlmt",
+							"activeind": "activeind",
+							"custclass": "custclass",
+							"credithold": "credithold",
+							"phone": "phone",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"salesmancd": "salesmancd",
+							"salesmanname": "salesmanname",
+							"salesmancdname": "salesmancdname",
+							"in_out_flag": "in_out_flag",
+							"ref5": "ref5",
+							"ref5name": "ref5name",
+							"ref6": "ref6",
+							"ref6name": "ref6name",
+							"ref7": "ref7",
+							"ref7name": "ref7name",
+							"ref8": "ref8",
+							"ref8name": "ref8name",
+							"Districtname": "Districtname",
+							"primarycustomer": "primarycustomer",
+							"primarycustomernoname": "primarycustomernoname",
+							"active": "active",
+							"inceptiondate": "inceptiondate",
+							"dayssinceinception": "dayssinceinception",
+							"discount": "discount",
+							"type": "type",
+							"current_rating": "current_rating",
+							"potential_rating": "potential_rating",
+							"modality": "modality",
+							"specialties": "specialties",
+							"ref4": "ref4",
+							"ref4name": "ref4name",
+							"implementationdate": "implementationdate",
+							"certificationdate": "certificationdate",
+							"PrimaryState": "PrimaryState",
+							"PrimaryCertificationdate": "PrimaryCertificationdate",
+							"PrimaryDaysSinceInception": "PrimaryDaysSinceInception",
+							"PrimaryZip": "PrimaryZip",
+							"PrimaryCustClass": "PrimaryCustClass",
+							"ProductChannel": "ProductChannel",
+							"PrimaryInceptionDate": "PrimaryInceptionDate",
+							"ECommerceFlag": "ECommerceFlag",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_AV_LV_DW_TBL_DimUidCustomer_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_DimUidCustomer",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_SINK_ASQL_SF_BA_Prod_Accounts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_BA_Prod_Accounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

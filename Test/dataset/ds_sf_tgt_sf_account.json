@@ -1,0 +1,19 @@
+{
+	"name": "ds_sf_tgt_sf_account",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Development"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

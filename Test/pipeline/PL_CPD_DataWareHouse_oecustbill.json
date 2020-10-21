@@ -1,0 +1,676 @@
+{
+	"name": "PL_CPD_DataWareHouse_oecustbill",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DataWareHouse_oecustbill",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [custno]\n      ,[subno]\n      ,[bill_to_name]\n      ,[contact]\n      ,[attention]\n      ,[phone]\n      ,[ext]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[county]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[discount]\n      ,[pcntovercost]\n      ,[creditlmt]\n      ,[arcurr]\n      ,[arover30]\n      ,[arover60]\n      ,[arover90]\n      ,[arover120]\n      ,[highbal]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[oeused]\n      ,[credithold]\n      ,[d_b_rating]\n      ,[comp_rating]\n      ,[last_dunning]\n      ,[dunningcnt]\n      ,[lastcollection]\n      ,[nextcollection]\n      ,[correspondence]\n      ,[fscm_cage]\n      ,[custclass]\n      ,[invoicecopies]\n      ,[priority]\n      ,[taxexempt]\n      ,[taxexempt_no]\n      ,[currencycd]\n      ,[telex]\n      ,[usenet]\n      ,[fax]\n      ,[voicemail]\n      ,[lastfeeearnedcd]\n      ,[deal_no]\n      ,[paytermscd]\n      ,[last_invoice]\n      ,[telmktrepcd]\n      ,[telmktreploc]\n  FROM [AV-LV-DW].[DataWarehouse].[dbo].[oecustbill]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgDWHoecustbill;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "custno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "custno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "subno",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bill_to_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bill_to_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "contact",
+									"type": "String"
+								},
+								"sink": {
+									"name": "contact",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "attention",
+									"type": "String"
+								},
+								"sink": {
+									"name": "attention",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ext",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ext",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "addr3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "addr3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "county",
+									"type": "String"
+								},
+								"sink": {
+									"name": "county",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "discount",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "discount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "pcntovercost",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "pcntovercost",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "creditlmt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "creditlmt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "arcurr",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "arcurr",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "arover30",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "arover30",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "arover60",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "arover60",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "arover90",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "arover90",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "arover120",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "arover120",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "highbal",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "highbal",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "mtdcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "mtdcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ytdcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ytdcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrsales",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrsales",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrrtrn",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrrtrn",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrother",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrother",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "lastyrcosts",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "lastyrcosts",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "oeused",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "oeused",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "credithold",
+									"type": "String"
+								},
+								"sink": {
+									"name": "credithold",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "d_b_rating",
+									"type": "String"
+								},
+								"sink": {
+									"name": "d_b_rating",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "comp_rating",
+									"type": "String"
+								},
+								"sink": {
+									"name": "comp_rating",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "last_dunning",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "last_dunning",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "dunningcnt",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "dunningcnt",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "lastcollection",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "lastcollection",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "nextcollection",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "nextcollection",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "correspondence",
+									"type": "String"
+								},
+								"sink": {
+									"name": "correspondence",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fscm_cage",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fscm_cage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "custclass",
+									"type": "String"
+								},
+								"sink": {
+									"name": "custclass",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "invoicecopies",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "invoicecopies",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "priority",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "priority",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "taxexempt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "taxexempt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "taxexempt_no",
+									"type": "String"
+								},
+								"sink": {
+									"name": "taxexempt_no",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "currencycd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "currencycd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "telex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "telex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "usenet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "usenet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "voicemail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "voicemail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lastfeeearnedcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "lastfeeearnedcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "deal_no",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deal_no",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "paytermscd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "paytermscd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "last_invoice",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "last_invoice",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "telmktrepcd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "telmktrepcd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "telmktreploc",
+									"type": "String"
+								},
+								"sink": {
+									"name": "telmktreploc",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_DataWareHouse_oecustbill",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_stgDWHoecustbill",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-14T12:52:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

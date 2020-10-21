@@ -1,0 +1,26 @@
+{
+	"name": "AzureSqlTable_metauedpdev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "salesRepid",
+				"type": "Int64"
+			},
+			{
+				"name": "salesmancode",
+				"type": "String"
+			},
+			{
+				"name": "insertdate",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

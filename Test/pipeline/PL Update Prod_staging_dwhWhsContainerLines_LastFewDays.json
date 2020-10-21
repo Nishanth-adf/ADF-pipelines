@@ -1,0 +1,208 @@
+{
+	"name": "PL Update Prod_staging_dwhWhsContainerLines_LastFewDays",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/03/2020",
+		"activities": [
+			{
+				"name": "Copy Prod_staging_dwhWhsContainerLines_LastFewDays",
+				"description": "PL Update Prod_staging_dwhWhsContainerLines_LastFewDays",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "$filter=WHSContainerLineModifiedDateTime%20gt%202020-08-31&cross-company=true",
+						"httpRequestTimeout": "00:05:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.dwhWhsContainerLines_LastFewDays",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLineRecId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "WHSContainerLineRecId",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ItemId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InventDimId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InventDimId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLineRecVersion",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "WHSContainerLineRecVersion",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLineModifiedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "WHSContainerLineModifiedDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "Qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLineCreatedDateTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "WHSContainerLineCreatedDateTime",
+									"type": "DateTimeOffset"
+								}
+							},
+							{
+								"source": {
+									"name": "LoadLine",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LoadLine",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLinePartition",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "WHSContainerLinePartition",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipmentId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShipmentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UnitId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WHSContainerLineModifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WHSContainerLineModifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ContainerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ContainerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CapturedWeight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CapturedWeight",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "D365Prod_DWHWHSCONTAINERLINEs",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Prod_staging_dwhWhsContainerLines_LastFewDays",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-04T03:36:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

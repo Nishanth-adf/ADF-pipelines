@@ -1,0 +1,22 @@
+{
+	"name": "d365metafin",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsAX",
+		"typeProperties": {
+			"url": "https://metafin59a26b16066ab356devaos.cloudax.dynamics.com/data",
+			"tenant": "5d3d5325-ed63-487c-a91f-a6712548bdc0",
+			"aadResourceId": "https://metafin59a26b16066ab356devaos.cloudax.dynamics.com",
+			"servicePrincipalId": "1abd4fb4-84d5-45b4-8470-080e5728f59e",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "d365metafin"
+			}
+		}
+	}
+}

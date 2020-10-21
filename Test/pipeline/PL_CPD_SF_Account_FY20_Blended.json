@@ -1,0 +1,307 @@
+{
+	"name": "PL_CPD_SF_Account_FY20_Blended",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_Account_FY20_Blended",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Account_FY20_Blended_PROD_Updated]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 20,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD_FY2020_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD_FY2020_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYMTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYMTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PYTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PYTD_FY19_20_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PriorMonth_FY2020_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PriorMonth_FY2020_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_Blended_Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FY2020_Blended_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_Emerson_Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FY2020_Emerson_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_BL_Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FY2020_BL_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_EW_Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FY2020_EW_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FY2020_FS_Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FY2020_FS_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3_Month_Avg_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_3_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6_Month_Avg_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_6_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12_Month_Avg_Blended__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_12_Month_Avg_Blended__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Rolling_3_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Rolling_6_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Rolling_12_Month_Avg_Blended_Rating_FY20__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_PROD_Account_Fy20_Blended",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Account_Blended_FY20",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_Account_FY20_Blended",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_CPD_SF_Account_FY20_Blended) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			},
+			{
+				"name": "Send_Failure_Notification",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_Account_FY20_Blended",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-48.westus.logic.azure.com:443/workflows/52a4b46e8a004bb3a8e7a1ef010c5b76/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lWK4hzYuPYvbEvf6kEMyekl6NBEsozX4SxjT6_IXUhQ",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_CPD_SF_Account_FY20_Blended) Execution Failed!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-23T16:44:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

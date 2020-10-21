@@ -1,0 +1,438 @@
+{
+	"name": "PL_CPD_BA_Customers_2_SF_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Practitioners_BA_SF_DEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_SF_BA_DEV_Practioner_Records_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "AccountNumber_DataAreaID__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordTypeId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecordTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingPostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingPostalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingCountry",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BillingCountry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingPostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingPostalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCountry",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingCountry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumberofEmployees",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "NumberOfEmployees",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "mi_Admin_Email__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "mi_Admin_Email__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNumber_DataAreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNumber_DataAreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationNumber__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_BA_Practitioners_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_BA_Practitioners_Sandbox_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_Patients_BA_SF_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Practitioners_BA_SF_DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_SF_BA_Dev_Patient_Records_DEV]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "AccountNumber_DataAreaID__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Suffix",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Suffix",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Phone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMailingStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMailingStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMailingCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMailingCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMailingState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMailingState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMailingPostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMailingPostalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PersonMailingCountry",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersonMailingCountry",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNumber_DataAreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNumber_DataAreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FirstName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_BA_Patients_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Patients_BA_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_SF_Accounts_BA_2_ASQL_DEV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_Patients_BA_SF_DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id, AccountNumber,Name,RecordTypeId from Account where AccountNumber <>''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table [ods].[sf_BA_Sandbox_Accounts_DEV]",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_BA_Sandbox_Accounts_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_BA_Accounts_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "BA_Salesforce_Sandbox"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-30T12:48:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

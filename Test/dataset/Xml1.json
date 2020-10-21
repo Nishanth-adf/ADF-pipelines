@@ -1,0 +1,19 @@
+{
+	"name": "Xml1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Xml",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Sample-employee-XML-file - Copy.xml",
+				"container": "rcdatanet"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

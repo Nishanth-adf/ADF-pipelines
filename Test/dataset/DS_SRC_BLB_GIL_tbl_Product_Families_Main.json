@@ -1,0 +1,78 @@
+{
+	"name": "DS_SRC_BLB_GIL_tbl_Product_Families_Main",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRC - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "db",
+				"type": "String"
+			},
+			{
+				"name": "Group",
+				"type": "String"
+			},
+			{
+				"name": "catalogno",
+				"type": "String"
+			},
+			{
+				"name": "desc",
+				"type": "String"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "String"
+			},
+			{
+				"name": "Product_Line",
+				"type": "String"
+			},
+			{
+				"name": "Product_Family",
+				"type": "String"
+			},
+			{
+				"name": "Sub Group",
+				"type": "String"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "Sub2_Group",
+				"type": "String"
+			},
+			{
+				"name": "Product_Family_Variety",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "|",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "GIL_tbl_Product_Families_Main-20181227.txt",
+			"folderPath": "metausedpblobdev/Finesse/gil"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

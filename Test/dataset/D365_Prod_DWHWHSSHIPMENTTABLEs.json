@@ -1,0 +1,16 @@
+{
+	"name": "D365_Prod_DWHWHSSHIPMENTTABLEs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DWHWHSSHIPMENTTABLEs"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

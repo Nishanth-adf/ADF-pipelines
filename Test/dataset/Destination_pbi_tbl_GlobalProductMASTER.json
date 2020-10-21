@@ -1,0 +1,45 @@
+{
+	"name": "Destination_pbi_tbl_GlobalProductMASTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLDatabase33",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Legal_Entity",
+				"type": "varchar"
+			},
+			{
+				"name": "SKU",
+				"type": "varchar"
+			},
+			{
+				"name": "SKU_Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "GlobalPositioning",
+				"type": "varchar"
+			},
+			{
+				"name": "GlobalType",
+				"type": "varchar"
+			},
+			{
+				"name": "Corp_Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Brand",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[pbi_tbl_GlobalProductMASTER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,108 @@
+{
+	"name": "DS_ASQL_TGT_metausedpdev_tbl_Product_Families_Main",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "acctyr",
+				"type": "Double"
+			},
+			{
+				"name": "acctper",
+				"type": "Double"
+			},
+			{
+				"name": "db",
+				"type": "String"
+			},
+			{
+				"name": "Group",
+				"type": "String"
+			},
+			{
+				"name": "catalogno",
+				"type": "String"
+			},
+			{
+				"name": "desc",
+				"type": "String"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "String"
+			},
+			{
+				"name": "Product_Line",
+				"type": "String"
+			},
+			{
+				"name": "Product_Family",
+				"type": "String"
+			},
+			{
+				"name": "Product_Family_Variety",
+				"type": "String"
+			},
+			{
+				"name": "Sub Group",
+				"type": "String"
+			},
+			{
+				"name": "matrixcd",
+				"type": "String"
+			},
+			{
+				"name": "saleacctcr",
+				"type": "String"
+			},
+			{
+				"name": "CIA",
+				"type": "String"
+			},
+			{
+				"name": "Private_Label_Code",
+				"type": "String"
+			},
+			{
+				"name": "Category_Manager",
+				"type": "String"
+			},
+			{
+				"name": "TPM",
+				"type": "String"
+			},
+			{
+				"name": "Sub2_Group",
+				"type": "String"
+			},
+			{
+				"name": "Global_Prod_Group1",
+				"type": "String"
+			},
+			{
+				"name": "Global_Prod_Group2",
+				"type": "String"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgTblProductFamiliesMain]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

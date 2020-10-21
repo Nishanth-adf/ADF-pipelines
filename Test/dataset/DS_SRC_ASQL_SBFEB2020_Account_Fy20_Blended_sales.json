@@ -1,0 +1,13 @@
+{
+	"name": "DS_SRC_ASQL_SBFEB2020_Account_Fy20_Blended_sales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

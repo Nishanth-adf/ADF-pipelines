@@ -1,0 +1,59 @@
+{
+	"name": "ASD_DEV_DimDistributor_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dimDistributorID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "distributorCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "distributorName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "comments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimDistributor_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

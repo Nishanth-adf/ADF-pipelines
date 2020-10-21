@@ -1,0 +1,92 @@
+{
+	"name": "DS_SF_TGT_DimCustomerMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SalesForce_Naresh_Login",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - SalesForce"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "customerID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "customerNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "name__c",
+				"type": "String"
+			},
+			{
+				"name": "salesmanCode__c",
+				"type": "String"
+			},
+			{
+				"name": "referredBy__c",
+				"type": "String"
+			},
+			{
+				"name": "industryType__c",
+				"type": "String"
+			},
+			{
+				"name": "primaryCustomerIndicator__c",
+				"type": "String"
+			},
+			{
+				"name": "primaryCustomerNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "ref1__c",
+				"type": "String"
+			},
+			{
+				"name": "ref2__c",
+				"type": "String"
+			},
+			{
+				"name": "effectiveDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "activeIndicator__c",
+				"type": "String"
+			},
+			{
+				"name": "insertDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy__c",
+				"type": "String"
+			},
+			{
+				"name": "modifiedDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "modifiedBy__c",
+				"type": "String"
+			},
+			{
+				"name": "latestIndicator__c",
+				"type": "String"
+			},
+			{
+				"name": "expiryDate__c",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "DimCustomerMaster__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

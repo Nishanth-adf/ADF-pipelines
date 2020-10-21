@@ -1,0 +1,107 @@
+{
+	"name": "DS_ASQL_SINK_DimCustomerMaster_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customerID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "customerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "salesmanCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "referredBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "industryType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "primaryCustomerIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "primaryCustomerNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ref1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ref2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "effectiveDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "expiryDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "activeIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "insertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "insertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "latestIndicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dataAreaId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dimCustomerMaster_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

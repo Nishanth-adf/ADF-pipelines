@@ -1,0 +1,1196 @@
+{
+	"name": "PL_sf_UserRevenue_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_sfSBFEB2020_UserRevenue_DirectSales",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "User_downlaod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Prod_UserMonthlyRevenue_DirectSales]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "salesRepCode_Status__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "January_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "January_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "February_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "February_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "March_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "March_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "April_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "April_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "May_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "May_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "June_Direct_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "June_Direct_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Focus_Sales__C",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Focus_Sales__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_sfSBFEB2020_UserRevenue",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SFDC_SINK_User_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "User_downlaod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id\n,name\n,salesRepCode_Status__c\n,Sales_Rep_Code__c\n,isActive\n,Username\n,LastName\n,Email\n,Alias\n,TimeZoneSidKey\n,LocaleSidKey\n,EmailEncodingKey\n,ProfileId\n,LanguageLocaleKey  from User \nwhere sales_rep_code__c <> '' and IsActive = True\norder by sales_rep_code__c",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table ods.sf_Prod_User",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsActive",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "isActive",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SFDC_SRC_Prod_User",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_sf_Prod_User",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_distributors_Salesdata",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_sfSBFEB2020_UserRevenue_DirectSales",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Prod_UserMonthlyRevenue_DistributorSales]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "salesRepCode_Status__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "January_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "January_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "February_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "February_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "March_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "March_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "April_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "April_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "May_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "May_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "June_Dist_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "June_Dist_Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Focus_Sales__C",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Focus_Sales__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_sfSBFEB2020_UserRevenue",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SFDC_SINK_User_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_BlendedSales_Users",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_distributors_Salesdata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Prod_UserMonthlyRevenue]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "salesRepCode_Status__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth1__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth1__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth2__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth2__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth3__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth3__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth4__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth4__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth5__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth5__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth6__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth6__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Focus_Sales__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Focus_Sales__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_sfSBFEB2020_UserRevenue",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Prod_User_Blended_Revenue",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_BlendedSales_Managers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_BlendedSales_Users",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[sf_Prod_UserMonthlyRevenue_Mgrs]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "SalesRepCode_Status__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Username",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Username",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Alias",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Alias",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TimeZoneSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocaleSidKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EmailEncodingKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageLocaleKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sales_Rep_Code__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth1__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth1__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth2__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth2__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth3__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth3__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth4__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth4__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth5__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth5__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RevenueMonth6__c",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RevenueMonth6__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesRepCode_Status__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Focus_Sales__C",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "Focus_Sales__c",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_sfSBFEB2020_UserRevenue",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Users_Managers_Blended",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Send_Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CPD_BlendedSales_Managers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-69.westus.logic.azure.com:443/workflows/4a5675a0398046858addb68828bca210/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fr8qrniDhSRFNlDkHpU07X-wk23Yl_5REqeqkc2zy2c",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_sf_UserRevenue_Prod) Execution is Succeeded!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			},
+			{
+				"name": "Send_Failure_Notification",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CPD_BlendedSales_Managers",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-48.westus.logic.azure.com:443/workflows/52a4b46e8a004bb3a8e7a1ef010c5b76/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lWK4hzYuPYvbEvf6kEMyekl6NBEsozX4SxjT6_IXUhQ",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "@{pipeline().Pipeline}",
+						"Subject": "Pipeline(PL_SF_UserRevenue_Prod) Execution Failed!",
+						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
+						"EmailTo": "Nishanth.dodda@lntinfotech.com;VenkatShatagopam@metagenics.com;AdamKing@metagenics.com;dennislee@metagenics.com"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-28T05:37:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

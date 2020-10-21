@@ -1,0 +1,21 @@
+{
+	"name": "Test_AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "sm_Code",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[testSM]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

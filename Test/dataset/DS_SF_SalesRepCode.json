@@ -1,0 +1,25 @@
+{
+	"name": "DS_SF_SalesRepCode",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SalesForce_Naresh_Login",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "User__c",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "Sales_Rep_Code__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

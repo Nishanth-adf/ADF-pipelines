@@ -1,0 +1,19 @@
+{
+	"name": "ds_sf_tgt_account_prod_test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Dennis_Test",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

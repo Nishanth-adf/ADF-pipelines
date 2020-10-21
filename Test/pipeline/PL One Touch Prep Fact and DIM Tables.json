@@ -1,0 +1,175 @@
+{
+	"name": "PL One Touch Prep Fact and DIM Tables",
+	"properties": {
+		"description": "Migrate source tables from Production to Development prior to running ‘PL_D365_Prod_One_TouchPipeline_DEV’\n\nAuthor: GBuenaventura\nDate: 08/10/2020",
+		"activities": [
+			{
+				"name": "PL Migrate DEV_dbo_CustCustomerV3Staging",
+				"description": "Migrate Table FROM Prod.dbo.CustCustomerV3Staging TO Dev.dbo.CustCustomerV3Staging\n\nAuthor: GBuenaventura\nDate: 06/29/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_dwh_CustCustomerV3Staging",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate DEV_staging_stgSalesInvoiceHeader",
+				"description": "Migrate FROM Prod.dbo.stgSalesInvoiceHeader TO Dev.staging.stgSalesInvoiceHeader\n\nAuthor: GBuenaventura\nDate: 08/11/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_staging_stgSalesInvoiceHeader",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_staging_stgSalesInvoiceLines",
+				"description": "Migrate FROM Prod.dbo.stgSalesInvoiceHeader TO Dev.staging.stgSalesInvoiceHeader\n\nPart of the PL One Touch Prep Fact and DIM Tables Pipeline.\n\nAuthor: GBuenaventura\nDate: 08/11/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_staging_stgSalesInvoiceLines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate DEV_stgSalesOrderLine_D365",
+				"description": "PL Migrate From Prod_dbo.stgSalesOrderLine_D365 To Dev_staging.stgSalesOrderLine_D365\n\nAuthor: GBuenaventura\nDate: 08/12/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_stgSalesOrderLine_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_dbo_SalesOrderHeaderV2Staging",
+				"description": "Migrate From Prod.dbo.SalesOrderHeaderV2Staging To Dev.dbo.SalesOrderHeaderV2Staging\n\nAuthor: GBuenaventura\nDate: 08/13/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_dbo_SalesOrderHeaderV2Staging",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_dwh_tbl_StandardCostByItem",
+				"description": "Migrate From Prod_dbo.tbl_StandardCostByItem to Dev_dwh.tbl_StandardCostByItem\n\nAuthor: GBuenaventura\nDate: 08/17/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_dwh_tbl_StandardCostByItem",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate AOP Prod to Dev",
+				"description": "Migrate From Prod to Dev:\n\nFROM Prod\ndbo.tbl_2020AOP_SalesForce\ndbo.tbl_2020AOPv1\n\nTO Dev\ndwh.tbl_2020AOP_SalesForce\ndwh.tbl_2020AOPv1\n\nAuthor: GBuenaventura\nDate: 08/26/2020\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate AOP Prod to Dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate FACT and DIMs to DEV",
+				"description": "Migrate Fact and Dimension tables from From Prod to DEV\n\nAuthor: GBuenaventura\nDate: 08/27/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate FACT and DIMs to DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_dwh_FactOrderInvoiceSales_D365",
+				"description": "Migrate From Prod.dbo.FactOrderInvoiceSales_D365 To DEV.dwh.FactOrderInvoiceSales_D365\n\nAuthor: GBuenaventura\nDate: 08/31/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL PL Migrate FACT and DIMs to DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_dwh_FactOrderInvoiceSales_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "SP CREATE_FK_factOrderInvoiceSales_D365",
+				"description": "Create Foreign Keys in Dimension tables Related to Fact Table\n\nAuthor: GBuenaventura\nDate: 08/31/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL PL Migrate DEV_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[CREATE_FK_factOrderInvoiceSales_D365]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-31T22:38:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

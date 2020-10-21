@@ -1,0 +1,30 @@
+{
+	"name": "ASD_PROD_DimAttributeInventItemGroups",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Value",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_DimAttributeInventItemGroups"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

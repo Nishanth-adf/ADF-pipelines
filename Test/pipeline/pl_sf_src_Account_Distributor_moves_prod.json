@@ -1,0 +1,100 @@
+{
+	"name": "pl_sf_src_Account_Distributor_moves_prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_sf_src_Account_Distributor_moves",
+				"description": "-- dlee, 8/12/2020\n-- move sales reps to distrubutor accounts",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "dbo.sf_src_Account_Distributor_moves",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 200,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKeyERP__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaId"
+								},
+								"sink": {
+									"name": "AreaID__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName"
+								},
+								"sink": {
+									"name": "Name"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNumber"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountOwner"
+								},
+								"sink": {
+									"name": "OwnerID"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_src_factSales_account_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_tgt_sf_account_prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-12T21:58:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

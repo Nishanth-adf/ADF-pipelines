@@ -1,0 +1,244 @@
+{
+	"name": "ZPL_CPD__DimCustomerMaster_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD__DimCustomerMaster_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM DBO.DimCustomerMaster where CustomerId <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "customerID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "customerID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "customerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customerNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "salesmanCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "salesmanCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "referredBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "referredBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "industryType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "industryType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "primaryCustomerIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "primaryCustomerIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "primaryCustomerNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "primaryCustomerNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "effectiveDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "effectiveDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "expiryDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "expiryDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "activeIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "activeIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "latestIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "latestIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimCustomerMaster_Dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DimCustomerMaster_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T12:39:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

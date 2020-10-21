@@ -1,0 +1,88 @@
+{
+	"name": "PL_DATA_CPD_DimSalesRep",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_oesalesman_repmapconslidated-2-DimSalesRep",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimCustomerMaster]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT distinct Cast(A.[salesmancd] as nvarchar(20)) as [salesmanCode]\n      ,Cast(A.[name] as nvarchar(50)) as [name]\n   ,Cast(A.[addr1] as nvarchar(50)) as AddressLine1\n      ,Cast(A.[addr2] as nvarchar(50)) as AddressLine2\n      ,Cast(A.[addr3] as nvarchar(50)) as AddressLine3\n      ,Cast(A.[city] as nvarchar(50)) as [city]\n      ,Cast(A.[state] as nvarchar(20)) as [state]\n      ,Cast(A.[zip] as nvarchar(20)) as [zip]\n      ,Cast(A.[country] as nvarchar(30)) as [country]\n      ,Cast(A.[phone] as nvarchar(20)) as [phone]\n      ,Cast(A.[usenet] as nvarchar(50)) as Email\n      ,Cast(A.[fax] as nvarchar(20)) as [fax]\n   ,Cast(GetDate() as Datetime) as [StartDate] --For any new salesrep onboarding or termination, this attribue data have to be provided by the business\n   ,Cast(NULL as Datetime) as [EndDate]\n   --[STG-tbl_Rep_Map_Consolidated]\n  ,Cast(B.[acctyr] as nvarchar(20)) as AccountYear\n  ,Cast(B.[acctper] as nvarchar(20)) as AccountMonth\n   ,Cast(B.[DistMgr] as nvarchar(50)) as DistManager\n   ,Cast(B.[ref5] as nvarchar(20)) as DistManagerCd\n   ,Cast(B.[ref1] as nvarchar(50)) as DistName\n   ,Cast(B.[RegMgr] as nvarchar(50)) as RegionManger\n   ,Cast(B.[ref6] as nvarchar(20))  as  RegionMangerCd\n   ,Cast(NULL as nvarchar(50)) as RegionName\n   ,Cast((Case when A.DBSource in ('IL', 'OT') Then 'Meta'\n    when A.DBSource in ('MetaX') Then 'Meta-X'\n    End) as nvarchar(30)) as businessDivision --based on the data source, it could be IL is 'Meta', SC58 as 'BA' or OT as 'Meta-X'\n   ,Dateadd(hh,-8,GetDate()) as [insertDate]\n   ,'ADF ETL' as [insertBy]\n   ,A.DBSource as source\n  FROM [dbo].[stgOesalesman] A Inner Join [dbo].[stgTblRepMapConsolidated] B\n  on A.[salesmancd] = B.[salesmancd]\n  and a.DBSource = case when b.DB = 'Canada' then 'OT' else b.db end",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmanCode": "salesmanCode",
+							"businessDivision": "businessDivision",
+							"DistManager": "distManager",
+							"DistManagerCd": "distManagerCode",
+							"DistName": "distName",
+							"RegionManger": "regionManager",
+							"RegionMangerCd": "regionManagerCode",
+							"RegionName": "regionName",
+							"name": "name",
+							"AddressLine1": "addressLine1",
+							"AddressLine2": "addressLine2",
+							"AddressLine3": "addressLine3",
+							"city": "city",
+							"state": "state",
+							"country": "country",
+							"zip": "zip",
+							"phone": "phone",
+							"Email": "email",
+							"fax": "fax",
+							"StartDate": "startDate",
+							"EndDate": "endDate",
+							"AccountYear": "accountYear",
+							"AccountMonth": "accountMonth",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_STG_oesalesman_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimSalesRep",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-25T11:57:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,92 @@
+{
+	"name": "PL_TRAN_CPD_RefCurrency",
+	"properties": {
+		"activities": [
+			{
+				"name": "SQL01_GIL_currencyconversion-2-BLB_GIL_RefCurrency",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [acctper]\n      ,[acctyr]\n      ,[cfaud]\n      ,[cfcan]\n      ,[cfeur]\n      ,[cfnzd]\n      ,[cfaudnzd]\n      ,[cfaudEOM]\n      ,[cfcanEOM]\n      ,[cfeurEOM]\n      ,[cfnzdEOM]\n      ,[cfaudnzdEOM]\n      ,[ConstCAD]\n      ,[ConstAUD]\n      ,[ConstEuro]\n  FROM [gil].[gilbertb].[currencyconversion]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_GIL_CurrencyConversion",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_GIL_DBO_CurrencyConversion",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_DBO_CurrencyConversion-2-AZDB_RefCurrency",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_GIL_currencyconversion-2-BLB_GIL_RefCurrency",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_GIL_DBO_CurrencyConversion",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_RefCurrency",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

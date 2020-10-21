@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Test_SalesOrderLine",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DWHSalesOrderLinev2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_BA_Products_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "SF_BA_Products_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

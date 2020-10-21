@@ -1,0 +1,62 @@
+{
+	"name": "ASD_DEV_tbl_FinesseConsolOeShipaddrDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Source",
+				"type": "varchar"
+			},
+			{
+				"name": "custno",
+				"type": "varchar"
+			},
+			{
+				"name": "shipno",
+				"type": "varchar"
+			},
+			{
+				"name": "subno",
+				"type": "varchar"
+			},
+			{
+				"name": "addr1",
+				"type": "varchar"
+			},
+			{
+				"name": "addr2",
+				"type": "varchar"
+			},
+			{
+				"name": "addr3",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "county",
+				"type": "varchar"
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "zip",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_FinesseConsolOeShipaddrDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

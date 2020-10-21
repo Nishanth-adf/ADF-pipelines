@@ -1,0 +1,67 @@
+{
+	"name": "PL UpdateSalesShipHourlyData",
+	"properties": {
+		"description": "Update Sales Ship Hourly Data, for Pat Moon\n\nAuthor: GBuenaventura\nDate: 09/03/2020",
+		"activities": [
+			{
+				"name": "EPL Prod_staging_dwhWhsContainerLines_LastFewDays",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Update Prod_staging_dwhWhsContainerLines_LastFewDays",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL Prod_statging_DWHSalesOrderHeadersV2_LastFewDays",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Update Prod_statging_DWHSalesOrderHeadersV2_LastFewDays",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPLProd staging_DWHWHSSHIPMENTTABLEs_LastFewDays",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Update Prod staging_DWHWHSSHIPMENTTABLEs_LastFewDays",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL Prod_staging_DWHSalesOrderLinesV2_LastFewDays",
+				"description": "",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Update Prod_staging_DWHSalesOrderLinesV2_LastFewDays",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-09-04T03:42:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

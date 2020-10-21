@@ -1,0 +1,52 @@
+{
+	"name": "ds_sf_tgt_sf_Order_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Production"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderInvoiceKey__c",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Account__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "orderDate",
+				"type": "date"
+			},
+			{
+				"name": "orderNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "invoiceNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_Order"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

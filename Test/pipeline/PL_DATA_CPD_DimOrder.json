@@ -1,0 +1,82 @@
+{
+	"name": "PL_DATA_CPD_DimOrder",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_STG_oecohead-2-DimOrder",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimOrder]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "Select CAST([orderno] as nvarchar(20)) as [orderNumber]\n ,CAST([orddate] as Datetime) as [orddate]\n ,CAST([custno] as nvarchar(50)) as [customerNumber]\n ,CAST([status_code] as nvarchar(3)) as [statusCode]\n ,CAST([buyer] as nvarchar(50)) as [buyer]\n ,CAST([buyer_phone] as nvarchar(20)) as [buyer_phone]\n ,CAST([ship_to_name] as nvarchar(100)) as [shipToName]\n ,CAST([attention] as nvarchar(100)) as [attention]\n ,CAST([phone] as nvarchar(20)) as [phone]\n ,CAST([addr1] as nvarchar(50)) as [addressLine1]\n ,CAST([addr2] as nvarchar(50)) as [addressLine2]\n ,CAST([addr3] as nvarchar(50)) as [addressLine3]\n ,CAST([city] as nvarchar(30)) as [city]\n ,CAST([state] as nvarchar(30)) as [state]\n ,CAST([country] as nvarchar(30)) as [country]\n ,CAST([zip] as nvarchar(10)) as [zip]\n ,Dateadd(hh,-8,GetDate()) as [insertDate]\n ,CAST('ADF ETL' as nvarchar(30)) as [insertBy], DBSource as Source\nFrom [dbo].[stgOecohead] with (nolock)\nwhere YEAR(orddate)>=2014\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"orderNumber": "orderNumber",
+							"orddate": "orderDate",
+							"customerNumber": "customerNumber",
+							"statusCode": "statusCode",
+							"buyer": "buyer",
+							"buyer_phone": "buyerPhone",
+							"shipToName": "shipToName",
+							"attention": "attention",
+							"phone": "phone",
+							"addressLine1": "addressLine1",
+							"addressLine2": "addressLine2",
+							"addressLine3": "addressLine3",
+							"city": "city",
+							"country": "country",
+							"zip": "zip",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"state": "state",
+							"Source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_STG_oecohead_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimOrder",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-29T10:56:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

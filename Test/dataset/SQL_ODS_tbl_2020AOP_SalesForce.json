@@ -1,0 +1,44 @@
+{
+	"name": "SQL_ODS_tbl_2020AOP_SalesForce",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAreaID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesPoolId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "AOP",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 6
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_2020AOP_SalesForce"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

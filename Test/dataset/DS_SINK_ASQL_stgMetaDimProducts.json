@@ -1,0 +1,172 @@
+{
+	"name": "DS_SINK_ASQL_stgMetaDimProducts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "productkey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "catalogno",
+				"type": "varchar"
+			},
+			{
+				"name": "catalog_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "catalognoname",
+				"type": "varchar"
+			},
+			{
+				"name": "partno",
+				"type": "varchar"
+			},
+			{
+				"name": "partentityno",
+				"type": "varchar"
+			},
+			{
+				"name": "partrev",
+				"type": "varchar"
+			},
+			{
+				"name": "unit_meas",
+				"type": "varchar"
+			},
+			{
+				"name": "list_price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ws_price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "dist_price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "package_code",
+				"type": "varchar"
+			},
+			{
+				"name": "weight",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "price_change",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "markup",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "enterdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "last_ordered",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "special_tax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "taxable",
+				"type": "varchar"
+			},
+			{
+				"name": "minorderqty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "matrixcd",
+				"type": "varchar"
+			},
+			{
+				"name": "activeind",
+				"type": "varchar"
+			},
+			{
+				"name": "conversion",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "classify",
+				"type": "varchar"
+			},
+			{
+				"name": "prodgroupno",
+				"type": "varchar"
+			},
+			{
+				"name": "variationcd",
+				"type": "varchar"
+			},
+			{
+				"name": "optctgrycode",
+				"type": "varchar"
+			},
+			{
+				"name": "optctgryline",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "prodgroupdesc",
+				"type": "varchar"
+			},
+			{
+				"name": "seminardate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ref6",
+				"type": "varchar"
+			},
+			{
+				"name": "ref7",
+				"type": "varchar"
+			},
+			{
+				"name": "ref6Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "ref7Desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetaDimProducts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SINK_Robert_Practice",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test_Robert_mysql_orders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

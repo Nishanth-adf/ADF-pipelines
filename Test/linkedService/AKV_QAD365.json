@@ -1,0 +1,11 @@
+{
+	"name": "AKV_QAD365",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://qa-meta1devaos.sandbox.ax.dynamics.com/data"
+		}
+	}
+}

@@ -1,0 +1,92 @@
+{
+	"name": "PL_TRAN_CPD_STG_TransactionHeader",
+	"properties": {
+		"activities": [
+			{
+				"name": "SC58_NetSuite_TransactionHeader_to_Blob_TransactionHead",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "\nSELECT [ACCOUNTING_BOOK_ID]\n      ,[ACCOUNTING_PERIOD_ID]\n      ,[ACCOUNT_BASED_NUMBER]\n      ,[ACTUAL_INVOICE_DATE]\n      ,[AMOUNT_UNBILLED]\n      ,[BILLADDRESS]\n      ,[BILLING_ACCOUNT_ID]\n      ,[BILLING_INSTRUCTIONS]\n      ,[BILL_PAY_TRANSACTION]\n      ,[BULK_SUBMISSION_ID]\n      ,[CARRIER]\n      ,[CLOSED]\n      ,[COMPANY_STATUS_ID]\n      ,[CONTRACT_COST_AMOUNT]\n      ,[CONTRACT_DEFER_EXPENSE_ACCT_ID]\n      ,[CONTRACT_EXPENSE_ACCT_ID]\n      ,[CREATED_BY_ID]\n      ,[CREATED_FROM_ID]\n      ,[CREATE_DATE]\n      ,[CURRENCY_ID]\n      ,[CUSTOMER_PO]\n      ,[CUSTOM_FORM_ID]\n      ,[DATE_BID_CLOSE]\n      ,[DATE_BID_OPEN]\n      ,[DATE_CONTRACT_COST_ACCRUAL]\n      ,[DATE_LAST_MODIFIED]\n      ,[DISABLE_OVERRIDE]\n      ,[DUE_DATE]\n      ,[EMAIL]\n      ,[END_DATE]\n      ,[ENTITY_ID]\n      ,[ENTITY_TAX_REG_NUM]\n      ,[EST_SHIP_DATE]\n      ,[EXCHANGE_RATE]\n      ,[EXPECTED_CLOSE]\n      ,[EXTERNAL_REF_NUMBER]\n      ,[FAX]\n      ,[FOB]\n      ,[FORECAST_TYPE]\n      ,[FULFILLED_BY_ID]\n      ,[FULFILLMENT_TIME]\n      ,[INCLUDE_IN_FORECAST]\n      ,[INCOTERM]\n      ,[INTERCOMPANY_TRANSACTION_ID]\n      ,[IS_ADVANCED_INTERCOMPANY]\n      ,[IS_AUTOCALCULATE_LAG]\n      ,[IS_COMPLIANT]\n      ,[IS_CREATED_FROM_MERGE]\n      ,[IS_FINANCE_CHARGE]\n      ,[IS_FIRMED]\n      ,[IS_INTERCOMPANY]\n      ,[IS_MERGED_INTO_ARRANGEMENTS]\n      ,[IS_NON_POSTING]\n      ,[IS_PAYMENT_HOLD]\n      ,[IS_REVERSAL]\n      ,[IS_TAX_REG_OVERRIDE]\n      ,[IS_WIP]\n      ,[ITEM_REVISION]\n      ,[JOB_ID]\n      ,[LABEL]\n      ,[LANDED_COST_ALLOCATION_METHOD]\n      ,[LAST_MODIFIED_DATE]\n      ,[LEAD_SOURCE_ID]\n      ,[LOCATION_ID]\n      ,[LOCATION_ID_0]\n      ,[MEMO]\n      ,[MEMORIZED]\n      ,[MESSAGE]\n      ,[MISSHIPMENT__DONOTINCLUDE]\n      ,[MISSHIPMENT__REASON_ID]\n      ,[NEEDS_BILL]\n      ,[NEEDS_REVENUE_COMMITMENT]\n      ,[NUMBER_OF_PRICING_TIERS]\n      ,[OPENING_BALANCE_TRANSACTION]\n      ,[ORDER_TYPE_ID]\n      ,[PACKING_LIST_INSTRUCTIONS]\n      ,[PARTNER_ID]\n      ,[PAYMENT_TERMS_ID]\n      ,[PN_REF_NUM]\n      ,[PRIORITY]\n      ,[PROBABILITY]\n      ,[PRODUCT_LABEL_INSTRUCTIONS]\n      ,[PROJECTED_TOTAL]\n      ,[PROMOTION_CODE_ID]\n      ,[PROMOTION_CODE_INSTANCE_ID]\n      ,[PULLED]\n      ,[PURCHASE_ORDER_INSTRUCTIONS]\n      ,[READY_FOR_FULFILLMENT]\n      ,[REBATE_CATEGORY_ID]\n      ,[REBATE_PURCHASE_DATE]\n      ,[RECOVER_ORDER]\n      ,[REFERRER_ID]\n      ,[RELATED_TRANID]\n      ,[RENEWAL]\n      ,[REQUEST]\n      ,[REVENUE_COMMITMENT_STATUS]\n      ,[REVENUE_COMMITTED]\n      ,[REVENUE_STATUS]\n      ,[REVERSING_TRANSACTION_ID]\n      ,[REVIEWED_BY_ID]\n      ,[REVIEWER_NOTES]\n      ,[RMI_PO]\n      ,[SALES_EFFECTIVE_DATE]\n      ,[SALES_REP_ID]\n      ,[SCHEDULING_METHOD_ID]\n      ,[SENT]\n      ,[SENT_TO_VENDOR]\n      ,[SHIPADDRESS]\n      ,[SHIPMENT_RECEIVED]\n      ,[SHIPPING_ITEM_ID]\n      ,[SHIP_TO_ADDRESS]\n      ,[SHIP_TO_VENDOR_ID]\n      ,[SOCIAL_NETWORKING_ORDER]\n      ,[START_DATE]\n      ,[STATUS]\n      ,[TAX_REG_ID]\n      ,[TITLE]\n      ,[TRANDATE]\n      ,[TRANID]\n      ,[TRANSACTION_EXTID]\n      ,[TRANSACTION_ID]\n      ,[TRANSACTION_NUMBER]\n      ,[TRANSACTION_PARTNER]\n      ,[TRANSACTION_SOURCE]\n      ,[TRANSACTION_TYPE]\n      ,[TRANSACTION_WEBSITE]\n      ,[TRANSFER_LOCATION]\n      ,[TRANS_IS_VSOE_BUNDLE]\n      ,[USE_ITEM_COST_AS_TRANSFER_COST]\n      ,[VAT]\n      ,[VISIBLE_IN_CUSTOMER_CENTER]\n      ,[WEIGHTED_TOTAL]\n      ,[SRC_TRAN]\n      ,[SRC_TYPE]\n      ,[SRC_TRANSACTION_ID]\n      ,'NS' as [DBSource]\n      ,getdate() as [Load Date time]\n  FROM [Netsuite].[dbo].[TransactionHeader] B\nwhere Year(B.TRANDATE) = 2019  AND Month(B.TRANDATE) >= 5\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_Netsuite_TransactionHeader",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_Netsuite_TransactionHeader",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SC58_Netsuite_TransactionHeader_Blob_to_Stg",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SC58_NetSuite_TransactionHeader_to_Blob_TransactionHead",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_Netsuite_TransactionHeader",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_Netsuite_TransactionHeader",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T07:27:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

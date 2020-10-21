@@ -1,0 +1,13 @@
+{
+	"name": "MySqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MI9RODB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

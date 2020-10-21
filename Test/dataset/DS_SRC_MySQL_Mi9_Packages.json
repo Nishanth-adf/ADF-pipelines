@@ -1,0 +1,16 @@
+{
+	"name": "DS_SRC_MySQL_Mi9_Packages",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MI9RODB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`packages`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,245 @@
+{
+	"name": "PL_CPD_MetaDistrib_customer",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_customer",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetacustomer;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "customer_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phone_number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone_number",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "sales_rep_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_name_strip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_name_strip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_strip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address1_strip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_strip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address2_strip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "city_strip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "city_strip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address_name_strip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address_name_strip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ref4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ref4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "active_fl",
+									"type": "String"
+								},
+								"sink": {
+									"name": "active_fl",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "certification_date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "certification_date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "implementation_date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "implementation_date",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_customer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_MetaDistrib_stgMetacustomer",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:18:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

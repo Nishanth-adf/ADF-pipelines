@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Accounts_Complete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SF_Accounts_Complete"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

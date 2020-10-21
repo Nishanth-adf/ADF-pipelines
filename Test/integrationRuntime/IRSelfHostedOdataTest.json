@@ -1,0 +1,6 @@
+{
+	"name": "IRSelfHostedOdataTest",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

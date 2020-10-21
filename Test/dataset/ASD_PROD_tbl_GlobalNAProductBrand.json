@@ -1,0 +1,29 @@
+{
+	"name": "ASD_PROD_tbl_GlobalNAProductBrand",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Product_Family",
+				"type": "varchar"
+			},
+			{
+				"name": "Global_Product_Brand",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_GlobalNAProductBrand"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

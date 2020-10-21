@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAXResource_InvoiceLines_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "SalesInvoiceLines"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

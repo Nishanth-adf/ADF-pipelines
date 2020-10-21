@@ -1,0 +1,248 @@
+{
+	"name": "pl_sf_factSales_order_prod_slow",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_sf_factSales_order_prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "dbo.sf_src_factSales_Order_c",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "OrderInvoiceKey__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrderInvoiceKey__c",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "OrderInvoiceKey__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Account__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "orderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "orderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Order__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "invoiceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Invoice__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_src_dimOrder_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_tgt_Order_prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "sf_Order",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "pl_sf_factSales_order_prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "SELECT \n  id\n ,Account__c\n ,Invoice__c\n ,Order__c\n ,Order_Date__c\n ,OrderInvoiceKey__c\n ,SLXOrderHeaderID__c\n ,Status__c\n ,LastModifiedDate \nFROM order__c\nWHERE\n ( calendar_year(LastModifiedDate) = 2019 AND calendar_month(LastModifiedDate) >= 9 )\nOR\n calendar_year(LastModifiedDate) >= 2020",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table dbo.sf_Order",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderInvoiceKey__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderInvoiceKey__c",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Account__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Date__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "orderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Order__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Invoice__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "invoiceNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Status__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "status",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LastModifiedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sf_src_Order__c_prod",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sf_tgt_sf_Order_prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-01T21:25:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

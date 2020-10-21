@@ -1,0 +1,16 @@
+{
+	"name": "DS_SRC_SF_SBFEB2020_Order_c",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SF_Metagenics_SBFEB2020",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

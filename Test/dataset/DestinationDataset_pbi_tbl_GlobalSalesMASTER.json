@@ -1,0 +1,92 @@
+{
+	"name": "DestinationDataset_pbi_tbl_GlobalSalesMASTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Global Revenue"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Legal_Entity",
+				"type": "varchar"
+			},
+			{
+				"name": "SKU",
+				"type": "varchar"
+			},
+			{
+				"name": "Yr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Period",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ship_to_Country",
+				"type": "varchar"
+			},
+			{
+				"name": "Inv_to_Country",
+				"type": "varchar"
+			},
+			{
+				"name": "Cust_lvl2",
+				"type": "varchar"
+			},
+			{
+				"name": "Type",
+				"type": "varchar"
+			},
+			{
+				"name": "qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Sales_Cur",
+				"type": "varchar"
+			},
+			{
+				"name": "Std_Cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Std_Cost_Cur",
+				"type": "varchar"
+			},
+			{
+				"name": "Legal_Trans_Price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Legal_Trans_Cur",
+				"type": "varchar"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[pbi_tbl_GlobalSalesMASTER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

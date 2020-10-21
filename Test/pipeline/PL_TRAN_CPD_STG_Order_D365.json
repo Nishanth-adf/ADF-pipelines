@@ -1,0 +1,2464 @@
+{
+	"name": "PL_TRAN_CPD_STG_Order_D365",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_JSON_TO_BLOB_SalesOrderHeadr",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderNumber"
+								},
+								"sink": {
+									"name": "SalesOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesUnitId"
+								},
+								"sink": {
+									"name": "SalesUnitId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalTaxAmount"
+								},
+								"sink": {
+									"name": "OrderTotalTaxAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "AreTotalsCalculated"
+								},
+								"sink": {
+									"name": "AreTotalsCalculated",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountPercentage"
+								},
+								"sink": {
+									"name": "TotalDiscountPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatPortId"
+								},
+								"sink": {
+									"name": "IntrastatPortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WillAutomaticInventoryReservationConsiderBatchAttributes"
+								},
+								"sink": {
+									"name": "WillAutomaticInventoryReservationConsiderBatchAttributes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderName"
+								},
+								"sink": {
+									"name": "SalesOrderName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MultilineDiscountCustomerGroupCode"
+								},
+								"sink": {
+									"name": "MultilineDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLocationId"
+								},
+								"sink": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountyId"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionISOCode"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationRoutePlanId"
+								},
+								"sink": {
+									"name": "TransportationRoutePlanId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFineCode"
+								},
+								"sink": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStateId"
+								},
+								"sink": {
+									"name": "InvoiceAddressStateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPromisingMethod"
+								},
+								"sink": {
+									"name": "SalesOrderPromisingMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountCustomerGroupCode"
+								},
+								"sink": {
+									"name": "LineDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceBuildingCompliment"
+								},
+								"sink": {
+									"name": "InvoiceBuildingCompliment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionId"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumberSequenceGroupId"
+								},
+								"sink": {
+									"name": "NumberSequenceGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomersOrderReference"
+								},
+								"sink": {
+									"name": "CustomersOrderReference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLatitude"
+								},
+								"sink": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "FormattedInvoiceAddress"
+								},
+								"sink": {
+									"name": "FormattedInvoiceAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierServiceId"
+								},
+								"sink": {
+									"name": "ShippingCarrierServiceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressZipCode"
+								},
+								"sink": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FixedExchangeRate"
+								},
+								"sink": {
+									"name": "FixedExchangeRate",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ConfirmedShippingDate"
+								},
+								"sink": {
+									"name": "ConfirmedShippingDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalOperationPresenceType"
+								},
+								"sink": {
+									"name": "FiscalOperationPresenceType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankConstantSymbol"
+								},
+								"sink": {
+									"name": "BankConstantSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RequestedReceiptDate"
+								},
+								"sink": {
+									"name": "RequestedReceiptDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreet"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierId"
+								},
+								"sink": {
+									"name": "ShippingCarrierId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPostingProfileId"
+								},
+								"sink": {
+									"name": "CustomerPostingProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FormattedDelveryAddress"
+								},
+								"sink": {
+									"name": "FormattedDelveryAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentMethodName"
+								},
+								"sink": {
+									"name": "CustomerPaymentMethodName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EUSalesListCode"
+								},
+								"sink": {
+									"name": "EUSalesListCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderProcessingStatus"
+								},
+								"sink": {
+									"name": "SalesOrderProcessingStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDistrictName"
+								},
+								"sink": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDunsNumber"
+								},
+								"sink": {
+									"name": "DeliveryAddressDunsNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceFiscalInformationCode"
+								},
+								"sink": {
+									"name": "ServiceFiscalInformationCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsConsolidatedInvoiceTarget"
+								},
+								"sink": {
+									"name": "IsConsolidatedInvoiceTarget",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsEInvoiceDimensionAccountCodeSpecifiedPerLine"
+								},
+								"sink": {
+									"name": "IsEInvoiceDimensionAccountCodeSpecifiedPerLine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentScheduleName"
+								},
+								"sink": {
+									"name": "PaymentScheduleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalChargesAmount"
+								},
+								"sink": {
+									"name": "OrderTotalChargesAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransactionCode"
+								},
+								"sink": {
+									"name": "IntrastatTransactionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTermsName"
+								},
+								"sink": {
+									"name": "PaymentTermsName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTakerPersonnelNumber"
+								},
+								"sink": {
+									"name": "OrderTakerPersonnelNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CashDiscountCode"
+								},
+								"sink": {
+									"name": "CashDiscountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceCustomerAccountNumber"
+								},
+								"sink": {
+									"name": "InvoiceCustomerAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFinancialInterestCode"
+								},
+								"sink": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderStatus"
+								},
+								"sink": {
+									"name": "SalesOrderStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountyId"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDistrictName"
+								},
+								"sink": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FixedDueDate"
+								},
+								"sink": {
+									"name": "FixedDueDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsEntryCertificateRequired"
+								},
+								"sink": {
+									"name": "IsEntryCertificateRequired",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsInvoiceAddressPrivate"
+								},
+								"sink": {
+									"name": "IsInvoiceAddressPrivate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CFPSCode"
+								},
+								"sink": {
+									"name": "CFPSCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroupCode"
+								},
+								"sink": {
+									"name": "SalesTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TMACustomerGroupId"
+								},
+								"sink": {
+									"name": "TMACustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPoolId"
+								},
+								"sink": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PriceCustomerGroupCode"
+								},
+								"sink": {
+									"name": "PriceCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCity"
+								},
+								"sink": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentMethodSpecificationName"
+								},
+								"sink": {
+									"name": "CustomerPaymentMethodSpecificationName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionSalesRepresentativeGroupId"
+								},
+								"sink": {
+									"name": "CommissionSalesRepresentativeGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransportModeCode"
+								},
+								"sink": {
+									"name": "IntrastatTransportModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreet"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationDocumentLineId"
+								},
+								"sink": {
+									"name": "TransportationDocumentLineId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTermsBaseDate"
+								},
+								"sink": {
+									"name": "PaymentTermsBaseDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InventoryReservationMethod"
+								},
+								"sink": {
+									"name": "InventoryReservationMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeliveryAddressPrivate"
+								},
+								"sink": {
+									"name": "IsDeliveryAddressPrivate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCity"
+								},
+								"sink": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLongitude"
+								},
+								"sink": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationModeId"
+								},
+								"sink": {
+									"name": "TransportationModeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryTermsCode"
+								},
+								"sink": {
+									"name": "DeliveryTermsCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsOneTimeCustomer"
+								},
+								"sink": {
+									"name": "IsOneTimeCustomer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionId"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsFinalUser"
+								},
+								"sink": {
+									"name": "IsFinalUser",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryBuildingCompliment"
+								},
+								"sink": {
+									"name": "DeliveryBuildingCompliment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditNoteReasonCode"
+								},
+								"sink": {
+									"name": "CreditNoteReasonCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalAmount"
+								},
+								"sink": {
+									"name": "OrderTotalAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "URL"
+								},
+								"sink": {
+									"name": "URL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountCustomerGroupCode"
+								},
+								"sink": {
+									"name": "TotalDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressPostBox"
+								},
+								"sink": {
+									"name": "DeliveryAddressPostBox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationBrokerId"
+								},
+								"sink": {
+									"name": "TransportationBrokerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsExportSale"
+								},
+								"sink": {
+									"name": "IsExportSale",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryReasonCode"
+								},
+								"sink": {
+									"name": "DeliveryReasonCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDescription"
+								},
+								"sink": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RequestedShippingDate"
+								},
+								"sink": {
+									"name": "RequestedShippingDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoicePaymentAttachmentType"
+								},
+								"sink": {
+									"name": "InvoicePaymentAttachmentType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EInvoiceDimensionAccountCode"
+								},
+								"sink": {
+									"name": "EInvoiceDimensionAccountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressZipCode"
+								},
+								"sink": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultShippingWarehouseId"
+								},
+								"sink": {
+									"name": "DefaultShippingWarehouseId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountAmount"
+								},
+								"sink": {
+									"name": "TotalDiscountAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ArePricesIncludingSalesTax"
+								},
+								"sink": {
+									"name": "ArePricesIncludingSalesTax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLatitude"
+								},
+								"sink": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BankSpecificSymbol"
+								},
+								"sink": {
+									"name": "BankSpecificSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRequisitionNumber"
+								},
+								"sink": {
+									"name": "CustomerRequisitionNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesRebateCustomerGroupId"
+								},
+								"sink": {
+									"name": "SalesRebateCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionCustomerGroupId"
+								},
+								"sink": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderingCustomerAccountNumber"
+								},
+								"sink": {
+									"name": "OrderingCustomerAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalDocumentOperationTypeId"
+								},
+								"sink": {
+									"name": "FiscalDocumentOperationTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryModeCode"
+								},
+								"sink": {
+									"name": "DeliveryModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsSalesProcessingStopped"
+								},
+								"sink": {
+									"name": "IsSalesProcessingStopped",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressPostBox"
+								},
+								"sink": {
+									"name": "InvoiceAddressPostBox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderOriginCode"
+								},
+								"sink": {
+									"name": "SalesOrderOriginCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CampaignId"
+								},
+								"sink": {
+									"name": "CampaignId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceType"
+								},
+								"sink": {
+									"name": "InvoiceType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderResponsiblePersonnelNumber"
+								},
+								"sink": {
+									"name": "OrderResponsiblePersonnelNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressName"
+								},
+								"sink": {
+									"name": "DeliveryAddressName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierServiceGroupId"
+								},
+								"sink": {
+									"name": "ShippingCarrierServiceGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConfirmedReceiptDate"
+								},
+								"sink": {
+									"name": "ConfirmedReceiptDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationTemplateId"
+								},
+								"sink": {
+									"name": "TransportationTemplateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatStatisticsProcedureCode"
+								},
+								"sink": {
+									"name": "IntrastatStatisticsProcedureCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExportReason"
+								},
+								"sink": {
+									"name": "ExportReason",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageId"
+								},
+								"sink": {
+									"name": "LanguageId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsOwnEntryCertificateIssued"
+								},
+								"sink": {
+									"name": "IsOwnEntryCertificateIssued",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsServiceDeliveryAddressBased"
+								},
+								"sink": {
+									"name": "IsServiceDeliveryAddressBased",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStateId"
+								},
+								"sink": {
+									"name": "DeliveryAddressStateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChargeCustomerGroupId"
+								},
+								"sink": {
+									"name": "ChargeCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalDiscountAmount"
+								},
+								"sink": {
+									"name": "OrderTotalDiscountAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultShippingSiteId"
+								},
+								"sink": {
+									"name": "DefaultShippingSiteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetNumber"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxExemptNumber"
+								},
+								"sink": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QuotationNumber"
+								},
+								"sink": {
+									"name": "QuotationNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrencyCode"
+								},
+								"sink": {
+									"name": "CurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreetNumber"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLongitude"
+								},
+								"sink": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeliveryAddressOrderSpecific"
+								},
+								"sink": {
+									"name": "IsDeliveryAddressOrderSpecific",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultLedgerDimensionDisplayValue"
+								},
+								"sink": {
+									"name": "DefaultLedgerDimensionDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTransactionSettlementType"
+								},
+								"sink": {
+									"name": "CustomerTransactionSettlementType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalDocumentTypeId"
+								},
+								"sink": {
+									"name": "FiscalDocumentTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ContactPersonId"
+								},
+								"sink": {
+									"name": "ContactPersonId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DirectDebitMandateId"
+								},
+								"sink": {
+									"name": "DirectDebitMandateId",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Source_JSON_SalesOrderHeader_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Sink_ABOLB_SalesOrderHeader_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_ABLOB_ASQL_SalesOrderHeader",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_JSON_TO_BLOB_SalesOrderHeadr",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Sink_ABOLB_SalesOrderHeader_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Sink_ASQL_SalesOrderHeader_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_JSON_TO_ABLB_SalesOrderLine_D365",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InventoryLotId"
+								},
+								"sink": {
+									"name": "InventoryLotId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RequestedReceiptDate"
+								},
+								"sink": {
+									"name": "RequestedReceiptDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EInvoiceDimensionAccountCode"
+								},
+								"sink": {
+									"name": "EInvoiceDimensionAccountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FormattedDelveryAddress"
+								},
+								"sink": {
+									"name": "FormattedDelveryAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderLineStatus"
+								},
+								"sink": {
+									"name": "SalesOrderLineStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemNumber"
+								},
+								"sink": {
+									"name": "ItemNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDescription"
+								},
+								"sink": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MultilineDiscountPercentage"
+								},
+								"sink": {
+									"name": "MultilineDiscountPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingWarehouseId"
+								},
+								"sink": {
+									"name": "ShippingWarehouseId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardBuyerName"
+								},
+								"sink": {
+									"name": "GiftCardBuyerName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardNumber"
+								},
+								"sink": {
+									"name": "GiftCardNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomsDocumentNumber"
+								},
+								"sink": {
+									"name": "CustomsDocumentNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountAmount"
+								},
+								"sink": {
+									"name": "LineDiscountAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductStyleId"
+								},
+								"sink": {
+									"name": "ProductStyleId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductConfigurationId"
+								},
+								"sink": {
+									"name": "ProductConfigurationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliverySalesTaxGroupCode"
+								},
+								"sink": {
+									"name": "DeliverySalesTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsIntrastatTriangularDeal"
+								},
+								"sink": {
+									"name": "IsIntrastatTriangularDeal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MultilineDiscountAmount"
+								},
+								"sink": {
+									"name": "MultilineDiscountAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemBatchNumber"
+								},
+								"sink": {
+									"name": "ItemBatchNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionId"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLatitude"
+								},
+								"sink": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCity"
+								},
+								"sink": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesProductCategoryName"
+								},
+								"sink": {
+									"name": "SalesProductCategoryName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPromisingMethod"
+								},
+								"sink": {
+									"name": "SalesOrderPromisingMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesRebateProductGroupId"
+								},
+								"sink": {
+									"name": "SalesRebateProductGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDistrictName"
+								},
+								"sink": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountyId"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesUnitSymbol"
+								},
+								"sink": {
+									"name": "SalesUnitSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemWithholdingTaxCodeGroupCode"
+								},
+								"sink": {
+									"name": "ItemWithholdingTaxCodeGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConfirmedReceiptDate"
+								},
+								"sink": {
+									"name": "ConfirmedReceiptDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductSizeId"
+								},
+								"sink": {
+									"name": "ProductSizeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FixedPriceCharges"
+								},
+								"sink": {
+									"name": "FixedPriceCharges",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressZipCode"
+								},
+								"sink": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDunsNumber"
+								},
+								"sink": {
+									"name": "DeliveryAddressDunsNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryTermsId"
+								},
+								"sink": {
+									"name": "DeliveryTermsId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceFiscalInformationCode"
+								},
+								"sink": {
+									"name": "ServiceFiscalInformationCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressName"
+								},
+								"sink": {
+									"name": "DeliveryAddressName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PackingUnitSymbol"
+								},
+								"sink": {
+									"name": "PackingUnitSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderedSalesQuantity"
+								},
+								"sink": {
+									"name": "OrderedSalesQuantity",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BOMId"
+								},
+								"sink": {
+									"name": "BOMId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetNumber"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditNoteReasonCode"
+								},
+								"sink": {
+									"name": "CreditNoteReasonCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetInKana"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingSiteId"
+								},
+								"sink": {
+									"name": "ShippingSiteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NGPCode"
+								},
+								"sink": {
+									"name": "NGPCode",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeliveryAddressPrivate"
+								},
+								"sink": {
+									"name": "IsDeliveryAddressPrivate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineCreationSequenceNumber"
+								},
+								"sink": {
+									"name": "LineCreationSequenceNumber",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "MainAccountIdDisplayValue"
+								},
+								"sink": {
+									"name": "MainAccountIdDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderedInventoryStatusId"
+								},
+								"sink": {
+									"name": "OrderedInventoryStatusId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardRecipientEmail"
+								},
+								"sink": {
+									"name": "GiftCardRecipientEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionISOCode"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransactionCode"
+								},
+								"sink": {
+									"name": "IntrastatTransactionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLocationId"
+								},
+								"sink": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxItemGroupCode"
+								},
+								"sink": {
+									"name": "SalesTaxItemGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RouteId"
+								},
+								"sink": {
+									"name": "RouteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EInvoicePropertyNumber"
+								},
+								"sink": {
+									"name": "EInvoicePropertyNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionSalesRepresentativeGroupId"
+								},
+								"sink": {
+									"name": "CommissionSalesRepresentativeGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomsDocumentName"
+								},
+								"sink": {
+									"name": "CustomsDocumentName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WillAutomaticInventoryReservationConsiderBatchAttributes"
+								},
+								"sink": {
+									"name": "WillAutomaticInventoryReservationConsiderBatchAttributes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatStatisticsProcedureCode"
+								},
+								"sink": {
+									"name": "IntrastatStatisticsProcedureCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDescription"
+								},
+								"sink": {
+									"name": "LineDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreet"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryModeCode"
+								},
+								"sink": {
+									"name": "DeliveryModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConfirmedShippingDate"
+								},
+								"sink": {
+									"name": "ConfirmedShippingDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroupCode"
+								},
+								"sink": {
+									"name": "SalesTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceOrderNumber"
+								},
+								"sink": {
+									"name": "ServiceOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsDeliveryAddressOrderSpecific"
+								},
+								"sink": {
+									"name": "IsDeliveryAddressOrderSpecific",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRequisitionNumber"
+								},
+								"sink": {
+									"name": "CustomerRequisitionNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderNumber"
+								},
+								"sink": {
+									"name": "SalesOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalDocumentTypeId"
+								},
+								"sink": {
+									"name": "FiscalDocumentTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryCFOPCode"
+								},
+								"sink": {
+									"name": "DeliveryCFOPCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountPercentage"
+								},
+								"sink": {
+									"name": "LineDiscountPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesPrice"
+								},
+								"sink": {
+									"name": "SalesPrice",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardGiftMessage"
+								},
+								"sink": {
+									"name": "GiftCardGiftMessage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderedCatchWeightQuantity"
+								},
+								"sink": {
+									"name": "OrderedCatchWeightQuantity",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderLineReference"
+								},
+								"sink": {
+									"name": "OrderLineReference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AllowedUnderdeliveryPercentage"
+								},
+								"sink": {
+									"name": "AllowedUnderdeliveryPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCityInKana"
+								},
+								"sink": {
+									"name": "DeliveryAddressCityInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AllowedOverdeliveryPercentage"
+								},
+								"sink": {
+									"name": "AllowedOverdeliveryPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLongitude"
+								},
+								"sink": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatCommodityCode"
+								},
+								"sink": {
+									"name": "IntrastatCommodityCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultLedgerDimensionDisplayValue"
+								},
+								"sink": {
+									"name": "DefaultLedgerDimensionDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductColorId"
+								},
+								"sink": {
+									"name": "ProductColorId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardRecipientName"
+								},
+								"sink": {
+									"name": "GiftCardRecipientName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CFOPCode"
+								},
+								"sink": {
+									"name": "CFOPCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStateId"
+								},
+								"sink": {
+									"name": "DeliveryAddressStateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliverySalesTaxItemGroupCode"
+								},
+								"sink": {
+									"name": "DeliverySalesTaxItemGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryBuildingCompliment"
+								},
+								"sink": {
+									"name": "DeliveryBuildingCompliment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransportModeCode"
+								},
+								"sink": {
+									"name": "IntrastatTransportModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressPostBox"
+								},
+								"sink": {
+									"name": "DeliveryAddressPostBox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomsDocumentDate"
+								},
+								"sink": {
+									"name": "CustomsDocumentDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomersLineNumber"
+								},
+								"sink": {
+									"name": "CustomersLineNumber",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardType"
+								},
+								"sink": {
+									"name": "GiftCardType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineAmount"
+								},
+								"sink": {
+									"name": "LineAmount",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatPortId"
+								},
+								"sink": {
+									"name": "IntrastatPortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatSpecialMovementCode"
+								},
+								"sink": {
+									"name": "IntrastatSpecialMovementCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesPriceQuantity"
+								},
+								"sink": {
+									"name": "SalesPriceQuantity",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "WillRebateCalculationExcludeLine"
+								},
+								"sink": {
+									"name": "WillRebateCalculationExcludeLine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SuframaDiscountPercentage"
+								},
+								"sink": {
+									"name": "SuframaDiscountPercentage",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "InventoryReservationMethod"
+								},
+								"sink": {
+									"name": "InventoryReservationMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RequestedShippingDate"
+								},
+								"sink": {
+									"name": "RequestedShippingDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WithholdingTaxGroupCode"
+								},
+								"sink": {
+									"name": "WithholdingTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SkipCreateAutoCharges"
+								},
+								"sink": {
+									"name": "SkipCreateAutoCharges",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExternalItemNumber"
+								},
+								"sink": {
+									"name": "ExternalItemNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatStatisticValue"
+								},
+								"sink": {
+									"name": "IntrastatStatisticValue",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "IsLineStopped"
+								},
+								"sink": {
+									"name": "IsLineStopped",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GiftCardBuyerEmail"
+								},
+								"sink": {
+									"name": "GiftCardBuyerEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RemainSalesPhysical"
+								},
+								"sink": {
+									"name": "RemainSalesPhysical",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "RemainInventFinancial"
+								},
+								"sink": {
+									"name": "RemainInventFinancial",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "RemainSalesFinancial"
+								},
+								"sink": {
+									"name": "RemainSalesFinancial",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "RemainInventPhysical"
+								},
+								"sink": {
+									"name": "RemainInventPhysical",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "METRefrigerationItemId"
+								},
+								"sink": {
+									"name": "METRefrigerationItemId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METUpshotSalesOrderLineNumber"
+								},
+								"sink": {
+									"name": "METUpshotSalesOrderLineNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METSamplesFlag"
+								},
+								"sink": {
+									"name": "METSamplesFlag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METSalesStatus"
+								},
+								"sink": {
+									"name": "METSalesStatus",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Source_JSON_SalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Sink_ABLB_SalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_ABLOB_ASQL_SalesOrderLine_D365",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_JSON_TO_ABLB_SalesOrderLine_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Sink_ABLB_SalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Sink_ASQL_SalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-27T16:34:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,101 @@
+{
+	"name": "DS_SINK_JSON_Extract",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EstimateId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "TotalQuantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ServiceLineComments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YearStartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "YearEndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "YearNumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsPublishedToCompassOne",
+				"type": "bit"
+			},
+			{
+				"name": "IsSystemDefined",
+				"type": "bit"
+			},
+			{
+				"name": "TotalPrice",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalPriceWithUplift",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ServiceCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PackageCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "YearWiseComments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalPriceLocal",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TotalPriceWithUpliftLocal",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test_JSON_Extract2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

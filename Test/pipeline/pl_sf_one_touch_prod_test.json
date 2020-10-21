@@ -1,0 +1,86 @@
+{
+	"name": "pl_sf_one_touch_prod_test",
+	"properties": {
+		"activities": [
+			{
+				"name": "epl_sf_factSales_account",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sf_factSales_account_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_sf_factSales_order",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_sf_factSales_account",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sf_factSales_order_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_sf_factSales_orderLine",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_sf_factSales_order",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sf_factSales_orderLine_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "epl_sf_InvoiceSalesData_account",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "epl_sf_factSales_orderLine",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sf_InvoiceSalesData_account_prod",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "SalesForce Prod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-07-01T18:24:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

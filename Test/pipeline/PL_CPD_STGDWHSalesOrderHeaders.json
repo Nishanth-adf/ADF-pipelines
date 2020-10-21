@@ -1,0 +1,1246 @@
+{
+	"name": "PL_CPD_STGDWHSalesOrderHeaders",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SalesOrderHeader",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT [dataAreaId]\n      ,[SalesOrderNumber]\n      ,[CustomerRequisitionNumber]\n      ,[OrderTotalAmount]\n      ,[IntrastatPortId]\n      ,[ContactPersonId]\n      ,[CustomersOrderReference]\n      ,[TotalDiscountPercentage]\n      ,[CustomerPaymentFineCode]\n      ,[IntrastatTransportModeCode]\n      ,[InvoiceCustomerAccountNumber]\n      ,[URL]\n      ,[InvoiceAddressCity]\n      ,[BankSpecificSymbol]\n      ,NULL AS [BaseDocumentNumber]\n      ,[CFPSCode]\n      ,[InvoiceAddressStreet]\n      ,[InvoiceAddressCountyId]\n      ,[DeliveryAddressCountryRegionId]\n      ,[InvoiceAddressDistrictName]\n      ,[MultilineDiscountCustomerGroupCode]\n      ,[DeliveryAddressCountyId]\n      ,[DefaultShippingWarehouseId]\n      ,[DeliveryAddressLocationId]\n      ,[CustomerPaymentMethodName]\n      ,[SalesUnitId]\n      ,NULL AS [DateTimeModified]\n      ,[DefaultLedgerDimensionDisplayValue]\n      ,[DeliveryAddressCountryRegionISOCode]\n      ,[TaxExemptNumber]\n      ,[DeliveryAddressDescription]\n      ,[DeliveryAddressLongitude]\n      ,[DefaultShippingSiteId]\n      ,[CashDiscountCode]\n      ,[DeliveryReasonCode]\n      ,[TotalDiscountCustomerGroupCode]\n      ,[CampaignId]\n      ,[OrderTotalDiscountAmount]\n      ,[PaymentTermsName]\n      ,[ShippingCarrierServiceGroupId]\n      ,NULL AS [CIPEcode]\n      ,NULL AS [RequestedReceiptDate]\n      ,NULL AS [ConfirmedReceiptDate]\n      ,NULL AS [BaseDocumentDate]\n      ,[EInvoiceDimensionAccountCode]\n      ,[OrderingCustomerAccountNumber]\n      ,[OrderTotalChargesAmount]\n      ,[SalesRebateCustomerGroupId]\n      ,[TransportationBrokerId]\n      ,[DirectDebitMandateId]\n      ,[CreditNoteReasonCode]\n      ,[IntrastatStatisticsProcedureCode]\n      ,[TMACustomerGroupId]\n      ,NULL AS [ReportingCurrencyFixedExchangeRate]\n      ,[DeliveryAddressCity]\n      ,[DeliveryAddressStreet]\n      ,[NumberSequenceGroupId]\n      ,[OrderTotalTaxAmount]\n      ,[DeliveryTermsCode]\n      ,[ChargeCustomerGroupId]\n      ,[SalesTaxGroupCode]\n      ,[OrderHeaderTaxAmount]\n      ,[FiscalDocumentOperationTypeId]\n      ,NULL AS [OrderCreationDateTime]\n      ,[SalesOrderOriginCode]\n      ,[ServiceFiscalInformationCode]\n      ,[DeliveryAddressStateId]\n      ,[CommissionSalesRepresentativeGroupId]\n      ,[CustomerPostingProfileId]\n      ,NULL AS [BaseDocumentItemNumber]\n      ,[TransportationDocumentLineId]\n      ,NULL AS [DateTimeCreated]\n      ,[DeliveryAddressStreetInKana]\n      ,[CustomerPaymentFinancialInterestCode]\n      ,[PaymentScheduleName]\n      ,[InvoiceAddressStreetNumber]\n      ,NULL AS [PaymentTermsBaseDate]\n      ,[ShippingCarrierId]\n      ,[InvoiceAddressPostBox]\n      ,NULL AS [ConfirmedShippingDate]\n      ,NULL AS [TenderCode]\n      ,[DeliveryAddressDunsNumber]\n      ,[DeliveryAddressDistrictName]\n      ,[DeliveryModeCode]\n      ,NULL AS [BaseDocumentLineNumber]\n      ,[TransportationModeId]\n      ,[SalesOrderName]\n      ,[DeliveryAddressStreetNumber]\n      ,[InvoiceAddressLongitude]\n      ,[InvoiceAddressLatitude]\n      ,[SalesOrderPoolId]\n      ,[FormattedInvoiceAddress]\n      ,[CustomerPaymentMethodSpecificationName]\n      ,[CurrencyCode]\n      ,[FormattedDelveryAddress]\n      ,[BankConstantSymbol]\n      ,[PriceCustomerGroupCode]\n      ,[Email]\n      ,[InvoiceAddressCityInKana]\n      ,[InvoiceAddressCountryRegionISOCode]\n      ,[TransportationTemplateId]\n      ,NULL AS [OrderOrAgreementCode]\n      ,[TransportationRoutePlanId]\n      ,NULL AS [FixedDueDate]\n      ,[DeliveryAddressName]\n      ,[ExportReason]\n      ,[FixedExchangeRate]\n      ,[IntrastatTransactionCode]\n      ,[InvoiceAddressStreetInKana]\n      ,[InvoiceBuildingCompliment]\n      ,[InvoiceAddressZipCode]\n      ,[TotalDiscountAmount]\n      ,[ShippingCarrierServiceId]\n      ,[DeliveryAddressZipCode]\n      ,[OrderTakerPersonnelNumber]\n      ,[DeliveryAddressCityInKana]\n      ,[DeliveryAddressPostBox]\n      ,[InvoiceAddressStateId]\n      ,NULL AS [RequestedShippingDate]\n      ,NULL AS [DeliveryAddressLatitude]\n      ,[DeliveryBuildingCompliment]\n      ,[InvoiceAddressCountryRegionId]\n      ,[ProjectId]\n      ,[QuotationNumber]\n      ,[OrderResponsiblePersonnelNumber]\n      ,[CommissionCustomerGroupId]\n      ,[LanguageId]\n      ,[LineDiscountCustomerGroupCode]\n      ,[SalesOrderStatus]\n  FROM [dbo].[SalesOrderHeaderV2Staging]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.stgSalesOrderHeader_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataAreaId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dataAreaId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesOrderNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerRequisitionNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerRequisitionNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderTotalAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatPortId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IntrastatPortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ContactPersonId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ContactPersonId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomersOrderReference",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomersOrderReference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountPercentage",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalDiscountPercentage",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentFineCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransportModeCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IntrastatTransportModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceCustomerAccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceCustomerAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "URL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "URL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankSpecificSymbol",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankSpecificSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BaseDocumentNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "BaseDocumentNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CFPSCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CFPSCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountyId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MultilineDiscountCustomerGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MultilineDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountyId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultShippingWarehouseId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultShippingWarehouseId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressLocationId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentMethodName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentMethodName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesUnitId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesUnitId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultLedgerDimensionDisplayValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultLedgerDimensionDisplayValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TaxExemptNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DeliveryAddressLongitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DefaultShippingSiteId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DefaultShippingSiteId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CashDiscountCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CashDiscountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryReasonCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryReasonCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountCustomerGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TotalDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CampaignId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CampaignId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalDiscountAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderTotalDiscountAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentTermsName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentTermsName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierServiceGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingCarrierServiceGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CIPEcode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CIPEcode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EInvoiceDimensionAccountCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EInvoiceDimensionAccountCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderingCustomerAccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderingCustomerAccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalChargesAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderTotalChargesAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesRebateCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesRebateCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationBrokerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransportationBrokerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DirectDebitMandateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DirectDebitMandateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditNoteReasonCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreditNoteReasonCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatStatisticsProcedureCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IntrastatStatisticsProcedureCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TMACustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TMACustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ReportingCurrencyFixedExchangeRate",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ReportingCurrencyFixedExchangeRate",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCity",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumberSequenceGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NumberSequenceGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTotalTaxAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderTotalTaxAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryTermsCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryTermsCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChargeCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ChargeCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesTaxGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesTaxGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderHeaderTaxAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OrderHeaderTaxAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FiscalDocumentOperationTypeId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FiscalDocumentOperationTypeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderOriginCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesOrderOriginCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceFiscalInformationCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ServiceFiscalInformationCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionSalesRepresentativeGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CommissionSalesRepresentativeGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPostingProfileId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPostingProfileId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BaseDocumentItemNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "BaseDocumentItemNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationDocumentLineId",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "TransportationDocumentLineId",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetInKana",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentFinancialInterestCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentScheduleName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentScheduleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingCarrierId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressPostBox",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressPostBox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TenderCode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "TenderCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDunsNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressDunsNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressDistrictName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryModeCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryModeCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BaseDocumentLineNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "BaseDocumentLineNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationModeId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransportationModeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesOrderName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressStreetNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "InvoiceAddressLongitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "InvoiceAddressLatitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SalesOrderPoolId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FormattedInvoiceAddress",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FormattedInvoiceAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerPaymentMethodSpecificationName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerPaymentMethodSpecificationName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FormattedDelveryAddress",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FormattedDelveryAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankConstantSymbol",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankConstantSymbol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PriceCustomerGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PriceCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCityInKana",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCityInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionISOCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountryRegionISOCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationTemplateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransportationTemplateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderOrAgreementCode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "OrderOrAgreementCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TransportationRoutePlanId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransportationRoutePlanId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExportReason",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ExportReason",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FixedExchangeRate",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FixedExchangeRate",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IntrastatTransactionCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IntrastatTransactionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStreetInKana",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStreetInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceBuildingCompliment",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceBuildingCompliment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDiscountAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalDiscountAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ShippingCarrierServiceId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ShippingCarrierServiceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressZipCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderTakerPersonnelNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderTakerPersonnelNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressCityInKana",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressCityInKana",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressPostBox",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryAddressPostBox",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressStateId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressStateId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DeliveryAddressLatitude",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryBuildingCompliment",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeliveryBuildingCompliment",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InvoiceAddressCountryRegionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProjectId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QuotationNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QuotationNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderResponsiblePersonnelNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderResponsiblePersonnelNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CommissionCustomerGroupId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LanguageId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LanguageId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LineDiscountCustomerGroupCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LineDiscountCustomerGroupCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOrderStatus",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SalesOrderStatus",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DEV_SalesOrderHeader_Stg",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DWHSalesOrderHeaderv2",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-15T09:00:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

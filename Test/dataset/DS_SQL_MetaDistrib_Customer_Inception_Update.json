@@ -1,0 +1,34 @@
+{
+	"name": "DS_SQL_MetaDistrib_Customer_Inception_Update",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "primarycustomer",
+				"type": "varchar"
+			},
+			{
+				"name": "old_inception",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PrimaryInceptionDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Customer_Inception_Update"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

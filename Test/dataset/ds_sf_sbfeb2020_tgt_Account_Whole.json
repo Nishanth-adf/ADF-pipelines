@@ -1,0 +1,58 @@
+{
+	"name": "ds_sf_sbfeb2020_tgt_Account_Whole",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerKey__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrimaryCustNo__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AreaID__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Account__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "D365__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Emerson__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BodyLogic__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EightWeek__c",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FullScript__c",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sf_sbfeb2020_Account"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,52 @@
+{
+	"name": "DS_ASQL_TGT_metauseedpdev_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Data Warehouse"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "source_id",
+				"type": "Decimal"
+			},
+			{
+				"name": "source_name",
+				"type": "String"
+			},
+			{
+				"name": "code_prefix",
+				"type": "String"
+			},
+			{
+				"name": "source_code",
+				"type": "String"
+			},
+			{
+				"name": "country_cd",
+				"type": "String"
+			},
+			{
+				"name": "currency_key",
+				"type": "Int32"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgSource]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

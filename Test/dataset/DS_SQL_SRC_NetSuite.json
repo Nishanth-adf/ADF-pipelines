@@ -1,0 +1,190 @@
+{
+	"name": "DS_SQL_SRC_NetSuite",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_tableName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "SRC - Bariatric Advantage"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "Yr",
+				"type": "Int32"
+			},
+			{
+				"name": "Period",
+				"type": "Int32"
+			},
+			{
+				"name": "Day",
+				"type": "Int32"
+			},
+			{
+				"name": "TRANDATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "Quarter",
+				"type": "String"
+			},
+			{
+				"name": "TOP_LEVEL_PARENT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "Top Level Parent Name",
+				"type": "String"
+			},
+			{
+				"name": "Parent_Addr1",
+				"type": "String"
+			},
+			{
+				"name": "Parent_City",
+				"type": "String"
+			},
+			{
+				"name": "Parent_State",
+				"type": "String"
+			},
+			{
+				"name": "Parent_Zip",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMER_ID",
+				"type": "Double"
+			},
+			{
+				"name": "Customer ID Name",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESS_LINE_1",
+				"type": "String"
+			},
+			{
+				"name": "CITY",
+				"type": "String"
+			},
+			{
+				"name": "STATE",
+				"type": "String"
+			},
+			{
+				"name": "ZIP",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMER_TYPE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "Customer Type Name",
+				"type": "String"
+			},
+			{
+				"name": "Customer Type Commissions",
+				"type": "String"
+			},
+			{
+				"name": "TSM_EMPLNo",
+				"type": "String"
+			},
+			{
+				"name": "TSM Full Name",
+				"type": "String"
+			},
+			{
+				"name": "RSM_EMPLNo",
+				"type": "String"
+			},
+			{
+				"name": "RSM Full Name",
+				"type": "String"
+			},
+			{
+				"name": "Customer Key",
+				"type": "String"
+			},
+			{
+				"name": "SKU",
+				"type": "String"
+			},
+			{
+				"name": "SKU Description",
+				"type": "String"
+			},
+			{
+				"name": "Product_Line",
+				"type": "String"
+			},
+			{
+				"name": "Product_Family",
+				"type": "String"
+			},
+			{
+				"name": "Global Position",
+				"type": "String"
+			},
+			{
+				"name": "Global Type",
+				"type": "String"
+			},
+			{
+				"name": "MEMO",
+				"type": "String"
+			},
+			{
+				"name": "NetSuite Trans Number",
+				"type": "String"
+			},
+			{
+				"name": "Sales Order",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "CY_std_cost",
+				"type": "Double"
+			},
+			{
+				"name": "ACCOUNTNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "Sales",
+				"type": "Decimal"
+			},
+			{
+				"name": "Qty",
+				"type": "Double"
+			},
+			{
+				"name": "LastUpdated",
+				"type": "DateTime"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

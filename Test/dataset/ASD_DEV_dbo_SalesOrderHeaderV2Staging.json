@@ -1,0 +1,754 @@
+{
+	"name": "ASD_DEV_dbo_SalesOrderHeaderV2Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DEFINITIONGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXECUTIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSELECTED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSFERSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SALESORDERNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ORDERINGCUSTOMERACCOUNTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICECUSTOMERACCOUNTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINEDISCOUNTCUSTOMERGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CASHDISCOUNTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTTERMSBASEDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "COMMISSIONCUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTACTPERSONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CURRENCYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERSORDERREFERENCE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERPROMISINGMETHOD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYADDRESSNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOTALDISCOUNTPERCENTAGE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "DELIVERYMODECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYREASONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYTERMSCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOTALDISCOUNTCUSTOMERGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXPORTREASON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIXEDDUEDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FIXEDEXCHANGERATE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 16
+			},
+			{
+				"name": "INVOICEPAYMENTATTACHMENTTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AREPRICESINCLUDINGSALESTAX",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DEFAULTSHIPPINGWAREHOUSEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFAULTSHIPPINGSITEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LANGUAGEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EUSALESLISTCODE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CHARGECUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSALESPROCESSINGSTOPPED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MULTILINEDISCOUNTCUSTOMERGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NUMBERSEQUENCEGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISONETIMECUSTOMER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PAYMENTTERMSNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTSCHEDULENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERPAYMENTMETHODNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERPAYMENTMETHODSPECIFICATIONNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WILLAUTOMATICINVENTORYRESERVATIONCONSIDERBATCHATTRIBUTES",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SALESREBATECUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TMACUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTRASTATPORTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERPOSTINGPROFILEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRICECUSTOMERGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERREQUISITIONNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "QUOTATIONNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONFIRMEDRECEIPTDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "REQUESTEDRECEIPTDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INVENTORYRESERVATIONMETHOD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COMMISSIONSALESREPRESENTATIVEGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERORIGINCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERPOOLID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESUNITID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERTRANSACTIONSETTLEMENTTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CONFIRMEDSHIPPINGDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "REQUESTEDSHIPPINGDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CAMPAIGNID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTRASTATSTATISTICSPROCEDURECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESTAXGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTRASTATTRANSACTIONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTRASTATTRANSPORTMODECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "URL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TAXEXEMPTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DIRECTDEBITMANDATEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERRESPONSIBLEPERSONNELNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERTAKERPERSONNELNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFAULTLEDGERDIMENSIONDISPLAYVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISENTRYCERTIFICATEREQUIRED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISOWNENTRYCERTIFICATEISSUED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INVOICETYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSPORTATIONBROKERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHIPPINGCARRIERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHIPPINGCARRIERSERVICEGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHIPPINGCARRIERSERVICEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRANSPORTATIONMODEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRANSPORTATIONROUTEPLANID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRANSPORTATIONTEMPLATEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISDELIVERYADDRESSORDERSPECIFIC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FORMATTEDDELVERYADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYBUILDINGCOMPLIMENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONISOCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTYID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSDISTRICTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSDUNSNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISDELIVERYADDRESSPRIVATE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYADDRESSLATITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "DELIVERYADDRESSLOCATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSLONGITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "DELIVERYADDRESSPOSTBOX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTATEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREETNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSTIMEZONE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYADDRESSZIPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISCONSOLIDATEDINVOICETARGET",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EINVOICEDIMENSIONACCOUNTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISEINVOICEDIMENSIONACCOUNTCODESPECIFIEDPERLINE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITNOTEREASONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISEXPORTSALE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BANKCONSTANTSYMBOL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BANKSPECIFICSYMBOL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CFPSCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISFINALUSER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CUSTOMERPAYMENTFINECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERPAYMENTFINANCIALINTERESTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FISCALOPERATIONPRESENCETYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISSERVICEDELIVERYADDRESSBASED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SERVICEFISCALINFORMATIONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FISCALDOCUMENTOPERATIONTYPEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FISCALDOCUMENTTYPEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTREET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FORMATTEDINVOICEADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEBUILDINGCOMPLIMENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTYID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSDISTRICTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISINVOICEADDRESSPRIVATE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INVOICEADDRESSLATITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVOICEADDRESSLONGITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVOICEADDRESSPOSTBOX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTATEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTREETNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSTIMEZONE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INVOICEADDRESSZIPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERTOTALAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "ORDERTOTALCHARGESAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "ORDERTOTALDISCOUNTAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "ORDERTOTALTAXAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "TOTALDISCOUNTAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "SALESORDERPROCESSINGSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ARETOTALSCALCULATED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSPORTATIONDOCUMENTLINEID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "PARTITION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERCREATIONDATETIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DELIVERYADDRESSCITYINKANA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREETINKANA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCITYINKANA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTREETINKANA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERHEADERTAXAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONISOCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJECTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "METDELIVERYTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "METAMAZONPRIMEFLAG",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "METUPSHOTSALESORDERNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "METCONTACTPERSONPHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SKIPCREATEAUTOCHARGES",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "REPORTINGCURRENCYFIXEDEXCHANGERATE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "BASEDOCUMENTDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CIPECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASEDOCUMENTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASEDOCUMENTTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BASEDOCUMENTITEMNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASEDOCUMENTLINENUMBER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ORDERORAGREEMENTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TENDERCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATAAREAID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYNCSTARTDATETIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SalesOrderHeaderV2Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

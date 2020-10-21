@@ -1,0 +1,38 @@
+{
+	"name": "DS_SQL_MetaDistrib_preferences",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "preference_name",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_value",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_display_name",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_category",
+				"type": "varchar"
+			},
+			{
+				"name": "preference_desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "preferences"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

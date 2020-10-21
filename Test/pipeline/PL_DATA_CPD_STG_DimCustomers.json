@@ -1,0 +1,94 @@
+{
+	"name": "PL_DATA_CPD_STG_DimCustomers",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_AVLVDW_DWH_DimCustomers-2-BLB_DimCustomers",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\tCustomerPK,\n\t\tCustNo,\n\t\tCustName,\n\t\tcustnoname,\n\t\tcreditlmt,\n\t\tactiveind,\n\t\tcustclass,\n\t\tcredithold,\n\t\tphone,\n\t\taddr1,\n\t\taddr2,\n\t\taddr3,\n\t\tcity,\n\t\tstate,\n\t\tzip,\n\t\tcountry,\n\t\tsalesmancd,\n\t\tsalesmanname,\n\t\tsalesmancdname,\n\t\tin_out_flag,\n\t\tref5,\n\t\tref5name,\n\t\tref6,\n\t\tref6name,\n\t\tref7,\n\t\tref7name,\n\t\tref8,\n\t\tref8name,\n\t\tinceptiondate,\n\t\tdayssinceinception,\n\t\tdiscount,\n\t\ttype,\n\t\tcurrent_rating,\n\t\tpotential_rating,\n\t\tmodality,\n\t\tspecialties,\n\t\tref4,\n\t\tref4name,\n\t\timplementationdate,\n\t\tcertificationdate,\n\t\tPrimaryState,\n\t\tPrimaryCertificationdate,\n\t\tPrimaryDaysSinceInception,\n\t\tPrimaryZip,\n\t\tPrimaryCustClass,\n\t\tDistrictname,\n\t\tprimarycustomer,\n\t\tprimarycustomernoname,\n\t\tECommerceFlag,\n\t\tactive,\n\t\tSourceDB,\n\t\tFinanceChannel,\n\t\tFinanceCountry,\n\t\tFinanceCustomer,\n\t\tFinanceCustomerType,\n\t\tFinanceBusinessType,\n\t\tPrimaryInceptionDate,\n\t\tDWCreateDateTime,\n\t\tDWUpdateDateTime\nFROM\t[AV-LV-DW].[DATAWAREHOUSE].[DBO].[DimCustomers] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_AV_LV_DW_SRC_Datawarehouse_dbo_DimCustomers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_Datawarehouse_DimCustomers",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_BLB_DimCustomers-2-ASQL_STGDimCUstomers",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_AVLVDW_DWH_DimCustomers-2-BLB_DimCustomers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 1000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_Datawarehouse_DimCustomers",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedp_STGDimCustomers",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T04:59:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

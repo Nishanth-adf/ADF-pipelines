@@ -1,0 +1,837 @@
+{
+	"name": "DS_SINK_ABLB_Json_Extract_2_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TestJSOn_2_CSV.csv",
+				"container": "metausedpblobdev"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CUSTOMERACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "ACCOUNTSTATEMENT",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSBOOKS",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSBUILDINGCOMPLEMENT",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSCITY",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSCOUNTRYREGIONID",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSCOUNTRYREGIONISOCODE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSCOUNTY",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSDISTRICTNAME",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSLATITUDE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSLOCATIONID",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSLOCATIONROLES",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSLONGITUDE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSPOSTBOX",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSSTATE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSSTREET",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSSTREETNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSTIMEZONE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSVALIDFROM",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSVALIDTO",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSZIPCODE",
+				"type": "String"
+			},
+			{
+				"name": "CENTRALBANKPURPOSECODE",
+				"type": "String"
+			},
+			{
+				"name": "CENTRALBANKPURPOSENOTES",
+				"type": "String"
+			},
+			{
+				"name": "CHARGESGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "COLLECTIONLETTERCODE",
+				"type": "String"
+			},
+			{
+				"name": "COLLECTIONSCONTACTPERSONID",
+				"type": "String"
+			},
+			{
+				"name": "COMMISSIONCUSTOMERGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "COMMISSIONSALESGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "COMPANYCHAIN",
+				"type": "String"
+			},
+			{
+				"name": "CONTACTPERSONID",
+				"type": "String"
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATION",
+				"type": "String"
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATIONISAUTHORIZATIONVOIDEDONFAILURE",
+				"type": "String"
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATIONLEVEL",
+				"type": "String"
+			},
+			{
+				"name": "CREDITCARDCVC",
+				"type": "String"
+			},
+			{
+				"name": "CREDITLIMIT",
+				"type": "String"
+			},
+			{
+				"name": "CREDITLIMITISMANDATORY",
+				"type": "String"
+			},
+			{
+				"name": "CREDITRATING",
+				"type": "String"
+			},
+			{
+				"name": "CUSTCLASSIFICATIONID",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERREBATEGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERTMAGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "DEFAULTDIMENSIONDISPLAYVALUE",
+				"type": "String"
+			},
+			{
+				"name": "DEFAULTECOMMERCEOPERATOR",
+				"type": "String"
+			},
+			{
+				"name": "DEFAULTINVENTORYSTATUSID",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSBUILDINGCOMPLEMENT",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSCITY",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONID",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONISOCODE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTY",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSDISTRICTNAME",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSLATITUDE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSLOCATIONID",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSLONGITUDE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSSTATE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREET",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREETNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSTIMEZONE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSVALIDFROM",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSVALIDTO",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYADDRESSZIPCODE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYFREIGHTZONE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYMODE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYREASON",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYTERMS",
+				"type": "String"
+			},
+			{
+				"name": "DESTINATIONCODE",
+				"type": "String"
+			},
+			{
+				"name": "DISCOUNTPRICEGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "ELECTRONICLOCATIONID",
+				"type": "String"
+			},
+			{
+				"name": "EMPLOYEERESPONSIBLENUMBER",
+				"type": "String"
+			},
+			{
+				"name": "FULFILLMENTPOLICYNAME",
+				"type": "String"
+			},
+			{
+				"name": "IDENTIFICATIONNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSBUILDINGCOMPLEMENT",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSCITY",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONID",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONISOCODE",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTY",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSDISTRICTNAME",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSLATITUDE",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSLOCATIONID",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSLONGITUDE",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSSTATE",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSSTREET",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSSTREETNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSTIMEZONE",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSVALIDFROM",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSVALIDTO",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEADDRESSZIPCODE",
+				"type": "String"
+			},
+			{
+				"name": "ISALLOWCREATEINDIRECTORDERLINES",
+				"type": "String"
+			},
+			{
+				"name": "ISELECTRONICINVOICE",
+				"type": "String"
+			},
+			{
+				"name": "ISEXCLUDEDFROMCOLLECTIONFEECALCULATION",
+				"type": "String"
+			},
+			{
+				"name": "ISEXCLUDEDFROMINTERESTCHARGECALCULATION",
+				"type": "String"
+			},
+			{
+				"name": "ISEXPRESSBILLOFLADINGACCEPTED",
+				"type": "String"
+			},
+			{
+				"name": "ISEXTERNALLYMAINTAINED",
+				"type": "String"
+			},
+			{
+				"name": "ISFREIGHTACCRUED",
+				"type": "String"
+			},
+			{
+				"name": "ISONETIMECUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "ISORDERNUMBERREFERENCEUSED",
+				"type": "String"
+			},
+			{
+				"name": "ISPURCHREQUESTUSED",
+				"type": "String"
+			},
+			{
+				"name": "ISSALESTAXINCLUDEDINPRICES",
+				"type": "String"
+			},
+			{
+				"name": "ISTRANSACTIONPOSTEDASSHIPMENT",
+				"type": "String"
+			},
+			{
+				"name": "ITEMCUSTOMERGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "KNOWNAS",
+				"type": "String"
+			},
+			{
+				"name": "LANGUAGEID",
+				"type": "String"
+			},
+			{
+				"name": "LINEDISCOUNTCODE",
+				"type": "String"
+			},
+			{
+				"name": "LINEOFBUSINESSID",
+				"type": "String"
+			},
+			{
+				"name": "METUPSHOTCUSTOMERNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "MULTILINEDISCOUNTCODE",
+				"type": "String"
+			},
+			{
+				"name": "NAMEALIAS",
+				"type": "String"
+			},
+			{
+				"name": "NUMBERSEQUENCEGROUP",
+				"type": "String"
+			},
+			{
+				"name": "ONHOLDSTATUS",
+				"type": "String"
+			},
+			{
+				"name": "ORDERENTRYDEADLINE",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONABCCODE",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONNAME",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONNUMBEROFEMPLOYEES",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONPHONETICNAME",
+				"type": "String"
+			},
+			{
+				"name": "PACKINGDUTYLICENSE",
+				"type": "String"
+			},
+			{
+				"name": "PACKINGMATERIALFEELICENSENUMBER",
+				"type": "String"
+			},
+			{
+				"name": "PARTYCOUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "PARTYNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "PARTYSTATE",
+				"type": "String"
+			},
+			{
+				"name": "PARTYTYPE",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTCASHDISCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTDAY",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTMETHOD",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTSCHEDULE",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTSPECIFICATION",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTTERMS",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTTERMSBASEDAYS",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTUSECASHDISCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "PERSONANNIVERSARYDAY",
+				"type": "String"
+			},
+			{
+				"name": "PERSONANNIVERSARYMONTH",
+				"type": "String"
+			},
+			{
+				"name": "PERSONANNIVERSARYYEAR",
+				"type": "String"
+			},
+			{
+				"name": "PERSONCHILDRENNAMES",
+				"type": "String"
+			},
+			{
+				"name": "PERSONFIRSTNAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONGENDER",
+				"type": "String"
+			},
+			{
+				"name": "PERSONHOBBIES",
+				"type": "String"
+			},
+			{
+				"name": "PERSONINITIALS",
+				"type": "String"
+			},
+			{
+				"name": "PERSONLASTNAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONLASTNAMEPREFIX",
+				"type": "String"
+			},
+			{
+				"name": "PERSONMARITALSTATUS",
+				"type": "String"
+			},
+			{
+				"name": "PERSONMIDDLENAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONPHONETICFIRSTNAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONPHONETICLASTNAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONPHONETICMIDDLENAME",
+				"type": "String"
+			},
+			{
+				"name": "PERSONPROFESSIONALSUFFIX",
+				"type": "String"
+			},
+			{
+				"name": "PERSONPROFESSIONALTITLE",
+				"type": "String"
+			},
+			{
+				"name": "PIPAPPROVEDCUSTOMERGROUP",
+				"type": "String"
+			},
+			{
+				"name": "PIPCERTOFANALYSISCUSTGROUP",
+				"type": "String"
+			},
+			{
+				"name": "PIPCUSTOMERCHECKITEM",
+				"type": "String"
+			},
+			{
+				"name": "PIPPRINTCUSTSPECIFICCERTOFANALYSIS",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAIL",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILISIM",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOK",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOKDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOKPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFAX",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXEXTENSION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDIN",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDINDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDINPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEEXTENSION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEISMOBILE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTELEX",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTELEXDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTELEXPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTER",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTERDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTERPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTURL",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTURLDESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "PRIMARYCONTACTURLPURPOSE",
+				"type": "String"
+			},
+			{
+				"name": "RECEIPTCALENDAR",
+				"type": "String"
+			},
+			{
+				"name": "RECEIPTEMAIL",
+				"type": "String"
+			},
+			{
+				"name": "RECEIPTOPTION",
+				"type": "String"
+			},
+			{
+				"name": "SALESACCOUNTNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "SALESCURRENCYCODE",
+				"type": "String"
+			},
+			{
+				"name": "SALESDISTRICT",
+				"type": "String"
+			},
+			{
+				"name": "SALESMEMO",
+				"type": "String"
+			},
+			{
+				"name": "SALESORDERPOOLID",
+				"type": "String"
+			},
+			{
+				"name": "SALESSEGMENTID",
+				"type": "String"
+			},
+			{
+				"name": "SALESSUBSEGMENTID",
+				"type": "String"
+			},
+			{
+				"name": "SALESTAXGROUP",
+				"type": "String"
+			},
+			{
+				"name": "SITEID",
+				"type": "String"
+			},
+			{
+				"name": "STATISTICSGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "SUPPLEMENTARYITEMGROUPID",
+				"type": "String"
+			},
+			{
+				"name": "TAXEXEMPTNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "TOTALDISCOUNTCODE",
+				"type": "String"
+			},
+			{
+				"name": "VENDORACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "WAREHOUSEID",
+				"type": "String"
+			},
+			{
+				"name": "WAREHOUSEISASNGENERATED",
+				"type": "String"
+			},
+			{
+				"name": "WAREHOUSEISENTIRESHIPMENTFILLED",
+				"type": "String"
+			},
+			{
+				"name": "WRITEOFFREASON",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

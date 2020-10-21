@@ -1,0 +1,122 @@
+{
+	"name": "ASD_DEV_StgSalesInvoiceHeader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalTaxAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalChargeAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderResponsiblePersonnelNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceHeaderTaxAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressState",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalInvoiceAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgSalesInvoiceHeader"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

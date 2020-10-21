@@ -1,0 +1,16 @@
+{
+	"name": "MetaFin_Source_D365_GeneralLedgerActivities",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365metafin",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "GeneralLedgerActivities"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

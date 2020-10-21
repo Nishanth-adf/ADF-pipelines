@@ -1,0 +1,51 @@
+{
+	"name": "PL Reload tbl_AlticorMainAccountMap",
+	"properties": {
+		"description": "Pipeline - Purge and reload tbl_AlticorMainAccountMap. Used for Alticor monthly upload file.\n\nAuthor: GBuenaventura\nDate: 10/30/2019",
+		"activities": [
+			{
+				"name": "Copy tbl_AlticorMainAccountMap",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_AlticorMainAccountMap",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_AlticorMainAccountMap",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASQL PROD tbl_AlticorMainAccountMap",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-08T17:45:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

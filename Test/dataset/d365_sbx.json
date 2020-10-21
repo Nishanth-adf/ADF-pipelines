@@ -1,0 +1,16 @@
+{
+	"name": "d365_sbx",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365_sbx",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "CustomersV3"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

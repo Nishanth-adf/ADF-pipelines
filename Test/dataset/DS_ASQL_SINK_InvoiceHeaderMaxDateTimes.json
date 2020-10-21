@@ -1,0 +1,33 @@
+{
+	"name": "DS_ASQL_SINK_InvoiceHeaderMaxDateTimes",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MaxDateTimeCreated",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "MaxDateTimeModified",
+				"type": "datetimeoffset",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "InvoiceHeaderMaxDateTimes"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

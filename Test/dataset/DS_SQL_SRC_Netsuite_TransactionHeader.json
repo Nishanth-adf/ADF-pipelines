@@ -1,0 +1,562 @@
+{
+	"name": "DS_SQL_SRC_Netsuite_TransactionHeader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sc58",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"structure": [
+			{
+				"name": "ACCOUNTING_BOOK_ID",
+				"type": "Double"
+			},
+			{
+				"name": "ACCOUNTING_PERIOD_ID",
+				"type": "Double"
+			},
+			{
+				"name": "ACCOUNT_BASED_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "ACTUAL_INVOICE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "AMOUNT_UNBILLED",
+				"type": "Double"
+			},
+			{
+				"name": "BILLADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "BILLING_ACCOUNT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "BILLING_INSTRUCTIONS",
+				"type": "String"
+			},
+			{
+				"name": "BILL_PAY_TRANSACTION",
+				"type": "String"
+			},
+			{
+				"name": "BULK_SUBMISSION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CARRIER",
+				"type": "String"
+			},
+			{
+				"name": "CLOSED",
+				"type": "DateTime"
+			},
+			{
+				"name": "COMPANY_STATUS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CONTRACT_COST_AMOUNT",
+				"type": "Double"
+			},
+			{
+				"name": "CONTRACT_DEFER_EXPENSE_ACCT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CONTRACT_EXPENSE_ACCT_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CREATED_BY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CREATED_FROM_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CREATE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "CURRENCY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "CUSTOMER_PO",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOM_FORM_ID",
+				"type": "Double"
+			},
+			{
+				"name": "DATE_BID_CLOSE",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_BID_OPEN",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_CONTRACT_COST_ACCRUAL",
+				"type": "DateTime"
+			},
+			{
+				"name": "DATE_LAST_MODIFIED",
+				"type": "DateTime"
+			},
+			{
+				"name": "DISABLE_OVERRIDE",
+				"type": "String"
+			},
+			{
+				"name": "DUE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "EMAIL",
+				"type": "String"
+			},
+			{
+				"name": "END_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "ENTITY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "ENTITY_TAX_REG_NUM",
+				"type": "String"
+			},
+			{
+				"name": "EST_SHIP_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "EXCHANGE_RATE",
+				"type": "Double"
+			},
+			{
+				"name": "EXPECTED_CLOSE",
+				"type": "DateTime"
+			},
+			{
+				"name": "EXTERNAL_REF_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "FAX",
+				"type": "String"
+			},
+			{
+				"name": "FOB",
+				"type": "String"
+			},
+			{
+				"name": "FORECAST_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "FULFILLED_BY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "FULFILLMENT_TIME",
+				"type": "Double"
+			},
+			{
+				"name": "INCLUDE_IN_FORECAST",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERM",
+				"type": "String"
+			},
+			{
+				"name": "INTERCOMPANY_TRANSACTION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "IS_ADVANCED_INTERCOMPANY",
+				"type": "String"
+			},
+			{
+				"name": "IS_AUTOCALCULATE_LAG",
+				"type": "String"
+			},
+			{
+				"name": "IS_COMPLIANT",
+				"type": "String"
+			},
+			{
+				"name": "IS_CREATED_FROM_MERGE",
+				"type": "String"
+			},
+			{
+				"name": "IS_FINANCE_CHARGE",
+				"type": "String"
+			},
+			{
+				"name": "IS_FIRMED",
+				"type": "String"
+			},
+			{
+				"name": "IS_INTERCOMPANY",
+				"type": "String"
+			},
+			{
+				"name": "IS_MERGED_INTO_ARRANGEMENTS",
+				"type": "String"
+			},
+			{
+				"name": "IS_NON_POSTING",
+				"type": "String"
+			},
+			{
+				"name": "IS_PAYMENT_HOLD",
+				"type": "String"
+			},
+			{
+				"name": "IS_REVERSAL",
+				"type": "String"
+			},
+			{
+				"name": "IS_TAX_REG_OVERRIDE",
+				"type": "String"
+			},
+			{
+				"name": "IS_WIP",
+				"type": "String"
+			},
+			{
+				"name": "ITEM_REVISION",
+				"type": "Double"
+			},
+			{
+				"name": "JOB_ID",
+				"type": "Double"
+			},
+			{
+				"name": "LABEL",
+				"type": "String"
+			},
+			{
+				"name": "LANDED_COST_ALLOCATION_METHOD",
+				"type": "String"
+			},
+			{
+				"name": "LAST_MODIFIED_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "LEAD_SOURCE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "LOCATION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "LOCATION_ID_0",
+				"type": "Double"
+			},
+			{
+				"name": "MEMO",
+				"type": "String"
+			},
+			{
+				"name": "MEMORIZED",
+				"type": "String"
+			},
+			{
+				"name": "MESSAGE",
+				"type": "String"
+			},
+			{
+				"name": "MISSHIPMENT__DONOTINCLUDE",
+				"type": "String"
+			},
+			{
+				"name": "MISSHIPMENT__REASON_ID",
+				"type": "Double"
+			},
+			{
+				"name": "NEEDS_BILL",
+				"type": "String"
+			},
+			{
+				"name": "NEEDS_REVENUE_COMMITMENT",
+				"type": "String"
+			},
+			{
+				"name": "NUMBER_OF_PRICING_TIERS",
+				"type": "Double"
+			},
+			{
+				"name": "OPENING_BALANCE_TRANSACTION",
+				"type": "String"
+			},
+			{
+				"name": "ORDER_TYPE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PACKING_LIST_INSTRUCTIONS",
+				"type": "String"
+			},
+			{
+				"name": "PARTNER_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PAYMENT_TERMS_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PN_REF_NUM",
+				"type": "String"
+			},
+			{
+				"name": "PRIORITY",
+				"type": "String"
+			},
+			{
+				"name": "PROBABILITY",
+				"type": "Double"
+			},
+			{
+				"name": "PRODUCT_LABEL_INSTRUCTIONS",
+				"type": "String"
+			},
+			{
+				"name": "PROJECTED_TOTAL",
+				"type": "Double"
+			},
+			{
+				"name": "PROMOTION_CODE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PROMOTION_CODE_INSTANCE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "PULLED",
+				"type": "String"
+			},
+			{
+				"name": "PURCHASE_ORDER_INSTRUCTIONS",
+				"type": "String"
+			},
+			{
+				"name": "READY_FOR_FULFILLMENT",
+				"type": "String"
+			},
+			{
+				"name": "REBATE_CATEGORY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "REBATE_PURCHASE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "RECOVER_ORDER",
+				"type": "String"
+			},
+			{
+				"name": "REFERRER_ID",
+				"type": "Double"
+			},
+			{
+				"name": "RELATED_TRANID",
+				"type": "String"
+			},
+			{
+				"name": "RENEWAL",
+				"type": "DateTime"
+			},
+			{
+				"name": "REQUEST",
+				"type": "String"
+			},
+			{
+				"name": "REVENUE_COMMITMENT_STATUS",
+				"type": "String"
+			},
+			{
+				"name": "REVENUE_COMMITTED",
+				"type": "DateTime"
+			},
+			{
+				"name": "REVENUE_STATUS",
+				"type": "String"
+			},
+			{
+				"name": "REVERSING_TRANSACTION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "REVIEWED_BY_ID",
+				"type": "Double"
+			},
+			{
+				"name": "REVIEWER_NOTES",
+				"type": "String"
+			},
+			{
+				"name": "RMI_PO",
+				"type": "String"
+			},
+			{
+				"name": "SALES_EFFECTIVE_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "SALES_REP_ID",
+				"type": "Double"
+			},
+			{
+				"name": "SCHEDULING_METHOD_ID",
+				"type": "String"
+			},
+			{
+				"name": "SENT",
+				"type": "String"
+			},
+			{
+				"name": "SENT_TO_VENDOR",
+				"type": "String"
+			},
+			{
+				"name": "SHIPADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "SHIPMENT_RECEIVED",
+				"type": "DateTime"
+			},
+			{
+				"name": "SHIPPING_ITEM_ID",
+				"type": "Double"
+			},
+			{
+				"name": "SHIP_TO_ADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "SHIP_TO_VENDOR_ID",
+				"type": "Double"
+			},
+			{
+				"name": "SOCIAL_NETWORKING_ORDER",
+				"type": "String"
+			},
+			{
+				"name": "START_DATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "STATUS",
+				"type": "String"
+			},
+			{
+				"name": "TAX_REG_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TITLE",
+				"type": "String"
+			},
+			{
+				"name": "TRANDATE",
+				"type": "DateTime"
+			},
+			{
+				"name": "TRANID",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_EXTID",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TRANSACTION_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_PARTNER",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_SOURCE",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_WEBSITE",
+				"type": "Double"
+			},
+			{
+				"name": "TRANSFER_LOCATION",
+				"type": "Double"
+			},
+			{
+				"name": "TRANS_IS_VSOE_BUNDLE",
+				"type": "String"
+			},
+			{
+				"name": "USE_ITEM_COST_AS_TRANSFER_COST",
+				"type": "String"
+			},
+			{
+				"name": "VAT",
+				"type": "String"
+			},
+			{
+				"name": "VISIBLE_IN_CUSTOMER_CENTER",
+				"type": "String"
+			},
+			{
+				"name": "WEIGHTED_TOTAL",
+				"type": "Double"
+			},
+			{
+				"name": "SRC_TRAN",
+				"type": "String"
+			},
+			{
+				"name": "SRC_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "SRC_TRANSACTION_ID",
+				"type": "Int64"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "Load Date time",
+				"type": "DateTime"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

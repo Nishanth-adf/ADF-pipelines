@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate_tbl_CustomerCreatedMaster_NewBizDEV",
+	"properties": {
+		"description": "Migrate PROD.tbl_CustomerCreatedMaster_NewBiz to DEV.tbl_CustomerCreatedMaster_NewBizDEV\n\nAuthor: GBuenaventura\nDate: 3/2/2020",
+		"activities": [
+			{
+				"name": "Copy_tbl_CustomerCreatedMaster_NewBizDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_CustomerCreatedMaster_NewBizDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_CustomerCreatedMaster_NewBiz",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_CustomerCreatedMaster_NewBizDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-03T01:51:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

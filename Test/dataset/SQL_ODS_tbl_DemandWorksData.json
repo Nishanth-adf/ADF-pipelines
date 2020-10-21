@@ -1,0 +1,84 @@
+{
+	"name": "SQL_ODS_tbl_DemandWorksData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Year",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "MonthNumber",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "DataAreaID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalCompanylvl1",
+				"type": "varchar"
+			},
+			{
+				"name": "Channel",
+				"type": "varchar"
+			},
+			{
+				"name": "SubChannel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustomerNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CustName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductNo",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductFamily",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductLine",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TherapeuticPlatform",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Qty",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 6
+			},
+			{
+				"name": "Sales",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 6
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_DemandWorksData"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

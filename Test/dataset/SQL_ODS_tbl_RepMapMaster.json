@@ -1,0 +1,86 @@
+{
+	"name": "SQL_ODS_tbl_RepMapMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Sales Related Datasets"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "salesmancd",
+				"type": "varchar"
+			},
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "acctper",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsLOA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "Manager",
+				"type": "varchar"
+			},
+			{
+				"name": "Territory",
+				"type": "varchar"
+			},
+			{
+				"name": "ref1",
+				"type": "varchar"
+			},
+			{
+				"name": "DistMgrcd",
+				"type": "varchar"
+			},
+			{
+				"name": "RegMgrcd",
+				"type": "varchar"
+			},
+			{
+				"name": "DistMgr",
+				"type": "varchar"
+			},
+			{
+				"name": "RegMgr",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalCompanylvl1",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalCompanylvl0",
+				"type": "varchar"
+			},
+			{
+				"name": "LastUpdated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "pbi",
+			"table": "tbl_RepMapMaster"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

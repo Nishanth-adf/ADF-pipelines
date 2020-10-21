@@ -1,0 +1,30 @@
+{
+	"name": "ds_sf_sbfeb2020_tgt_User_prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sales_Rep_Code__c",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sf_sbfeb2020_User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

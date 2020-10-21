@@ -1,0 +1,79 @@
+{
+	"name": "PL_DATA_CPD_ProductMaster",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_ProductFamilies-2-DimProductMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "[dbo].[dimProductMaster]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT Cast(NULL as DateTime) as [productLaunchDate]\n      ,Cast([db] as nvarchar(20)) as[applicableRegion]\n      ,Cast([Group] as nvarchar(100)) as [group1] \n      ,Cast([catalogno] as nvarchar(50)) as [catalogNumber]\n      ,Cast([desc] as nvarchar(100)) as [description]\n      ,Cast([prodgroupno] as nvarchar(20)) as [productGroupType]\n      ,Cast([Product_Line] as nvarchar(100)) as [ProductLine]\n\t  ,Cast([Product_Family] as nvarchar(100)) as [productFamily]\n      ,Cast([Product_Family_Variety] as nvarchar(100)) as [productFamilyVariety]\n      ,Cast([Sub Group] as nvarchar(100)) as [subgroup]\n      ,Cast([TPM] as nvarchar(100)) as TPM\n      ,Cast([Category_Manager] as nvarchar(100))[Category_Manager]\n      ,Cast(NULL as nvarchar(3)) as [Active_Ind]\n      ,Cast([Sub2_Group] as nvarchar(100)) as [Serving]\n      ,Dateadd(hh,-8,GetDate()) as [insertDate]\n      ,CAST('ADF ETL' as nvarchar(7)) as insertBy, (CASE WHEN db = 'Canada' then 'OT' else db END ) as Source\n  FROM [dbo].[stgTblProductFamiliesMain]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"productLaunchDate": "productLaunchDate",
+							"applicableRegion": "applicableRegion",
+							"group1": "group1",
+							"catalogNumber": "catalogNumber",
+							"description": "description",
+							"productGroupType": "productGroupType",
+							"productFamily": "productFamily",
+							"productFamilyVariety": "productFamilyVariety",
+							"subgroup": "subgroup",
+							"TPM": "TPM",
+							"Category_Manager": "Category_Manager",
+							"Active_Ind": "Active_Ind",
+							"Serving": "Serving",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"ProductLine": "productLine",
+							"Source": "source"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_metausedp_STG_tbl_Product_Families_Main_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_DimProductMaster",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-08T06:57:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

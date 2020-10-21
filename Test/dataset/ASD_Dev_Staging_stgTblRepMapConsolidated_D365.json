@@ -1,0 +1,121 @@
+{
+	"name": "ASD_Dev_Staging_stgTblRepMapConsolidated_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DB",
+				"type": "varchar"
+			},
+			{
+				"name": "salesmancd",
+				"type": "varchar"
+			},
+			{
+				"name": "acctyr",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "acctper",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "salesmancdOrigin",
+				"type": "varchar"
+			},
+			{
+				"name": "IsLOA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "Role",
+				"type": "varchar"
+			},
+			{
+				"name": "manager",
+				"type": "varchar"
+			},
+			{
+				"name": "territory",
+				"type": "varchar"
+			},
+			{
+				"name": "roll_up_name",
+				"type": "varchar"
+			},
+			{
+				"name": "ref1",
+				"type": "varchar"
+			},
+			{
+				"name": "ref5",
+				"type": "varchar"
+			},
+			{
+				"name": "ref6",
+				"type": "varchar"
+			},
+			{
+				"name": "ref7",
+				"type": "varchar"
+			},
+			{
+				"name": "ref8",
+				"type": "varchar"
+			},
+			{
+				"name": "DistMgr",
+				"type": "varchar"
+			},
+			{
+				"name": "RegMgr",
+				"type": "varchar"
+			},
+			{
+				"name": "RegMgrDesc",
+				"type": "varchar"
+			},
+			{
+				"name": "Type1",
+				"type": "varchar"
+			},
+			{
+				"name": "Type2",
+				"type": "varchar"
+			},
+			{
+				"name": "Date_Created",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DBSource",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "stgTblRepMapConsolidated_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

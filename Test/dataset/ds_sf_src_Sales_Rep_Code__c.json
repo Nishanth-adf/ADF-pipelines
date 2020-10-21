@@ -1,0 +1,19 @@
+{
+	"name": "ds_sf_src_Sales_Rep_Code__c",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Docebo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - SalesForce/Development"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Sales_Rep_Code__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

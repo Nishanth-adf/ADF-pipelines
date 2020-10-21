@@ -1,0 +1,144 @@
+{
+	"name": "ZPL_CPD_DimBusinessDivision_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimBusinessDivision_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM dbo.dimBusinessDivisionchanel where businessDivisionchanelID <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "businessDivisionchanelID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "businessDivisionchanelID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "division",
+									"type": "String"
+								},
+								"sink": {
+									"name": "division",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "chanel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "chanel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "subLevel1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "subLevel1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sublevel2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sublevel2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_DimBusinessDivision_Dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_DimBusinessdivision_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T13:12:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

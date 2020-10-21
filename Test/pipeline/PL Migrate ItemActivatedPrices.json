@@ -1,0 +1,51 @@
+{
+	"name": "PL Migrate ItemActivatedPrices",
+	"properties": {
+		"description": "Pipeline to Migrate Standard Cost table table into Staging.\n\nAuthor: GBuenaventura\nDate: 10/24/2019\n\n",
+		"activities": [
+			{
+				"name": "Copy ItemActivatedPrices",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": "&cross-company=true"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgItemActivatedPrices",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "D365_ItemActivatedPrices",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_stgItemActivatedPrices",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Supply Chain Pipelines/PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-10-24T22:20:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

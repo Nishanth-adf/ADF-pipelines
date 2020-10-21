@@ -1,0 +1,24 @@
+{
+	"name": "Trigger Daily 3 AM PST",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_shipitProd_one_touch_prod",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-04-01T10:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+{
+	"name": "AVLVDW_MetaDistribcustomer_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "customer_source_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "source_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_code",
+				"type": "varchar"
+			},
+			{
+				"name": "Customer_key",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "inception_dt",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "customer_class",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_source_name",
+				"type": "varchar"
+			},
+			{
+				"name": "in_dw_uid",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "customer_source"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

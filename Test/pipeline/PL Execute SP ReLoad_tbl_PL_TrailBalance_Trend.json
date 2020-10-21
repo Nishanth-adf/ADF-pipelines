@@ -1,0 +1,91 @@
+{
+	"name": "PL Execute SP ReLoad_tbl_PL_TrailBalance_Trend",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 10/14/2020",
+		"activities": [
+			{
+				"name": "SP ReLoad_tbl_PL_TrailBalance",
+				"description": "Run Stored Procedure - ReLoad_tbl_PL_TrailBalance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[ReLoad_tbl_PL_TrailBalance]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_dwh_LoadTrendAdjustments",
+				"description": "Load Manual Trend Adjustments to PROD dbo.tbl_PL_TrailBalance\n\nAuthor: GBuenaventura\nDate: 07/14/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP ReLoad_tbl_PL_TrailBalance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[LoadTrendAdjustments]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprodtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_dbo_UpdateAlicorGLCat",
+				"description": "Identify Alticor GL Mapping to D365 GL Accounts in table dbo.tbl_PL_TrailBalance\n\nAuthor: GBuenaventura\nDate: 07/27/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_dwh_LoadTrendAdjustments",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[UpdateAlicorGLCat]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-14T23:55:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

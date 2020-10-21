@@ -1,0 +1,311 @@
+{
+	"name": "PL_SF_SBFEB2020_AccountMonthlySales",
+	"properties": {
+		"description": "-- Girish,  Jan 2020\n-- Account Monthly Sales in SFDC ",
+		"activities": [
+			{
+				"name": "CPD_AccountMonthlySales_Azure_2_SF",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_download_Accounts",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_sf_sbfeb2020_AccountMonthlySales]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "AccountMonthKeyy__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Account__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesDate__c",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SalesDate__c",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesMonth__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SalesMonth__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesYear__c",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SalesYear__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Sales__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_Emerson__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Sales_Emerson__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_BodyLogic__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Sales_BodyLogic__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesEW__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SalesEW__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Sales_FullScript__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Sales_FullScript__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountMonthKeyy__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountMonthKeyy__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_AccountMonthlySales_for_DEV_SF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_SBFEB2020_AccountMonthlySales",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_download_Accounts",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select CustomerKeyERP__c, PrimaryCustNo__c, name, Areaid__c, id,  \nFinesse__c,Emerson__c,BodyLogic__c,EightWeek__c,FullScript__c\nFROM Account\nwhere CustomerKeyERP__c <> '' and  PrimaryCustNo__c <>''",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.sf_sbfeb2020_Account",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKey__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AreaID__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AreaID__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Account__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Finesse__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "D365__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Emerson__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Emerson__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BodyLogic__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EightWeek__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EightWeek__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FullScript__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FullScript__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_SBFEB2020_AccountWholeDownload",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_sf_sbfeb2020_Account",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce_SBFEB2020"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-12T12:57:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

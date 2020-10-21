@@ -1,0 +1,16 @@
+{
+	"name": "DS_SF_BA_Patient_Orders_DEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_BA_SALESFORCE_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Order__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

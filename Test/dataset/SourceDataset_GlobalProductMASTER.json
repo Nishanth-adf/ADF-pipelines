@@ -1,0 +1,62 @@
+{
+	"name": "SourceDataset_GlobalProductMASTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Global Revenue"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "PK_EntitySKU",
+				"type": "varchar"
+			},
+			{
+				"name": "Legal_Entity",
+				"type": "varchar"
+			},
+			{
+				"name": "SKU",
+				"type": "varchar"
+			},
+			{
+				"name": "SKU_Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "Global Positioning",
+				"type": "varchar"
+			},
+			{
+				"name": "Global Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Corp Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "Product Brand",
+				"type": "varchar"
+			},
+			{
+				"name": "CRC",
+				"type": "varbinary"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[pbi].[vw_GlobalProductMASTER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

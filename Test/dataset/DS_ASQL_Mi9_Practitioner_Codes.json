@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_Practitioner_Codes",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "practitioners2codes"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

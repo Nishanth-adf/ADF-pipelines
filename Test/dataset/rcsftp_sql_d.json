@@ -1,0 +1,86 @@
+{
+	"name": "rcsftp_sql_d",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Media Type Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Point of Contact Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Skill Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Skill Direction",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Prequeued",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Prequeue Abandons",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Queued",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Answered",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Abandons",
+				"type": "nvarchar"
+			},
+			{
+				"name": "% Abandons",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Service Level",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Avg PreQueue Time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Avg InQueue Time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Avg Talk Time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Avg ACW Time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Avg Handle Time",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "RingCentralSFTPDST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

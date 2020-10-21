@@ -1,0 +1,53 @@
+{
+	"name": "PL Migrate Mi9_ordersDEV",
+	"properties": {
+		"description": "Migrate Table from PROD.Mi9_orders to DEV.Mi9_ordersDEV\n\nAuthor: GBuenaventura\nDate: 3/20/2020",
+		"activities": [
+			{
+				"name": "Copy Mi9_ordersDEV",
+				"description": "Migrate Table from PROD.Mi9_orders to DEV.Mi9_ordersDEV\n\nAuthor: GBuenaventura\nDate: 3/20/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.Mi9_ordersDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_Mi9_orders",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_Mi9_ordersDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-03-20T21:01:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

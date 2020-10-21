@@ -1,0 +1,149 @@
+{
+	"name": "ASD_PROD_Amazon_BA",
+	"properties": {
+		"description": "Author: GBuenaventura\nDate: 09/15/2020",
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Amazon FBA"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DateTime",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SettlementId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Sku",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Marketplace",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fulfillment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderCity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderState",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OrderPostal",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TaxCollectionModel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductSales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ProductSalesTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ShippingCredits",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ShippingCreditsTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GiftWrapCredits",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GiftwrapCreditsTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PromotionalRebates",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PromotionalRebatesTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MarketplaceWithheldTax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SellingFees",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FbaFees",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OtherTransactionFees",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Other",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Total",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Amazon_BA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

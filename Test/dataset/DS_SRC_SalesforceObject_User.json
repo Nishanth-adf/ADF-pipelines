@@ -1,0 +1,25 @@
+{
+	"name": "DS_SRC_SalesforceObject_User",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SalesForce_Girish_Login",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "Id",
+				"type": "String"
+			},
+			{
+				"name": "Sales_Rep_Code__c",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "User"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

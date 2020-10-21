@@ -1,0 +1,16 @@
+{
+	"name": "DS_SRC_MySQL_users_incr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MI9RODB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`users`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

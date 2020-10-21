@@ -1,0 +1,58 @@
+{
+	"name": "DestinationDataset_GlobalProductMASTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdev",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Global Revenue"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Legal_Entity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SKU",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SKU_Desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Global Positioning",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Global Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Corp Brand",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product Brand",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CRC",
+				"type": "varbinary"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[pbi_tbl_GlobalProductMASTER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

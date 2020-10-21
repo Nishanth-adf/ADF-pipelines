@@ -1,0 +1,1264 @@
+{
+	"name": "ASD_PROD_CustCustomerV3Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PARTYTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSBOOKS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSLOCATIONROLES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTTELEXPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTURLPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOKPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDINPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTERPURPOSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMPLOYEERESPONSIBLENUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFAULTDIMENSIONDISPLAYVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ELECTRONICLOCATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSCOUNTRYREGIONISOCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONISOCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONISOCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFINITIONGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXECUTIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSELECTED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSFERSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CUSTOMERACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORGANIZATIONNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NAMEALIAS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "KNOWNAS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORGANIZATIONNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORGANIZATIONNUMBEROFEMPLOYEES",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ORGANIZATIONABCCODE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ORGANIZATIONPHONETICNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONINITIALS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONFIRSTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONMIDDLENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONLASTNAMEPREFIX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONLASTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONPROFESSIONALTITLE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONPROFESSIONALSUFFIX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONPHONETICFIRSTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONPHONETICLASTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONPHONETICMIDDLENAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONGENDER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERSONMARITALSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERSONANNIVERSARYDAY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERSONANNIVERSARYMONTH",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERSONANNIVERSARYYEAR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERSONCHILDRENNAMES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERSONHOBBIES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTYNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LANGUAGEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FULLPRIMARYADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSZIPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSCITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSCOUNTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSDISTRICTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSLATITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "ADDRESSLOCATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSLONGITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "ADDRESSSTATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSSTREET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSSTREETNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSTIMEZONE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ADDRESSBUILDINGCOMPLEMENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSVALIDFROM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ADDRESSVALIDTO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ADDRESSBRAZILIANCNPJORCPF",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSBRAZILIANIE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILISIM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PRIMARYCONTACTFAX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFAXEXTENSION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEEXTENSION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTPHONEISMOBILE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PRIMARYCONTACTTELEX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTTELEXDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTURL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTURLDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTFACEBOOKDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDIN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTLINKEDINDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTERDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTTWITTER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISONETIMECUSTOMER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STATISTICSGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ACCOUNTSTATEMENT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDENTIFICATIONNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTYCOUNTRY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTYSTATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VENDORACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FEDERALINDICATOR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FEDERALAGENCYLOCATIONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FEDERALCOMMENTS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IRS1099CINDICATOR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CONTACTPERSONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINEOFBUSINESSID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESSEGMENTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESSUBSEGMENTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESDISTRICT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMPANYCHAIN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESCURRENCYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ONHOLDSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITLIMITISMANDATORY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITRATING",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREDITLIMIT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "COLLECTIONSCONTACTPERSONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISEXCLUDEDFROMINTERESTCHARGECALCULATION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISEXCLUDEDFROMCOLLECTIONFEECALCULATION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CHARGESGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SITEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WAREHOUSEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ITEMCUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMISSIONCUSTOMERGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMISSIONSALESGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESORDERPOOLID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESACCOUNTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDERENTRYDEADLINE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MULTILINEDISCOUNTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOTALDISCOUNTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISCOUNTPRICEGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINEDISCOUNTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERREBATEGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERTMAGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUPPLEMENTARYITEMGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTTERMS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTMETHOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTSPECIFICATION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTSCHEDULE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTDAY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTCASHDISCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTTERMSBASEDAYS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PAYMENTBANKACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTFACTORINGACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTIDTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENTUSECASHDISCOUNT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CENTRALBANKPURPOSECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CENTRALBANKPURPOSENOTES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATIONISAUTHORIZATIONVOIDEDONFAILURE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITCARDADDRESSVERIFICATIONLEVEL",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREDITCARDCVC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WAREHOUSEISASNGENERATED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WAREHOUSEISENTIRESHIPMENTFILLED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DEFAULTINVENTORYSTATUSID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEACCOUNT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NUMBERSEQUENCEGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GIROTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GIROTYPEFREETEXTINVOICE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GIROTYPEINTERESTNOTE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GIROTYPECOLLECTIONLETTER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GIROTYPEPROJINVOICE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GIROTYPEACCOUNTSTATEMENT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYFREIGHTZONE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYTERMS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYMODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYREASON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DESTINATIONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIPTCALENDAR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISFUELSURCHARGEAPPLIED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SALESTAXGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TAXEXEMPTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSALESTAXINCLUDEDINPRICES",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PACKINGDUTYLICENSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FISCALCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PACKINGMATERIALFEELICENSENUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISELECTRONICINVOICE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ELECTRONICINVOICEEAN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISFREIGHTACCRUED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISEXPRESSBILLOFLADINGACCEPTED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISTRANSACTIONPOSTEDASSHIPMENT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISORDERNUMBERREFERENCEUSED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SALESRETURNTAXGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIPTEMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIPTOPTION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISWITHHOLDINGTAXCALCULATED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WITHHOLDINGTAXGROUPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FRENCHSIRET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NAFCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMPANYTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CURPNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RFCNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATEINSCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TAXREGISTRATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONSOLIDATIONDAY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NATIONALREGISTRYNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RELIEFGROUPID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CALCULATEWITHHOLDINGTAX",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FOREIGNCUSTOMER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TCSGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TDSGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PREFERENTIALCUSTOMER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NATUREOFASSESSEE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PANNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PANREFERENCENUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PANSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CUSTOMERPAYMENTFINECODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERPAYMENTFINANCIALINTERESTCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BRAZILIANCCM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BRAZILIANCNAE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BRAZILIANCNPJORCPF",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISFINALUSER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CUSTOMERWITHHOLDINGCONTRIBUTIONTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISINCOMINGFISCALDOCUMENTGENERATED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISICMSCONTRIBUTOR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BRAZILIANIE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BRAZILIANINSSCEI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BRAZILIANNIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSERVICEDELIVERYADDRESSBASED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ISINSUFRAMAREGION",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SUFRAMANUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HASSUFRAMADISCOUNTPISANDCOFINS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FOREIGNERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRANSACTIONPRESENCETYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WRITEOFFREASON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXPORTSALE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BIRTHCOUNTYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BIRTHPLACE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RESIDENCEFOREIGNCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISPURCHREQUESTUSED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYADDRESSDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSZIPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSTIMEZONE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DELIVERYADDRESSCITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSCOUNTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSDISTRICTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSLATITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "DELIVERYADDRESSLONGITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "DELIVERYADDRESSLOCATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSSTREETNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSBUILDINGCOMPLEMENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELIVERYADDRESSVALIDFROM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DELIVERYADDRESSVALIDTO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INVOICEADDRESSDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSZIPCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSTIMEZONE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INVOICEADDRESSCITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTRYREGIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSCOUNTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSDISTRICTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSLATITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVOICEADDRESSLONGITUDE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVOICEADDRESSLOCATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTREET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSSTREETNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSBUILDINGCOMPLEMENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEADDRESSVALIDFROM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INVOICEADDRESSVALIDTO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ISEXTERNALLYMAINTAINED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MERCHANTID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFAULTECOMMERCEOPERATOR",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTOMERTYPE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FULFILLMENTPOLICYNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PIPAPPROVEDCUSTOMERGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PIPCUSTOMERCHECKITEM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PIPCERTOFANALYSISCUSTGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PIPPRINTCUSTSPECIFICCERTOFANALYSIS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PARTITION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESSPOSTBOX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUSTCLASSIFICATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRIMARYCONTACTEMAILRECORDID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRIMARYCONTACTFAXRECORDID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRIMARYCONTACTPHONERECORDID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRIMARYCONTACTURLRECORDID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ADDRESSRECORDID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ISALLOWCREATEINDIRECTORDERLINES",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COLLECTIONLETTERCODE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "METUPSHOTCUSTOMERNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EINVOICEREGISTER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AUTHORITYOFFICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EINVOICEATTACHMENT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LTIBLOCKED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LTICREATEDDATETIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATAAREAID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYNCSTARTDATETIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CustCustomerV3Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,59 @@
+{
+	"name": "ASD_Dev_dwh_DimDistributor_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DimDistributorId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DistributorCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistributorName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Comments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAreaId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimDistributor_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,69 @@
+{
+	"name": "Dest_UpShotOrders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "UpShot Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "order_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "created",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "date_fulfilled",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "last_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "site_id",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "classification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CRC",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgUpshotOrders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

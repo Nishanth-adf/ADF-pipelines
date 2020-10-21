@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SF_Sandbox_Accounts_download",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sf_sandbox_Accounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,265 @@
+{
+	"name": "PL_CPD_MetaDistrib_distributor_sales_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_distributor_sales_data",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetadistributor_sales_data;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "distributor_sales_data_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "distributor_sales_data_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "import_data_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "import_data_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "post_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "post_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "transaction_date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "transaction_date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "item",
+									"type": "String"
+								},
+								"sink": {
+									"name": "item",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "met_item_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "met_item_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "net_sales_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "sales_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "count",
+									"type": "String"
+								},
+								"sink": {
+									"name": "count",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cost_of_sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "cost_of_sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "net_sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "sales_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "profit_before_discount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "profit_before_discount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "discount_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "discount_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "profit",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "profit",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "price",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "price",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "return_amt",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "return_amt",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "return_qty",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "return_qty",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "source_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "source_id",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_distributor_sales_data",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetadistributor_sales_data",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:32:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

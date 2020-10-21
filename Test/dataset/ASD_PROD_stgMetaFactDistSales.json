@@ -1,0 +1,142 @@
+{
+	"name": "ASD_PROD_stgMetaFactDistSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "uidCustomerKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PayTermKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProductKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ShipViaKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Datekey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EntityKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Invno",
+				"type": "varchar"
+			},
+			{
+				"name": "Orderno",
+				"type": "varchar"
+			},
+			{
+				"name": "ShipNo",
+				"type": "varchar"
+			},
+			{
+				"name": "Qty",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "ExtPrice",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ExtCost",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ProfitMargin",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ExtDiscount",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "salesmancd",
+				"type": "varchar"
+			},
+			{
+				"name": "currencykey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "matrixcd",
+				"type": "varchar"
+			},
+			{
+				"name": "ExtListPrice",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "PracticeProfit",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "PostDateKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sourceid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "custno",
+				"type": "varchar"
+			},
+			{
+				"name": "transdatekey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "importDataId",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetaFactDistSales"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

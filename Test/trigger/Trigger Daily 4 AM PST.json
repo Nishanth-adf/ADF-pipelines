@@ -1,0 +1,36 @@
+{
+	"name": "Trigger Daily 4 AM PST",
+	"properties": {
+		"description": "Daily @ 4 AM",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_metaX_sales_D365",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL Update_dwh_Update_dwh_DailyForecastHistory",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2019-10-30T11:00:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						0
+					]
+				}
+			}
+		}
+	}
+}

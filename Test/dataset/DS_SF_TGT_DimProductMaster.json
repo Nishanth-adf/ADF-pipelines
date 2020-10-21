@@ -1,0 +1,96 @@
+{
+	"name": "DS_SF_TGT_DimProductMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - SalesForce"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "ProductId__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "ProductLaunchDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "ApplicableRegion__c",
+				"type": "String"
+			},
+			{
+				"name": "Group1__c",
+				"type": "String"
+			},
+			{
+				"name": "CatalogNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "Description__c",
+				"type": "String"
+			},
+			{
+				"name": "ProductGroupType__c",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamily__c",
+				"type": "String"
+			},
+			{
+				"name": "ProductFamilyVariety__c",
+				"type": "String"
+			},
+			{
+				"name": "SubGroup__c",
+				"type": "String"
+			},
+			{
+				"name": "TPM__c",
+				"type": "String"
+			},
+			{
+				"name": "Category_Manager__c",
+				"type": "String"
+			},
+			{
+				"name": "Active_Ind__c",
+				"type": "String"
+			},
+			{
+				"name": "Serving__c",
+				"type": "String"
+			},
+			{
+				"name": "InsertDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "InsertBy__c",
+				"type": "String"
+			},
+			{
+				"name": "ModifiedDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "ModifiedBy__c",
+				"type": "String"
+			},
+			{
+				"name": "ProductLine__c",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "DimProductMaster__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

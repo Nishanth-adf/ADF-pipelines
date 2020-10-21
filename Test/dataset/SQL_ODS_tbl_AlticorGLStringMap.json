@@ -1,0 +1,37 @@
+{
+	"name": "SQL_ODS_tbl_AlticorGLStringMap",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Production"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "GLString",
+				"type": "varchar"
+			},
+			{
+				"name": "Alticor_GL_Mapping",
+				"type": "varchar"
+			},
+			{
+				"name": "ICP_Codes",
+				"type": "varchar"
+			},
+			{
+				"name": "Division",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_AlticorGLStringMap"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

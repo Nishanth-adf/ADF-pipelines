@@ -1,0 +1,56 @@
+{
+	"name": "DS_ASQL_TGT_metdausedpdev_stgTranLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Bariatric Advantage"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "AMOUNT",
+				"type": "Double"
+			},
+			{
+				"name": "ITEM_COUNT",
+				"type": "Double"
+			},
+			{
+				"name": "ITEM_ID",
+				"type": "Double"
+			},
+			{
+				"name": "ITEM_UNIT_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "TRANSACTION_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TRANSACTION_LINE_ID",
+				"type": "Double"
+			},
+			{
+				"name": "TRANSACTION_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "InsertBy",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[STGTranLines]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

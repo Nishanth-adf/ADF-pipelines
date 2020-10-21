@@ -1,0 +1,86 @@
+{
+	"name": "PL_CPD_MI9_Coupon_Use_Last7Days_DEV",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Mi9_Coupon_Use_Last7Days",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": {
+							"value": "@concat('select * from coupon_use where updated> DATE(NOW()',' - ',variables('last7days'),')')",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table staging.Mi9_coupon_use_Staging_Incr",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_MySQL_Mi9_Coupon_Use",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_Mi9_Coupon_Use_DEV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "MI9_Coupon_Use_Incremental_Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_Mi9_Coupon_Use_Last7Days",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_Mi9_coupon_use_Incr_Load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"last7days": {
+				"type": "String",
+				"defaultValue": "INTERVAL 7 DAY"
+			}
+		},
+		"folder": {
+			"name": "Mi9 DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-06-15T05:26:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

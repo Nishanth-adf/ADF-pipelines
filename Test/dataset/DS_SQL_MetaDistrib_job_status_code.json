@@ -1,0 +1,27 @@
+{
+	"name": "DS_SQL_MetaDistrib_job_status_code",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "job_status_cd",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "job_status_desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "job_status_code"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

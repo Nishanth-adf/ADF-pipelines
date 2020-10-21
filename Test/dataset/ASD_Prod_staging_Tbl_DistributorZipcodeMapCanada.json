@@ -1,0 +1,34 @@
+{
+	"name": "ASD_Prod_staging_Tbl_DistributorZipcodeMapCanada",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Zipcode",
+				"type": "varchar"
+			},
+			{
+				"name": "DistrictMngr",
+				"type": "varchar"
+			},
+			{
+				"name": "TerritoryName",
+				"type": "varchar"
+			},
+			{
+				"name": "Salesmancd",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Tbl_DistributorZipcodeMapCanada"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

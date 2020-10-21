@@ -1,0 +1,26 @@
+{
+	"name": "ASD_PROD_staging_tbl_ProductGroupIDReference",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductGroupID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductGroupIDDesc",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "tbl_ProductGroupIDReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,150 @@
+{
+	"name": "DS_ABLB_Source_SalesInvoiceLines",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceNumber",
+				"type": "String"
+			},
+			{
+				"name": "LineCreationSequenceNumber",
+				"type": "Int64"
+			},
+			{
+				"name": "InvoiceDate",
+				"type": "String"
+			},
+			{
+				"name": "InventorySiteId",
+				"type": "String"
+			},
+			{
+				"name": "DimensionNumber",
+				"type": "String"
+			},
+			{
+				"name": "ItemBatchNumber",
+				"type": "String"
+			},
+			{
+				"name": "LineTotalDiscountAmount",
+				"type": "Double"
+			},
+			{
+				"name": "ProductConfigurationId",
+				"type": "String"
+			},
+			{
+				"name": "LineTotalTaxAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "OrderedInventoryStatusId",
+				"type": "String"
+			},
+			{
+				"name": "ProductSizeId",
+				"type": "String"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "ProductNumber",
+				"type": "String"
+			},
+			{
+				"name": "ProductColorId",
+				"type": "String"
+			},
+			{
+				"name": "ProductStyleId",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "SalesPrice",
+				"type": "Double"
+			},
+			{
+				"name": "InventoryWarehouseId",
+				"type": "String"
+			},
+			{
+				"name": "SalesUnitSymbol",
+				"type": "String"
+			},
+			{
+				"name": "LineTotalChargeAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "ProductDescription",
+				"type": "String"
+			},
+			{
+				"name": "InvoicedQuantity",
+				"type": "Int64"
+			},
+			{
+				"name": "LineAmount",
+				"type": "Double"
+			},
+			{
+				"name": "ProductName",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonNodeReference": "$.['value']",
+				"jsonPathDefinition": {
+					"dataAreaId": "['dataAreaId']",
+					"InvoiceNumber": "['InvoiceNumber']",
+					"LineCreationSequenceNumber": "['LineCreationSequenceNumber']",
+					"InvoiceDate": "['InvoiceDate']",
+					"InventorySiteId": "['InventorySiteId']",
+					"DimensionNumber": "['DimensionNumber']",
+					"ItemBatchNumber": "['ItemBatchNumber']",
+					"LineTotalDiscountAmount": "['LineTotalDiscountAmount']",
+					"ProductConfigurationId": "['ProductConfigurationId']",
+					"LineTotalTaxAmount": "['LineTotalTaxAmount']",
+					"OrderedInventoryStatusId": "['OrderedInventoryStatusId']",
+					"ProductSizeId": "['ProductSizeId']",
+					"CurrencyCode": "['CurrencyCode']",
+					"ProductNumber": "['ProductNumber']",
+					"ProductColorId": "['ProductColorId']",
+					"ProductStyleId": "['ProductStyleId']",
+					"ConfirmedShippingDate": "['ConfirmedShippingDate']",
+					"SalesPrice": "['SalesPrice']",
+					"InventoryWarehouseId": "['InventoryWarehouseId']",
+					"SalesUnitSymbol": "['SalesUnitSymbol']",
+					"LineTotalChargeAmount": "['LineTotalChargeAmount']",
+					"ProductDescription": "['ProductDescription']",
+					"InvoicedQuantity": "['InvoicedQuantity']",
+					"LineAmount": "['LineAmount']",
+					"ProductName": "['ProductName']"
+				}
+			},
+			"fileName": "SalesInvoiceLines.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files/SalesInvoiceLines_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

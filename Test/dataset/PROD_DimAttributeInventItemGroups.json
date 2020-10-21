@@ -1,0 +1,16 @@
+{
+	"name": "PROD_DimAttributeInventItemGroups",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "D365Prod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DimAttributeInventItemGroups"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

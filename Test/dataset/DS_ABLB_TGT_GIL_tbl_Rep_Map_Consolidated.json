@@ -1,0 +1,125 @@
+{
+	"name": "DS_ABLB_TGT_GIL_tbl_Rep_Map_Consolidated",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "DB",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd",
+				"type": "String"
+			},
+			{
+				"name": "acctyr",
+				"type": "Int32"
+			},
+			{
+				"name": "acctper",
+				"type": "Int32"
+			},
+			{
+				"name": "salesmancdOrigin",
+				"type": "String"
+			},
+			{
+				"name": "IsLOA",
+				"type": "Int32"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "Role",
+				"type": "String"
+			},
+			{
+				"name": "manager",
+				"type": "String"
+			},
+			{
+				"name": "territory",
+				"type": "String"
+			},
+			{
+				"name": "roll_up_name",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref5",
+				"type": "String"
+			},
+			{
+				"name": "ref6",
+				"type": "String"
+			},
+			{
+				"name": "ref7",
+				"type": "String"
+			},
+			{
+				"name": "ref8",
+				"type": "String"
+			},
+			{
+				"name": "DistMgr",
+				"type": "String"
+			},
+			{
+				"name": "RegMgr",
+				"type": "String"
+			},
+			{
+				"name": "Type1",
+				"type": "String"
+			},
+			{
+				"name": "Type2",
+				"type": "String"
+			},
+			{
+				"name": "Date_Created",
+				"type": "DateTime"
+			},
+			{
+				"name": "DBSource",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": "¬",
+				"rowDelimiter": "Þ",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": false,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": {
+				"value": "@concat('GIL_tbl_Rep_Map_Consolidated-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')",
+				"type": "Expression"
+			},
+			"folderPath": "metausedpblobdev/Finesse/gil"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

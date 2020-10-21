@@ -1,0 +1,543 @@
+{
+	"name": "PL_TRAN_CPD_STG_Arinvdet",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_INVOICE-2-AZDB_INVOICE",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_INVOICE-2-BLB_OT_INVOICE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_arinvdet-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-arinvdet]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"batchno": "batchno",
+							"invno": "invno",
+							"item": "item",
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orderitem": "orderitem",
+							"entityno": "entityno",
+							"custno": "custno",
+							"subno": "subno",
+							"shipno": "shipno",
+							"printyn": "printyn",
+							"invdate": "invdate",
+							"duedate": "duedate",
+							"memotype": "memotype",
+							"paytermscd": "paytermscd",
+							"locationcd": "locationcd",
+							"salesman": "salesman",
+							"qty": "qty",
+							"matrixcd": "matrixcd",
+							"taxyn": "taxyn",
+							"taxcode": "taxcode",
+							"taxdesc1": "taxdesc1",
+							"tax1": "tax1",
+							"taxmatrix1": "taxmatrix1",
+							"taxdesc2": "taxdesc2",
+							"tax2": "tax2",
+							"taxmatrix2": "taxmatrix2",
+							"taxdesc3": "taxdesc3",
+							"tax3": "tax3",
+							"taxmatrix3": "taxmatrix3",
+							"taxdesc4": "taxdesc4",
+							"tax4": "tax4",
+							"taxmatrix4": "taxmatrix4",
+							"discacctcd": "discacctcd",
+							"fcacctcd": "fcacctcd",
+							"currencycd": "currencycd",
+							"orig_totalpay": "orig_totalpay",
+							"totalpay": "totalpay",
+							"fcamt": "fcamt",
+							"orig_discamt": "orig_discamt",
+							"discamt": "discamt",
+							"discdate": "discdate",
+							"orig_price": "orig_price",
+							"price": "price",
+							"salegl": "salegl",
+							"saleacctcr": "saleacctcr",
+							"saleacctdb": "saleacctdb",
+							"orig_cost": "orig_cost",
+							"cost": "cost",
+							"costgl": "costgl",
+							"costacctcr": "costacctcr",
+							"costacctdb": "costacctdb",
+							"saleind": "saleind",
+							"custpo": "custpo",
+							"custpodate": "custpodate",
+							"catalogno": "catalogno",
+							"cataloguom": "cataloguom",
+							"pdesc": "pdesc",
+							"optdate": "optdate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ref9": "ref9",
+							"ref10": "ref10",
+							"ref11": "ref11",
+							"rtrn_conc": "rtrn_conc",
+							"acctper": "acctper",
+							"acctyr": "acctyr",
+							"datetime": "datetime",
+							"tidp": "tidp",
+							"convert_user": "convert_user",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_arinvdet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_arinvdet",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_INVOICE-2-BLB_OT_INVOICE",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_arinvdet-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [batchno]\n      ,[invno]\n      ,[item]\n      ,[order_code]\n      ,[orderno]\n      ,[orderitem]\n      ,[entityno]\n      ,[custno]\n      ,[subno]\n      ,[shipno]\n      ,[printyn]\n      ,[invdate]\n      ,[duedate]\n      ,[memotype]\n      ,[paytermscd]\n      ,[locationcd]\n      ,[salesman]\n      ,[qty]\n      ,[matrixcd]\n      ,[taxyn]\n      ,[taxcode]\n      ,[taxdesc1]\n      ,[tax1]\n      ,[taxmatrix1]\n      ,[taxdesc2]\n      ,[tax2]\n      ,[taxmatrix2]\n      ,[taxdesc3]\n      ,[tax3]\n      ,[taxmatrix3]\n      ,[taxdesc4]\n      ,[tax4]\n      ,[taxmatrix4]\n      ,[discacctcd]\n      ,[fcacctcd]\n      ,[currencycd]\n      ,[orig_totalpay]\n      ,[totalpay]\n      ,[fcamt]\n      ,[orig_discamt]\n      ,[discamt]\n      ,[discdate]\n      ,[orig_price]\n      ,[price]\n      ,[salegl]\n      ,[saleacctcr]\n      ,[saleacctdb]\n      ,[orig_cost]\n      ,[cost]\n      ,[costgl]\n      ,[costacctcr]\n      ,[costacctdb]\n      ,[saleind]\n      ,[custpo]\n      ,[custpodate]\n      ,[catalogno]\n      ,[cataloguom]\n      ,[pdesc]\n      ,[optdate]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[ref9]\n      ,[ref10]\n      ,[ref11]\n      ,[rtrn_conc]\n      ,[acctper]\n      ,[acctyr]\n      ,[datetime]\n      ,[tidp]\n      ,[convert_user]\n\t  ,'OT' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [OT].[dbo].[arinvdet] with( nolock)\nWhere acctyr =2019 and acctper >= 5",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"batchno": "batchno",
+							"invno": "invno",
+							"item": "item",
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orderitem": "orderitem",
+							"entityno": "entityno",
+							"custno": "custno",
+							"subno": "subno",
+							"shipno": "shipno",
+							"printyn": "printyn",
+							"invdate": "invdate",
+							"duedate": "duedate",
+							"memotype": "memotype",
+							"paytermscd": "paytermscd",
+							"locationcd": "locationcd",
+							"salesman": "salesman",
+							"qty": "qty",
+							"matrixcd": "matrixcd",
+							"taxyn": "taxyn",
+							"taxcode": "taxcode",
+							"taxdesc1": "taxdesc1",
+							"tax1": "tax1",
+							"taxmatrix1": "taxmatrix1",
+							"taxdesc2": "taxdesc2",
+							"tax2": "tax2",
+							"taxmatrix2": "taxmatrix2",
+							"taxdesc3": "taxdesc3",
+							"tax3": "tax3",
+							"taxmatrix3": "taxmatrix3",
+							"taxdesc4": "taxdesc4",
+							"tax4": "tax4",
+							"taxmatrix4": "taxmatrix4",
+							"discacctcd": "discacctcd",
+							"fcacctcd": "fcacctcd",
+							"currencycd": "currencycd",
+							"orig_totalpay": "orig_totalpay",
+							"totalpay": "totalpay",
+							"fcamt": "fcamt",
+							"orig_discamt": "orig_discamt",
+							"discamt": "discamt",
+							"discdate": "discdate",
+							"orig_price": "orig_price",
+							"price": "price",
+							"salegl": "salegl",
+							"saleacctcr": "saleacctcr",
+							"saleacctdb": "saleacctdb",
+							"orig_cost": "orig_cost",
+							"cost": "cost",
+							"costgl": "costgl",
+							"costacctcr": "costacctcr",
+							"costacctdb": "costacctdb",
+							"saleind": "saleind",
+							"custpo": "custpo",
+							"custpodate": "custpodate",
+							"catalogno": "catalogno",
+							"cataloguom": "cataloguom",
+							"pdesc": "pdesc",
+							"optdate": "optdate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ref9": "ref9",
+							"ref10": "ref10",
+							"ref11": "ref11",
+							"rtrn_conc": "rtrn_conc",
+							"acctper": "acctper",
+							"acctyr": "acctyr",
+							"datetime": "datetime",
+							"tidp": "tidp",
+							"convert_user": "convert_user",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_OT_dbo_arinvdet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_arinvdet",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_IL_INVOICE-2-BLB_IL_INVOICE",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_arinvdet-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [batchno]\n      ,[invno]\n      ,[item]\n      ,[order_code]\n      ,[orderno]\n      ,[orderitem]\n      ,[entityno]\n      ,[custno]\n      ,[subno]\n      ,[shipno]\n      ,[printyn]\n      ,[invdate]\n      ,[duedate]\n      ,[memotype]\n      ,[paytermscd]\n      ,[locationcd]\n      ,[salesman]\n      ,[qty]\n      ,[matrixcd]\n      ,[taxyn]\n      ,[taxcode]\n      ,[taxdesc1]\n      ,[tax1]\n      ,[taxmatrix1]\n      ,[taxdesc2]\n      ,[tax2]\n      ,[taxmatrix2]\n      ,[taxdesc3]\n      ,[tax3]\n      ,[taxmatrix3]\n      ,[taxdesc4]\n      ,[tax4]\n      ,[taxmatrix4]\n      ,[discacctcd]\n      ,[fcacctcd]\n      ,[currencycd]\n      ,[orig_totalpay]\n      ,[totalpay]\n      ,[fcamt]\n      ,[orig_discamt]\n      ,[discamt]\n      ,[discdate]\n      ,[orig_price]\n      ,[price]\n      ,[salegl]\n      ,[saleacctcr]\n      ,[saleacctdb]\n      ,[orig_cost]\n      ,[cost]\n      ,[costgl]\n      ,[costacctcr]\n      ,[costacctdb]\n      ,[saleind]\n      ,[custpo]\n      ,[custpodate]\n      ,[catalogno]\n      ,[cataloguom]\n      ,[pdesc]\n      ,[optdate]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[ref9]\n      ,[ref10]\n      ,[ref11]\n      ,[rtrn_conc]\n      ,[acctper]\n      ,[acctyr]\n      ,[datetime]\n      ,[tidp]\n      ,[convert_user]\n\t  ,'IL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [IL].[dbo].[arinvdet] WITH (NOLOCK)\nWhere acctyr = 2019 and acctper >= 5",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"batchno": "batchno",
+							"invno": "invno",
+							"item": "item",
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orderitem": "orderitem",
+							"entityno": "entityno",
+							"custno": "custno",
+							"subno": "subno",
+							"shipno": "shipno",
+							"printyn": "printyn",
+							"invdate": "invdate",
+							"duedate": "duedate",
+							"memotype": "memotype",
+							"paytermscd": "paytermscd",
+							"locationcd": "locationcd",
+							"salesman": "salesman",
+							"qty": "qty",
+							"matrixcd": "matrixcd",
+							"taxyn": "taxyn",
+							"taxcode": "taxcode",
+							"taxdesc1": "taxdesc1",
+							"tax1": "tax1",
+							"taxmatrix1": "taxmatrix1",
+							"taxdesc2": "taxdesc2",
+							"tax2": "tax2",
+							"taxmatrix2": "taxmatrix2",
+							"taxdesc3": "taxdesc3",
+							"tax3": "tax3",
+							"taxmatrix3": "taxmatrix3",
+							"taxdesc4": "taxdesc4",
+							"tax4": "tax4",
+							"taxmatrix4": "taxmatrix4",
+							"discacctcd": "discacctcd",
+							"fcacctcd": "fcacctcd",
+							"currencycd": "currencycd",
+							"orig_totalpay": "orig_totalpay",
+							"totalpay": "totalpay",
+							"fcamt": "fcamt",
+							"orig_discamt": "orig_discamt",
+							"discamt": "discamt",
+							"discdate": "discdate",
+							"orig_price": "orig_price",
+							"price": "price",
+							"salegl": "salegl",
+							"saleacctcr": "saleacctcr",
+							"saleacctdb": "saleacctdb",
+							"orig_cost": "orig_cost",
+							"cost": "cost",
+							"costgl": "costgl",
+							"costacctcr": "costacctcr",
+							"costacctdb": "costacctdb",
+							"saleind": "saleind",
+							"custpo": "custpo",
+							"custpodate": "custpodate",
+							"catalogno": "catalogno",
+							"cataloguom": "cataloguom",
+							"pdesc": "pdesc",
+							"optdate": "optdate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ref9": "ref9",
+							"ref10": "ref10",
+							"ref11": "ref11",
+							"rtrn_conc": "rtrn_conc",
+							"acctper": "acctper",
+							"acctyr": "acctyr",
+							"datetime": "datetime",
+							"tidp": "tidp",
+							"convert_user": "convert_user",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_IL_dbo_arinvdet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_arinvdet",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_IL_INVOICE-2-AZDB_INVOICE",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_IL_INVOICE-2-BLB_IL_INVOICE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_arinvdet-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-arinvdet]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"batchno": "batchno",
+							"invno": "invno",
+							"item": "item",
+							"order_code": "order_code",
+							"orderno": "orderno",
+							"orderitem": "orderitem",
+							"entityno": "entityno",
+							"custno": "custno",
+							"subno": "subno",
+							"shipno": "shipno",
+							"printyn": "printyn",
+							"invdate": "invdate",
+							"duedate": "duedate",
+							"memotype": "memotype",
+							"paytermscd": "paytermscd",
+							"locationcd": "locationcd",
+							"salesman": "salesman",
+							"qty": "qty",
+							"matrixcd": "matrixcd",
+							"taxyn": "taxyn",
+							"taxcode": "taxcode",
+							"taxdesc1": "taxdesc1",
+							"tax1": "tax1",
+							"taxmatrix1": "taxmatrix1",
+							"taxdesc2": "taxdesc2",
+							"tax2": "tax2",
+							"taxmatrix2": "taxmatrix2",
+							"taxdesc3": "taxdesc3",
+							"tax3": "tax3",
+							"taxmatrix3": "taxmatrix3",
+							"taxdesc4": "taxdesc4",
+							"tax4": "tax4",
+							"taxmatrix4": "taxmatrix4",
+							"discacctcd": "discacctcd",
+							"fcacctcd": "fcacctcd",
+							"currencycd": "currencycd",
+							"orig_totalpay": "orig_totalpay",
+							"totalpay": "totalpay",
+							"fcamt": "fcamt",
+							"orig_discamt": "orig_discamt",
+							"discamt": "discamt",
+							"discdate": "discdate",
+							"orig_price": "orig_price",
+							"price": "price",
+							"salegl": "salegl",
+							"saleacctcr": "saleacctcr",
+							"saleacctdb": "saleacctdb",
+							"orig_cost": "orig_cost",
+							"cost": "cost",
+							"costgl": "costgl",
+							"costacctcr": "costacctcr",
+							"costacctdb": "costacctdb",
+							"saleind": "saleind",
+							"custpo": "custpo",
+							"custpodate": "custpodate",
+							"catalogno": "catalogno",
+							"cataloguom": "cataloguom",
+							"pdesc": "pdesc",
+							"optdate": "optdate",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"ref9": "ref9",
+							"ref10": "ref10",
+							"ref11": "ref11",
+							"rtrn_conc": "rtrn_conc",
+							"acctper": "acctper",
+							"acctyr": "acctyr",
+							"datetime": "datetime",
+							"tidp": "tidp",
+							"convert_user": "convert_user",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_arinvdet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_arinvdet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-04T07:27:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

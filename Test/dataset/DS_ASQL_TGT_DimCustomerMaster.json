@@ -1,0 +1,84 @@
+{
+	"name": "DS_ASQL_TGT_DimCustomerMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - Finesse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "customerNumber",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "salesmanCode",
+				"type": "String"
+			},
+			{
+				"name": "referredBy",
+				"type": "String"
+			},
+			{
+				"name": "industryType",
+				"type": "String"
+			},
+			{
+				"name": "primaryCustomerIndicator",
+				"type": "String"
+			},
+			{
+				"name": "primaryCustomerNumber",
+				"type": "String"
+			},
+			{
+				"name": "ref1",
+				"type": "String"
+			},
+			{
+				"name": "ref2",
+				"type": "String"
+			},
+			{
+				"name": "effectiveDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "expiryDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "activeIndicator",
+				"type": "String"
+			},
+			{
+				"name": "insertDate",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy",
+				"type": "String"
+			},
+			{
+				"name": "latestIndicator",
+				"type": "String"
+			},
+			{
+				"name": "source",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[dimCustomerMaster]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

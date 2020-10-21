@@ -1,0 +1,460 @@
+{
+	"name": "DS_ASQL_SRC_ShipItProd_Shipping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "shipitprod",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ShipmentGUID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "Shipper_Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Company",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Address1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Address2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_PostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Account",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Consignee_Residential",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOFN_Total",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Additional_Handling_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Total",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Base",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Calltag_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "COD_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Discount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Fuel_Surcharge",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Oversize_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Proof_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Proof_Require_Signature_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Residential_Delivery_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Saturday_Delivery_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Special",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Special_Delivery_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "VAT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Calltag",
+				"type": "bit"
+			},
+			{
+				"name": "Calltag_Number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Proof",
+				"type": "bit"
+			},
+			{
+				"name": "Proof_Require_Signature",
+				"type": "bit"
+			},
+			{
+				"name": "Routing_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Saturday_Delivery",
+				"type": "bit"
+			},
+			{
+				"name": "Service",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ServicePlaintext",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Signature_Release",
+				"type": "bit"
+			},
+			{
+				"name": "Special_Delivery",
+				"type": "bit"
+			},
+			{
+				"name": "Third_Party_Billing",
+				"type": "bit"
+			},
+			{
+				"name": "Third_Party_Billing_Account",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Company",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Contact",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Address1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Address2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_StateProvince",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Postalcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TP_Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "_CONSIGNEE_BILLING",
+				"type": "bit"
+			},
+			{
+				"name": "Consignee_Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Declared_Value_Amount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "ShipDate",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "ShipTime",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "Shipper",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Terms",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Voided",
+				"type": "bit"
+			},
+			{
+				"name": "Closed_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "CloseOut_Key",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "Uploaded_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "MachineName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UserName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hazmat_Fee",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Misc_Carrier_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PickerID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PackerID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Shipment_Field_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Shipment_Field_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Shipment_Field_3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Shipment_Field_4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Misc_Shipment_Field_5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Waybill_BOL_Number",
+				"type": "varchar"
+			},
+			{
+				"name": "Shipping_Instructions",
+				"type": "varchar"
+			},
+			{
+				"name": "Billing_Instructions",
+				"type": "varchar"
+			},
+			{
+				"name": "ProNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "EstDeliveryDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TotalSkids",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalPackages",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalShipmentWeight",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "Consignee_Email",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_from_company",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Address1",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_from_address2",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_from_address3",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_City",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_State",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Postal_Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Country",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Contact",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Phone",
+				"type": "varchar"
+			},
+			{
+				"name": "Ship_From_Email",
+				"type": "varchar"
+			},
+			{
+				"name": "HOST_SHIPMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "MANUAL_SHIPMENT",
+				"type": "bit"
+			},
+			{
+				"name": "AMZMWS_ORDER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "HOST_ORDER_NUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "HOST_CARRIER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ShipDateYYYYMMDD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Shipments"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

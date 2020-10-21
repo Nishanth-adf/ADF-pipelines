@@ -1,0 +1,26 @@
+{
+	"name": "DS_ASQL_SRC_DimSalesRep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Name",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "User__c",
+				"type": "String",
+				"precision": 255,
+				"scale": 255
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

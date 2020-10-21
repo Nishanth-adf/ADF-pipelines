@@ -1,0 +1,60 @@
+{
+	"name": "TestPL_SF_NewObjects",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_Sales_Rep_Code__c",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "select  cast(1000.00 as money) as \nSales_MTD__c,cast(1000.00 as money) as Sales_MTD_Canada__c,cast(1000.00 as money) as Sales_YTD__c,cast(1000.00 as money) as Sales_YTD_Canada__c\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Sales_YTD__c": "Sales_YTD__c",
+							"Sales_MTD__c": "Sales_MTD__c",
+							"Sales_MTD_Canada__c": "Sales_MTD_Canada__c",
+							"Sales_YTD_Canada__c": "Sales_YTD_Canada__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_TESTSALESREP",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SF_Sales_Rep_Code__c",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Test PL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T13:18:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

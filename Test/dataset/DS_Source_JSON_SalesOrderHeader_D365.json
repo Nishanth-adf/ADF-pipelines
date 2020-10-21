@@ -1,0 +1,700 @@
+{
+	"name": "DS_Source_JSON_SalesOrderHeader_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metaedpAzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "dataAreaId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "String"
+			},
+			{
+				"name": "SalesUnitId",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalTaxAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "AreTotalsCalculated",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountPercentage",
+				"type": "Int64"
+			},
+			{
+				"name": "IntrastatPortId",
+				"type": "String"
+			},
+			{
+				"name": "WillAutomaticInventoryReservationConsiderBatchAttributes",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderName",
+				"type": "String"
+			},
+			{
+				"name": "MultilineDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountyId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "String"
+			},
+			{
+				"name": "TransportationRoutePlanId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStateId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderPromisingMethod",
+				"type": "String"
+			},
+			{
+				"name": "LineDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceBuildingCompliment",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "NumberSequenceGroupId",
+				"type": "String"
+			},
+			{
+				"name": "CustomersOrderReference",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "Int64"
+			},
+			{
+				"name": "FormattedInvoiceAddress",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierServiceId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "FixedExchangeRate",
+				"type": "Int64"
+			},
+			{
+				"name": "ConfirmedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "FiscalOperationPresenceType",
+				"type": "String"
+			},
+			{
+				"name": "BankConstantSymbol",
+				"type": "String"
+			},
+			{
+				"name": "RequestedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPostingProfileId",
+				"type": "String"
+			},
+			{
+				"name": "FormattedDelveryAddress",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentMethodName",
+				"type": "String"
+			},
+			{
+				"name": "EUSalesListCode",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderProcessingStatus",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDunsNumber",
+				"type": "String"
+			},
+			{
+				"name": "ServiceFiscalInformationCode",
+				"type": "String"
+			},
+			{
+				"name": "IsConsolidatedInvoiceTarget",
+				"type": "String"
+			},
+			{
+				"name": "IsEInvoiceDimensionAccountCodeSpecifiedPerLine",
+				"type": "String"
+			},
+			{
+				"name": "PaymentScheduleName",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalChargesAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "IntrastatTransactionCode",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsName",
+				"type": "String"
+			},
+			{
+				"name": "OrderTakerPersonnelNumber",
+				"type": "String"
+			},
+			{
+				"name": "CashDiscountCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceCustomerAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderStatus",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCountyId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "String"
+			},
+			{
+				"name": "FixedDueDate",
+				"type": "String"
+			},
+			{
+				"name": "IsEntryCertificateRequired",
+				"type": "String"
+			},
+			{
+				"name": "IsInvoiceAddressPrivate",
+				"type": "String"
+			},
+			{
+				"name": "CFPSCode",
+				"type": "String"
+			},
+			{
+				"name": "SalesTaxGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "TMACustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "String"
+			},
+			{
+				"name": "PriceCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "CustomerPaymentMethodSpecificationName",
+				"type": "String"
+			},
+			{
+				"name": "CommissionSalesRepresentativeGroupId",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatTransportModeCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "String"
+			},
+			{
+				"name": "TransportationDocumentLineId",
+				"type": "String"
+			},
+			{
+				"name": "PaymentTermsBaseDate",
+				"type": "String"
+			},
+			{
+				"name": "InventoryReservationMethod",
+				"type": "String"
+			},
+			{
+				"name": "IsDeliveryAddressPrivate",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "Int64"
+			},
+			{
+				"name": "TransportationModeId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryTermsCode",
+				"type": "String"
+			},
+			{
+				"name": "IsOneTimeCustomer",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "String"
+			},
+			{
+				"name": "IsFinalUser",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryBuildingCompliment",
+				"type": "String"
+			},
+			{
+				"name": "CreditNoteReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "URL",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountCustomerGroupCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressPostBox",
+				"type": "String"
+			},
+			{
+				"name": "TransportationBrokerId",
+				"type": "String"
+			},
+			{
+				"name": "IsExportSale",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryReasonCode",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "String"
+			},
+			{
+				"name": "RequestedShippingDate",
+				"type": "String"
+			},
+			{
+				"name": "InvoicePaymentAttachmentType",
+				"type": "String"
+			},
+			{
+				"name": "EInvoiceDimensionAccountCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "String"
+			},
+			{
+				"name": "DefaultShippingWarehouseId",
+				"type": "String"
+			},
+			{
+				"name": "TotalDiscountAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "ArePricesIncludingSalesTax",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "Int64"
+			},
+			{
+				"name": "BankSpecificSymbol",
+				"type": "String"
+			},
+			{
+				"name": "CustomerRequisitionNumber",
+				"type": "String"
+			},
+			{
+				"name": "SalesRebateCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "OrderingCustomerAccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "FiscalDocumentOperationTypeId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryModeCode",
+				"type": "String"
+			},
+			{
+				"name": "IsSalesProcessingStopped",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressPostBox",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrderOriginCode",
+				"type": "String"
+			},
+			{
+				"name": "CampaignId",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceType",
+				"type": "String"
+			},
+			{
+				"name": "OrderResponsiblePersonnelNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressName",
+				"type": "String"
+			},
+			{
+				"name": "ShippingCarrierServiceGroupId",
+				"type": "String"
+			},
+			{
+				"name": "ConfirmedReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "TransportationTemplateId",
+				"type": "String"
+			},
+			{
+				"name": "IntrastatStatisticsProcedureCode",
+				"type": "String"
+			},
+			{
+				"name": "ExportReason",
+				"type": "String"
+			},
+			{
+				"name": "LanguageId",
+				"type": "String"
+			},
+			{
+				"name": "IsOwnEntryCertificateIssued",
+				"type": "String"
+			},
+			{
+				"name": "IsServiceDeliveryAddressBased",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStateId",
+				"type": "String"
+			},
+			{
+				"name": "ChargeCustomerGroupId",
+				"type": "String"
+			},
+			{
+				"name": "OrderTotalDiscountAmount",
+				"type": "Int64"
+			},
+			{
+				"name": "DefaultShippingSiteId",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "String"
+			},
+			{
+				"name": "QuotationNumber",
+				"type": "String"
+			},
+			{
+				"name": "CurrencyCode",
+				"type": "String"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "String"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "Int64"
+			},
+			{
+				"name": "IsDeliveryAddressOrderSpecific",
+				"type": "String"
+			},
+			{
+				"name": "DefaultLedgerDimensionDisplayValue",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTransactionSettlementType",
+				"type": "String"
+			},
+			{
+				"name": "FiscalDocumentTypeId",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "String"
+			},
+			{
+				"name": "DirectDebitMandateId",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "setOfObjects",
+				"jsonNodeReference": "$.['value']",
+				"jsonPathDefinition": {
+					"dataAreaId": "['dataAreaId']",
+					"SalesOrderNumber": "['SalesOrderNumber']",
+					"SalesUnitId": "['SalesUnitId']",
+					"OrderTotalTaxAmount": "['OrderTotalTaxAmount']",
+					"AreTotalsCalculated": "['AreTotalsCalculated']",
+					"TotalDiscountPercentage": "['TotalDiscountPercentage']",
+					"IntrastatPortId": "['IntrastatPortId']",
+					"WillAutomaticInventoryReservationConsiderBatchAttributes": "['WillAutomaticInventoryReservationConsiderBatchAttributes']",
+					"SalesOrderName": "['SalesOrderName']",
+					"MultilineDiscountCustomerGroupCode": "['MultilineDiscountCustomerGroupCode']",
+					"DeliveryAddressLocationId": "['DeliveryAddressLocationId']",
+					"DeliveryAddressCountyId": "['DeliveryAddressCountyId']",
+					"DeliveryAddressCountryRegionISOCode": "['DeliveryAddressCountryRegionISOCode']",
+					"TransportationRoutePlanId": "['TransportationRoutePlanId']",
+					"CustomerPaymentFineCode": "['CustomerPaymentFineCode']",
+					"InvoiceAddressStateId": "['InvoiceAddressStateId']",
+					"SalesOrderPromisingMethod": "['SalesOrderPromisingMethod']",
+					"LineDiscountCustomerGroupCode": "['LineDiscountCustomerGroupCode']",
+					"InvoiceBuildingCompliment": "['InvoiceBuildingCompliment']",
+					"InvoiceAddressCountryRegionId": "['InvoiceAddressCountryRegionId']",
+					"NumberSequenceGroupId": "['NumberSequenceGroupId']",
+					"CustomersOrderReference": "['CustomersOrderReference']",
+					"InvoiceAddressLatitude": "['InvoiceAddressLatitude']",
+					"FormattedInvoiceAddress": "['FormattedInvoiceAddress']",
+					"ShippingCarrierServiceId": "['ShippingCarrierServiceId']",
+					"DeliveryAddressZipCode": "['DeliveryAddressZipCode']",
+					"FixedExchangeRate": "['FixedExchangeRate']",
+					"ConfirmedShippingDate": "['ConfirmedShippingDate']",
+					"FiscalOperationPresenceType": "['FiscalOperationPresenceType']",
+					"BankConstantSymbol": "['BankConstantSymbol']",
+					"RequestedReceiptDate": "['RequestedReceiptDate']",
+					"InvoiceAddressStreet": "['InvoiceAddressStreet']",
+					"ShippingCarrierId": "['ShippingCarrierId']",
+					"CustomerPostingProfileId": "['CustomerPostingProfileId']",
+					"FormattedDelveryAddress": "['FormattedDelveryAddress']",
+					"CustomerPaymentMethodName": "['CustomerPaymentMethodName']",
+					"EUSalesListCode": "['EUSalesListCode']",
+					"SalesOrderProcessingStatus": "['SalesOrderProcessingStatus']",
+					"DeliveryAddressDistrictName": "['DeliveryAddressDistrictName']",
+					"DeliveryAddressDunsNumber": "['DeliveryAddressDunsNumber']",
+					"ServiceFiscalInformationCode": "['ServiceFiscalInformationCode']",
+					"IsConsolidatedInvoiceTarget": "['IsConsolidatedInvoiceTarget']",
+					"IsEInvoiceDimensionAccountCodeSpecifiedPerLine": "['IsEInvoiceDimensionAccountCodeSpecifiedPerLine']",
+					"PaymentScheduleName": "['PaymentScheduleName']",
+					"OrderTotalChargesAmount": "['OrderTotalChargesAmount']",
+					"IntrastatTransactionCode": "['IntrastatTransactionCode']",
+					"PaymentTermsName": "['PaymentTermsName']",
+					"OrderTakerPersonnelNumber": "['OrderTakerPersonnelNumber']",
+					"CashDiscountCode": "['CashDiscountCode']",
+					"InvoiceCustomerAccountNumber": "['InvoiceCustomerAccountNumber']",
+					"CustomerPaymentFinancialInterestCode": "['CustomerPaymentFinancialInterestCode']",
+					"SalesOrderStatus": "['SalesOrderStatus']",
+					"InvoiceAddressCountyId": "['InvoiceAddressCountyId']",
+					"InvoiceAddressDistrictName": "['InvoiceAddressDistrictName']",
+					"FixedDueDate": "['FixedDueDate']",
+					"IsEntryCertificateRequired": "['IsEntryCertificateRequired']",
+					"IsInvoiceAddressPrivate": "['IsInvoiceAddressPrivate']",
+					"CFPSCode": "['CFPSCode']",
+					"SalesTaxGroupCode": "['SalesTaxGroupCode']",
+					"TMACustomerGroupId": "['TMACustomerGroupId']",
+					"SalesOrderPoolId": "['SalesOrderPoolId']",
+					"PriceCustomerGroupCode": "['PriceCustomerGroupCode']",
+					"InvoiceAddressCity": "['InvoiceAddressCity']",
+					"CustomerPaymentMethodSpecificationName": "['CustomerPaymentMethodSpecificationName']",
+					"CommissionSalesRepresentativeGroupId": "['CommissionSalesRepresentativeGroupId']",
+					"IntrastatTransportModeCode": "['IntrastatTransportModeCode']",
+					"DeliveryAddressStreet": "['DeliveryAddressStreet']",
+					"TransportationDocumentLineId": "['TransportationDocumentLineId']",
+					"PaymentTermsBaseDate": "['PaymentTermsBaseDate']",
+					"InventoryReservationMethod": "['InventoryReservationMethod']",
+					"IsDeliveryAddressPrivate": "['IsDeliveryAddressPrivate']",
+					"DeliveryAddressCity": "['DeliveryAddressCity']",
+					"InvoiceAddressLongitude": "['InvoiceAddressLongitude']",
+					"TransportationModeId": "['TransportationModeId']",
+					"DeliveryTermsCode": "['DeliveryTermsCode']",
+					"IsOneTimeCustomer": "['IsOneTimeCustomer']",
+					"DeliveryAddressCountryRegionId": "['DeliveryAddressCountryRegionId']",
+					"IsFinalUser": "['IsFinalUser']",
+					"DeliveryBuildingCompliment": "['DeliveryBuildingCompliment']",
+					"CreditNoteReasonCode": "['CreditNoteReasonCode']",
+					"OrderTotalAmount": "['OrderTotalAmount']",
+					"URL": "['URL']",
+					"TotalDiscountCustomerGroupCode": "['TotalDiscountCustomerGroupCode']",
+					"DeliveryAddressPostBox": "['DeliveryAddressPostBox']",
+					"TransportationBrokerId": "['TransportationBrokerId']",
+					"IsExportSale": "['IsExportSale']",
+					"DeliveryReasonCode": "['DeliveryReasonCode']",
+					"DeliveryAddressDescription": "['DeliveryAddressDescription']",
+					"RequestedShippingDate": "['RequestedShippingDate']",
+					"InvoicePaymentAttachmentType": "['InvoicePaymentAttachmentType']",
+					"EInvoiceDimensionAccountCode": "['EInvoiceDimensionAccountCode']",
+					"InvoiceAddressZipCode": "['InvoiceAddressZipCode']",
+					"DefaultShippingWarehouseId": "['DefaultShippingWarehouseId']",
+					"TotalDiscountAmount": "['TotalDiscountAmount']",
+					"ArePricesIncludingSalesTax": "['ArePricesIncludingSalesTax']",
+					"DeliveryAddressLatitude": "['DeliveryAddressLatitude']",
+					"BankSpecificSymbol": "['BankSpecificSymbol']",
+					"CustomerRequisitionNumber": "['CustomerRequisitionNumber']",
+					"SalesRebateCustomerGroupId": "['SalesRebateCustomerGroupId']",
+					"CommissionCustomerGroupId": "['CommissionCustomerGroupId']",
+					"OrderingCustomerAccountNumber": "['OrderingCustomerAccountNumber']",
+					"FiscalDocumentOperationTypeId": "['FiscalDocumentOperationTypeId']",
+					"DeliveryModeCode": "['DeliveryModeCode']",
+					"IsSalesProcessingStopped": "['IsSalesProcessingStopped']",
+					"InvoiceAddressPostBox": "['InvoiceAddressPostBox']",
+					"SalesOrderOriginCode": "['SalesOrderOriginCode']",
+					"CampaignId": "['CampaignId']",
+					"InvoiceType": "['InvoiceType']",
+					"OrderResponsiblePersonnelNumber": "['OrderResponsiblePersonnelNumber']",
+					"DeliveryAddressName": "['DeliveryAddressName']",
+					"ShippingCarrierServiceGroupId": "['ShippingCarrierServiceGroupId']",
+					"ConfirmedReceiptDate": "['ConfirmedReceiptDate']",
+					"TransportationTemplateId": "['TransportationTemplateId']",
+					"IntrastatStatisticsProcedureCode": "['IntrastatStatisticsProcedureCode']",
+					"ExportReason": "['ExportReason']",
+					"LanguageId": "['LanguageId']",
+					"IsOwnEntryCertificateIssued": "['IsOwnEntryCertificateIssued']",
+					"IsServiceDeliveryAddressBased": "['IsServiceDeliveryAddressBased']",
+					"DeliveryAddressStateId": "['DeliveryAddressStateId']",
+					"ChargeCustomerGroupId": "['ChargeCustomerGroupId']",
+					"OrderTotalDiscountAmount": "['OrderTotalDiscountAmount']",
+					"DefaultShippingSiteId": "['DefaultShippingSiteId']",
+					"DeliveryAddressStreetNumber": "['DeliveryAddressStreetNumber']",
+					"TaxExemptNumber": "['TaxExemptNumber']",
+					"QuotationNumber": "['QuotationNumber']",
+					"CurrencyCode": "['CurrencyCode']",
+					"InvoiceAddressStreetNumber": "['InvoiceAddressStreetNumber']",
+					"DeliveryAddressLongitude": "['DeliveryAddressLongitude']",
+					"IsDeliveryAddressOrderSpecific": "['IsDeliveryAddressOrderSpecific']",
+					"DefaultLedgerDimensionDisplayValue": "['DefaultLedgerDimensionDisplayValue']",
+					"CustomerTransactionSettlementType": "['CustomerTransactionSettlementType']",
+					"FiscalDocumentTypeId": "['FiscalDocumentTypeId']",
+					"Email": "['Email']",
+					"ContactPersonId": "['ContactPersonId']",
+					"DirectDebitMandateId": "['DirectDebitMandateId']"
+				}
+			},
+			"fileName": "SalesOrderHeaders.json",
+			"folderPath": "metausedpblobdev/Finesse/D365_JSON_Files/SalesOrderHeader_DEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

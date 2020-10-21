@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_o5l",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365fo_qa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "MainAccounts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

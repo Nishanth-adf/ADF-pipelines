@@ -1,0 +1,145 @@
+{
+	"name": "PL_CPD_MetaDistrib_customer_source",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_MetaDistrib_customer_source",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgMetacustomer_source;"
+					},
+					"enableStaging": false,
+					"parallelCopies": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "customer_source_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_source_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "customer_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "source_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "source_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Customer_key",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Customer_key",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "inception_dt",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "inception_dt",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_source_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "customer_source_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "in_dw_uid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "in_dw_uid",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_MetaDistrib_customer_source",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_stgMetacustomer_source",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Data Warehouse(AVLVDW)/GIL_Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-12T11:23:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

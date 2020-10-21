@@ -1,0 +1,120 @@
+{
+	"name": "DS_SF_TGT_FactOrderInvoiceSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TGT - SalesForce"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "OrderInvoiceSalesID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "orderID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "geographyID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "customerID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "salesRepID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "productID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "BusinessDivisionchanelID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "dimDistributorID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "SalesOriginID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "productTypeID__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "commissionableIndicator__c",
+				"type": "String"
+			},
+			{
+				"name": "invoiceNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "invoiceDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "lineItem__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "shipmentNumber__c",
+				"type": "String"
+			},
+			{
+				"name": "Quantity__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "unitPrice__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Amount__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "amountType__c",
+				"type": "String"
+			},
+			{
+				"name": "localCurrencyCode__c",
+				"type": "String"
+			},
+			{
+				"name": "orderType__c",
+				"type": "String"
+			},
+			{
+				"name": "insertDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "insertBy__c",
+				"type": "String"
+			},
+			{
+				"name": "modifiedDate__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "ModifiedBy__c",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "factOrderInvoiceSales__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

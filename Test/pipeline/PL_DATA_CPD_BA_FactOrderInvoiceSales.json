@@ -1,0 +1,78 @@
+{
+	"name": "PL_DATA_CPD_BA_FactOrderInvoiceSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_metausedp_STGTranLines-2-FactOrderInvoiceSales",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT\t\torderID\t\t=\tISNULL((\t\n\t\t\t\t\t\t\t\t\t\tSELECT\torderID\n\t\t\t\t\t\t\t\t\t\tFROM\tdbo.dimOrder do\n\t\t\t\t\t\t\t\t\t\tWHERE\tdo.customerNumber\t\t=\tCAST(CAST(B.[ENTITY_ID] as decimal(10,0)) AS varchar(20))\n\t\t\t\t\t\t\t\t\t\tAND\t\tDO.orderNumber\t\t\t=\tB.TRANSACTION_NUMBER\n\t\t\t\t\t\t\t\t\t\tAND\t\tDO.orderDate\t\t\t=\tB.TRANDATE\n\t\t\t\t\t\t\t\t\t),-1),\n\t\t\tgeographyID = CAST(-1 AS BIGINT),\n\t\t\tcustomerID =\tISNULL((\t\n\t\t\t\t\t\t\t\t\t\tSELECT\ttop 1 customerID\n\t\t\t\t\t\t\t\t\t\tFROM\tdbo.dimCustomerMaster dcm\n\t\t\t\t\t\t\t\t\t\tWHERE\tdcm.customerNumber\t\t=\tCAST(CAST(B.[ENTITY_ID] as decimal(10,0)) AS varchar(20))\n\t\t\t\t\t\t\t\t\t),-1),\n\t\t\tsalesRepID =\tISNULL(ISNULL((\t\n\t\t\t\t\t\t\t\t\t\tSELECT\ttop 1 salesRepID\n\t\t\t\t\t\t\t\t\t\tFROM\tdbo.dimSalesRep dsr\n\t\t\t\t\t\t\t\t\t\tWHERE\tdsr.salesmanCode\t\t=\tCAST(CAST(B.SALES_REP_ID as decimal(10,0)) AS varchar(20))\n\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.source\t\t\t\t=\t'NS'\n\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.accountYear\t\t\t=\tYEAR(B.TRANDATE)\n\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.accountMonth\t\t=\tMONTH(B.TRANDATE)),\n\t\t\t\t\t\t\t\t\t\t(\t/* If we get -1 then */\n\t\t\t\t\t\t\t\t\t\t\tSELECT\tTop 1 salesRepID \n\t\t\t\t\t\t\t\t\t\t\tFROM\tdbo.dimSalesRep dsr \n\t\t\t\t\t\t\t\t\t\t\tWHERE\tdsr.salesmanCode\t=\t(\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\tTop 1 cast(zcm.TSM as varchar(100)) --zcm.TSM \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t[dbo].[stgZipCode_Mapping_2018] zcm \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\tzcm.zip = (CASE\tWHEN REVERSE(SUBSTRING(REVERSE(SHIPADDRESS), 1, CHARINDEX(' ', REVERSE(SHIPADDRESS)))) LIKE '%CANADA%' \n\t\t\t\t\t\t\t\t\tTHEN REVERSE(REPLACE(SUBSTRING(REVERSE(SHIPADDRESS),PATINDEX('%[0-9]%',REVERSE(SHIPADDRESS)),7),' ',''))\n\t\t\t\t\t\t\t\t\tELSE REVERSE(SUBSTRING(REVERSE(SHIPADDRESS),PATINDEX('%[0-9]%',REVERSE(SHIPADDRESS)),5))\n\t\t\t\t\t\t\t\tEND)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.source\t\t\t\t=\t'NS'\n\t\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.accountYear\t\t\t=\tYEAR(B.TRANDATE)\n\t\t\t\t\t\t\t\t\t\t\tAND\t\tDSR.accountMonth\t\t=\tMONTH(B.TRANDATE)\n\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t),-1),\n\t\t\tproductID=ISNULL((SELECT ProductId FROM dimproductmaster WHERE CatalogNumber = c.FULL_NAME and source='NS'),-1),\n\t\t\t--productID = CAST(-1 AS BIGINT),\n\t\t\tBusinessDivisionchanelID = CAST(-1 AS BIGINT),\n\t\t\tdimDistributorID = CAST(-1 AS BIGINT),\n\t\t\tSalesOriginID = CAST(-1 AS BIGINT),\n\t\t\tproductTypeID = CAST(-1 AS BIGINT),\n\t\t\tinvoiceNumber = CAST(CAST(B.TRANID as decimal(10,0)) AS varchar(20)),\n\t\t\tinvoiceDate = CAST(B.TRANDATE as datetime),\n\t\t\tacctyr = YEAR(B.TRANDATE),\n\t\t\tacctper = MONTH(B.TRANDATE), \n\t\t\tlineItem = CAST(A.TRANSACTION_LINE_ID AS INT),\n\t\t\tquantity = CAST(A.ITEM_COUNT AS DECIMAL),\n\t\t\tUnitPrice =\tISNULL(\tCAST(REPLACE(REPLACE(CASE\tWHEN LEFT(A.ITEM_UNIT_PRICE,1) = '.' THEN '0'+ITEM_UNIT_PRICE \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHEN LEFT(A.ITEM_UNIT_PRICE,2) = '-.' THEN REPLACE(ITEM_UNIT_PRICE,'-.','-0.') \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tELSE ITEM_UNIT_PRICE END,'%',''),' ','')AS DECIMAL(18,4)),\n\t\t\t\t\t\t\t\tCASE\tWHEN A.ITEM_UNIT_PRICE IS NULL AND A.ITEM_COUNT IS NOT NULL AND A.AMOUNT > 0 AND A.ITEM_COUNT <> 0 \tTHEN ABS(A.AMOUNT /  NULLIF(A.ITEM_COUNT,0))\n\t\t\t\t\t\t\t\t\t\tWHEN A.ITEM_UNIT_PRICE IS NULL AND A.AMOUNT = 0\t\t\t\t\t\t\t\t\t\t\t\t\t\tTHEN 0\t\n\t\t\t\t\t\t\t\t\t\tELSE ITEM_UNIT_PRICE END\t\n\t\t\t\t\t\t\t\t),\n\t\t\tamount = CAST((A.AMOUNT * -1.0) AS DECIMAL(10,2)),\n\t\t\torderType = CAST(A.TRANSACTION_TYPE AS nvarchar(60)),\n\t\t\tcommissionableIndicator\t\t=\t'Y',\n\t\t\tinsertDate = GETDATE(),\n\t\t\tinsertBy = 'ADF ETL',\n\t\t\t[Source]\t=\t'NS'\nFROM\t\tdbo.STGTranLines A\nINNER JOIN\tdbo.stgTransactionHeader B\nON\t\t\tA.TRANSACTION_ID = B.TRANSACTION_ID \nLEFT JOIN  dbo.stgItems C\non\t\t\tA.item_id=C.item_id\nWHERE\t\tYEAR(B.TRANDATE) >= '2014'",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"orderID": "orderID",
+							"geographyID": "geographyID",
+							"customerID": "customerID",
+							"salesRepID": "salesRepID",
+							"productID": "productID",
+							"BusinessDivisionchanelID": "BusinessDivisionchanelID",
+							"dimDistributorID": "dimDistributorID",
+							"SalesOriginID": "SalesOriginID",
+							"productTypeID": "productTypeID",
+							"commissionableIndicator": "commissionableIndicator",
+							"invoiceNumber": "invoiceNumber",
+							"lineItem": "lineItem",
+							"quantity": "quantity",
+							"UnitPrice": "unitPrice",
+							"amount": "amount",
+							"orderType": "orderType",
+							"insertDate": "insertDate",
+							"insertBy": "insertBy",
+							"Source": "source",
+							"invoiceDate": "invoiceDate",
+							"acctyr": "acctyr",
+							"acctper": "acctper"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_metausedp_BA_FactOrderInvoiceSales",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedp_BA_FactOrderInvoiceSales",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Bariatric Advantage"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-05-14T05:38:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

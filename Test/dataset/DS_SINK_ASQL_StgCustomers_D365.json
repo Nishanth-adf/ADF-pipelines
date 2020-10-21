@@ -1,0 +1,1119 @@
+{
+	"name": "DS_SINK_ASQL_StgCustomers_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dataAreaId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressBrazilianCNPJOrCPF",
+				"type": "varchar"
+			},
+			{
+				"name": "PartyType",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFaxExtension",
+				"type": "varchar"
+			},
+			{
+				"name": "IsFuelSurchargeApplied",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "ContactPersonId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentFineCode",
+				"type": "varchar"
+			},
+			{
+				"name": "BirthCountyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "PackingMaterialFeeLicenseNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "TransactionPresenceType",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTwitter",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactEmailIsIM",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "IsFinalUser",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCounty",
+				"type": "varchar"
+			},
+			{
+				"name": "HasSuframaDiscountPISandCOFINS",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "CURPNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactLinkedInDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "ItemCustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonProfessionalTitle",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesSegmentId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsServiceDeliveryAddressBased",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTelexDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesAccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFacebookDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhoneIsMobile",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFaxRecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "TCSGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroTypeProjInvoice",
+				"type": "varchar"
+			},
+			{
+				"name": "LineOfBusinessId",
+				"type": "varchar"
+			},
+			{
+				"name": "OrganizationPhoneticName",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditCardCVC",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressValidFrom",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroTypeAccountStatement",
+				"type": "varchar"
+			},
+			{
+				"name": "CalculateWithholdingTax",
+				"type": "varchar"
+			},
+			{
+				"name": "ElectronicInvoiceEAN",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryFreightZone",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFax",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxExemptNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "BirthPlace",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonInitials",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultECommerceOperator",
+				"type": "varchar"
+			},
+			{
+				"name": "CentralBankPurposeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FullPrimaryAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroTypeCollectionletter",
+				"type": "varchar"
+			},
+			{
+				"name": "OrderEntryDeadline",
+				"type": "varchar"
+			},
+			{
+				"name": "ForeignerId",
+				"type": "varchar"
+			},
+			{
+				"name": "WarehouseIsASNGenerated",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerType",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactLinkedIn",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactURL",
+				"type": "varchar"
+			},
+			{
+				"name": "IsFreightAccrued",
+				"type": "varchar"
+			},
+			{
+				"name": "PartyState",
+				"type": "varchar"
+			},
+			{
+				"name": "PartyNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "CentralBankPurposeNotes",
+				"type": "varchar"
+			},
+			{
+				"name": "CollectionsContactPersonId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressBuildingComplement",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonMaritalStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentSchedule",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTwitterPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroType",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryTerms",
+				"type": "varchar"
+			},
+			{
+				"name": "NumberSequenceGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonChildrenNames",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentMethod",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryMode",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonProfessionalSuffix",
+				"type": "varchar"
+			},
+			{
+				"name": "OnHoldStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStatement",
+				"type": "varchar"
+			},
+			{
+				"name": "WarehouseId",
+				"type": "varchar"
+			},
+			{
+				"name": "DestinationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "EInvoiceRegister",
+				"type": "varchar"
+			},
+			{
+				"name": "IRS1099CIndicator",
+				"type": "varchar"
+			},
+			{
+				"name": "FrenchSiret",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentDay",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianNIT",
+				"type": "varchar"
+			},
+			{
+				"name": "FederalIndicator",
+				"type": "varchar"
+			},
+			{
+				"name": "EmployeeResponsibleNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonAnniversaryYear",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultInventoryStatusId",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactEmailDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhone",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhoneRecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCounty",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressCity",
+				"type": "varchar"
+			},
+			{
+				"name": "PANReferenceNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesCurrencyCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsSalesTaxIncludedInPrices",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianCNPJOrCPF",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentFactoringAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "PANNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTwitterDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonFirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianCCM",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceiptEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "TDSGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "MultiLineDiscountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonAnniversaryDay",
+				"type": "varchar"
+			},
+			{
+				"name": "DefaultDimensionDisplayValue",
+				"type": "varchar"
+			},
+			{
+				"name": "SupplementaryItemGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsWithholdingTaxCalculated",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentSpecification",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressRecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressBooks",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactEmailPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "FulfillmentPolicyName",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesDistrict",
+				"type": "varchar"
+			},
+			{
+				"name": "ConsolidationDay",
+				"type": "varchar"
+			},
+			{
+				"name": "IsExpressBillOfLadingAccepted",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditCardAddressVerification",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressBuildingComplement",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressState",
+				"type": "varchar"
+			},
+			{
+				"name": "IsExcludedFromCollectionFeeCalculation",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerPaymentFinancialInterestCode",
+				"type": "varchar"
+			},
+			{
+				"name": "IsTransactionPostedAsShipment",
+				"type": "varchar"
+			},
+			{
+				"name": "IsExternallyMaintained",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditLimitIsMandatory",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentTermsBaseDays",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalCode",
+				"type": "varchar"
+			},
+			{
+				"name": "KnownAs",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTelex",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentBankAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianIE",
+				"type": "varchar"
+			},
+			{
+				"name": "PreferentialCustomer",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactEmailRecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceiptOption",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressBrazilianIE",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonAnniversaryMonth",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhoneExtension",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhonePurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "ExportSale",
+				"type": "varchar"
+			},
+			{
+				"name": "OrganizationNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditCardAddressVerificationIsAuthorizationVoidedOnFailure",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressState",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceiptCalendar",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressState",
+				"type": "varchar"
+			},
+			{
+				"name": "StateInscription",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonLastNamePrefix",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesReturnTaxGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactURLDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerWithholdingContributionType",
+				"type": "varchar"
+			},
+			{
+				"name": "IsElectronicInvoice",
+				"type": "varchar"
+			},
+			{
+				"name": "FederalAgencyLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroTypeFreeTextInvoice",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressValidTo",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonPhoneticMiddleName",
+				"type": "varchar"
+			},
+			{
+				"name": "OrganizationABCCode",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianCNAE",
+				"type": "varchar"
+			},
+			{
+				"name": "WithholdingTaxGroupCode",
+				"type": "varchar"
+			},
+			{
+				"name": "NAFCode",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalDiscountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLocationRoles",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentCashDiscount",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressDistrictName",
+				"type": "varchar"
+			},
+			{
+				"name": "CollectionLetterCode",
+				"type": "varchar"
+			},
+			{
+				"name": "MerchantID",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditRating",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFacebook",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressBuildingComplement",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressLongitude",
+				"type": "varchar"
+			},
+			{
+				"name": "LineDiscountCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PartyCountry",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "IsInSuframaRegion",
+				"type": "varchar"
+			},
+			{
+				"name": "IsIncomingFiscalDocumentGenerated",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesMemo",
+				"type": "varchar"
+			},
+			{
+				"name": "ReliefGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsExcludedFromInterestChargeCalculation",
+				"type": "varchar"
+			},
+			{
+				"name": "StatisticsGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesOrderPoolId",
+				"type": "varchar"
+			},
+			{
+				"name": "OrganizationName",
+				"type": "varchar"
+			},
+			{
+				"name": "IsOrderNumberReferenceUsed",
+				"type": "varchar"
+			},
+			{
+				"name": "CustClassificationId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressValidTo",
+				"type": "varchar"
+			},
+			{
+				"name": "FederalComments",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonGender",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentTerms",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactPhoneDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressPostbox",
+				"type": "varchar"
+			},
+			{
+				"name": "SalesSubsegmentId",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerRebateGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressCounty",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactURLRecordId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsICMSContributor",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressValidTo",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressValidFrom",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditLimit",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditCardAddressVerificationLevel",
+				"type": "varchar"
+			},
+			{
+				"name": "WarehouseIsEntireShipmentFilled",
+				"type": "varchar"
+			},
+			{
+				"name": "PackingDutyLicense",
+				"type": "varchar"
+			},
+			{
+				"name": "NationalRegistryNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "SiteId",
+				"type": "varchar"
+			},
+			{
+				"name": "IsAllowCreateIndirectOrderLines",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactURLPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "ChargesGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "PanStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "CommissionSalesGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "NameAlias",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFaxPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressStreetNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonLastName",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentIdType",
+				"type": "varchar"
+			},
+			{
+				"name": "VendorAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressCountryRegionISOCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ResidenceForeignCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "RFCNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonHobbies",
+				"type": "varchar"
+			},
+			{
+				"name": "ElectronicLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactLinkedInPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "IsOneTimeCustomer",
+				"type": "varchar"
+			},
+			{
+				"name": "ForeignCustomer",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTMAGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressValidFrom",
+				"type": "varchar"
+			},
+			{
+				"name": "CompanyType",
+				"type": "varchar"
+			},
+			{
+				"name": "OrganizationNumberOfEmployees",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "GiroTypeInterestNote",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressZipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryReason",
+				"type": "varchar"
+			},
+			{
+				"name": "TaxRegistrationId",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentUseCashDiscount",
+				"type": "varchar"
+			},
+			{
+				"name": "DiscountPriceGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "SuframaNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "IdentificationNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "AuthorityOffice",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonPhoneticFirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactTelexPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "DeliveryAddressLatitude",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressCountryRegionId",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFacebookPurpose",
+				"type": "varchar"
+			},
+			{
+				"name": "CompanyChain",
+				"type": "varchar"
+			},
+			{
+				"name": "BrazilianINSSCEI",
+				"type": "varchar"
+			},
+			{
+				"name": "CommissionCustomerGroupId",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryContactFaxDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "NatureOfAssessee",
+				"type": "varchar"
+			},
+			{
+				"name": "WriteoffReason",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonMiddleName",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceAddressLocationId",
+				"type": "varchar"
+			},
+			{
+				"name": "PersonPhoneticLastName",
+				"type": "varchar"
+			},
+			{
+				"name": "LanguageId",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressStreet",
+				"type": "varchar"
+			},
+			{
+				"name": "IsPurchRequestUsed",
+				"type": "varchar"
+			},
+			{
+				"name": "PIPApprovedCustomerGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "PIPCustomerCheckItem",
+				"type": "varchar"
+			},
+			{
+				"name": "PIPCertOfAnalysisCustGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "PIPPrintCustSpecificCertOfAnalysis",
+				"type": "varchar"
+			},
+			{
+				"name": "METUpshotCustomerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LTICreatedDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LTIBlocked",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[stgCustomer_D365]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

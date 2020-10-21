@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_Mi9_practitioner_group2item_cost",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "practitioner_groups2item_cost"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

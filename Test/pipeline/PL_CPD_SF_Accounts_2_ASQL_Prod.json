@@ -1,0 +1,213 @@
+{
+	"name": "PL_CPD_SF_Accounts_2_ASQL_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_Accounts_2_ASQL_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select CustomerKeyERP__c,Account__c, PrimaryCustNo__c, name, Areaid__c, id\nfrom Account\nwhere CustomerKeyERP__c <> '' \nand ( NOT PrimaryCustNo__c like 'C0%' )",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SF_Meta_Prod_Accounts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_sfa_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CPD_ASQL_2_Aggregated_Account",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_SF_Accounts_2_ASQL_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[usp_AzureToSFDC_Metagenics_Mapping_Prod]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "CustomerKey__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_12__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_12__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Prior_YTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Prior_YTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PMTD__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PMTD__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Prior_Year__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Prior_Year__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKeyERP__c",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_6__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_6__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Rolling_3__c",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Rolling_3__c",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrimaryCustNo__c",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_SRC_PROC_Aggregated",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_Account_Metaforce_Prod_Environment",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Salesforce_DEV_Metaforce_Docebo"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-14T13:01:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

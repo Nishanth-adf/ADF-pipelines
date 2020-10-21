@@ -1,0 +1,232 @@
+{
+	"name": "Source_SF_ODS_stgD365AttributeValueCombo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "RecId",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStructure_Dimensiontreename",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountStructure_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUSINESSTYPE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BUSINESSTYPEVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUSINESSUNIT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BUSINESSUNITVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COSTCENTER",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COSTCENTERVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COUNTRYVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEPARTMENT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DEPARTMENTVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DisplayValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LedgerDimensionType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MainAccount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MainAccountValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROJECT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROJECTVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEBANKACCOUNTVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTECUSTOMER",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTECUSTOMERVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEEVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RU",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEEMPLOYEE_RUVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSET",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RU",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETS_RUVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEFIXEDASSETVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEITEM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEITEMVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEPROJECT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEPROJECTVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTERCASH",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTERCASHVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTERDEFERRALSVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEVENDOR",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SYSTEMGENERATEDATTRIBUTEVENDORVALUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "createdBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "recVersion",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Partition",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgD365AttributeValueCombo"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,145 @@
+{
+	"name": "ASD_Dev_dwh_dimSalesRep_D365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SalesRepId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SalesmanCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BusinessDivision",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistManager",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistManagerCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DistName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegionManager",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegionManagerCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegionName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fax",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AccountYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountMonth",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "dimSalesRep_D365"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

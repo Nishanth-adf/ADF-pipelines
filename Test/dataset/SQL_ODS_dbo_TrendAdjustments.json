@@ -1,0 +1,100 @@
+{
+	"name": "SQL_ODS_dbo_TrendAdjustments",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "TrendAdjID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Year",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PERIOD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Project",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountingCurrencyAmount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FROM_LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_MainAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_BusinessTypeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_CountryCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_BusinessUnitCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_DepartmentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FROM_CostCenterCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_LegalEntityId",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_MainAccount",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_BusinessTypeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_CountryCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_BusinessUnitCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_DepartmentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TO_CostCenterCode",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TrendAdjustments"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

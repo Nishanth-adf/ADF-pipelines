@@ -1,0 +1,12 @@
+{
+	"name": "DS_SQL_SRC_SQL01_OT_dbo_arinvdet_Previous",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

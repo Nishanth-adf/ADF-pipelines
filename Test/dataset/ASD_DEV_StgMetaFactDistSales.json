@@ -1,0 +1,17 @@
+{
+	"name": "ASD_DEV_StgMetaFactDistSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetaFactDistSales"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

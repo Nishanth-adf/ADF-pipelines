@@ -1,0 +1,26 @@
+{
+	"name": "ASD_PROD_dwh_tbl_AlticorMainAccts",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AlticorMainAcct",
+				"type": "varchar"
+			},
+			{
+				"name": "AlticorMainAcctDesc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "tbl_AlticorMainAccts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

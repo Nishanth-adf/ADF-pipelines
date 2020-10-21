@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SINK_SF_BA_Order_Prod",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "sf_ba_Order_Prod"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

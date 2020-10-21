@@ -1,0 +1,60 @@
+{
+	"name": "DS_SINK_ASQL_stgMetacustomer_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer_source_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "source_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customer_code",
+				"type": "varchar"
+			},
+			{
+				"name": "Customer_key",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "inception_dt",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "customer_class",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_source_name",
+				"type": "varchar"
+			},
+			{
+				"name": "in_dw_uid",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetacustomer_source"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

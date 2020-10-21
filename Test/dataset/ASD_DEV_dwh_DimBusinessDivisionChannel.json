@@ -1,0 +1,59 @@
+{
+	"name": "ASD_DEV_dwh_DimBusinessDivisionChannel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BusinessDivisionChannelId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Division",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubLevel1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubLevel2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InsertDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dwh",
+			"table": "DimBusinessDivisionChannel"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

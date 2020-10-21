@@ -1,0 +1,61 @@
+{
+	"name": "PL Migrate DEV_stgSalesOrderLine_D365",
+	"properties": {
+		"description": "PL Migrate From Prod_dbo.stgSalesOrderLine_D365 To Dev_staging.stgSalesOrderLine_D365\n\nAuthor: GBuenaventura\nDate: 08/12/2020",
+		"activities": [
+			{
+				"name": "Copy Data",
+				"description": "PL Migrate From Prod_dbo.stgSalesOrderLine_D365 To Dev_staging.stgSalesOrderLine_D365\n\nAuthor: GBuenaventura\nDate: 08/12/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE staging.stgSalesOrderLine_D365",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_stgSalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_Dev_staging_stgSalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365 Development/One Touch Prep Fact and DIM Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-12T20:51:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,229 @@
+{
+	"name": "TGT_SalesForce_DimShipAddr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Salesforce_Sandbox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"structure": [
+			{
+				"name": "ShipAddrId__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "custno__c",
+				"type": "String"
+			},
+			{
+				"name": "subno__c",
+				"type": "String"
+			},
+			{
+				"name": "shipno__c",
+				"type": "String"
+			},
+			{
+				"name": "ship_to_name__c",
+				"type": "String"
+			},
+			{
+				"name": "contact__c",
+				"type": "String"
+			},
+			{
+				"name": "attention__c",
+				"type": "String"
+			},
+			{
+				"name": "phone__c",
+				"type": "String"
+			},
+			{
+				"name": "ext__c",
+				"type": "String"
+			},
+			{
+				"name": "addr1__c",
+				"type": "String"
+			},
+			{
+				"name": "addr2__c",
+				"type": "String"
+			},
+			{
+				"name": "addr3__c",
+				"type": "String"
+			},
+			{
+				"name": "city__c",
+				"type": "String"
+			},
+			{
+				"name": "county__c",
+				"type": "String"
+			},
+			{
+				"name": "state__c",
+				"type": "String"
+			},
+			{
+				"name": "zip__c",
+				"type": "String"
+			},
+			{
+				"name": "country__c",
+				"type": "String"
+			},
+			{
+				"name": "shipvia_code__c",
+				"type": "String"
+			},
+			{
+				"name": "last_shipped__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "tax_code__c",
+				"type": "String"
+			},
+			{
+				"name": "shipcomplete__c",
+				"type": "String"
+			},
+			{
+				"name": "correspondence__c",
+				"type": "String"
+			},
+			{
+				"name": "fscm_cage__c",
+				"type": "String"
+			},
+			{
+				"name": "invoicecopies__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "priority__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "tax1__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "tax2__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "tax3__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "tax4__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "tax5__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "custclass__c",
+				"type": "String"
+			},
+			{
+				"name": "matrixcd__c",
+				"type": "String"
+			},
+			{
+				"name": "discount__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "pcntovercost__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "telex__c",
+				"type": "String"
+			},
+			{
+				"name": "usenet__c",
+				"type": "String"
+			},
+			{
+				"name": "fax__c",
+				"type": "String"
+			},
+			{
+				"name": "voicemail__c",
+				"type": "String"
+			},
+			{
+				"name": "entityno__c",
+				"type": "String"
+			},
+			{
+				"name": "currencycd__c",
+				"type": "String"
+			},
+			{
+				"name": "salutation__c",
+				"type": "String"
+			},
+			{
+				"name": "salesmancd__c",
+				"type": "String"
+			},
+			{
+				"name": "locationcd__c",
+				"type": "String"
+			},
+			{
+				"name": "deal_no__c",
+				"type": "String"
+			},
+			{
+				"name": "bankid__c",
+				"type": "String"
+			},
+			{
+				"name": "acctid__c",
+				"type": "String"
+			},
+			{
+				"name": "tele_salesmancd__c",
+				"type": "String"
+			},
+			{
+				"name": "web_custno__c",
+				"type": "String"
+			},
+			{
+				"name": "certificate_expire_date__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "intrans_loc__c",
+				"type": "String"
+			},
+			{
+				"name": "email_update__c",
+				"type": "DateTime"
+			},
+			{
+				"name": "DBSource__c",
+				"type": "String"
+			},
+			{
+				"name": "LoadDateTime__c",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"objectApiName": "DimShipAddr__c"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

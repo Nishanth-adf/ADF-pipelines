@@ -1,0 +1,22 @@
+{
+	"name": "D365Prod",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "DynamicsAX",
+		"typeProperties": {
+			"url": "https://prod-meta.operations.dynamics.com/data",
+			"tenant": "5d3d5325-ed63-487c-a91f-a6712548bdc0",
+			"aadResourceId": "https://prod-meta.operations.dynamics.com",
+			"servicePrincipalId": "b71232ab-2075-4baf-9007-38e9704f5e74",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "kv_adf",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "d365prod"
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "MetaFin_Source_D365MainAccountCompanies",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365metafin",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - Finance Tables/Development"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "MainAccountCompanies"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

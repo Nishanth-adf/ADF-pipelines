@@ -1,0 +1,79 @@
+{
+	"name": "PL_DATA_CPD_DimProductMaster_2_SFDimProductMaster",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_DimProductMaster_2_SFProductMaster",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT top 100 [productID]\n      ,[productLaunchDate]\n      ,[applicableRegion]\n      ,[group1]\n      ,[catalogNumber]\n      ,[description]\n      ,[productGroupType]\n      ,[productFamily]\n      ,[productFamilyVariety]\n      ,[subgroup]\n      ,[TPM]\n      ,[Category_Manager]\n      ,[Active_Ind]\n      ,[Serving]\n      ,[insertDate]\n      ,[insertBy]\n      ,[modifiedDate]\n      ,[modifiedBy]\n      ,[productLine]\n  FROM [dbo].[dimProductMaster]",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "upsert",
+						"externalIdFieldName": "ProductId__c",
+						"ignoreNullValues": false
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"productID": "ProductId__c",
+							"productLaunchDate": "ProductLaunchDate__c",
+							"applicableRegion": "ApplicableRegion__c",
+							"group1": "Group1__c",
+							"catalogNumber": "CatalogNumber__c",
+							"description": "Description__c",
+							"productGroupType": "ProductGroupType__c",
+							"productFamily": "ProductFamily__c",
+							"productFamilyVariety": "ProductFamilyVariety__c",
+							"subgroup": "SubGroup__c",
+							"TPM": "TPM__c",
+							"Category_Manager": "Category_Manager__c",
+							"Active_Ind": "Active_Ind__c",
+							"Serving": "Serving__c",
+							"insertDate": "InsertDate__c",
+							"insertBy": "InsertBy__c",
+							"modifiedDate": "ModifiedDate__c",
+							"modifiedBy": "ModifiedBy__c",
+							"productLine": "ProductLine__c"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_DimProductMaster_SRC",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SF_TGT_DimProductMaster",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-01T03:34:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

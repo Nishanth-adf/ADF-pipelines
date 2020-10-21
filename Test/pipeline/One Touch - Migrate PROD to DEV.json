@@ -1,0 +1,780 @@
+{
+	"name": "One Touch - Migrate PROD to DEV",
+	"properties": {
+		"description": "Purpose - Migrate Dimension, Fact tables, and other tables needed to sync Production to Development Environment.\n\nAuthor: GBuenaventura\nDate: 12/5/2019",
+		"activities": [
+			{
+				"name": "EPL_PL Migrate dimCustomerMaster_D365DEV",
+				"description": "Migrate dimCustomerMaster_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/5/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimCustomerMaster_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimProductMaster_D365DEV",
+				"description": "Migrate dimProductMaster_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/5/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimProductMaster_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimOrder_D365DEV",
+				"description": "Purge and reload dimOrder_D365DEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimOrder_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimGeographyDEV",
+				"description": "Purge and Reload dimGeographyDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimGeographyDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimSalesRep_D365",
+				"description": "Purge and Reload dimSalesRep_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimSalesRep_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimBusinessDivisionchanel",
+				"description": "Purge and Reload dimBusinessDivisionchanel from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimBusinessDivisionchanel",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimDistributor_D365",
+				"description": "Purge and Reload dimDistributor_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimDistributor_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimSalesOrigin",
+				"description": "Purge and Reload dimSalesOrigin from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimSalesOrigin",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate dimProductType_D365",
+				"description": "Purge and Reload dimProductType_D365 from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate dimProductType_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate DimSalesPool",
+				"description": "Purge and Reload DimSalesPool from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DimSalesPool",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate factOrderInvoiceSales_D365DEV",
+				"description": "Purge and reload PL Migrate factOrderInvoiceSales_D365DEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/11/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL Migrate dimCustomerMaster_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimProductMaster_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimOrder_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimGeographyDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimSalesRep_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimBusinessDivisionchanel",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimDistributor_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimSalesOrigin",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate dimProductType_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate DimSalesPool",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgTblProductFamiliesMain_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgSalesInvoiceHeaderDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgSalesInvoiceLinesDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgSalesOrderHeader_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate SalesRepMapHierMasterDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate tbl_FinesseCustomerMasterDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate tbl_CustomerCreatedMasterDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate Distributor Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate tbl_StandardCostByItemDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL_Migrate_tbl_FinesseStdCostMasterDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate tbl_2020AOP_SalesForceDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgSalesInvoiceHeaderLast7DaysDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate stgSalesInvoiceLinesLast7DaysDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate CalendarDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate_tbl_HistStdCostFinesseDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL PL Migrate DEV_tbl_GlobalNAProductBrandDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate_stgSalesOrderLine_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate_tbl_CustomerCreatedMaster_NewBiz",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL_PL Migrate Mi9_ordersDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL PL Migrate DEV_CustCustomerV3StagingDEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL PL Migrate DEV_tbl_2020AOPv1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "EPL PL Migrate DEV_stgTblRepMapConsolidated_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate factOrderInvoiceSales_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgTblProductFamiliesMain_D365DEV",
+				"description": "Purge and Reload PL Migrate stgTblProductFamiliesMain_D365DEV. Move from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/12/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgTblProductFamiliesMain_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgSalesInvoiceHeaderDEV",
+				"description": "Purge and ReLoad stgSalesInvoiceHeaderDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/12/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgSalesInvoiceHeaderDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgSalesInvoiceLinesDEV",
+				"description": "Purge and ReLoad stgSalesInvoiceLinesDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/12/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgSalesInvoiceLinesDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgSalesOrderHeader_D365DEV",
+				"description": "Purge and ReLoad stgSalesOrderHeader_D365DEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/12/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgSalesOrderHeader_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate SalesRepMapHierMasterDEV",
+				"description": "Purge and Reload SalesRepMapHierMasterDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/13/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate SalesRepMapHierMasterDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate tbl_FinesseCustomerMasterDEV",
+				"description": "Purge and Reload tbl_FinesseCustomerMasterDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/13/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate tbl_FinesseCustomerMasterDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate tbl_CustomerCreatedMasterDEV",
+				"description": "Purge and Reload tbl_CustomerCreatedMasterDEV from PROD to DEV\n\nAuthor: GBuenaventura\nDate: 12/13/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate tbl_CustomerCreatedMasterDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate Distributor Tables",
+				"description": "Purge and Reload Distributor Tables from PROD to DEV\n\nstgMetaFactDistSalesDEV\nstgMetaDimUidCustomerDEV\nstgMetasourceDEV\n\n\nAuthor: GBuenaventura\nDate: 12/13/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Distributor Tables",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "SP_DEV_CREATEfactOrderInvoiceSales_D365DEV",
+				"description": "Drop and Rebuilds dbo.factOrderInvoiceSales_D365DEV. In preparation for data migration from Prod to Dev.\n\nAuthor: GBuenaventura",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[CREATEfactOrderInvoiceSales_D365DEV]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_DEV_CREATE_FK_factOrderInvoiceSales_D365DEV",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "EPL_PL Migrate factOrderInvoiceSales_D365DEV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[CREATE_FK_factOrderInvoiceSales_D365DEV]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL_PL Migrate tbl_StandardCostByItemDEV",
+				"description": "Purge and Reload tbl_StandardCostByItemDEV from Prod to Dev.\n\nAuthor: GBuenaventura\nDate: 1/2/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate tbl_StandardCostByItemDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL_Migrate_tbl_FinesseStdCostMasterDEV",
+				"description": "Migrate Standard Cost Master 'tbl_FinesseStdCostMaster' from PROD to DEV\n\nOnly need to Migrate table once, since Finesse data is now static.\n\nAuthor: GBuenaventura\nDate: 1/3/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_Migrate_tbl_FinesseStdCostMasterDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate tbl_2020AOP_SalesForceDEV",
+				"description": "Purge and Migrate PROD.tbl_2020AOP_SalesForce to DEV.dbo.tbl_2020AOP_SalesForceDEV\n\nOnly really needs to be done once, since this is a fixed table.\n\nAuthor: GBuenaventura\nDate: 1/13/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate tbl_2020AOP_SalesForceDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgSalesInvoiceHeaderLast7DaysDEV",
+				"description": "Purge and Migrate PROD.stgSalesInvoiceHeaderLast7Days to DEV.stgSalesInvoiceHeaderLast7DaysDEV\n\nAuthor: GBuenaventura\nDate: 1/15/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgSalesInvoiceHeaderLast7DaysDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate stgSalesInvoiceLinesLast7DaysDEV",
+				"description": "Purge and Migrate PROD.stgSalesInvoiceLinesLast7Days to DEV.stgSalesInvoiceLinesLast7DaysDEV\n\nAuthor: GBuenaventura\nDate: 1/15/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate stgSalesInvoiceLinesLast7DaysDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate CalendarDEV",
+				"description": "Purge and Migrate PROD.Calendar to DEV.CalendarDEV\n\nAuthor: GBuenaventura\nDate: 2/18/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate CalendarDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate_tbl_HistStdCostFinesseDEV",
+				"description": "Migrate from PROD.tbl_HistStdCostFinesse to DEV.tbl_HistStdCostFinesseDEV\n\nAuthor: GBuenaventura\nDate: 2/19/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate_tbl_HistStdCostFinesseDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_tbl_GlobalNAProductBrandDEV",
+				"description": "Migrate PROD.tbl_GlobalNAProductBrand to DEV.tbl_GlobalNAProductBrandDEV\n\nAuthor: GBuenaventura\nDate: 2/26/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_tbl_GlobalNAProductBrandDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate_stgSalesOrderLine_D365DEV",
+				"description": "Migrate PROD.stgSalesOrderLine_D365 to DEV.stgSalesOrderLine_D365DEV\n\nAuthor: GBuenaventura\nDate: 2/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate_stgSalesOrderLine_D365DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate_tbl_CustomerCreatedMaster_NewBiz",
+				"description": "Migrate PROD.tbl_CustomerCreatedMaster_NewBiz to DEV.tbl_CustomerCreatedMaster_NewBizDEV\n\nAuthor: GBuenaventura\nDate: 3/2/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate_tbl_CustomerCreatedMaster_NewBizDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL_PL Migrate Mi9_ordersDEV",
+				"description": "Migrate Table from PROD.Mi9_orders to DEV.Mi9_ordersDEV\n\nAuthor: GBuenaventura\nDate: 3/20/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Mi9_ordersDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_CustCustomerV3StagingDEV",
+				"description": "Purge and Reload table from PROD.CustCustomerV3Staging to DEV.CustCustomerV3StagingDEV\n\nAuthor: GBuenaventura\nDate: 3/23/2020\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_CustCustomerV3StagingDEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_tbl_2020AOPv1",
+				"description": "Migrate PROD.tbl_2020AOPv1 TO DEV.tbl_2020AOPv1DEV\n\nAuthor: GBuenaventura\nDate: 5/11/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_tbl_2020AOPv1",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV_stgTblRepMapConsolidated_D365",
+				"description": "Migrate PROD.stgTblRepMapConsolidated_D365 to DEV.stgTblRepMapConsolidated_D365DEV\n\nAuthor: GBuenaventura\nDate: 05/13/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV_stgTblRepMapConsolidated_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-05-13T21:53:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

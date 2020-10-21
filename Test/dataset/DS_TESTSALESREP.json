@@ -1,0 +1,30 @@
+{
+	"name": "DS_TESTSALESREP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Sales_MTD__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_MTD_Canada__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_YTD__c",
+				"type": "Decimal"
+			},
+			{
+				"name": "Sales_YTD_Canada__c",
+				"type": "Decimal"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

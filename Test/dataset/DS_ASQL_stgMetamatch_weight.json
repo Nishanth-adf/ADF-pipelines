@@ -1,0 +1,32 @@
+{
+	"name": "DS_ASQL_stgMetamatch_weight",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "match_weight_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "match_code",
+				"type": "varchar"
+			},
+			{
+				"name": "match_weight",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetamatch_weight"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

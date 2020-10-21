@@ -1,0 +1,52 @@
+{
+	"name": "PL Migrate tbl_StandardCostByItemDEV",
+	"properties": {
+		"description": "Purge and Reload tbl_StandardCostByItemDEV from Prod to Dev.\n\nAuthor: GBuenaventura\nDate: 1/2/2020",
+		"activities": [
+			{
+				"name": "Copy_tbl_StandardCostByItemDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_StandardCostByItemDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_StandardCostByItemDEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_StandardCostByItemDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-03T03:01:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

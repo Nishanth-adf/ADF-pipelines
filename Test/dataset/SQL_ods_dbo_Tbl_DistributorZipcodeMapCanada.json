@@ -1,0 +1,34 @@
+{
+	"name": "SQL_ods_dbo_Tbl_DistributorZipcodeMapCanada",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Zipcode",
+				"type": "varchar"
+			},
+			{
+				"name": "DistrictMngr",
+				"type": "varchar"
+			},
+			{
+				"name": "TerritoryName",
+				"type": "varchar"
+			},
+			{
+				"name": "Salesmancd",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Tbl_DistributorZipcodeMapCanada"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

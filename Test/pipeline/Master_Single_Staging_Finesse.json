@@ -1,0 +1,46 @@
+{
+	"name": "Master_Single_Staging_Finesse",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete_N_Truncate_Staging_Tables",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_TRAN_Staging_Tables_Truncate_Delete",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Finesse_ALL_Staging_Tables_Load",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Delete_N_Truncate_Staging_Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Finesse_All_Staging_Load_Pipelines",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Consolidated_Master_Pipeline_Finesse_BA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-12T06:14:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

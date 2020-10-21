@@ -1,0 +1,51 @@
+{
+	"name": "PL Migrate tbl_FinesseGlobalCustomerClass",
+	"properties": {
+		"description": "Pipeline - Migrate tbl_FinesseGlobalCustomerClass from ODS to Production. One time Process.",
+		"activities": [
+			{
+				"name": "Copy tbl_FinesseGlobalCustomerClass",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_FinesseGlobalCustomerClass",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SQL_ODS_tbl_FinesseGlobalCustomerClass",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_FinesseGlobalCustomerClass",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/Testing"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-11-15T21:11:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

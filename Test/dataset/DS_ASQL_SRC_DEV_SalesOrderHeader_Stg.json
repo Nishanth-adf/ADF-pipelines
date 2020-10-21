@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASQL_SRC_DEV_SalesOrderHeader_Stg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SalesOrderHeaderV2Staging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

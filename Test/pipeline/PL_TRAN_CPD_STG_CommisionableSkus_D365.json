@@ -1,0 +1,107 @@
+{
+	"name": "PL_TRAN_CPD_STG_CommisionableSkus_D365",
+	"properties": {
+		"activities": [
+			{
+				"name": "SF_ODS_CS_CommissionableSkusD365-2-BLB_BA_CSK_Dataset",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "select \n [DB]\n      ,[Comment]\n      ,[Category]\n      ,[ProductLine]\n      ,[ProductFamily]\n      ,[CatalogNo]\n      ,[CatalognoDesc]\n      ,[Lastupdated]\nfrom \n[ODS].[cs].[tbl_CYCommissionableSkus]  with( nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_ODS_CommissionableSKUS2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ABLB_CommissionableSKUS_D365",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_FIN_CSK_Dataset-2-AZDB_CommissionableSkus_Dataset",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SF_ODS_CS_CommissionableSkusD365-2-BLB_BA_CSK_Dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE [dbo].[stgCommissionableSkus_D365];"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_TGT_ABLB_CommissionableSKUS_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ASQL_StgCommissionableSKUS_D365",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "D365_DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-08-28T14:12:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

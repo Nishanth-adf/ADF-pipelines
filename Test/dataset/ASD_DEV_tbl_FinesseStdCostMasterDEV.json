@@ -1,0 +1,41 @@
+{
+	"name": "ASD_DEV_tbl_FinesseStdCostMasterDEV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpdevtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migrate PROD to DEV Datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Catalogno",
+				"type": "varchar"
+			},
+			{
+				"name": "StdCostInUSD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "StdCostInCAD",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LastUpdated",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_FinesseStdCostMasterDEV"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

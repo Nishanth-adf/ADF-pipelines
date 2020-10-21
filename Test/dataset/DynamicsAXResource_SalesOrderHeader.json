@@ -1,0 +1,16 @@
+{
+	"name": "DynamicsAXResource_SalesOrderHeader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "d365fo_qa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsAXResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "SalesOrderHeadersV2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

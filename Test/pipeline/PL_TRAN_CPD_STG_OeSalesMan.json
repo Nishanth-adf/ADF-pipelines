@@ -1,0 +1,464 @@
+{
+	"name": "PL_TRAN_CPD_STG_OeSalesMan",
+	"properties": {
+		"activities": [
+			{
+				"name": "BLB_OT_SALESREP-2-AZDB_SALESREP",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_OT_SALESREP-2-BLB_SALESREP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oesalesman-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oesalesman]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmancd": "salesmancd",
+							"empno": "empno",
+							"in_out_flag": "in_out_flag",
+							"tax_id": "tax_id",
+							"name": "name",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"phone": "phone",
+							"extension": "extension",
+							"telex": "telex",
+							"usenet": "usenet",
+							"fax": "fax",
+							"voicemail": "voicemail",
+							"comm_code": "comm_code",
+							"locationcd": "locationcd",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"budget1": "budget1",
+							"budget2": "budget2",
+							"budget3": "budget3",
+							"budget4": "budget4",
+							"budget5": "budget5",
+							"budget6": "budget6",
+							"budget7": "budget7",
+							"budget8": "budget8",
+							"budget9": "budget9",
+							"budget10": "budget10",
+							"budget11": "budget11",
+							"budget12": "budget12",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"commission": "commission",
+							"how_paid": "how_paid",
+							"cash_only": "cash_only",
+							"when_paid": "when_paid",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oesalesman",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oesalesman",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_OT_SALESREP-2-BLB_SALESREP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/OT/@{concat('OT_oesalesman-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [salesmancd]\n      ,[empno]\n      ,[in_out_flag]\n      ,[tax_id]\n      ,[name]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[phone]\n      ,[extension]\n      ,[telex]\n      ,[usenet]\n      ,[fax]\n      ,[voicemail]\n      ,[comm_code]\n      ,[locationcd]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[budget1]\n      ,[budget2]\n      ,[budget3]\n      ,[budget4]\n      ,[budget5]\n      ,[budget6]\n      ,[budget7]\n      ,[budget8]\n      ,[budget9]\n      ,[budget10]\n      ,[budget11]\n      ,[budget12]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[commission]\n      ,[how_paid]\n      ,[cash_only]\n      ,[when_paid]\n\t  ,'OT' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [OT].[dbo].[oesalesman] with (nolock)",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmancd": "salesmancd",
+							"empno": "empno",
+							"in_out_flag": "in_out_flag",
+							"tax_id": "tax_id",
+							"name": "name",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"phone": "phone",
+							"extension": "extension",
+							"telex": "telex",
+							"usenet": "usenet",
+							"fax": "fax",
+							"voicemail": "voicemail",
+							"comm_code": "comm_code",
+							"locationcd": "locationcd",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"budget1": "budget1",
+							"budget2": "budget2",
+							"budget3": "budget3",
+							"budget4": "budget4",
+							"budget5": "budget5",
+							"budget6": "budget6",
+							"budget7": "budget7",
+							"budget8": "budget8",
+							"budget9": "budget9",
+							"budget10": "budget10",
+							"budget11": "budget11",
+							"budget12": "budget12",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"commission": "commission",
+							"how_paid": "how_paid",
+							"cash_only": "cash_only",
+							"when_paid": "when_paid",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_OT_dbo_oesalesman",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_OT_oesalesman",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SQL01_IL_SALESREP-2-BLB_IL_SALESREP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Destination",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oesalesman-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT [salesmancd]\n      ,[empno]\n      ,[in_out_flag]\n      ,[tax_id]\n      ,[name]\n      ,[addr1]\n      ,[addr2]\n      ,[addr3]\n      ,[city]\n      ,[state]\n      ,[zip]\n      ,[country]\n      ,[phone]\n      ,[extension]\n      ,[telex]\n      ,[usenet]\n      ,[fax]\n      ,[voicemail]\n      ,[comm_code]\n      ,[locationcd]\n      ,[ref1]\n      ,[ref2]\n      ,[ref3]\n      ,[ref4]\n      ,[ref5]\n      ,[ref6]\n      ,[ref7]\n      ,[ref8]\n      ,[budget1]\n      ,[budget2]\n      ,[budget3]\n      ,[budget4]\n      ,[budget5]\n      ,[budget6]\n      ,[budget7]\n      ,[budget8]\n      ,[budget9]\n      ,[budget10]\n      ,[budget11]\n      ,[budget12]\n      ,[mtdsales]\n      ,[mtdrtrn]\n      ,[mtdother]\n      ,[mtdcosts]\n      ,[ytdsales]\n      ,[ytdrtrn]\n      ,[ytdother]\n      ,[ytdcosts]\n      ,[lastyrsales]\n      ,[lastyrrtrn]\n      ,[lastyrother]\n      ,[lastyrcosts]\n      ,[commission]\n      ,[how_paid]\n      ,[cash_only]\n      ,[when_paid]\n\t  ,'IL' as [DBSource]\n\t  ,GetDate() as [LoadDateTime]\n  FROM [IL].[dbo].[oesalesman]  with (nolock)\n\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "BlobSink"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmancd": "salesmancd",
+							"empno": "empno",
+							"in_out_flag": "in_out_flag",
+							"tax_id": "tax_id",
+							"name": "name",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"phone": "phone",
+							"extension": "extension",
+							"telex": "telex",
+							"usenet": "usenet",
+							"fax": "fax",
+							"voicemail": "voicemail",
+							"comm_code": "comm_code",
+							"locationcd": "locationcd",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"budget1": "budget1",
+							"budget2": "budget2",
+							"budget3": "budget3",
+							"budget4": "budget4",
+							"budget5": "budget5",
+							"budget6": "budget6",
+							"budget7": "budget7",
+							"budget8": "budget8",
+							"budget9": "budget9",
+							"budget10": "budget10",
+							"budget11": "budget11",
+							"budget12": "budget12",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"commission": "commission",
+							"how_paid": "how_paid",
+							"cash_only": "cash_only",
+							"when_paid": "when_paid",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_SRC_SQL01_IL_dbo_oesalesman",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oesalesman",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "BLB_IL_SALESREP-2-AZDB_SALESREP",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SQL01_IL_SALESREP-2-BLB_IL_SALESREP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metausedpblobdev/Finesse/IL/@{concat('IL_oesalesman-',replace(substring(trigger().startTime,0,10),'-',''),'.txt')}"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[STG-oesalesman]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 100000
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"redirectIncompatibleRowSettings": {
+						"linkedServiceName": {
+							"referenceName": "metaedpAzureBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "metausedpblobdev/Finesse/IncompatiableRows"
+					},
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"salesmancd": "salesmancd",
+							"empno": "empno",
+							"in_out_flag": "in_out_flag",
+							"tax_id": "tax_id",
+							"name": "name",
+							"addr1": "addr1",
+							"addr2": "addr2",
+							"addr3": "addr3",
+							"city": "city",
+							"state": "state",
+							"zip": "zip",
+							"country": "country",
+							"phone": "phone",
+							"extension": "extension",
+							"telex": "telex",
+							"usenet": "usenet",
+							"fax": "fax",
+							"voicemail": "voicemail",
+							"comm_code": "comm_code",
+							"locationcd": "locationcd",
+							"ref1": "ref1",
+							"ref2": "ref2",
+							"ref3": "ref3",
+							"ref4": "ref4",
+							"ref5": "ref5",
+							"ref6": "ref6",
+							"ref7": "ref7",
+							"ref8": "ref8",
+							"budget1": "budget1",
+							"budget2": "budget2",
+							"budget3": "budget3",
+							"budget4": "budget4",
+							"budget5": "budget5",
+							"budget6": "budget6",
+							"budget7": "budget7",
+							"budget8": "budget8",
+							"budget9": "budget9",
+							"budget10": "budget10",
+							"budget11": "budget11",
+							"budget12": "budget12",
+							"mtdsales": "mtdsales",
+							"mtdrtrn": "mtdrtrn",
+							"mtdother": "mtdother",
+							"mtdcosts": "mtdcosts",
+							"ytdsales": "ytdsales",
+							"ytdrtrn": "ytdrtrn",
+							"ytdother": "ytdother",
+							"ytdcosts": "ytdcosts",
+							"lastyrsales": "lastyrsales",
+							"lastyrrtrn": "lastyrrtrn",
+							"lastyrother": "lastyrother",
+							"lastyrcosts": "lastyrcosts",
+							"commission": "commission",
+							"how_paid": "how_paid",
+							"cash_only": "cash_only",
+							"when_paid": "when_paid",
+							"DBSource": "DBSource",
+							"LoadDateTime": "LoadDateTime"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ABLB_TGT_IL_oesalesman",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_TGT_metausedpdev_oesalesman",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Finesse"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-04-01T05:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

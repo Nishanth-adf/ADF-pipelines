@@ -1,0 +1,293 @@
+{
+	"name": "PL_CPD_FACT_DD_Incr_Load_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DD_Incr_Load_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT\t\tInvoiceNumber\t=\tInvno,\n\t\t\tInvoiceDate\t\t= CAST(CAST(SFDS.PostDateKey AS NVARCHAR(8)) AS DATETIME),\n\t\t\tacctyr\t\t\t= YEAR(CAST(CAST(SFDS.PostDateKey AS NVARCHAR(8)) AS DATETIME)),\n\t\t\tacctper\t\t\t= MONTH(CAST(CAST(SFDS.PostDateKey AS NVARCHAR(8)) AS DATETIME)),\n\t\t\t[orderID]\t\t=\t-1,\n\t\t\t[geographyID]\t=\t-1,\n\t\t\t[customerID]\t=\tISNULL((\n\t\t\t\t\t\t\t\t\tSELECT\t\tTOP 1 customerID\n\t\t\t\t\t\t\t\t\tFROM\t\tdbo.dimCustomerMaster DCM\n\t\t\t\t\t\t\t\t\tWHERE\t\tDCM.customerNumber\t\t=\t(\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tcustno\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[stgDimCustomers] SDC\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tSDC.CustomerPK\t\t=\tSFDS.uidCustomerKey\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t),-1),\n\t\t\t[salesRepID]\t=\tISNULL((\n\t\t\t\t\t\t\t\t\tSELECT\t\tTOP 1 salesRepID\n\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[dimSalesRep] DSR\n\t\t\t\t\t\t\t\t\tWHERE\t\tDSR.salesmanCode\t\t\t= SFDS.salesmancd\n\t\t\t\t\t\t\t\t\tORDER BY DSR.accountYear DESC\n\t\t\t\t\t\t\t\t\t--AND\t\t\tLEFT(SFDS.PostDateKey,4)\t=\tDSR.accountYear\n\t\t\t\t\t\t\t\t\t--AND\t\t\tSUBSTRING(CAST(SFDS.PostDateKey AS VARCHAR(10)),5,2)\t=\tDSR.accountMonth\n\t\t\t\t\t\t\t\t),-1),\n\t\t\t[productID]\t\t=\tISNULL((\n\t\t\t\t\t\t\t\t\tSELECT\t\tproductID\n\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[dimProductMaster] DPM\n\t\t\t\t\t\t\t\t\tWHERE\t\tcatalogNumber\t\t=\t(\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tCatalogNumber\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[stgDimFinishedGoods]\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tProductPK\t\t=\tSFDS.ProductKey\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tSourceDB\t\t=\tDPM.source\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t),-1),\n\t\t\t[BusinessDivisionchanelID] = 3,\n\t\t\t[dimDistributorID]\t\t=\tCASE\tWHEN LEFT(SFDS.custno,2) = 'EE'\tAND SFDS.sourceid = 2 THEN 1\n\t\t\t\t\t\t\t\t\t\t\t\tWHEN LEFT(SFDS.custno,2) = 'FS'\tAND SFDS.sourceid = 6 THEN 2\n\t\t\t\t\t\t\t\t\t\t\t\tWHEN LEFT(SFDS.custno,2) = 'BL'\tAND SFDS.sourceid = 3 THEN 3\n\t\t\t\t\t\t\t\t\t\t\t\tWHEN LEFT(SFDS.custno,2) = 'FC'\tAND SFDS.sourceid = 7 THEN 4\n\t\t\t\t\t\t\t\t\t\t\t\tWHEN LEFT(SFDS.custno,2) = 'EW'\tAND SFDS.sourceid = 4 THEN 5\n\t\t\t\t\t\t\t\t\t\t\t\tELSE -1\n\t\t\t\t\t\t\t\t\t\tEND,\n\t\t\t[SalesOriginID]\t\t\t=\t-1,\n\t\t\tproductTypeID\t\t\t=\tISNULL((\n\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tproductTypeID\n\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[dimProductType] DPM\n\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tcatlogNumber\t\t=\t(\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSELECT\t\tCatalogNumber\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFROM\t\t[dbo].[stgDimFinishedGoods]\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWHERE\t\tProductPK\t\t=\tSFDS.ProductKey\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAND\t\t\tSourceDB\t\t=\tDPM.source\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\t\t\t),-1),\n\t\t\t[amount]\t\t\t\t=\tExtPrice,\n\t\t\t[amounttype]\t\t\t=\t'Product Sales',\n\t\t\t[localCurrencyCode]\t\t=\tCASE\tWHEN SFDS.currencykey = '1' THEN 'USD'\n\t\t\t\t\t\t\t\t\t\t\t\tWHEN SFDS.currencykey = '2' THEN 'CAD'\n\t\t\t\t\t\t\t\t\t\t\t\tELSE NULL\n\t\t\t\t\t\t\t\t\t\tEND,\n\t\t\t[commissionableIndicator]\t=\tCAST((CASE\tWHEN left(SFDS.custno,2) in ('EE','FS','BL','FC','EW') and SFDS.sourceid in (2,6,3,7,4) then 'Y' else 'N' End) as nvarchar(3)) ,\n\t\t\t[lineItem]\t\t\t\t\t=\t0,\n\t\t\t[Source]\t\t\t\t\t=\t'DD',\n\t\t\t[insertDate]\t\t\t\t=\tDateadd(hh,-8,GetDate()),\n\t\t\t[insertBy]\t\t\t\t\t=\t'ADF ETL'\n\nFROM\t\t[dbo].[stgFactDistSales] SFDS\nWHERE \t\tLEFT(PostDateKey,4) >= '2019' and SUBSTRING(CAST(PostDateKey AS VARCHAR(10)),5,2) >='09'\n",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tempFactOrderInvoiceSales_DD;",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "InvoiceNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "invoiceNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "invoiceDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "acctyr",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "acctyr",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "acctper",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "acctper",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "productID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "productID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "geographyID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "geographyID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "customerID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "customerID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "salesRepID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "salesRepID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "productTypeID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "productTypeID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "dimDistributorID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "dimDistributorID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "orderID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "orderID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessDivisionchanelID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "BusinessDivisionchanelID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesOriginID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SalesOriginID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "amount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "amount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "amounttype",
+									"type": "String"
+								},
+								"sink": {
+									"name": "amountType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "commissionableIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "commissionableIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lineItem",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "lineItem",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Source",
+									"type": "String"
+								},
+								"sink": {
+									"name": "source",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "localCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "localCurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_DEV_StgFactDistSales",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_SINK_tempFactOrderInvoiceSales_DD",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "usp_factOrderInvoiceSales_DD_IncrLoad",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "CPD_DD_Incr_Load_Prod",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_factOrderInvoiceSales_DD_IncrLoad]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpprod",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "D365_PROD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-30T16:33:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

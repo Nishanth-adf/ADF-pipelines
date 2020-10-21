@@ -1,0 +1,154 @@
+{
+	"name": "PL One Touch Migrate Trail Balance",
+	"properties": {
+		"description": "One Touch Pipeline – Populates table, ‘tbl_PL_TrailBalance’ and Brings in the Alticor maps for monthly TB Upload file. Used for Trend and monthly Alticor Upload File",
+		"activities": [
+			{
+				"name": "EPL - PL Migrate PROD Finance Tables",
+				"description": "Execute Pipeline - PL Migrate PROD Finance Tables.\n\nAuthor: GBuenaventura\nDate: 10/22/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate PROD Finance Tables",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL Stored Proc ReLoad_tbl_PL_TrailBalance",
+				"description": "Run Stored Procedure - ReLoad_tbl_PL_TrailBalance",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Execute SP ReLoad_tbl_PL_TrailBalance",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL - PL Migrate SQL01_currencyconversion",
+				"description": "Execute Pipeline - PL Migrate SQL01_currencyconversion. To Migrate FX rates over from SQL01 to PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate SQL01_currencyconversion",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Reload tbl_AlticorMainAccountMap",
+				"description": "Execute Pipeline – Migrate over ODS.tbl_AlticorMainAccountMap  to PROD\n\nAuthor: GBuenaventura\nDate: 10/30/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Reload tbl_AlticorMainAccountMap",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Reload tbl_AlticorGLStringMap",
+				"description": "Migrate Purge and RE load ODS.dbo.tbl_AlticorGLStringMap to PROD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Reload tbl_AlticorGLStringMap",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Reload Prod tbl_AlticorGLStringWEntityIDMap",
+				"description": "Pipeline: Purge and reload tbl_AlticorGLStringWEntityIDMap in PROD.\n\nAuthor: GBuenaventura\nDate: 11/5/2019",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Reload Prod tbl_AlticorGLStringWEntityIDMap",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL Migrate Prod DimAttributeInventItemGroups",
+				"description": "Migrate from D365.DimAttributeInventItemGroups to PROD.DimAttributeInventItemGroups\n\nAuthor: GBuenaventura\nDate: 5/4/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "EPL - PL Migrate PROD Finance Tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Prod DimAttributeInventItemGroups",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Finance Tables/metausedpprod"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-05-04T23:57:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

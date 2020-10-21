@@ -1,0 +1,12 @@
+{
+	"name": "DS_SQL_SRC_SF_ODS_CommissionableSkus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable"
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

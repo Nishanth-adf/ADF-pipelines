@@ -1,0 +1,64 @@
+{
+	"name": "PL_DATA_CPD_SF_Account_2_ASQL_SFAccount",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_SF_Account_2_ASQL_SFAccount",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": "select id, Name, AccountNumber, IAR_Rep__c, Finesse__c, Industry from Account",
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table dbo.sfaccount"
+					},
+					"enableStaging": false,
+					"parallelCopies": 10,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Id": "id",
+							"Name": "AccountName",
+							"Industry": "Industry",
+							"AccountNumber": "AccountNumber",
+							"IAR_Rep__c": "IAR_Rep__c",
+							"Finesse__c": "Finesse"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_SF_Account",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_TGT_ASQL_SFAccount",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SalesForce"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-03-27T13:04:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

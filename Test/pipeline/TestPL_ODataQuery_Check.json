@@ -1,0 +1,137 @@
+{
+	"name": "TestPL_ODataQuery_Check",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_STGOrderLine",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "lookuptest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsAXSource",
+						"query": {
+							"value": "?$filter=(DateTimeModified gt @{activity('lookuptest').output.firstRow.DateTimeModified} or DateTimeCreated gt @{activity('lookuptest').output.firstRow.DateTimeCreated})",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgSalesOrderLinesV2_Incr",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DynamicsAXResource_tesOrderLine",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQL_Test_SalesOrderLineV2_Increment",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "lookuptest",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_ABLB_LKP_Test",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "CPD_MAX_DateTime_From_Table",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "CPD_STGOrderLine",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select CONVERT(VARCHAR(20),max(DateTimeCreated),127) As DateTimeCreated,CONVERT(VARCHAR(20),\nmax(DateTimeModified),127) As DateTimeModified from dbo.stgSalesOrderLinesV2_Incr",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ASQL_Test_MaxDateTime",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_LKP_Test",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2019-09-20T15:22:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

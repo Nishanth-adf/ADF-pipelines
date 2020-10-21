@@ -1,0 +1,219 @@
+{
+	"name": "ASD_PROD_stgMetaimport_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "metausedpprodtest",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS - AVLVDW MetaDistrib"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "import_data_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "import_info_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "post_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "customer_code",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_name",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_address_name",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_address1",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_address2",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_city",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_state",
+				"type": "varchar"
+			},
+			{
+				"name": "bill_to_zip",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_address1",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_address2",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_city",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_state",
+				"type": "varchar"
+			},
+			{
+				"name": "ship_to_zip",
+				"type": "varchar"
+			},
+			{
+				"name": "phone_number",
+				"type": "varchar"
+			},
+			{
+				"name": "transaction_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "item",
+				"type": "varchar"
+			},
+			{
+				"name": "met_item_id",
+				"type": "varchar"
+			},
+			{
+				"name": "net_sales_qty",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "count",
+				"type": "varchar"
+			},
+			{
+				"name": "cost_of_sales_amt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "net_sales_amt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "sales_amt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "profit_before_discount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "discount_amt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "profit",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "price",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "return_amt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "return_qty",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "customer_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "match_weight",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sales_rep_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "status_fl",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_key",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "inception_dt",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "customer_class",
+				"type": "varchar"
+			},
+			{
+				"name": "ref4",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_class_distrib",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stgMetaimport_data"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

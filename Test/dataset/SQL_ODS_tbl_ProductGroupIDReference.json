@@ -1,0 +1,26 @@
+{
+	"name": "SQL_ODS_tbl_ProductGroupIDReference",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sf_ods",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ProductGroupID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProductGroupIDDesc",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_ProductGroupIDReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

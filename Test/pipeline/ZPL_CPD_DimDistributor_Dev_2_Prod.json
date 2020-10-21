@@ -1,0 +1,134 @@
+{
+	"name": "ZPL_CPD_DimDistributor_Dev_2_Prod",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPD_DimDistributor_Dev_2_Prod",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM dbo.DimDistributor where dimdistributorID <> -1",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dimDistributorID",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "dimDistributorID",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "distributorCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "distributorCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "distributorName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "distributorName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "comments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "comments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "insertDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "insertDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "insertBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "insertBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedBy",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SRC_ASQL_DimDistributor_DEV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SINK_ASQL_DimDistributor_Prod",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "AADEV_To_Prod_Pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2019-09-17T13:08:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

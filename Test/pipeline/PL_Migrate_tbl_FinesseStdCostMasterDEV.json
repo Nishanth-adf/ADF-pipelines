@@ -1,0 +1,52 @@
+{
+	"name": "PL_Migrate_tbl_FinesseStdCostMasterDEV",
+	"properties": {
+		"description": "Migrate Standard Cost Master 'tbl_FinesseStdCostMaster' from PROD to DEV\n\nOnly need to Migrate table once, since Finesse data is now static.\n\nAuthor: GBuenaventura\nDate: 1/3/2020",
+		"activities": [
+			{
+				"name": "Copy_tbl_FinesseStdCostMasterDEV",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.tbl_FinesseStdCostMasterDEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_tbl_FinesseStdCostMaster",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_tbl_FinesseStdCostMasterDEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-01-04T00:27:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,31 @@
+{
+	"name": "DS_SQL_MetaDistrib_authority",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "av_lv_dw",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "role",
+				"type": "varchar"
+			},
+			{
+				"name": "role_desc",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "authority"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

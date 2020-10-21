@@ -1,0 +1,53 @@
+{
+	"name": "PL Migrate_stgSalesOrderLine_D365DEV",
+	"properties": {
+		"description": "Migrate PROD.stgSalesOrderLine_D365 to DEV.stgSalesOrderLine_D365DEV\n\nAuthor: GBuenaventura\nDate: 2/28/2020",
+		"activities": [
+			{
+				"name": "Copy stgSalesOrderLine_D365DEV",
+				"description": "Migrate PROD.stgSalesOrderLine_D365 to DEV.stgSalesOrderLine_D365DEV\n\nAuthor: GBuenaventura\nDate: 2/28/2020",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.stgSalesOrderLine_D365DEV",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ASD_PROD_stgSalesOrderLine_D365",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ASD_DEV_stgSalesOrderLine_D365DEV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Migrate PROD to DEV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-02-28T19:49:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

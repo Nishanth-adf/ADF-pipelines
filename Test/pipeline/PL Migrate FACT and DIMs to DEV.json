@@ -1,0 +1,224 @@
+{
+	"name": "PL Migrate FACT and DIMs to DEV",
+	"properties": {
+		"description": "Migrate Fact and Dimension tables from From Prod to DEV\n\nAuthor: GBuenaventura\nDate: 08/27/2020",
+		"activities": [
+			{
+				"name": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+				"description": "Drop and Recreate DEV.dwh.FactOrderInvoiceSales_D365 \n\nAuthor: GBuenaventura\nDate: 08/27/2020",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[CREATE_dwh_FactOrderInvoiceSales_D365]"
+				},
+				"linkedServiceName": {
+					"referenceName": "metausedpdevtest",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimBusinessDivisionChannel",
+				"description": "Migrate From Prod.dbo_DimBusinessDivisionChannel To Dev.dwh_DimBusinessDivisionChannel\n\nAuthor: GBuenaventura\nDate: 08/27/2020\n\n",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimBusinessDivisionChannel",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev dwh_DimCustomerMaster_D365",
+				"description": "Migrate From Prod dbo.DimCustomerMaster_D365 To Dev.dwh.DimCustomerMaster_D365\n\nAuthor: GBuenaventura\nDate: 08/27/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev dwh_DimCustomerMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate DEV dwh_DimOrder_D365",
+				"description": "Migrate From Prod.dbo.DimOrder_D365 To Dev.dwh.DimOrder_D365\n\nAuthor: GBuenaventura\nDate: 08/27/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate DEV dwh_DimOrder_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimProductMaster_D365",
+				"description": "Migrate From Prod.dbo.DimProductMaster_D365 To Dev.dwh.DimProductMaster_D365\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimProductMaster_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev dwh_dimSalesRep_D365",
+				"description": "Migrate From Prod.dbo.dimSalesRep_D365 To Dev.dwh_dimSalesRep_D365\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev dwh_dimSalesRep_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimGeography",
+				"description": "Migrate From Prod_dbo_DimGeography To Dev.dwh.DimGeography\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimGeography",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimDistributor_D365",
+				"description": "Migrate From Prod.dbo.DimDistributor_D365 To Dev.dwh.DimDistributor_D365\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimDistributor_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimSalesOrigin",
+				"description": "Migrate From Prod.dbo.DimSalesOrigin To Dev.dwh.DimSalesOrigin\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimSalesOrigin",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "EPL PL Migrate Dev_dwh_DimProductType_D365",
+				"description": "Migrate From Prod.dbo.DimProductType_D365 To Dev.dwh.DimProductType_D365\n\nAuthor: GBuenaventura\nDate: 08/28/2020",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SP dwh_CREATE_dwh_FactOrderInvoiceSales_D365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL Migrate Dev_dwh_DimProductType_D365",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "D365 Development/One Touch Prep Fact and DIM Objects"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-08-28T23:54:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
